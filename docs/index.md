@@ -21,7 +21,7 @@
   </a>
   
   <a href="https://downloadcenter.rolanddg.com/SRM-20" target="_blank" title="Descargar VPanel SRM-20">
-    <img src="img/icono-monofab.png" width="40" style="border-radius: 8px;">
+    <img src="img/icono-monofab.jpg" width="40" style="border-radius: 8px;">
   </a>
 
 </div>

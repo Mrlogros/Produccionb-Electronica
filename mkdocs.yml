@@ -16,37 +16,37 @@ nav:
 
 theme:
   name: material
-  # Corrección del logo e ícono
-  icon:
-    logo: material/developer-board
+  logo: material/developer-board
   favicon: material/developer-board
-  # Tipografía moderna y limpia
+  # 1. Nueva tipografía súper moderna y limpia
   font:
-    text: Inter
-    code: JetBrains Mono
+    text: Montserrat
+    code: Fira Code
   features:
     - navigation.instant
     - navigation.tracking
     - navigation.tabs 
     - navigation.tabs.sticky
     - navigation.top
-    - toc.integrate # Mueve el índice derecho al menú izquierdo
+    - toc.integrate
     - content.code.copy
+  # 2. Paleta de colores con alto contraste
   palette:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: black # Barra superior negra para un look más "stealth"
-      accent: red # Detalles y enlaces en rojo
+      primary: indigo # Azul tecnológico para la barra
+      accent: amber # Naranja/Amarillo vibrante para detalles
       toggle:
         icon: material/brightness-4
         name: Cambiar a modo claro
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: black
-      accent: red
+      primary: indigo
+      accent: amber
       toggle:
         icon: material/brightness-7
         name: Cambiar a modo oscuro
+
 
 markdown_extensions:
   - pymdownx.highlight:

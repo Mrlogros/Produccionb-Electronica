@@ -17,10 +17,10 @@ nav:
 
 theme:
   name: material
-  logo: material/developer-board
+  logo: material/memory  # <-- Reemplaza lo que tengas aquí por esto
   favicon: material/developer-board
-  icon:                                 # <-- LÍNEA NUEVA
-    repo: fontawesome/brands/github     # <-- LÍNEA NUEVA
+  icon:
+    repo: fontawesome/brands/github
   # 1. Nueva tipografía súper moderna y limpia
   font:
     text: Montserrat

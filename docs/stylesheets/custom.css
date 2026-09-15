@@ -48,3 +48,24 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+/* 6. Título principal con gradiente de color moderno */
+h1 {
+    background: linear-gradient(90deg, #ff5252, #f57c00, #ff5252);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: gradientText 5s linear infinite;
+    font-weight: 800;
+}
+
+@keyframes gradientText {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+/* 7. Centrar el contenido de la portada */
+.md-typeset h1 {
+    text-align: center;
+}

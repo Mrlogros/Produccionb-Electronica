@@ -26,7 +26,6 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
 
 ---
 
-
 ## Fases del Proyecto
 
 <div class="grid cards" markdown>
@@ -62,6 +61,29 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     Material de referencia, hojas de datos y guías para el manejo de KiCad.
     
     [Ver documentación ➔](recursos.md)
+
+</div>
+
+---
+
+## 🔗 Enlaces Rápidos y Herramientas
+
+<div class="grid cards" markdown>
+
+-   :material-discord: __Discord Oficial de KiCad__
+    ---
+    Comunidad para resolver dudas sobre errores y reglas de diseño.
+    [:octicons-arrow-right-24: Ir al servidor](https://discord.com/invite/WpeTTEy)
+
+-   :material-post: __Blog de KiCad__
+    ---
+    Noticias, actualizaciones y notas de parches del software.
+    [:octicons-arrow-right-24: Leer el blog](https://www.kicad.org/blog/)
+
+-   :material-cogs: __Roland VPanel SRM-20__
+    ---
+    Software, drivers y manuales para la fresadora CNC Monofab.
+    [:octicons-arrow-right-24: Centro de descargas](https://www.rolanddga.com/support/products/milling/modela-srm-20-3d-milling-machine)
 
 </div>
 

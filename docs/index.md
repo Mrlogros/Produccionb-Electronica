@@ -17,7 +17,7 @@
   </a>
   
   <a href="https://www.kicad.org/blog/" target="_blank" title="Blog de KiCad">
-    <img src="img/KiCad-Logo.svg.webp" width="40" style="border-radius: 8px; background: white; padding: 4px;">
+    <img src="img/kicad-icon.png" width="40" style="border-radius: 8px; background: white; padding: 4px;">
   </a>
   
   <a href="https://downloadcenter.rolanddg.com/SRM-20" target="_blank" title="Descargar VPanel SRM-20">

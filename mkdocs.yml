@@ -2,44 +2,44 @@ site_name: Diseño de PCB - Proyecto KiCad
 site_description: Documentación técnica del diseño y ruteo de circuito impreso.
 site_author: Tu Nombre
 
-# Integra tu repositorio (Aparecerá arriba a la derecha)
 repo_url: https://github.com/Mrlogros/Produccionb-Electronica
 repo_name: Mrlogros/Produccionb-Electronica
 
+# Menú agrupado para forzar las pestañas superiores modernas
 nav:
   - Inicio: index.md
-  - 1. Diseño del Esquemático: esquematico.md
-  - 2. Editor de Placas (Layout): editor-placas.md
-  - 3. Mods CE y Ajustes: mods-ce.md
-  - 4. Recursos para Aprender: recursos.md
+  - Desarrollo de PCB:
+    - 1. Diseño del Esquemático: esquematico.md
+    - 2. Editor de Placas (Layout): editor-placas.md
+    - 3. Mods CE y Ajustes: mods-ce.md
+  - Referencias: recursos.md
 
 theme:
   name: material
-  # Logo y Favicon de placa base
-  logo: material/circuit-board
-  favicon: material/circuit-board
-  # Tipografía moderna de Google Fonts
+  logo: material/memory
+  favicon: material/memory
   font:
     text: Roboto
-    code: Roboto Mono
+    code: Fira Code
   features:
-    - navigation.instant # Transiciones "smooth" sin recargar la página (SPA)
-    - navigation.tracking # Actualiza la URL automáticamente al hacer scroll
-    - navigation.tabs # Crea un menú superior moderno
-    - navigation.tabs.sticky # El menú superior te sigue al bajar
-    - navigation.sections # Agrupa secciones lateralmente de forma limpia
-    - navigation.top # Botón flotante para volver arriba
-    - content.code.copy # Botón para copiar comandos fácilmente
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs # Activa el menú superior
+    - navigation.tabs.sticky
+    - navigation.top
+    - content.code.copy
   palette:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: red
+      accent: cyan # Color de contraste para enlaces
       toggle:
         icon: material/brightness-4
         name: Cambiar a modo claro
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: red
+      accent: deep orange
       toggle:
         icon: material/brightness-7
         name: Cambiar a modo oscuro
@@ -50,9 +50,10 @@ markdown_extensions:
       line_spans: __span
       pygments_lang_class: true
   - pymdownx.superfences
-  - pymdownx.details
-  - pymdownx.tabbed:
-      alternate_style: true
   - admonition
   - attr_list
   - md_in_html
+
+# Aquí llamamos a nuestro archivo de estilos personalizados
+extra_css:
+  - stylesheets/custom.css

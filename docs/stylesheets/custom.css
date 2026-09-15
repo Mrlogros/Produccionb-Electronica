@@ -168,15 +168,12 @@ h1 {
     border: 1px solid rgba(128, 128, 128, 0.2) !important;
 }
 
-/* Centrar también las leyendas (texto en cursiva debajo de la imagen) */
-.md-typeset p > em {
+/* Centrar también las leyendas (SOLO si están en un párrafo con imagen) */
+.md-typeset p:has(img) > em {
     display: block !important;
     text-align: center !important;
     color: var(--md-default-fg-color--light) !important;
     margin-top: 10px !important;
-    margin-bottom: 30px !important; /* Más espacio antes del siguiente paso */
+    margin-bottom: 30px !important;
     font-size: 0.9em !important;
 }
-
-
-

@@ -1,8 +1,9 @@
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px;">
-  <!-- Aquí aparecerá el logo de tu equipo automáticamente cuando lo subas -->
-  <img src="img/logo.png" alt="Logo del Equipo" width="100">
+  <!-- Logo de tu equipo -->
+  <img src="img/logo-equipo.png" alt="Logo del Equipo" width="100">
   
-  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/KiCad_wmark.png" alt="Logo KiCad" width="100">
+  <!-- Logo de KiCad actualizado a tu archivo local -->
+  <img src="img/KiCad-Logo.svg.webp" alt="Logo KiCad" width="100">
 </div>
 
 # Documentación de Diseño de PCB
@@ -13,12 +14,14 @@ Bienvenido a la bitácora del proyecto de diseño de nuestra placa de circuito i
 
 <div class="grid cards" markdown>
 
--   <img src="img/icono-esquematico.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[1. Esquemático](esquematico.md)**
+-   <!-- Actualizado a .jpg -->
+    <img src="img/icono-esquematico.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[1. Esquemático](esquematico.md)**
     ---
     Documentación del diagrama lógico, selección de componentes y cableado.
     [:octicons-arrow-right-24: Ir a la página](esquematico.md)
 
--   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Editor de Placas (Layout)](editor-placas.md)**
+-   <!-- Actualizado a .png -->
+    <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Editor de Placas (Layout)](editor-placas.md)**
     ---
     Proceso de ruteo, distribución de huellas y diseño físico de la PCB.
     [:octicons-arrow-right-24: Ir a la página](editor-placas.md)

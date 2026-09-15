@@ -12,7 +12,7 @@
 </pre>
 
   <!-- Muestra el logo de tu equipo -->
-  <img src="docs/img/logo-equipo.png" alt="Logo KiCad Squad" width="120"/>
+  <img src="docs/img/logo.png" alt="Logo KiCad Squad" width="120"/>
   
   <h1>⚡ Documentación de Diseño de PCB</h1>
   

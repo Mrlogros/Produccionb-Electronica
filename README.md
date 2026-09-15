@@ -1,16 +1,29 @@
 <div align="center">
 
-<!-- Arte ASCII Electrónico -->
+<!-- Arte ASCII de KiCad -->
 <pre>
- .=======================================================.
- |    o    o    o    o    o    o    o    o    o    o     |
- |  ___                                              _   |
- | |   |        KiCad Squad - IBERO Puebla          |_|  |
- | |___|        PCB Design & Documentation               |
- |                                                       |
- |    o    o    o    o    o    o    o    o    o    o     |
- '======================================================='
+ .----------------------------------------------------.
+ |      _  ___  ____          _             SQUAD     |
+ |  o--| |/ (_)/ ___|__ _  __| |---o                  |
+ |     | ' /| | |   / _` |/ _` |           IBERO      |
+ |  o--| . \| | |__| (_| | (_| |---o                  |
+ |     |_|\_\_|\____\__,_|\__,_|                      |
+ '----------------------------------------------------'
 </pre>
+
+  <!-- Muestra el logo de tu equipo -->
+  <img src="docs/img/logo-equipo.png" alt="Logo KiCad Squad" width="120"/>
+  
+  <h1>⚡ Documentación de Diseño de PCB</h1>
+  
+  <!-- Badges Dinámicos (Se actualizan solos) -->
+  <a href="https://mrlogros.github.io/Produccionb-Electronica/">
+    <img src="https://img.shields.io/badge/🌐_Ver_Sitio_Web-En_Vivo-e53935?style=for-the-badge" alt="Ver Documentación">
+  </a>
+  <img src="https://img.shields.io/github/last-commit/Mrlogros/Produccionb-Electronica?style=for-the-badge&color=blue&label=Último%20Ajuste" alt="Last Commit">
+  <img src="https://img.shields.io/github/repo-size/Mrlogros/Produccionb-Electronica?style=for-the-badge&color=orange&label=Peso" alt="Repo Size">
+</div>
+
 
   <!-- Muestra el logo de tu equipo -->
   <img src="docs/img/logo-equipo.png" alt="Logo KiCad Squad" width="120"/>

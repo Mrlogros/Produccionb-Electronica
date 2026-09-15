@@ -1,6 +1,6 @@
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px;">
   <!-- Logo de tu equipo -->
-  <img src="img/logo-equipo.png" alt="Logo del Equipo" width="100">
+  <img src="img/logo.png" alt="Logo del Equipo" width="100">
   
   <!-- Logo de KiCad actualizado a tu archivo local -->
   <img src="img/KiCad-Logo.svg.webp" alt="Logo KiCad" width="100">

@@ -8,7 +8,7 @@
 [data-md-color-scheme="default"] {
     --fondo-base: #f5f5f5;
     --grid-puntos: rgba(0, 0, 0, 0.08);
-    --cristal-fondo: rgba(255, 255, 255, 0.7);
+    --cristal-fondo: rgba(255, 255, 255, 0.75);
     --cristal-borde: rgba(0, 0, 0, 0.1);
     --sombra-suave: rgba(0, 0, 0, 0.1);
 }
@@ -22,7 +22,19 @@
 }
 
 /* =========================================
-   2. FONDO BLUEPRINT (Solo puntos KiCad)
+   NUEVO: FORZAR COLOR OSCURO EN LA BARRA (Modo Claro)
+   ========================================= */
+[data-md-color-scheme="default"] .md-header {
+    color: #1a1c23 !important; /* Vuelve el texto oscuro */
+}
+[data-md-color-scheme="default"] .md-header__button,
+[data-md-color-scheme="default"] .md-header__title,
+[data-md-color-scheme="default"] .md-header__topic {
+    color: #1a1c23 !important; /* Vuelve los iconos y títulos oscuros */
+}
+
+/* =========================================
+   2. FONDO PRINCIPAL Y CUADRÍCULA KICAD
    ========================================= */
 body {
     -webkit-font-smoothing: antialiased;
@@ -34,23 +46,39 @@ body {
 }
 
 /* =========================================
-   3. BARRA SUPERIOR CON "LÁSER"
+   3. MARCA DE AGUA: CIRCUITO PANTALLA COMPLETA
    ========================================= */
-.md-header {
-    background-color: var(--cristal-fondo) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    /* Línea inferior degradada y estática que simula luz */
-    border-bottom: 2px solid transparent;
-    border-image: linear-gradient(90deg, #3f51b5, #e53935, #ff5252, #3f51b5) 1;
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/circuito-fondo.png');
+    background-position: center;
+    background-size: cover; /* MAGIA: Esto hace que abarque toda la pantalla */
+    background-repeat: no-repeat;
+    opacity: 0.06; /* Muy transparente para que parezca marca de agua profesional */
+    z-index: -1;
+    pointer-events: none;
+    /* Eliminamos la máscara para que no se corte la imagen */
 }
 
 /* =========================================
    4. EFECTOS GLASSMORPHISM Y RESPIRACIÓN (Sidebar)
    ========================================= */
+.md-header {
+    background-color: var(--cristal-fondo) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, #3f51b5, #e53935, #ff5252, #3f51b5) 1;
+}
+
 @keyframes respiracion {
     0% { box-shadow: 0 4px 15px var(--sombra-suave); }
-    50% { box-shadow: 0 4px 25px rgba(229, 57, 53, 0.35); } /* Brillo rojo */
+    50% { box-shadow: 0 4px 25px rgba(229, 57, 53, 0.35); }
     100% { box-shadow: 0 4px 15px var(--sombra-suave); }
 }
 
@@ -67,14 +95,12 @@ body {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid var(--cristal-borde);
-    /* Le agregamos la animación de respiración */
     animation: respiracion 4s infinite ease-in-out;
     transition: transform 0.3s ease;
 }
 
 .sidebar-glass:hover {
     transform: translateY(-5px);
-    /* Al pasar el mouse, el brillo se hace más fuerte e instantáneo */
     box-shadow: 0 12px 40px rgba(229, 57, 53, 0.5) !important; 
 }
 .sidebar-glass img {

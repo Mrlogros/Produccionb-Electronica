@@ -34,6 +34,17 @@ theme:
   features:
     - content.code.copy
     - content.tooltips
+
+  nav:
+  - Inicio: index.md
+  - Documentación de la Placa KiCad:
+    - 1. Esquemático: esquematico.md
+    - 2. Editor de Placas: editor-placas.md
+    - 3. Mods CE: mods-ce.md
+  - Recursos para aprender: recursos.md
+  - Referencias de la Plantilla:
+    - Comandos Git: gitcmds.md
+    - Ejemplo Markdown: ejemplo.md
 extra_css:
   - https://use.fontawesome.com/releases/v6.5.2/css/all.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css

@@ -15,9 +15,12 @@ nav:
   - Referencias: recursos.md
 
 theme:
+theme:
   name: material
   logo: material/developer-board
   favicon: material/developer-board
+  icon:                                 # <-- LÍNEA NUEVA
+    repo: fontawesome/brands/github     # <-- LÍNEA NUEVA
   # 1. Nueva tipografía súper moderna y limpia
   font:
     text: Montserrat

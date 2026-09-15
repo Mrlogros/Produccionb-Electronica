@@ -10,6 +10,23 @@
 
 Bienvenido a la bitácora del proyecto de diseño de nuestra placa de circuito impreso (PCB). Este sitio documenta el flujo de trabajo realizado en **KiCad**.
 
+<div align="center" style="margin-top: 20px; margin-bottom: 40px;">
+  <a href="https://www.kicad.org/download/" target="_blank" class="btn-descarga">
+    📥 Descargar KiCad Oficial
+  </a>
+</div>
+
+## 🎬 Introducción al Entorno (Curso)
+
+Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **KiCad desde Cero** (por *Easy Learning*). En esta vista previa podrás familiarizarte con el entorno de trabajo antes de replicar nuestra documentación:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); margin-bottom: 40px; margin-top: 20px;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/d3H3tfU4zBI" title="KiCad desde Cero - Entorno" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+---
+
+
 ## Fases del Proyecto
 
 <div class="grid cards" markdown>

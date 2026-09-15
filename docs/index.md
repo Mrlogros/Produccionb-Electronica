@@ -14,27 +14,37 @@ Bienvenido a la bitácora del proyecto de diseño de nuestra placa de circuito i
 
 <div class="grid cards" markdown>
 
--   <!-- Actualizado a .jpg -->
-    <img src="img/icono-esquematico.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[1. Esquemático](esquematico.md)**
+-   <img src="img/icono-esquematico.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[1. Esquemático](esquematico.md)**
+    
     ---
+    
     Documentación del diagrama lógico, selección de componentes y cableado.
-    [:octicons-arrow-right-24: Ir a la página](esquematico.md)
+    
+    [Ver documentación ➔](esquematico.md)
 
--   <!-- Actualizado a .png -->
-    <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Editor de Placas (Layout)](editor-placas.md)**
+-   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Editor de Placas (Layout)](editor-placas.md)**
+    
     ---
+    
     Proceso de ruteo, distribución de huellas y diseño físico de la PCB.
-    [:octicons-arrow-right-24: Ir a la página](editor-placas.md)
+    
+    [Ver documentación ➔](editor-placas.md)
 
--   :material-cog-outline: **[3. Mods CE](mods-ce.md)**
+-   ⚙️ **[3. Mods CE](mods-ce.md)**
+    
     ---
+    
     Modificaciones aplicadas, correcciones y consideraciones técnicas.
-    [:octicons-arrow-right-24: Ir a la página](mods-ce.md)
+    
+    [Ver documentación ➔](mods-ce.md)
 
--   :material-book-open-variant: **[4. Recursos](recursos.md)**
+-   📚 **[4. Recursos](recursos.md)**
+    
     ---
+    
     Material de referencia, hojas de datos y guías para el manejo de KiCad.
-    [:octicons-arrow-right-24: Ir a la página](recursos.md)
+    
+    [Ver documentación ➔](recursos.md)
 
 </div>
 

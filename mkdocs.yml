@@ -1,4 +1,40 @@
-site_name: Plantilla para Documentación
+site_name: Diseño de PCB - Proyecto KiCad
+site_description: Documentación técnica paso a paso del diseño y ruteo de circuito impreso.
+site_author: Tu Nombre
+
+# Configuración del menú lateral (Orden cronológico del proyecto)
+nav:
+  - Inicio: index.md
+  - 1. Diseño del Esquemático: esquematico.md
+  - 2. Editor de Placas (Layout): editor-placas.md
+  - 3. Mods CE y Ajustes: mods-ce.md
+  - 4. Recursos para Aprender: recursos.md
+
+# Tema y apariencia (Material for MkDocs)
+theme:
+  name: material
+  features:
+    - content.code.copy
+    - content.tooltips
+    - navigation.top # Agrega un botón para volver rápido arriba
+  # Configuración del botón claro/oscuro
+  palette:
+    # Modo Oscuro por defecto
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: red
+      toggle:
+        icon: material/brightness-4
+        name: Cambiar a modo claro
+    # Modo Claro
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: red
+      toggle:
+        icon: material/brightness-7
+        name: Cambiar a modo oscuro
+
+# Extensiones para darle formato profesional al texto
 markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
@@ -23,20 +59,7 @@ markdown_extensions:
   - pymdownx.tasklist:
       custom_checkbox: true
       clickable_checkbox: true
-# Use the ReadTheDocs theme
-theme:
-  name: material
-  highlightjs: true 
-  palette:
-      - scheme: default
-        primary: red
-
-  features:
-    - content.code.copy
-    - content.tooltips
-
 
 extra_css:
   - https://use.fontawesome.com/releases/v6.5.2/css/all.css
   - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css
-

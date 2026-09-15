@@ -102,3 +102,55 @@ h1 {
     box-shadow: 0 6px 20px rgba(63, 81, 181, 0.6);
     transform: scale(1.05);
 }
+
+/* =========================================
+   Estilos Globales de Tipografía (Títulos)
+   ========================================= */
+
+/* Títulos H1 (El título principal de cada página) */
+.md-typeset h1 {
+    font-weight: 900 !important; /* Grosor máximo (Black) */
+    font-size: 2.5em !important; /* Más grande */
+    letter-spacing: -0.05em;     /* Letras ligeramente más juntas para un look moderno */
+    margin-bottom: 1em;
+}
+
+/* Títulos H2 (Subtítulos principales como "Fases del Proyecto", "Lista de Componentes", etc.) */
+.md-typeset h2 {
+    font-weight: 800 !important; /* Grosor extra bold */
+    font-size: 1.8em !important;
+    border-bottom: 2px solid var(--md-primary-fg-color); /* Línea de color debajo del título */
+    padding-bottom: 0.3em;
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+/* Títulos H3 (Subtítulos menores) */
+.md-typeset h3 {
+    font-weight: 700 !important; /* Grosor bold estándar */
+    font-size: 1.3em !important;
+}
+
+/* =========================================
+   Corrección del Botón de Descarga
+   ========================================= */
+   
+/* Aseguramos que la clase se aplique correctamente ignorando otros estilos */
+.md-typeset .btn-descarga {
+    background: linear-gradient(90deg, #3f51b5, #5c6bc0) !important;
+    color: white !important;
+    padding: 12px 28px !important;
+    border-radius: 30px !important;
+    text-decoration: none !important;
+    font-weight: 800 !important;
+    display: inline-block !important;
+    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+
+.md-typeset .btn-descarga:hover {
+    background: linear-gradient(90deg, #5c6bc0, #3f51b5) !important;
+    box-shadow: 0 6px 20px rgba(63, 81, 181, 0.6) !important;
+    transform: scale(1.05) !important;
+}
+

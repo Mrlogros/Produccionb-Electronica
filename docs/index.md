@@ -73,17 +73,17 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
 -   :material-discord: __Discord Oficial de KiCad__
     ---
     Comunidad para resolver dudas sobre errores y reglas de diseño.
-    [:octicons-arrow-right-24: Ir al servidor](https://discord.com/invite/WpeTTEy)
+    [:octicons-arrow-right-24: Ir al servidor](https://discord.com/invite/FANuKv8sZn)
 
 -   :material-post: __Blog de KiCad__
     ---
     Noticias, actualizaciones y notas de parches del software.
     [:octicons-arrow-right-24: Leer el blog](https://www.kicad.org/blog/)
 
--   :material-cogs: __Roland VPanel SRM-20__
+-   <img src="img/icono-monofab.png" width="24" style="vertical-align: middle; border-radius: 4px; margin-right: 8px;"> __Roland VPanel SRM-20__
     ---
     Software, drivers y manuales para la fresadora CNC Monofab.
-    [:octicons-arrow-right-24: Centro de descargas](https://www.rolanddga.com/support/products/milling/modela-srm-20-3d-milling-machine)
+    [:octicons-arrow-right-24: Centro de descargas](https://downloadcenter.rolanddg.com/SRM-20)
 
 </div>
 

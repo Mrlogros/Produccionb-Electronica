@@ -46,7 +46,7 @@ body {
 }
 
 /* =========================================
-   3. MARCA DE AGUA: CIRCUITO PANTALLA COMPLETA
+   3. MARCA DE AGUA: CIRCUITO DESVANECIDO (Mitad Izquierda)
    ========================================= */
 body::before {
     content: "";
@@ -55,14 +55,20 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
+    /* Tu imagen de circuito */
     background-image: url('../img/circuito-fondo.png');
-    background-position: center;
-    background-size: cover; /* MAGIA: Esto hace que abarque toda la pantalla */
+    /* La anclamos a la izquierda y hacemos que cubra el alto */
+    background-position: left center;
+    background-size: cover; 
     background-repeat: no-repeat;
-    opacity: 0.06; /* Muy transparente para que parezca marca de agua profesional */
+    /* Subimos un poco la opacidad porque se va a difuminar */
+    opacity: 0.15; 
     z-index: -1;
     pointer-events: none;
-    /* Eliminamos la máscara para que no se corte la imagen */
+    
+    /* MAGIA: Máscara que va de color sólido (izquierda) a transparente (hacia el centro) */
+    -webkit-mask-image: linear-gradient(to right, black 0%, black 20%, transparent 65%);
+    mask-image: linear-gradient(to right, black 0%, black 20%, transparent 65%);
 }
 
 /* =========================================

@@ -1,0 +1,50 @@
+/* =========================================
+   Estilos Personalizados - Proyecto PCB
+   ========================================= */
+
+/* 1. Efecto Glassmorphism en el menú superior */
+.md-header {
+    background-color: rgba(30, 33, 43, 0.75) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* 2. Bordes redondeados modernos para contenedores y alertas */
+.md-typeset .admonition,
+.md-typeset pre,
+.md-typeset code {
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 3. Efecto de brillo (Glow) al pasar el cursor sobre enlaces */
+.md-typeset a {
+    transition: all 0.3s ease-in-out;
+}
+.md-typeset a:hover {
+    color: var(--md-accent-fg-color);
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+}
+
+/* 4. Barra de desplazamiento personalizada (Scrollbar) estilo Tech */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1a1c23;
+}
+::-webkit-scrollbar-thumb {
+    background: #e53935; /* Rojo principal */
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #ff5252;
+}
+
+/* 5. Suavizado general de la tipografía */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}

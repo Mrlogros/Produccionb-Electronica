@@ -1,6 +1,6 @@
 <div style="display: flex; align-items: center; justify-content: center; gap: 20px; margin-bottom: 30px;">
   <!-- Aquí aparecerá el logo de tu equipo automáticamente cuando lo subas -->
-  <img src="img/logo-equipo.png" alt="Logo del Equipo" width="100">
+  <img src="img/logo-equipo.jpeg" alt="Logo del Equipo" width="100">
   
   <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/KiCad_wmark.png" alt="Logo KiCad" width="100">
 </div>

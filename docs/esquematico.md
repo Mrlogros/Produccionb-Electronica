@@ -35,14 +35,14 @@ Comenzamos inicializando nuestro entorno de trabajo. Abrimos KiCad y cargamos nu
 !!! tip "Buena Práctica de Ingeniería"
     Mantener todos los archivos (`.kicad_sch`, `.kicad_pcb`) estrictamente dentro de su carpeta raíz evita la pérdida de enlaces a librerías locales o rutas relativas rotas al compartir el proyecto.
 
-<br>
-
 ![Apertura del proyecto en KiCad](img/Imagen 1.png)
+
 *Interfaz principal de KiCad con el proyecto cargado.*
 
 <br>
 
 ![Explorador de archivos](img/Imagen 2.png)
+
 *Directorio raíz del proyecto asegurando la correcta ubicación de los archivos.*
 
 <br>
@@ -50,18 +50,16 @@ Comenzamos inicializando nuestro entorno de trabajo. Abrimos KiCad y cargamos nu
 ### 2. Instalación de Librerías Externas (FabLib)
 Para estandarizar nuestros componentes, abrimos el **Administrador de complementos y contenido** desde la pantalla principal.
 
-<br>
-
 ![Administrador de complementos](img/Imagen 3.png)
+
 *Búsqueda de librerías en el gestor de paquetes de KiCad.*
 
 <br>
 
 Buscamos e instalamos la librería **KiCad FabLib**, la cual nos proporciona huellas y símbolos compatibles con inventarios estándar de fabricación.
 
-<br>
-
 ![Instalación de FabLib](img/Imagen 4.png)
+
 *Confirmación de la librería FabLib instalada.*
 
 <br>
@@ -72,9 +70,8 @@ Una vez configuradas las librerías, abrimos el entorno de diseño lógico selec
 !!! info "Atajo de Teclado"
     Presionar `Ctrl + E` en la pantalla principal abre directamente el Eeschema, agilizando el flujo de trabajo.
 
-<br>
-
 ![Menú de Editor de Esquemas](img/Imagen 5.png)
+
 *Accediendo al Eeschema.*
 
 <br>
@@ -82,18 +79,16 @@ Una vez configuradas las librerías, abrimos el entorno de diseño lógico selec
 ### 4. Selección y Colocación de Componentes
 Dentro del editor, presionamos la tecla `A` para abrir la herramienta **Colocar símbolos**. 
 
-<br>
-
 ![Herramienta Colocar Símbolos](img/Imagen 6.png)
+
 *Icono de la herramienta para agregar componentes.*
 
 <br>
 
 Seleccionamos un `LED_1206`, asegurándonos de utilizar el componente proveniente de nuestra librería recién instalada.
 
-<br>
-
 ![Selección de LED](img/Imagen 7.png)
+
 *Ventana de selección de símbolos ubicando el LED SMD 1206.*
 
 <br>
@@ -101,18 +96,16 @@ Seleccionamos un `LED_1206`, asegurándonos de utilizar el componente provenient
 ### 5. Configuración de Alimentación
 Todo circuito requiere referencias estables. Presionando la tecla `P` accedimos a los **símbolos de alimentación**.
 
-<br>
-
 ![Herramienta de Alimentación](img/Imagen 8.png)
+
 *Icono de la herramienta para agregar puertos de energía.*
 
 <br>
 
 Elegimos el símbolo `PWR_3V3` para establecer la línea de voltaje positivo que alimentará nuestro sistema.
 
-<br>
-
 ![Selección de PWR_3V3](img/Imagen 9.png)
+
 *Seleccionando la etiqueta global de alimentación a 3.3V.*
 
 <br>
@@ -120,9 +113,8 @@ Elegimos el símbolo `PWR_3V3` para establecer la línea de voltaje positivo que
 ### 6. Ruteo Lógico y Conexiones (Wiring)
 Con los símbolos en la hoja, utilizamos la herramienta **Dibujar cables** (tecla `W`) para interconectar los pines y cerrar los lazos del circuito.
 
-<br>
-
 ![Herramienta Dibujar Cables](img/Imagen 10.png)
+
 *Icono de la herramienta de cableado.*
 
 <br>
@@ -130,46 +122,44 @@ Con los símbolos en la hoja, utilizamos la herramienta **Dibujar cables** (tecl
 ### 7. Organización y Legibilidad del Diagrama
 Un buen esquemático debe ser fácil de interpretar. En lugar de trazar líneas largas que saturen la pantalla, implementamos **Etiquetas de Red (Net Labels)**.
 
-<br>
-
 ![Propiedades de la etiqueta](img/Imagen 11.png)
+
 *Configuración de etiquetas de red para organizar las conexiones lógicas.*
 
 <br>
 
 Utilizamos las herramientas gráficas de **Texto** y **Dibujar rectángulos** para seccionar el diagrama.
 
-<br>
-
 ![Propiedades del texto](img/Imagen 12.png)
+
 *Herramienta de texto para nombrar los módulos del circuito.*
 
 <br>
 
 ![Herramienta de rectángulos](img/Imagen 13.png)
+
 *Icono de la herramienta gráfica para crear bloques visuales.*
 
 <br>
 
 Con esto, separamos el diseño en bloques funcionales claros: un bloque de "Pines" para las E/S y un bloque de "Switches".
 
-<br>
-
 ![Esquemático General Organizado](img/Imagen 14.png)
+
 *Vista general del esquemático, organizado por bloques y etiquetas.*
 
 <br>
 
 En el siguiente detalle se observa cómo las etiquetas (`V 3.3`) conectan virtualmente la alimentación a los componentes, eliminando la necesidad de cables cruzados.
 
-<br>
-
 ![Detalle de conexiones y resistencias](img/Imagen 15.png)
+
 *Bloque de LEDs mostrando las resistencias y referencias.*
 
 <br>
 
 ![Detalle de etiqueta de voltaje](img/Imagen 16.png)
+
 *Detalle de la conexión virtual mediante etiquetas de red.*
 
 <br>
@@ -177,9 +167,8 @@ En el siguiente detalle se observa cómo las etiquetas (`V 3.3`) conectan virtua
 ### 8. Configuración de Parámetros (Valores y Huellas)
 Haciendo doble clic sobre los componentes (o tecla `E`), ingresamos a sus propiedades para definir sus valores eléctricos (`220`, `1k`) y vincular la huella física correcta desde FabLib.
 
-<br>
-
 ![Propiedades del Símbolo](img/Imagen 17.png)
+
 *Asignando valores paramétricos y Footprints a los resistores.*
 
 <br>
@@ -187,14 +176,14 @@ Haciendo doble clic sobre los componentes (o tecla `E`), ingresamos a sus propie
 ### 9. Verificación de Reglas Eléctricas (ERC)
 Como control de calidad final, ejecutamos el **ERC**. Esta herramienta escanea el esquemático en busca de pines flotantes o conflictos de alimentación.
 
-<br>
-
 ![Icono de ERC](img/Imagen 18.png)
+
 *Ejecución del verificador en la barra superior.*
 
 <br>
 
 ![Resultados del ERC](img/Imagen 19.png)
+
 *Reporte final del analizador.*
 
 <br>

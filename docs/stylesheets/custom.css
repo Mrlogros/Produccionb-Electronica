@@ -69,3 +69,36 @@ h1 {
 .md-typeset h1 {
     text-align: center;
 }
+
+/* Bordes de color vibrante para las tarjetas (rompe el diseño plano) */
+.md-typeset .grid.cards > ul > li {
+    border-top: 4px solid var(--md-primary-fg-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto al pasar el mouse por las tarjetas */
+.md-typeset .grid.cards > ul > li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    border-top: 4px solid var(--md-accent-fg-color);
+}
+
+/* Diseño súper moderno para el botón de descarga */
+.btn-descarga {
+    background: linear-gradient(90deg, #3f51b5, #5c6bc0);
+    color: white !important;
+    padding: 12px 28px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.4);
+    transition: all 0.3s ease;
+}
+
+.btn-descarga:hover {
+    background: linear-gradient(90deg, #5c6bc0, #3f51b5);
+    box-shadow: 0 6px 20px rgba(63, 81, 181, 0.6);
+    transform: scale(1.05);
+}

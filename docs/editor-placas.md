@@ -120,3 +120,94 @@ Ubicados nuevamente en la capa **F.Cu**, trazamos un polígono por el interior d
 
 ![Propiedades de la zona de cobre](img/Imagen 39.png)
 *Configuración del polígono de cobre sin asignación de red (`<sin red>`).*
+
+## 11. Ejecución del Relleno de Cobre (Copper Pour)
+
+Al trazar la zona de cobre, existe una regla fundamental para que el software procese el área correctamente: **el polígono debe ser un lazo completamente cerrado**. El punto final del trazado debe hacer clic exactamente sobre el punto inicial.
+
+![Trazado del polígono de la zona de cobre](img/Imagen 40.png)
+*El contorno del área de relleno delimitando todo el circuito.*
+
+Una vez que el polígono está cerrado, presionamos la tecla **`B`** en nuestro teclado. Este comando obliga a KiCad a recalcular y renderizar el relleno de cobre, esquivando automáticamente las pistas y los pads según las reglas de aislamiento (clearance) que configuramos previamente.
+
+![Detalle de las pistas aisladas del relleno](img/Imagen 41.png)
+*Vista de cerca mostrando cómo el relleno de cobre respeta el margen de las pistas.*
+
+![Placa con el relleno de cobre ejecutado](img/Imagen 42.png)
+*Vista superior de la PCB con la capa F.Cu completamente rellenada.*
+
+![Placa finalizada (Modo contraste)](img/Imagen 43.jpeg)
+*Visualización general de la placa terminada y lista para verificación.*
+
+## 12. Inspección en el Visor 3D
+
+Antes de exportar los archivos para fabricación, es una excelente práctica revisar el aspecto físico de la placa. Accedemos al **Visor 3D** desde el menú superior o utilizando el atajo de teclado **`Alt + 3`**.
+
+![Acceso al Visor 3D](img/Imagen 44.png)
+*Menú desplegable para iniciar la previsualización 3D.*
+
+Esta herramienta nos permite rotar la placa, inspeccionar la colocación de los componentes SMD/THT y verificar que las perforaciones mecánicas (headers) no colisionen con las pistas.
+
+![Vista 3D de la PCB](img/Imagen 45.png)
+*Renderizado 3D de la placa mostrando los componentes y el cobre desnudo.*
+
+![Vista isométrica de la placa terminada](img/Imagen 46.jpeg)
+*Inspección final de la distribución física.*
+
+## 13. Verificación de Reglas de Diseño (DRC)
+
+El último filtro de seguridad antes de fabricar es ejecutar el **DRC (Design Rule Checker)**. A diferencia del ERC en el esquemático, el DRC verifica errores físicos: pistas demasiado juntas, cruces no intencionados o zonas sin conexión.
+
+![Botón Ejecutar DRC](img/Imagen 49.png)
+*Lanzamiento de la herramienta de inspección de reglas de diseño.*
+
+!!! tip "Gestión de Avisos (Warnings)"
+    Es posible que el DRC arroje "Avisos" menores. Dependiendo del contexto, algunos pueden ser ignorados de forma segura. Si existe duda sobre un error específico, es altamente recomendable consultar la documentación oficial (Blog de KiCad) o su comunidad en Discord antes de proceder a maquinar.
+
+## 14. Salidas de Fabricación (Exportación SVG)
+
+Para procesar nuestra placa en la fresadora CNC Monofab SRM-20, necesitamos exportar el diseño en un formato vectorial. Nos dirigimos a **`Archivo > Salidas de fabricación`** y seleccionamos la herramienta de trazado.
+
+![Menú de Salidas de Fabricación](img/Imagen 47.png)
+*Acceso al menú de exportación de archivos.*
+
+En la ventana de Trazar, configuramos los parámetros exactos para nuestro método de manufactura:
+
+1.  **Formato de trazado:** Seleccionamos `SVG`.
+2.  **Opciones SVG:** Marcamos la casilla **"Ajustar página a la placa"** para evitar exportar coordenadas vacías.
+3.  **Incluir capas:** Seleccionamos estrictamente las capas necesarias para la máquina:
+    *   `F.Cu` (Pistas y zonas de cobre)
+    *   `Edge.Cuts` (Contorno exterior)
+    *   `User.1` (Perforaciones manuales, si aplican).
+
+![Ventana de configuración de trazado SVG](img/Imagen 48.png)
+*Parámetros de exportación configurados para la CNC Monofab.*
+
+Finalmente, hacemos clic en el botón **Trazar**. Los archivos `.svg` se generarán y guardarán automáticamente dentro de la carpeta raíz de nuestro proyecto.
+
+!!! info "Post-procesamiento Vectorial"
+    En caso de que el software de la CNC presente conflictos de lectura con el archivo SVG del contorno (`Edge.Cuts`), podemos importar el archivo generado a **Inkscape** para unificar los vectores, limpiar los trazos y volver a exportarlo asegurando la compatibilidad absoluta con la máquina.
+
+    ### Resultados de Verificación y Exportación
+
+Una vez ejecutado el DRC y validadas las conexiones, el sistema nos muestra el estado de la placa. 
+
+![Resultados del DRC](img/Imagen 50.png)
+*Ventana del DRC. Nota: Las advertencias de "Cobre aislado" (islas) son normales en este método de fabricación cuando el polígono de relleno no está conectado a GND, y no afectan el desempeño de la máquina CNC.*
+
+Con el diseño validado y los parámetros de exportación configurados, procedemos a generar los archivos definitivos haciendo clic en **Trazar**.
+
+![Botón Trazar](img/Imagen 51.png)
+*Ejecución de la herramienta de trazado vectorial.*
+
+### Archivos de Salida (Arte de Manufactura)
+
+Como resultado, KiCad generará un conjunto de archivos `.svg` independientes. Es vital revisar esta carpeta, ya que cada archivo representa una etapa distinta de la manufactura (grabado de pistas, perforaciones mecánicas y el corte del contorno de la placa).
+
+![Archivos SVG exportados](img/Imagen 52.png)
+*Listado de archivos vectoriales listos para el maquinado.*
+
+A continuación, se muestra una previsualización del archivo de pistas principales. Este formato monocromático de alto contraste es el estándar requerido, ya que permite al software CAM de la fresadora calcular las rutas de corte (*toolpaths*) de manera impecable para aislar el cobre.
+
+![Previsualización de Pistas SVG](img/Imagen 53.png)
+*Vista de alto contraste del arte generado para la capa de cobre frontal.*

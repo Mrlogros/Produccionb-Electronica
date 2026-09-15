@@ -9,10 +9,9 @@
 # Documentación de Diseño de PCB
 
 <!-- BARRA LATERAL FLOTANTE DE ICONOS -->
-<div style="float: right; display: flex; flex-direction: column; gap: 15px; background: #1e1e1e; padding: 12px; border-radius: 12px; margin: 0 0 20px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #333; z-index: 10;">
+<div class="sidebar-glass">
   
   <a href="https://discord.com/invite/FANuKv8sZn" target="_blank" title="Discord Oficial de KiCad">
-    <!-- Ícono oficial de Discord -->
     <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" width="40" style="border-radius: 8px;">
   </a>
   

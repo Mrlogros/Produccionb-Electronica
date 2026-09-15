@@ -2,6 +2,26 @@
    Estilos Personalizados - Proyecto PCB
    ========================================= */
 
+/* =========================================
+   NUEVO: FONDO DE KICAD Y CIRCUITO LATERAL
+   ========================================= */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Color base oscuro */
+    background-color: #1a1c23 !important;
+    /* Capa 1: Imagen del circuito a la izquierda | Capa 2: Grid de puntos tipo KiCad */
+    background-image: 
+        url('../img/circuito-fondo.png'), 
+        radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px) !important;
+    background-position: left center, 0 0 !important;
+    /* El circuito medirá unos 350px de ancho, el grid 25px */
+    background-size: 350px auto, 25px 25px !important;
+    background-repeat: no-repeat, repeat !important;
+    /* Fixed hace que el circuito no se mueva al bajar la página */
+    background-attachment: fixed, fixed !important;
+}
+
 /* 1. Efecto Glassmorphism en el menú superior */
 .md-header {
     background-color: rgba(30, 33, 43, 0.75) !important;
@@ -43,10 +63,35 @@
     background: #ff5252;
 }
 
-/* 5. Suavizado general de la tipografía */
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+/* =========================================
+   NUEVO: BARRA LATERAL (Efecto Cristal)
+   ========================================= */
+.sidebar-glass {
+    float: right; 
+    display: flex; 
+    flex-direction: column; 
+    gap: 15px; 
+    padding: 12px; 
+    margin: 0 0 20px 20px; 
+    border-radius: 16px;
+    z-index: 10;
+    /* Efecto Vidrio (Glassmorphism) */
+    background: rgba(30, 33, 43, 0.5) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.sidebar-glass:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(229, 57, 53, 0.2); /* Brillo rojo */
+}
+.sidebar-glass img {
+    transition: transform 0.2s;
+}
+.sidebar-glass img:hover {
+    transform: scale(1.15);
 }
 
 /* 6. Título principal con gradiente de color moderno */
@@ -73,19 +118,22 @@ h1 {
 /* Bordes de color vibrante para las tarjetas (rompe el diseño plano) */
 .md-typeset .grid.cards > ul > li {
     border-top: 4px solid var(--md-primary-fg-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: rgba(30, 33, 43, 0.6) !important;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 /* Efecto al pasar el mouse por las tarjetas */
 .md-typeset .grid.cards > ul > li:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-    border-top: 4px solid var(--md-accent-fg-color);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    border-top: 4px solid #e53935;
+    border-color: rgba(229, 57, 53, 0.3);
 }
 
 /* Diseño súper moderno para el botón de descarga */
 .btn-descarga {
-    background: linear-gradient(90deg, #3f51b5, #5c6bc0);
+    background: linear-gradient(90deg, #e53935, #ff5252);
     color: white !important;
     padding: 12px 28px;
     border-radius: 30px;
@@ -93,72 +141,61 @@ h1 {
     font-weight: 800;
     font-family: 'Montserrat', sans-serif;
     display: inline-block;
-    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.4);
+    box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4);
     transition: all 0.3s ease;
 }
 
 .btn-descarga:hover {
-    background: linear-gradient(90deg, #5c6bc0, #3f51b5);
-    box-shadow: 0 6px 20px rgba(63, 81, 181, 0.6);
+    background: linear-gradient(90deg, #ff5252, #e53935);
+    box-shadow: 0 6px 20px rgba(229, 57, 53, 0.6);
     transform: scale(1.05);
 }
 
 /* =========================================
    Estilos Globales de Tipografía (Títulos)
    ========================================= */
-
-/* Títulos H1 (El título principal de cada página) */
 .md-typeset h1 {
-    font-weight: 900 !important; /* Grosor máximo (Black) */
-    font-size: 2.5em !important; /* Más grande */
-    letter-spacing: -0.05em;     /* Letras ligeramente más juntas para un look moderno */
+    font-weight: 900 !important; 
+    font-size: 2.5em !important; 
+    letter-spacing: -0.05em;     
     margin-bottom: 1em;
 }
-
-/* Títulos H2 (Subtítulos principales como "Fases del Proyecto", "Lista de Componentes", etc.) */
 .md-typeset h2 {
-    font-weight: 800 !important; /* Grosor extra bold */
+    font-weight: 800 !important; 
     font-size: 1.8em !important;
-    border-bottom: 2px solid var(--md-primary-fg-color); /* Línea de color debajo del título */
+    border-bottom: 2px solid var(--md-primary-fg-color); 
     padding-bottom: 0.3em;
     margin-top: 1.5em;
     margin-bottom: 1em;
 }
-
-/* Títulos H3 (Subtítulos menores) */
 .md-typeset h3 {
-    font-weight: 700 !important; /* Grosor bold estándar */
+    font-weight: 700 !important; 
     font-size: 1.3em !important;
 }
 
 /* =========================================
    Corrección del Botón de Descarga
    ========================================= */
-   
-/* Aseguramos que la clase se aplique correctamente ignorando otros estilos */
 .md-typeset .btn-descarga {
-    background: linear-gradient(90deg, #3f51b5, #5c6bc0) !important;
+    background: linear-gradient(90deg, #e53935, #ff5252) !important;
     color: white !important;
     padding: 12px 28px !important;
     border-radius: 30px !important;
     text-decoration: none !important;
     font-weight: 800 !important;
     display: inline-block !important;
-    box-shadow: 0 4px 15px rgba(63, 81, 181, 0.4) !important;
+    box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4) !important;
     transition: all 0.3s ease !important;
 }
-
 .md-typeset .btn-descarga:hover {
-    background: linear-gradient(90deg, #5c6bc0, #3f51b5) !important;
-    box-shadow: 0 6px 20px rgba(63, 81, 181, 0.6) !important;
+    background: linear-gradient(90deg, #ff5252, #e53935) !important;
+    box-shadow: 0 6px 20px rgba(229, 57, 53, 0.6) !important;
     transform: scale(1.05) !important;
 }
 
 /* =========================================
    Estilos de Imágenes (Centrado y bordes)
    ========================================= */
-
-/* Centrar todas las imágenes a prueba de balas */
 .md-typeset p > img {
     display: block !important;
     margin: 0 auto !important; 
@@ -167,8 +204,6 @@ h1 {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
     border: 1px solid rgba(128, 128, 128, 0.2) !important;
 }
-
-/* Centrar también las leyendas (SOLO si están en un párrafo con imagen) */
 .md-typeset p:has(img) > em {
     display: block !important;
     text-align: center !important;
@@ -184,11 +219,11 @@ h1 {
 .foto-equipo {
     width: 160px !important;
     height: 160px !important;
-    object-fit: cover !important; /* Evita que la foto se estire o deforme */
-    object-position: center !important; /* Centra el rostro */
-    border-radius: 50% !important; /* Hace el círculo perfecto */
-    border: 2px solid #e53935; /* Borde rojo */
-    box-shadow: 0 0 20px rgba(229, 57, 53, 0.4); /* Efecto de brillo rojo */
+    object-fit: cover !important; 
+    object-position: center !important; 
+    border-radius: 50% !important; 
+    border: 2px solid #e53935; 
+    box-shadow: 0 0 20px rgba(229, 57, 53, 0.4); 
     display: block;
-    margin: 0 auto 15px auto; /* Centra la imagen y da espacio abajo */
+    margin: 0 auto 15px auto; 
 }

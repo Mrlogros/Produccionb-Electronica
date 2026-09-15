@@ -8,6 +8,25 @@
 
 # Documentación de Diseño de PCB
 
+<!-- BARRA LATERAL FLOTANTE DE ICONOS -->
+<div style="float: right; display: flex; flex-direction: column; gap: 15px; background: #1e1e1e; padding: 12px; border-radius: 12px; margin: 0 0 20px 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border: 1px solid #333; z-index: 10;">
+  
+  <a href="https://discord.com/invite/FANuKv8sZn" target="_blank" title="Discord Oficial de KiCad">
+    <!-- Ícono oficial de Discord -->
+    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" width="40" style="border-radius: 8px;">
+  </a>
+  
+  <a href="https://www.kicad.org/blog/" target="_blank" title="Blog de KiCad">
+    <img src="img/KiCad-Logo.svg.webp" width="40" style="border-radius: 8px; background: white; padding: 4px;">
+  </a>
+  
+  <a href="https://downloadcenter.rolanddg.com/SRM-20" target="_blank" title="Descargar VPanel SRM-20">
+    <img src="img/icono-monofab.png" width="40" style="border-radius: 8px;">
+  </a>
+
+</div>
+<!-- FIN BARRA LATERAL -->
+
 Bienvenido a la bitácora del proyecto de diseño de nuestra placa de circuito impreso (PCB). Este sitio documenta el flujo de trabajo realizado en **KiCad**.
 
 <div align="center" style="margin-top: 20px; margin-bottom: 40px;">
@@ -61,29 +80,6 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     Material de referencia, hojas de datos y guías para el manejo de KiCad.
     
     [Ver documentación ➔](recursos.md)
-
-</div>
-
----
-
-## 🔗 Enlaces Rápidos y Herramientas
-
-<div class="grid cards" markdown>
-
--   :material-discord: __Discord Oficial de KiCad__
-    ---
-    Comunidad para resolver dudas sobre errores y reglas de diseño.
-    [:octicons-arrow-right-24: Ir al servidor](https://discord.com/invite/FANuKv8sZn)
-
--   :material-post: __Blog de KiCad__
-    ---
-    Noticias, actualizaciones y notas de parches del software.
-    [:octicons-arrow-right-24: Leer el blog](https://www.kicad.org/blog/)
-
--   <img src="img/icono-monofab.png" width="24" style="vertical-align: middle; border-radius: 4px; margin-right: 8px;"> __Roland VPanel SRM-20__
-    ---
-    Software, drivers y manuales para la fresadora CNC Monofab.
-    [:octicons-arrow-right-24: Centro de descargas](https://downloadcenter.rolanddg.com/SRM-20)
 
 </div>
 

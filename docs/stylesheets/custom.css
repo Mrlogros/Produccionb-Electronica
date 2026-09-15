@@ -177,3 +177,18 @@ h1 {
     margin-bottom: 30px !important;
     font-size: 0.9em !important;
 }
+
+/* =========================================
+   Estilos para el Equipo (Fotos uniformes)
+   ========================================= */
+.foto-equipo {
+    width: 160px !important;
+    height: 160px !important;
+    object-fit: cover !important; /* Evita que la foto se estire o deforme */
+    object-position: center !important; /* Centra el rostro */
+    border-radius: 50% !important; /* Hace el círculo perfecto */
+    border: 2px solid #e53935; /* Borde rojo */
+    box-shadow: 0 0 20px rgba(229, 57, 53, 0.4); /* Efecto de brillo rojo */
+    display: block;
+    margin: 0 auto 15px auto; /* Centra la imagen y da espacio abajo */
+}

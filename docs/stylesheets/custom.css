@@ -154,3 +154,27 @@ h1 {
     transform: scale(1.05) !important;
 }
 
+/* =========================================
+   Estilos de Imágenes (Centrado y bordes)
+   ========================================= */
+
+/* Centrar todas las imágenes y aplicarles estilo de "ventana" */
+.md-typeset img {
+    display: block;
+    margin: 0 auto; /* Esto centra la imagen horizontalmente */
+    max-width: 85%; /* Evita que las imágenes gigantes ocupen toda la pantalla */
+    border-radius: 8px; /* Bordes ligeramente redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    border: 1px solid rgba(128, 128, 128, 0.2); /* Borde fino para definirlas */
+}
+
+/* Centrar también las leyendas (texto en cursiva debajo de la imagen) */
+.md-typeset em {
+    display: block;
+    text-align: center;
+    color: var(--md-default-fg-color--light); /* Color un poco más tenue */
+    margin-top: 8px;
+    font-size: 0.9em;
+}
+
+

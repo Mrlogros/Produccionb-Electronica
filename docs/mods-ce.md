@@ -11,7 +11,7 @@ Para realizar esta conversión utilizaremos **Mods CE** (Community Edition), una
 
 El proceso comienza exportando las capas necesarias desde el editor de KiCad en formato vectorial (`.svg`). Debemos tener listos los archivos correspondientes a las **pistas**, **perforaciones**, **bordes** y **etiquetas** (opcional).
 
-![Archivos SVG exportados](img/Imagen 54.png)
+![Archivos SVG exportados](img/Imagen%2054.png)
 
 ---
 
@@ -24,14 +24,14 @@ Para configurar nuestro espacio de trabajo, seguimos esta ruta de inicializació
 3. Navegamos hacia la sección de máquinas, buscamos **Roland SRM-20** y seleccionamos la opción **mill 2D PCB**.
 
 <div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;">
-  <img src="../img/Imagen 55.png" width="30%">
-  <img src="../img/Imagen 56.png" width="30%">
-  <img src="../img/Imagen 57.png" width="30%">
+  <img src="img/Imagen%2055.png" width="30%">
+  <img src="img/Imagen%2056.png" width="30%">
+  <img src="img/Imagen%2057.png" width="30%">
 </div>
 
 Al cargar el programa, se desplegará una red de nodos interconectados (diagrama de flujo de datos) que procesarán nuestro archivo desde el SVG hasta el archivo de corte de la máquina.
 
-![Entorno de nodos de Mods CE](img/Imagen 58.png)
+![Entorno de nodos de Mods CE](img/Imagen%2058.png)
 
 ---
 
@@ -42,7 +42,7 @@ Comenzaremos procesando el archivo de las pistas (`Pistas.svg`). En el nodo de e
 !!! tip "Parámetros de la Broca"
     Para el fresado de las pistas utilizaremos una broca plana estándar. En el nodo de configuración (*set PCB defaults*), seleccionamos **0.40mm flat** (lo que equivale aproximadamente a 1/64 de pulgada).
 
-![Configuración de herramienta](img/Imagen 59.png)
+![Configuración de herramienta](img/Imagen%2059.png)
 
 ### Ajuste de Pasadas (Offsets)
 En el nodo **mill raster 2D**, definiremos cuánto material queremos remover alrededor de cada pista:
@@ -50,7 +50,7 @@ En el nodo **mill raster 2D**, definiremos cuánto material queremos remover alr
 * **Offset number:** Lo configuramos en `4`. Esto indica que el taladro realizará cuatro pasadas concéntricas alrededor de las pistas para asegurar un buen aislamiento de cobre.
 * Una vez configurado, hacemos clic en el botón **Calculate**.
 
-![Cálculo de trayectorias](img/Imagen 60.png)
+![Cálculo de trayectorias](img/Imagen%2060.png)
 
 ---
 
@@ -58,14 +58,14 @@ En el nodo **mill raster 2D**, definiremos cuánto material queremos remover alr
 
 Al presionar *Calculate*, Mods CE generará el plano de trayectorias de la herramienta (toolpath). 
 
-![Plano de trayectorias 2D](img/Imagen 61.png)
+![Plano de trayectorias 2D](img/Imagen%2061.png)
 
 Podemos hacer clic en el botón **View** para obtener un renderizado 3D de cómo quedará la placa físicamente. 
 
 !!! warning "Interpretación del Renderizado"
     En el renderizado 3D, **el área oscura representa el cobre que será removido** por la fresadora, mientras que el área clara e intacta representa nuestras pistas y pads eléctricos. 
 
-![Renderizado 3D de la placa](img/Imagen 62.png)
+![Renderizado 3D de la placa](img/Imagen%2062.png)
 
 ---
 
@@ -78,9 +78,9 @@ El último paso antes de exportar el archivo es configurar los parámetros físi
     * Se configura en **X: 0, Y: 0, Z: 0** para la fabricación de una placa individual principal. 
     * *Nota:* Si se requiere producir múltiples placas (panelización) en el mismo bloque de cobre, este origen en los ejes X o Y deberá desfasarse correspondientemente.
 
-![Configuración final de máquina](img/Imagen 63.png)
+![Configuración final de máquina](img/Imagen%2063.png)
 
-Una vez verificados estos datos, el archivo estará listo para ser guardado y enviado al software de control de la Monofab (VPanel).
+---
 
 ## 6. Guardado y Organización de Archivos
 
@@ -90,8 +90,8 @@ Para finalizar la configuración de las pistas, buscamos el nodo **save file**. 
     Por defecto, Mods CE guarda todos los archivos bajo el nombre genérico `SVG image.rml`. Es **crucial** ubicar el archivo descargado inmediatamente y renombrarlo (por ejemplo, a `1_Pistas.rml`) para mantener una organización estricta y evitar confusiones fatales al momento de operar la fresadora.
 
 <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 15px;">
-  <img src="img/Imagen 64.png" width="45%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  <img src="img/Imagen 65.png" width="30%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+  <img src="img/Imagen%2064.png" width="45%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+  <img src="img/Imagen%2065.png" width="30%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
 </div>
 
 ---
@@ -104,7 +104,7 @@ Durante el procesamiento de las pistas, pueden surgir un par de complicaciones c
 2. **Errores en el contorno:** Si la placa presenta bordes irregulares o el SVG no fue interpretado correctamente desde KiCad, la mejor práctica es abrir el archivo original en **Inkscape** para corregir y unificar los vectores antes de subirlo a Mods CE.
 
 <div style="text-align: center; margin-top: 15px;">
-  <img src="img/Imagen 66.png" width="40%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+  <img src="img/Imagen%2066.png" width="40%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
 </div>
 
 ---
@@ -118,14 +118,14 @@ Una vez asegurado el archivo de las pistas, repetiremos el proceso para las perf
 3. Hacemos clic en **Calculate** y luego en **View** para verificar que la posición de los agujeros coincida perfectamente con los pads de nuestro diseño.
 
 <div style="display: flex; gap: 15px; justify-content: center; margin-top: 15px; flex-wrap: wrap;">
-  <img src="img/Imagen 67.png" width="45%" style="border-radius: 8px;">
-  <img src="img/Imagen 68.png" width="45%" style="border-radius: 8px;">
-  <img src="img/Imagen 69.png" width="45%" style="border-radius: 8px;">
-  <img src="img/Imagen 70.png" width="45%" style="border-radius: 8px;">
+  <img src="img/Imagen%2067.png" width="45%" style="border-radius: 8px;">
+  <img src="img/Imagen%2068.png" width="45%" style="border-radius: 8px;">
+  <img src="img/Imagen%2069.png" width="45%" style="border-radius: 8px;">
+  <img src="img/Imagen%2070.png" width="45%" style="border-radius: 8px;">
 </div>
 
 <div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
-  <img src="img/Imagen 71.png" width="70%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+  <img src="img/Imagen%2071.png" width="70%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
   <br><em style="color: #888;">Renderizado 3D de las perforaciones calculadas.</em>
 </div>
 
@@ -141,6 +141,6 @@ En este mismo nodo, podemos observar el tiempo estimado de trabajo (*Estimated t
 Finalmente, nos dirigimos al nodo **save file**, hacemos clic para descargar, y renombramos inmediatamente este nuevo archivo (por ejemplo, a `2_Perforaciones.rml`).
 
 <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 15px;">
-  <img src="img/Imagen 72.png" width="45%" style="border-radius: 8px;">
-  <img src="img/Imagen 73.png" width="45%" style="border-radius: 8px;">
+  <img src="img/Imagen%2072.png" width="45%" style="border-radius: 8px;">
+  <img src="img/Imagen%2073.png" width="45%" style="border-radius: 8px;">
 </div>

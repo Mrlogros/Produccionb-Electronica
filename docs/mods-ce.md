@@ -190,4 +190,4 @@ Una vez generados los tres archivos de trabajo (`.rml`), es necesario instalar e
 
 | Portal de Descargas | Contrato de Licencia |
 | :---: | :---: |
-| ![Centro de descargas de Roland SRM-20](img/Imagen%2083.jpg) | ![Aceptación de la licencia de VPanel](img/Imagen%2084.png) |
+| ![Centro de descargas de Roland SRM-20](img/Imagen%2083.png) | ![Aceptación de la licencia de VPanel](img/Imagen%2084.png) |

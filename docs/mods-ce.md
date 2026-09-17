@@ -89,9 +89,10 @@ Para finalizar la configuración de las pistas, buscamos el nodo **save file**. 
 !!! warning "Importante: Renombrar los archivos"
     Por defecto, Mods CE guarda todos los archivos bajo el nombre genérico `SVG image.rml`. Es **crucial** ubicar el archivo descargado inmediatamente y renombrarlo (por ejemplo, a `1_Pistas.rml`) para mantener una organización estricta y evitar confusiones fatales al momento de operar la fresadora.
 
-![Paso 64](img/Imagen%2064.png)
-
-![Paso 65](img/Imagen%2065.png)
+<p align="center">
+  <img src="img/Imagen%2064.png" width="48%" style="border-radius: 8px; border: 1px solid #333;">
+  <img src="img/Imagen%2065.png" width="48%" style="border-radius: 8px; border: 1px solid #333;">
+</p>
 
 ---
 
@@ -102,7 +103,9 @@ Durante el procesamiento de las pistas, pueden surgir un par de complicaciones c
 1. **Áreas de corte invertidas:** Si al ver el renderizado 3D notas que la máquina cortará el cobre que querías conservar (dejando expuesto lo que querías quitar), dirígete al nodo **convert SVG image** y haz clic en el botón **invert**. Esto corregirá la polaridad de la imagen.
 2. **Errores en el contorno:** Si la placa presenta bordes irregulares o el SVG no fue interpretado correctamente desde KiCad, la mejor práctica es abrir el archivo original en **Inkscape** para corregir y unificar los vectores antes de subirlo a Mods CE.
 
-![Error contorno](img/Imagen%2066.png)
+<p align="center">
+  <img src="img/Imagen%2066.png" width="50%" style="border-radius: 8px;">
+</p>
 
 ---
 
@@ -114,17 +117,19 @@ Una vez asegurado el archivo de las pistas, repetiremos el proceso para las perf
 2. **Pasadas (Offsets):** En el nodo de cálculo (*mill raster 2D*), configuramos el **offset number** en `1`. A diferencia de las pistas, aquí solo necesitamos que la broca baje exactamente en el centro una sola vez por cada agujero.
 3. Hacemos clic en **Calculate** y luego en **View** para verificar que la posición de los agujeros coincida perfectamente con los pads de nuestro diseño.
 
-![Paso 67](img/Imagen%2067.png)
+<p align="center">
+  <img src="img/Imagen%2067.png" width="48%" style="border-radius: 8px;">
+  <img src="img/Imagen%2068.png" width="48%" style="border-radius: 8px;">
+</p>
+<p align="center">
+  <img src="img/Imagen%2069.png" width="48%" style="border-radius: 8px;">
+  <img src="img/Imagen%2070.png" width="48%" style="border-radius: 8px;">
+</p>
 
-![Paso 68](img/Imagen%2068.png)
-
-![Paso 69](img/Imagen%2069.png)
-
-![Paso 70](img/Imagen%2070.png)
-
-![Render Perforaciones](img/Imagen%2071.png)
-
-*Renderizado 3D de las perforaciones calculadas.*
+<p align="center">
+  <img src="img/Imagen%2071.png" width="80%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+  <br><em style="color: #888; font-size: 0.9em;">Renderizado 3D de las perforaciones calculadas.</em>
+</p>
 
 ---
 
@@ -137,6 +142,7 @@ En este mismo nodo, podemos observar el tiempo estimado de trabajo (*Estimated t
 
 Finalmente, nos dirigimos al nodo **save file**, hacemos clic para descargar, y renombramos inmediatamente este nuevo archivo (por ejemplo, a `2_Perforaciones.rml`).
 
-![Paso 72](img/Imagen%2072.png)
-
-![Paso 73](img/Imagen%2073.png)
+<p align="center">
+  <img src="img/Imagen%2072.png" width="48%" style="border-radius: 8px;">
+  <img src="img/Imagen%2073.png" width="48%" style="border-radius: 8px;">
+</p>

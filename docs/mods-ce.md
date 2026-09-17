@@ -90,8 +90,8 @@ Para finalizar la configuración de las pistas, buscamos el nodo **save file**. 
     Por defecto, Mods CE guarda todos los archivos bajo el nombre genérico `SVG image.rml`. Es **crucial** ubicar el archivo descargado inmediatamente y renombrarlo (por ejemplo, a `1_Pistas.rml`) para mantener una organización estricta y evitar confusiones fatales al momento de operar la fresadora.
 
 <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 15px;">
-  <img src="img/Imagen%2064.png" width="45%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  <img src="img/Imagen%2065.png" width="30%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+  <img src="../img/Imagen%2064.png" width="45%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+  <img src="../img/Imagen%2065.png" width="30%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
 </div>
 
 ---
@@ -104,7 +104,7 @@ Durante el procesamiento de las pistas, pueden surgir un par de complicaciones c
 2. **Errores en el contorno:** Si la placa presenta bordes irregulares o el SVG no fue interpretado correctamente desde KiCad, la mejor práctica es abrir el archivo original en **Inkscape** para corregir y unificar los vectores antes de subirlo a Mods CE.
 
 <div style="text-align: center; margin-top: 15px;">
-  <img src="img/Imagen%2066.png" width="40%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+  <img src="../img/Imagen%2066.png" width="40%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
 </div>
 
 ---
@@ -118,14 +118,14 @@ Una vez asegurado el archivo de las pistas, repetiremos el proceso para las perf
 3. Hacemos clic en **Calculate** y luego en **View** para verificar que la posición de los agujeros coincida perfectamente con los pads de nuestro diseño.
 
 <div style="display: flex; gap: 15px; justify-content: center; margin-top: 15px; flex-wrap: wrap;">
-  <img src="img/Imagen%2067.png" width="45%" style="border-radius: 8px;">
-  <img src="img/Imagen%2068.png" width="45%" style="border-radius: 8px;">
-  <img src="img/Imagen%2069.png" width="45%" style="border-radius: 8px;">
-  <img src="img/Imagen%2070.png" width="45%" style="border-radius: 8px;">
+  <img src="../img/Imagen%2067.png" width="45%" style="border-radius: 8px;">
+  <img src="../img/Imagen%2068.png" width="45%" style="border-radius: 8px;">
+  <img src="../img/Imagen%2069.png" width="45%" style="border-radius: 8px;">
+  <img src="../img/Imagen%2070.png" width="45%" style="border-radius: 8px;">
 </div>
 
 <div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
-  <img src="img/Imagen%2071.png" width="70%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+  <img src="../img/Imagen%2071.png" width="70%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
   <br><em style="color: #888;">Renderizado 3D de las perforaciones calculadas.</em>
 </div>
 
@@ -141,6 +141,6 @@ En este mismo nodo, podemos observar el tiempo estimado de trabajo (*Estimated t
 Finalmente, nos dirigimos al nodo **save file**, hacemos clic para descargar, y renombramos inmediatamente este nuevo archivo (por ejemplo, a `2_Perforaciones.rml`).
 
 <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 15px;">
-  <img src="img/Imagen%2072.png" width="45%" style="border-radius: 8px;">
-  <img src="img/Imagen%2073.png" width="45%" style="border-radius: 8px;">
+  <img src="../img/Imagen%2072.png" width="45%" style="border-radius: 8px;">
+  <img src="../img/Imagen%2073.png" width="45%" style="border-radius: 8px;">
 </div>

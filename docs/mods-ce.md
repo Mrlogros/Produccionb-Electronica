@@ -81,3 +81,66 @@ El último paso antes de exportar el archivo es configurar los parámetros físi
 ![Configuración final de máquina](img/Imagen 63.png)
 
 Una vez verificados estos datos, el archivo estará listo para ser guardado y enviado al software de control de la Monofab (VPanel).
+
+## 6. Guardado y Organización de Archivos
+
+Para finalizar la configuración de las pistas, buscamos el nodo **save file**. Al hacer clic en el botón inferior, el navegador descargará automáticamente un archivo con la extensión `.rml` (Roland Machine Language). 
+
+!!! warning "Importante: Renombrar los archivos"
+    Por defecto, Mods CE guarda todos los archivos bajo el nombre genérico `SVG image.rml`. Es **crucial** ubicar el archivo descargado inmediatamente y renombrarlo (por ejemplo, a `1_Pistas.rml`) para mantener una organización estricta y evitar confusiones fatales al momento de operar la fresadora.
+
+<div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 15px;">
+  <img src="img/Imagen 64.png" width="45%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+  <img src="img/Imagen 65.png" width="30%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+</div>
+
+---
+
+## 🛠️ Solución de Problemas Frecuentes
+
+Durante el procesamiento de las pistas, pueden surgir un par de complicaciones comunes que tienen solución rápida:
+
+1. **Áreas de corte invertidas:** Si al ver el renderizado 3D notas que la máquina cortará el cobre que querías conservar (dejando expuesto lo que querías quitar), dirígete al nodo **convert SVG image** y haz clic en el botón **invert**. Esto corregirá la polaridad de la imagen.
+2. **Errores en el contorno:** Si la placa presenta bordes irregulares o el SVG no fue interpretado correctamente desde KiCad, la mejor práctica es abrir el archivo original en **Inkscape** para corregir y unificar los vectores antes de subirlo a Mods CE.
+
+<div style="text-align: center; margin-top: 15px;">
+  <img src="img/Imagen 66.png" width="40%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);">
+</div>
+
+---
+
+## 7. Configuración de Perforaciones (Drills)
+
+Una vez asegurado el archivo de las pistas, repetiremos el proceso para las perforaciones cargando el archivo `Perforaciones.svg`. La lógica de los nodos es idéntica, pero los parámetros de corte cambian.
+
+1. **Herramienta:** En el nodo *set PCB defaults*, seleccionamos **0.79mm drill** (que corresponde a nuestra broca de 0.8 mm).
+2. **Pasadas (Offsets):** En el nodo de cálculo (*mill raster 2D*), configuramos el **offset number** en `1`. A diferencia de las pistas, aquí solo necesitamos que la broca baje exactamente en el centro una sola vez por cada agujero.
+3. Hacemos clic en **Calculate** y luego en **View** para verificar que la posición de los agujeros coincida perfectamente con los pads de nuestro diseño.
+
+<div style="display: flex; gap: 15px; justify-content: center; margin-top: 15px; flex-wrap: wrap;">
+  <img src="img/Imagen 67.png" width="45%" style="border-radius: 8px;">
+  <img src="img/Imagen 68.png" width="45%" style="border-radius: 8px;">
+  <img src="img/Imagen 69.png" width="45%" style="border-radius: 8px;">
+  <img src="img/Imagen 70.png" width="45%" style="border-radius: 8px;">
+</div>
+
+<div style="text-align: center; margin-top: 25px; margin-bottom: 25px;">
+  <img src="img/Imagen 71.png" width="70%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+  <br><em style="color: #888;">Renderizado 3D de las perforaciones calculadas.</em>
+</div>
+
+---
+
+## 8. Parámetros Críticos y Guardado (Perforaciones)
+
+!!! danger "Velocidad de Corte Crítica (Speed)"
+    En el nodo final **Roland SRM-20 milling machine**, es **obligatorio reducir la velocidad a `0.3 mm/s`**. Las brocas de perforación de 0.8 mm son extremadamente frágiles; si la máquina intenta taladrar muy rápido o entra al material de forma inestable, la broca se romperá instantáneamente.
+
+En este mismo nodo, podemos observar el tiempo estimado de trabajo (*Estimated time*) en la parte inferior, lo cual es muy útil para planificar el uso de la máquina en el laboratorio.
+
+Finalmente, nos dirigimos al nodo **save file**, hacemos clic para descargar, y renombramos inmediatamente este nuevo archivo (por ejemplo, a `2_Perforaciones.rml`).
+
+<div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 15px;">
+  <img src="img/Imagen 72.png" width="45%" style="border-radius: 8px;">
+  <img src="img/Imagen 73.png" width="45%" style="border-radius: 8px;">
+</div>

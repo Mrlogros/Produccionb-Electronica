@@ -89,10 +89,9 @@ Para finalizar la configuración de las pistas, buscamos el nodo **save file**. 
 !!! warning "Importante: Renombrar los archivos"
     Por defecto, Mods CE guarda todos los archivos bajo el nombre genérico `SVG image.rml`. Es **crucial** ubicar el archivo descargado inmediatamente y renombrarlo (por ejemplo, a `1_Pistas.rml`) para mantener una organización estricta y evitar confusiones fatales al momento de operar la fresadora.
 
-<div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 15px;" markdown="1">
-![Paso 64](img/Imagen%2064.png){ width="45%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);" }
-![Paso 65](img/Imagen%2065.png){ width="30%" style="border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);" }
-</div>
+![Paso 64](img/Imagen%2064.png)
+
+![Paso 65](img/Imagen%2065.png)
 
 ---
 
@@ -103,9 +102,7 @@ Durante el procesamiento de las pistas, pueden surgir un par de complicaciones c
 1. **Áreas de corte invertidas:** Si al ver el renderizado 3D notas que la máquina cortará el cobre que querías conservar (dejando expuesto lo que querías quitar), dirígete al nodo **convert SVG image** y haz clic en el botón **invert**. Esto corregirá la polaridad de la imagen.
 2. **Errores en el contorno:** Si la placa presenta bordes irregulares o el SVG no fue interpretado correctamente desde KiCad, la mejor práctica es abrir el archivo original en **Inkscape** para corregir y unificar los vectores antes de subirlo a Mods CE.
 
-<div style="text-align: center; margin-top: 15px;" markdown="1">
-![Error contorno](img/Imagen%2066.png){ width="40%" style="border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);" }
-</div>
+![Error contorno](img/Imagen%2066.png)
 
 ---
 
@@ -117,17 +114,17 @@ Una vez asegurado el archivo de las pistas, repetiremos el proceso para las perf
 2. **Pasadas (Offsets):** En el nodo de cálculo (*mill raster 2D*), configuramos el **offset number** en `1`. A diferencia de las pistas, aquí solo necesitamos que la broca baje exactamente en el centro una sola vez por cada agujero.
 3. Hacemos clic en **Calculate** y luego en **View** para verificar que la posición de los agujeros coincida perfectamente con los pads de nuestro diseño.
 
-<div style="display: flex; gap: 15px; justify-content: center; margin-top: 15px; flex-wrap: wrap;" markdown="1">
-![Paso 67](img/Imagen%2067.png){ width="45%" style="border-radius: 8px;" }
-![Paso 68](img/Imagen%2068.png){ width="45%" style="border-radius: 8px;" }
-![Paso 69](img/Imagen%2069.png){ width="45%" style="border-radius: 8px;" }
-![Paso 70](img/Imagen%2070.png){ width="45%" style="border-radius: 8px;" }
-</div>
+![Paso 67](img/Imagen%2067.png)
 
-<div style="text-align: center; margin-top: 25px; margin-bottom: 25px;" markdown="1">
-![Render Perforaciones](img/Imagen%2071.png){ width="70%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.4);" }
-<br><em style="color: #888;">Renderizado 3D de las perforaciones calculadas.</em>
-</div>
+![Paso 68](img/Imagen%2068.png)
+
+![Paso 69](img/Imagen%2069.png)
+
+![Paso 70](img/Imagen%2070.png)
+
+![Render Perforaciones](img/Imagen%2071.png)
+
+*Renderizado 3D de las perforaciones calculadas.*
 
 ---
 
@@ -140,7 +137,6 @@ En este mismo nodo, podemos observar el tiempo estimado de trabajo (*Estimated t
 
 Finalmente, nos dirigimos al nodo **save file**, hacemos clic para descargar, y renombramos inmediatamente este nuevo archivo (por ejemplo, a `2_Perforaciones.rml`).
 
-<div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-top: 15px;" markdown="1">
-![Paso 72](img/Imagen%2072.png){ width="45%" style="border-radius: 8px;" }
-![Paso 73](img/Imagen%2073.png){ width="45%" style="border-radius: 8px;" }
-</div>
+![Paso 72](img/Imagen%2072.png)
+
+![Paso 73](img/Imagen%2073.png)

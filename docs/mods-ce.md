@@ -90,8 +90,8 @@ Para finalizar la configuración de las pistas, buscamos el nodo **save file**. 
     Por defecto, Mods CE guarda todos los archivos bajo el nombre genérico `SVG image.rml`. Es **crucial** ubicar el archivo descargado inmediatamente y renombrarlo (por ejemplo, a `1_Pistas.rml`) para mantener una organización estricta y evitar confusiones fatales al momento de operar la fresadora.
 
 <p align="center">
-  <img src="https://github.com/Mrlogros/Produccionb-Electronica/blob/main/docs/img/Imagen%2064.png" width="48%" style="border-radius: 8px; border: 1px solid #333;">
-  <img src="https://github.com/Mrlogros/Produccionb-Electronica/blob/main/docs/img/Imagen%2065.png" width="48%" style="border-radius: 8px; border: 1px solid #333;">
+  <img src="img/Imagen%2064.png" width="48%" style="border-radius: 8px; border: 1px solid #333;">
+  <img src="img/Imagen%2065.png" width="48%" style="border-radius: 8px; border: 1px solid #333;">
 </p>
 
 ---
@@ -104,7 +104,7 @@ Durante el procesamiento de las pistas, pueden surgir un par de complicaciones c
 2. **Errores en el contorno:** Si la placa presenta bordes irregulares o el SVG no fue interpretado correctamente desde KiCad, la mejor práctica es abrir el archivo original en **Inkscape** para corregir y unificar los vectores antes de subirlo a Mods CE.
 
 <p align="center">
-  <img src="https://github.com/Mrlogros/Produccionb-Electronica/blob/main/docs/img/Imagen%2066.png" width="50%" style="border-radius: 8px;">
+  <img src="img/Imagen%2066.png" width="50%" style="border-radius: 8px;">
 </p>
 
 ---
@@ -118,16 +118,16 @@ Una vez asegurado el archivo de las pistas, repetiremos el proceso para las perf
 3. Hacemos clic en **Calculate** y luego en **View** para verificar que la posición de los agujeros coincida perfectamente con los pads de nuestro diseño.
 
 <p align="center">
-  <img src="https://github.com/Mrlogros/Produccionb-Electronica/blob/main/docs/img/Imagen%2067.png" width="48%" style="border-radius: 8px;">
-  <img src="https://github.com/Mrlogros/Produccionb-Electronica/blob/main/docs/img/Imagen%2068.png" width="48%" style="border-radius: 8px;">
+  <img src="img/Imagen%2067.png" width="48%" style="border-radius: 8px;">
+  <img src="img/Imagen%2068.png" width="48%" style="border-radius: 8px;">
 </p>
 <p align="center">
-  <img src="https://github.com/Mrlogros/Produccionb-Electronica/blob/main/docs/img/Imagen%2069.png" width="48%" style="border-radius: 8px;">
-  <img src="https://github.com/Mrlogros/Produccionb-Electronica/blob/main/docs/img/Imagen%2070.png" width="48%" style="border-radius: 8px;">
+  <img src="img/Imagen%2069.png" width="48%" style="border-radius: 8px;">
+  <img src="img/Imagen%2070.png" width="48%" style="border-radius: 8px;">
 </p>
 
 <p align="center">
-  <img src="https://github.com/Mrlogros/Produccionb-Electronica/blob/main/docs/img/Imagen%2071.png" width="80%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
+  <img src="img/Imagen%2071.png" width="80%" style="border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.5);">
   <br><em style="color: #888; font-size: 0.9em;">Renderizado 3D de las perforaciones calculadas.</em>
 </p>
 
@@ -141,6 +141,11 @@ Una vez asegurado el archivo de las pistas, repetiremos el proceso para las perf
 En este mismo nodo, podemos observar el tiempo estimado de trabajo (*Estimated time*) en la parte inferior, lo cual es muy útil para planificar el uso de la máquina en el laboratorio.
 
 Finalmente, nos dirigimos al nodo **save file**, hacemos clic para descargar, y renombramos inmediatamente este nuevo archivo (por ejemplo, a `2_Perforaciones.rml`).
+
+<p align="center">
+  <img src="img/Imagen%2072.png" width="48%" style="border-radius: 8px;">
+  <img src="img/Imagen%2073.png" width="48%" style="border-radius: 8px;">
+</p>
 
 <p align="center">
   <img src="https://github.com/Mrlogros/Produccionb-Electronica/blob/main/docs/img/Imagen%2072.png" width="48%" style="border-radius: 8px;">

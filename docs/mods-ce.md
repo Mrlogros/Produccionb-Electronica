@@ -144,13 +144,16 @@ Para realizar el corte perimetral que separará la placa del material base, carg
 
 1. **Carga del archivo:** En el nodo **read SVG**, seleccionamos el archivo `Bordes.svg`.
 
-![Carga del archivo de bordes](img/Imagen%2074.png)
+| Carga de SVG |
+| :---: |
+| ![Carga del archivo de bordes](img/Imagen%2074.png) |
 
 2. **Ajuste del diámetro de herramienta (Manual):** En el nodo **set PCB defaults**, observaremos que en la sección *Cutout* la opción predeterminada de mayor diámetro es `1.59mm cutout`. Dado que utilizaremos una fresa de **2.0 mm**, seleccionamos la opción de 1.59 mm y modificamos manualmente el campo **diameter (mm)** escribiendo `2.0` (o ajustando el parámetro equivalente dentro del nodo de cálculo).
 3. **Pasadas (Offsets):** Mantenemos el parámetro **offsets** en `1` para realizar un único trazo perimetral alrededor de la placa.
 
-![Configuración de diámetro y pasadas](img/Imagen%2075.png)
-![Parámetros de cálculo del contorno](img/Imagen%2076.png)
+| Parámetros PCB | Cálculo de Trayectoria |
+| :---: | :---: |
+| ![Configuración de diámetro y pasadas](img/Imagen%2075.png) | ![Parámetros de cálculo del contorno](img/Imagen%2076.png) |
 
 ---
 
@@ -159,14 +162,16 @@ Para realizar el corte perimetral que separará la placa del material base, carg
 1. **Cálculo de la trayectoria:** En el nodo **mill raster 2D**, hacemos clic en **Calculate** para generar el código de corte.
 2. **Visualización y Renderizado:** Presionamos **View** para inspeccionar la trayectoria en 2D y verificar la simulación 3D de la placa recortada.
 
-![Trayectoria 2D del contorno](img/Imagen%2077.png)
-![Renderizado 3D del corte de contorno](img/Imagen%2078.png)
+| Vista 2D | Renderizado 3D |
+| :---: | :---: |
+| ![Trayectoria 2D del contorno](img/Imagen%2077.png) | ![Renderizado 3D del corte de contorno](img/Imagen%2078.png) |
 
 3. **Parámetros de máquina y guardado:** Verificamos el tiempo estimado de trabajo en el nodo **Roland SRM-20 milling machine** y procedemos a descargar el archivo generado desde el nodo **save file**.
 4. **Organización:** Renombramos inmediatamente el archivo descargado a `3_Contorno.rml`.
 
-![Parámetros finales y tiempo estimado](img/Imagen%2079.png)
-![Descarga del archivo RML de contorno](img/Imagen%2080.png)
+| Ajustes de Máquina | Archivo Generado |
+| :---: | :---: |
+| ![Parámetros finales y tiempo estimado](img/Imagen%2079.png) | ![Descarga del archivo RML de contorno](img/Imagen%2080.png) |
 
 ---
 
@@ -176,6 +181,13 @@ Una vez generados los tres archivos de trabajo (`.rml`), es necesario instalar e
 
 1. **Enlace de descarga:** Dirígete a la página de inicio del proyecto/documentación y haz clic en el icono con la imagen de la fresadora SRM-20.
 
-![Acceso a descarga de software](img/Imagen%2082.png)
+| Acceso Directo |
+| :---: |
+| ![Acceso a descarga de software](img/Imagen%2082.png) |
 
 2. **Centro de descargas:** Al abrirse el *Download Center* de Roland / DGSHAPE, selecciona el modelo **monoFab SRM-20** y dirígete a la pestaña de **Software**. Busca en la lista el programa **VPanel for SRM-20**.
+3. **Licencia y descarga:** Acepta los términos del contrato de licencia haciendo clic en el botón **Agree** para iniciar la descarga del instalador ejecutable.
+
+| Portal de Descargas | Contrato de Licencia |
+| :---: | :---: |
+| ![Centro de descargas de Roland SRM-20](img/Imagen%2083.jpg) | ![Aceptación de la licencia de VPanel](img/Imagen%2084.png) |

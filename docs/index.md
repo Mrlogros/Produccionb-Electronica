@@ -87,35 +87,29 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
 ## Nuestro Equipo: KiCad Squad
 <p style="text-align: center; color: #888; margin-top: -10px;">Proyecto de Electrónica - IBERO Puebla</p>
 
-<!-- Contenedor del equipo ajustado para 4 personas -->
+<!-- Contenedor del equipo ajustado para 2 personas con descripciones -->
 <div style="display: flex; justify-content: center; gap: 40px; text-align: center; margin-top: 30px; flex-wrap: wrap;">
   
   <!-- Carlos -->
-  <div style="width: 200px; margin-bottom: 20px;">
+  <div style="width: 300px; margin-bottom: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px;">
     <img src="img/carlos.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
-    <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Carlos Alberto Vázquez Peraza</h3>
-    <p style="color: #888; font-size: 0.9em;">Ingeniería de Diseño</p>
+    <h3 style="margin-bottom: 5px; margin-top: 15px; font-size: 1.2em;">Carlos Alberto Vázquez Peraza</h3>
+    <p style="color: #e53935; font-weight: bold; margin: 0; font-size: 0.95em;">Ingeniero Mecatrónico</p>
+    <p style="color: #888; font-size: 0.85em; margin-top: 2px; margin-bottom: 15px;">18 años | Xalapa, Veracruz</p>
+    <blockquote style="font-size: 0.9em; color: #bbb; border-left: 3px solid #e53935; text-align: left; padding-left: 15px; margin: 0; font-style: italic;">
+      "Me metí a ingeniería mecatrónica porque siempre me ha gustado todo lo relacionado con la electrónica."
+    </blockquote>
   </div>
 
   <!-- Luis -->
-  <div style="width: 200px; margin-bottom: 20px;">
+  <div style="width: 300px; margin-bottom: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px;">
     <img src="img/luis.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
-    <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Luis Ernesto Tamez Velásquez</h3>
-    <p style="color: #888; font-size: 0.9em;">Desarrollo y Documentación</p>
-  </div>
-
-  <!-- Juan Manuel -->
-  <div style="width: 200px; margin-bottom: 20px;">
-    <img src="img/juan.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
-    <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Juan Manuel Gaona Serrano</h3>
-    <p style="color: #888; font-size: 0.9em;">Integración y Pruebas</p>
-  </div>
-
-  <!-- Brandon -->
-  <div style="width: 200px; margin-bottom: 20px;">
-    <img src="img/brandon.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
-    <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Brandon Saúl Ruvalcaba Pérez</h3>
-    <p style="color: #888; font-size: 0.9em;">Control de Calidad</p>
+    <h3 style="margin-bottom: 5px; margin-top: 15px; font-size: 1.2em;">Luis Ernesto Tamez Velásquez</h3>
+    <p style="color: #e53935; font-weight: bold; margin: 0; font-size: 0.95em;">Ingeniero Mecatrónico</p>
+    <p style="color: #888; font-size: 0.85em; margin-top: 2px; margin-bottom: 15px;">19 años | Tampico, Tamaulipas</p>
+    <blockquote style="font-size: 0.9em; color: #bbb; border-left: 3px solid #e53935; text-align: left; padding-left: 15px; margin: 0; font-style: italic;">
+      "Vine a esta carrera por una razón muy clara: seré el próximo Tony Stark."
+    </blockquote>
   </div>
 
 </div>

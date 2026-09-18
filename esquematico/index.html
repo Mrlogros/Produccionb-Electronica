@@ -1,0 +1,953 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación técnica del diseño y ruteo de circuito impreso.">
+      
+      
+        <meta name="author" content="Tu Nombre">
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../editor-placas/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../material/developer-board">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1. Diseño del Esquemático - Diseño de PCB - Proyecto KiCad</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#diseno-del-esquematico" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Diseño de PCB - Proyecto KiCad" class="md-header__button md-logo" aria-label="Diseño de PCB - Proyecto KiCad" data-md-component="logo">
+      
+  <img src="../material/memory" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de PCB - Proyecto KiCad
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Diseño del Esquemático
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Mrlogros/Produccionb-Electronica" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mrlogros/Produccionb-Electronica
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  Desarrollo de PCB
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../recursos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Referencias
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Diseño de PCB - Proyecto KiCad" class="md-nav__button md-logo" aria-label="Diseño de PCB - Proyecto KiCad" data-md-component="logo">
+      
+  <img src="../material/memory" alt="logo">
+
+    </a>
+    Diseño de PCB - Proyecto KiCad
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Mrlogros/Produccionb-Electronica" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mrlogros/Produccionb-Electronica
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desarrollo de PCB
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Desarrollo de PCB
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Diseño del Esquemático
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Diseño del Esquemático
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lista-de-componentes-clave-bom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        📋 Lista de Componentes Clave (BOM)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proceso-de-diseno-paso-a-paso" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚙️ Proceso de Diseño Paso a Paso
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Proceso de Diseño Paso a Paso">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-creacion-y-apertura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Creación y Apertura del Proyecto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-instalacion-de-librerias-externas-fablib" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Instalación de Librerías Externas (FabLib)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-acceso-al-entorno-de-diseno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Acceso al Entorno de Diseño
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-seleccion-y-colocacion-de-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Selección y Colocación de Componentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-configuracion-de-alimentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Configuración de Alimentación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-ruteo-logico-y-conexiones-wiring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Ruteo Lógico y Conexiones (Wiring)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-organizacion-y-legibilidad-del-diagrama" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Organización y Legibilidad del Diagrama
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-configuracion-de-parametros-valores-y-huellas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Configuración de Parámetros (Valores y Huellas)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-verificacion-de-reglas-electricas-erc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Verificación de Reglas Eléctricas (ERC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checklist-de-la-fase-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Checklist de la Fase 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editor-placas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Editor de Placas (Layout)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mods-ce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Mods CE y Ajustes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="diseno-del-esquematico">✏️ Diseño del Esquemático</h1>
+<p>Bienvenidos a la primera fase técnica de nuestro proyecto. En esta sección, el <strong>KiCad Squad</strong> documentará paso a paso el proceso y las herramientas utilizadas para construir nuestro diagrama esquemático inicial.</p>
+<p>El objetivo de esta etapa es definir la lógica de nuestro circuito, configurar el entorno con las librerías necesarias y establecer las conexiones eléctricas de forma estructurada.</p>
+<p><br></p>
+<hr />
+<p><br></p>
+<h2 id="lista-de-componentes-clave-bom">📋 Lista de Componentes Clave (BOM)</h2>
+<p>Antes de comenzar el ruteo, definimos los componentes principales que integrarán esta etapa del diseño:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Componente</th>
+<th style="text-align: left;">Símbolo KiCad</th>
+<th style="text-align: left;">Huella (Footprint)</th>
+<th style="text-align: center;">Cantidad</th>
+<th style="text-align: left;">Función Principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Diodo LED</strong></td>
+<td style="text-align: left;"><code>LED_1206</code></td>
+<td style="text-align: left;"><code>PCM_fab:LED_1206</code></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">Indicador visual de estado</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resistencia 220Ω</strong></td>
+<td style="text-align: left;"><code>R</code></td>
+<td style="text-align: left;"><code>PCM_fab:R_1206</code></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">Limitador de corriente para LEDs</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Resistencia 1kΩ</strong></td>
+<td style="text-align: left;"><code>R</code></td>
+<td style="text-align: left;"><code>PCM_fab:R_1206</code></td>
+<td style="text-align: center;">4</td>
+<td style="text-align: left;">Resistencias Pull-down / Configuración</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Pines de Conexión</strong></td>
+<td style="text-align: left;"><code>Conn_01x04</code></td>
+<td style="text-align: left;"><code>PinHeader_1x04</code></td>
+<td style="text-align: center;">2</td>
+<td style="text-align: left;">Puertos de entrada/salida (Switches y LEDs)</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<hr />
+<p><br></p>
+<h2 id="proceso-de-diseno-paso-a-paso">⚙️ Proceso de Diseño Paso a Paso</h2>
+<h3 id="1-creacion-y-apertura-del-proyecto">1. Creación y Apertura del Proyecto</h3>
+<p>Comenzamos inicializando nuestro entorno de trabajo. Abrimos KiCad y cargamos nuestro archivo de proyecto principal (<code>.kicad_pro</code>). </p>
+<div class="admonition tip">
+<p class="admonition-title">Buena Práctica de Ingeniería</p>
+<p>Mantener todos los archivos (<code>.kicad_sch</code>, <code>.kicad_pcb</code>) estrictamente dentro de su carpeta raíz evita la pérdida de enlaces a librerías locales o rutas relativas rotas al compartir el proyecto.</p>
+</div>
+<p><img alt="Apertura del proyecto en KiCad" src="../img/Imagen%201.png" /></p>
+<p><em>Interfaz principal de KiCad con el proyecto cargado.</em></p>
+<p><br></p>
+<p><img alt="Explorador de archivos" src="../img/Imagen%202.png" /></p>
+<p><em>Directorio raíz del proyecto asegurando la correcta ubicación de los archivos.</em></p>
+<p><br></p>
+<h3 id="2-instalacion-de-librerias-externas-fablib">2. Instalación de Librerías Externas (FabLib)</h3>
+<p>Para estandarizar nuestros componentes, abrimos el <strong>Administrador de complementos y contenido</strong> desde la pantalla principal.</p>
+<p><img alt="Administrador de complementos" src="../img/Imagen%203.png" /></p>
+<p><em>Búsqueda de librerías en el gestor de paquetes de KiCad.</em></p>
+<p><br></p>
+<p>Buscamos e instalamos la librería <strong>KiCad FabLib</strong>, la cual nos proporciona huellas y símbolos compatibles con inventarios estándar de fabricación.</p>
+<p><img alt="Instalación de FabLib" src="../img/Imagen%204.png" /></p>
+<p><em>Confirmación de la librería FabLib instalada.</em></p>
+<p><br></p>
+<h3 id="3-acceso-al-entorno-de-diseno">3. Acceso al Entorno de Diseño</h3>
+<p>Una vez configuradas las librerías, abrimos el entorno de diseño lógico seleccionando el <strong>Editor de esquemas</strong> en el menú principal.</p>
+<div class="admonition info">
+<p class="admonition-title">Atajo de Teclado</p>
+<p>Presionar <code>Ctrl + E</code> en la pantalla principal abre directamente el Eeschema, agilizando el flujo de trabajo.</p>
+</div>
+<p><img alt="Menú de Editor de Esquemas" src="../img/Imagen%205.png" /></p>
+<p><em>Accediendo al Eeschema.</em></p>
+<p><br></p>
+<h3 id="4-seleccion-y-colocacion-de-componentes">4. Selección y Colocación de Componentes</h3>
+<p>Dentro del editor, presionamos la tecla <code>A</code> para abrir la herramienta <strong>Colocar símbolos</strong>. </p>
+<p><img alt="Herramienta Colocar Símbolos" src="../img/Imagen%206.png" /></p>
+<p><em>Icono de la herramienta para agregar componentes.</em></p>
+<p><br></p>
+<p>Seleccionamos un <code>LED_1206</code>, asegurándonos de utilizar el componente proveniente de nuestra librería recién instalada.</p>
+<p><img alt="Selección de LED" src="../img/Imagen%207.png" /></p>
+<p><em>Ventana de selección de símbolos ubicando el LED SMD 1206.</em></p>
+<p><br></p>
+<h3 id="5-configuracion-de-alimentacion">5. Configuración de Alimentación</h3>
+<p>Todo circuito requiere referencias estables. Presionando la tecla <code>P</code> accedimos a los <strong>símbolos de alimentación</strong>.</p>
+<p><img alt="Herramienta de Alimentación" src="../img/Imagen%208.png" /></p>
+<p><em>Icono de la herramienta para agregar puertos de energía.</em></p>
+<p><br></p>
+<p>Elegimos el símbolo <code>PWR_3V3</code> para establecer la línea de voltaje positivo que alimentará nuestro sistema.</p>
+<p><img alt="Selección de PWR_3V3" src="../img/Imagen%209.png" /></p>
+<p><em>Seleccionando la etiqueta global de alimentación a 3.3V.</em></p>
+<p><br></p>
+<h3 id="6-ruteo-logico-y-conexiones-wiring">6. Ruteo Lógico y Conexiones (Wiring)</h3>
+<p>Con los símbolos en la hoja, utilizamos la herramienta <strong>Dibujar cables</strong> (tecla <code>W</code>) para interconectar los pines y cerrar los lazos del circuito.</p>
+<p><img alt="Herramienta Dibujar Cables" src="../img/Imagen%2010.png" /></p>
+<p><em>Icono de la herramienta de cableado.</em></p>
+<p><br></p>
+<h3 id="7-organizacion-y-legibilidad-del-diagrama">7. Organización y Legibilidad del Diagrama</h3>
+<p>Un buen esquemático debe ser fácil de interpretar. En lugar de trazar líneas largas que saturen la pantalla, implementamos <strong>Etiquetas de Red (Net Labels)</strong>.</p>
+<p><img alt="Propiedades de la etiqueta" src="../img/Imagen%2011.png" /></p>
+<p><em>Configuración de etiquetas de red para organizar las conexiones lógicas.</em></p>
+<p><br></p>
+<p>Utilizamos las herramientas gráficas de <strong>Texto</strong> y <strong>Dibujar rectángulos</strong> para seccionar el diagrama.</p>
+<p><img alt="Propiedades del texto" src="../img/Imagen%2012.png" /></p>
+<p><em>Herramienta de texto para nombrar los módulos del circuito.</em></p>
+<p><br></p>
+<p><img alt="Herramienta de rectángulos" src="../img/Imagen%2013.png" /></p>
+<p><em>Icono de la herramienta gráfica para crear bloques visuales.</em></p>
+<p><br></p>
+<p>Con esto, separamos el diseño en bloques funcionales claros: un bloque de "Pines" para las E/S y un bloque de "Switches".</p>
+<p><img alt="Esquemático General Organizado" src="../img/Imagen%2014.png" /></p>
+<p><em>Vista general del esquemático, organizado por bloques y etiquetas.</em></p>
+<p><br></p>
+<p>En el siguiente detalle se observa cómo las etiquetas (<code>V 3.3</code>) conectan virtualmente la alimentación a los componentes, eliminando la necesidad de cables cruzados.</p>
+<p><img alt="Detalle de conexiones y resistencias" src="../img/Imagen%2015.png" /></p>
+<p><em>Bloque de LEDs mostrando las resistencias y referencias.</em></p>
+<p><br></p>
+<p><img alt="Detalle de etiqueta de voltaje" src="../img/Imagen%2016.png" /></p>
+<p><em>Detalle de la conexión virtual mediante etiquetas de red.</em></p>
+<p><br></p>
+<h3 id="8-configuracion-de-parametros-valores-y-huellas">8. Configuración de Parámetros (Valores y Huellas)</h3>
+<p>Haciendo doble clic sobre los componentes (o tecla <code>E</code>), ingresamos a sus propiedades para definir sus valores eléctricos (<code>220</code>, <code>1k</code>) y vincular la huella física correcta desde FabLib.</p>
+<p><img alt="Propiedades del Símbolo" src="../img/Imagen%2017.png" /></p>
+<p><em>Asignando valores paramétricos y Footprints a los resistores.</em></p>
+<p><br></p>
+<h3 id="9-verificacion-de-reglas-electricas-erc">9. Verificación de Reglas Eléctricas (ERC)</h3>
+<p>Como control de calidad final, ejecutamos el <strong>ERC</strong>. Esta herramienta escanea el esquemático en busca de pines flotantes o conflictos de alimentación.</p>
+<p><img alt="Icono de ERC" src="../img/Imagen%2018.png" /></p>
+<p><em>Ejecución del verificador en la barra superior.</em></p>
+<p><br></p>
+<p><img alt="Resultados del ERC" src="../img/Imagen%2019.png" /></p>
+<p><em>Reporte final del analizador.</em></p>
+<p><br></p>
+<div class="admonition success">
+<p class="admonition-title">Validación Exitosa</p>
+<p>El reporte arrojó <strong>0 Errores</strong>, confirmando un diseño estable. (Las dos advertencias mostradas son meramente informativas por el uso de múltiples etiquetas para la misma red, una práctica común y segura).</p>
+</div>
+<p><br></p>
+<hr />
+<p><br></p>
+<h2 id="checklist-de-la-fase-1">✅ Checklist de la Fase 1</h2>
+<p>Para asegurar el control de calidad, verificamos los siguientes puntos antes de avanzar:</p>
+<p>✔️ Configuración del proyecto y entorno de KiCad.<br />
+✔️ Instalación de librerías de fabricación (FabLib).<br />
+✔️ Ruteo lógico y asignación de etiquetas de red.<br />
+✔️ Asignación de valores y <em>Footprints</em>.<br />
+✔️ Aprobación del Control de Reglas Eléctricas (ERC).  </p>
+<p><strong>¡El esquemático está validado y listo para pasar al Editor de Placas (Layout)!</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -87,7 +87,7 @@ A continuación, configuramos los parámetros de la herramienta física:
 
 ### Ajuste de Pasadas (Offsets)
 En el nodo **mill raster 2D**, definiremos cuánto material queremos remover alrededor de cada pista:
-*   **Offset number:** Lo configuramos en `4`. Esto indica que el taladro realizará cuatro pasadas concéntricas alrededor de las pistas para asegurar un buen aislamiento de cobre.
+*   **Offset number:** Lo configuramos en `2`. Esto indica que el taladro realizará dos pasadas concéntricas alrededor de las pistas para asegurar un aislamiento adecuado, ajustado a este valor para evitar problemas técnicos de ruteo.
 *   Una vez configurado, hacemos clic en el botón **Calculate**.
 
 | Nodo General | Cálculo de Trayectorias |

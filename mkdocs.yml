@@ -9,8 +9,10 @@ repo_name: Mrlogros/Produccionb-Electronica
 nav:
   - Inicio: index.md
   - Desarrollo de PCB:
+  - Kicad:
     - 1. Diseño del Esquemático: esquematico.md
     - 2. Editor de Placas (Layout): editor-placas.md
+  - Mods:
     - 3. Mods CE y Ajustes: mods-ce.md
   - Referencias: recursos.md
 

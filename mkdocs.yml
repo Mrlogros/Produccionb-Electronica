@@ -8,7 +8,6 @@ repo_name: Mrlogros/Produccionb-Electronica
 # Menú agrupado para forzar las pestañas superiores modernas
 nav:
   - Inicio: index.md
-  - Desarrollo de PCB:
   - Kicad:
     - 1. Diseño del Esquemático: esquematico.md
     - 2. Editor de Placas (Layout): editor-placas.md

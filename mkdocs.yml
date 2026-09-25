@@ -5,14 +5,12 @@ site_author: Tu Nombre
 repo_url: https://github.com/Mrlogros/Produccionb-Electronica
 repo_name: Mrlogros/Produccionb-Electronica
 
-# Menú agrupado para forzar las pestañas superiores modernas
+# Menú agrupado
 nav:
   - Inicio: index.md
-  - Kicad:
-    - 1. Diseño del Esquemático: esquematico.md
-    - 2. Editor de Placas (Layout): editor-placas.md
-  - Mods:
-    - 3. Mods CE y Ajustes: mods-ce.md
+  - Desarrollo de PCB:
+    - 1. Diseño en KiCad (Esquemático y PCB): diseno-kicad.md
+    - 2. Manufactura (Mods CE): mods-ce.md
   - Referencias: recursos.md
 
 

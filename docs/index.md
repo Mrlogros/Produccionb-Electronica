@@ -64,7 +64,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver documentación ➔](diseno-kicad.md#2-editor-de-placas-pcb-layout)
 
--   <img src="img/icono-monofab.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[3. Manufactura CAM (Mods CE)](diseno-kicad.md#3-manufactura-cam-y-generacion-de-trayectorias-mods-ce)**
+-   <img src="img/mods-icono.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[3. Manufactura CAM (Mods CE)](diseno-kicad.md#3-manufactura-cam-y-generacion-de-trayectorias-mods-ce)**
     
     ---
     

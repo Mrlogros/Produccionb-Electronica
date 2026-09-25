@@ -1,14 +1,18 @@
-# 1. Diseño del Esquemático y Lógica del Circuito
+# Desarrollo Completo de la PCB
+
+---
+
+## 1. Diseño del Esquemático y Lógica del Circuito
 
 El diseño del diagrama esquemático representa la primera y más crucial fase en el desarrollo de nuestra placa de circuito impreso (PCB). En esta etapa de abstracción, el objetivo principal no es definir la geometría física ni la ubicación espacial de los componentes, sino establecer de manera rigurosa la interconectividad lógica (Netlist), definir los flujos de corriente, estructurar las topologías de control y garantizar que se cumplan las normativas de diseño eléctrico (ERC). Para llevar a cabo este proceso, emplearemos la suite de automatización de diseño electrónico (EDA) de código abierto, **KiCad**.
 
 ---
 
-## Fase 1: Preparación del Entorno y Estandarización de Librerías
+### Fase 1: Preparación del Entorno y Estandarización de Librerías
 
 El éxito de la manufactura de una PCB depende directamente de la correcta configuración inicial del entorno de trabajo. Es imperativo que el software y las librerías estén sincronizados con las capacidades de fabricación y el inventario de componentes físicos de nuestro laboratorio.
 
-### 1.1 Descarga e Instalación del Software KiCad
+#### 1.1 Descarga e Instalación del Software KiCad
 El primer paso consiste en obtener la versión más estable de la suite de diseño. Nos dirigimos al portal web oficial de KiCad. En la página de inicio, localizaremos el panel principal que nos ofrece la documentación, las notas de la versión y, en el centro, el botón principal para la descarga del instalador.
 
 ![Opciones de descarga KiCad](img/fotos_esquematico/Imagen 1.png)
@@ -24,7 +28,7 @@ Para optimizar los tiempos de descarga y asegurar la integridad del paquete de i
 ![Servidor de descarga GitHub](img/fotos_esquematico/Imagen 3.png)
 *Figura 1.3: Selección del servidor espejo en Norteamérica.*
 
-### 1.2 Estructuración y Creación del Proyecto
+#### 1.2 Estructuración y Creación del Proyecto
 Al ejecutar KiCad por primera vez, nos recibe el panel de control unificado. Este gestor central administra todos los archivos vinculados a nuestra placa (esquemas, rutados, modelos 3D y archivos de manufactura Gerber). Para iniciar, crearemos un proyecto nuevo seleccionando el primer icono de la barra lateral izquierda o ejecutando el atajo de teclado `Ctrl + N`.
 
 ![Panel principal de KiCad](img/fotos_esquematico/Imagen 4.png)
@@ -40,7 +44,7 @@ A continuación, debemos asignar un nombre estructurado y definir el directorio 
 ![Guardado del proyecto](img/fotos_esquematico/Imagen 6.png)
 *Figura 1.6: Creación del directorio de trabajo y guardado del archivo maestro del proyecto.*
 
-### 1.3 Integración de Librerías de Manufactura (FabLib)
+#### 1.3 Integración de Librerías de Manufactura (FabLib)
 Uno de los errores más comunes en la ingeniería de PCBs es diseñar utilizando componentes genéricos que luego no coinciden físicamente con los adquiridos. Para evitar discrepancias de empaquetado (footprints), instalaremos la librería estándar de fabricación. Navegamos al menú superior y seleccionamos **`Herramientas > Administrador de complementos y contenido`**.
 
 ![Menú Herramientas](img/fotos_esquematico/Imagen 7.png)
@@ -53,14 +57,14 @@ Dentro del administrador, utilizaremos la barra de búsqueda ingresando el térm
 
 ---
 
-## Fase 2: Exploración de la Interfaz del Editor de Esquemas
+### Fase 2: Exploración de la Interfaz del Editor de Esquemas
 
 Con el entorno debidamente configurado y estandarizado, procedemos a abrir el **Editor de Esquemas** dando clic en su respectivo icono en el panel de control principal. Aquí es donde realizaremos la captura lógica de los componentes.
 
 ![Abrir Editor de Esquemas](img/fotos_esquematico/Imagen 9.png)
 *Figura 2.1: Acceso al entorno de diseño del diagrama lógico.*
 
-### 2.1 Análisis de las Herramientas de Inserción
+#### 2.1 Análisis de las Herramientas de Inserción
 Dentro del lienzo de diseño, prestaremos especial atención a la barra de herramientas lateral derecha, la cual contiene los accesos rápidos para la inserción de elementos eléctricos:
 * 🔴 **Añadir Símbolo:** Herramienta principal (atajo `A`) utilizada para buscar e insertar componentes activos y pasivos (resistencias, capacitores, semiconductores).
 * 🔵 **Añadir Símbolo de Alimentación:** Herramienta dedicada (atajo `P`) para establecer los nodos globales de voltaje y planos de tierra (VCC, GND).
@@ -90,11 +94,11 @@ El objetivo de esta fase de familiarización es prepararnos para construir una t
 
 ---
 
-## Fase 3: Construcción y Ruteo Lógico del Módulo Base
+### Fase 3: Construcción y Ruteo Lógico del Módulo Base
 
 Procederemos a ensamblar nuestro primer módulo funcional. Mantener un orden ortogonal (líneas rectas y componentes alineados) es una convención estricta en el dibujo de esquemas mecatrónicos.
 
-### 3.1 Emplazamiento de Nodos y Componentes
+#### 3.1 Emplazamiento de Nodos y Componentes
 Iniciamos definiendo nuestros planos de retorno. Insertamos dos referencias de tierra globales utilizando la etiqueta estandarizada **`PWR_GND`**.
 
 ![Búsqueda de PWR_GND](img/fotos_esquematico/Imagen 15.png)
@@ -134,7 +138,7 @@ Posicionamos el switch mecánicamente sobre la resistencia vertical. Para provee
 ![Voltaje posicionado](img/fotos_esquematico/Imagen 23.png)
 *Figura 3.9: Nodo de potencia emplazado en el extremo superior del módulo.*
 
-### 3.2 Interconexión de Redes Eléctricas (Nets)
+#### 3.2 Interconexión de Redes Eléctricas (Nets)
 Con los componentes emplazados, procedemos a unirlos lógicamente. Al acercar el cursor a los pines de un componente, aparecerá un pequeño círculo. Al hacer clic, iniciaremos el trazado de una red eléctrica (Net).
 
 ![Inicio de cableado](img/fotos_esquematico/Imagen 24.png)
@@ -160,14 +164,14 @@ Repitiendo este proceso de cableado para todos los elementos, finalizamos la arq
 
 ---
 
-## Fase 4: Escalabilidad, Topologías de Control y Verificación (ERC)
+### Fase 4: Escalabilidad, Topologías de Control y Verificación (ERC)
 
 Como el diseño general requiere la monitorización de múltiples entradas, aprovecharemos el diseño modular que acabamos de crear. Seleccionamos la totalidad del circuito base, lo copiamos (`Ctrl + C`) y lo pegamos (`Ctrl + V`) hasta obtener **4 módulos independientes**.
 
 ![Cuatro módulos replicados](img/fotos_esquematico/Imagen 29.png)
 *Figura 4.1: Escalabilidad del diseño mediante la replicación del módulo funcional.*
 
-### 4.1 Alteración de Topologías (Pull-Up y Pull-Down)
+#### 4.1 Alteración de Topologías (Pull-Up y Pull-Down)
 En el diseño de sistemas mecatrónicos, es común necesitar diferentes lógicas de disparo (activos en ALTO o activos en BAJO). Para evaluar este comportamiento, modificaremos la arquitectura de módulos específicos:
 * En los dos módulos superiores (indicados con **flechas rojas**), intercambiaremos físicamente la posición de la resistencia y el switch. Esto invierte la lógica de lectura respecto a la referencia de tierra.
 * En los módulos inferiores (indicados con **flechas azul y verde**) prepararemos el entorno para la inyección de banderas de validación de potencia.
@@ -175,7 +179,7 @@ En el diseño de sistemas mecatrónicos, es común necesitar diferentes lógicas
 ![Indicadores de modificación](img/fotos_esquematico/Imagen 30.png)
 *Figura 4.2: Señalización de los módulos a modificar para crear variaciones topológicas.*
 
-### 4.2 Resolución del Control de Reglas Eléctricas (PWR_FLAG)
+#### 4.2 Resolución del Control de Reglas Eléctricas (PWR_FLAG)
 KiCad incorpora una herramienta de validación matemática llamada ERC (Electrical Rules Checker). Si el ERC detecta componentes consumiendo energía en una red donde no se ha definido explícitamente un componente que *genere* dicha energía (como un regulador o un conector de batería), arrojará errores críticos de red no alimentada.
 
 Para solventar esto a nivel lógico sin alterar el circuito físico, insertamos el símbolo **`PWR_FLAG`** (Bandera de Poder). Esta bandera le comunica al compilador: *"Esta red recibirá energía desde una fuente externa conectada más adelante"*.
@@ -190,11 +194,11 @@ El diagrama final, aplicando las inversiones topológicas en los módulos superi
 
 ---
 
-## Fase 5: Conectividad Externa y Etiquetas de Red (Net Labels)
+### Fase 5: Conectividad Externa y Etiquetas de Red (Net Labels)
 
 Nuestro circuito lógico necesita conectarse con dispositivos externos (como microcontroladores o fuentes de alimentación). Para ello, utilizaremos conectores y organizaremos el esquemático mediante etiquetas de red.
 
-### 5.1 Documentación y Nomenclatura
+#### 5.1 Documentación y Nomenclatura
 Para mantener la legibilidad profesional del plano, utilizaremos la herramienta de texto de la barra lateral derecha para agregar descriptores a nuestras zonas de conexión.
 
 ![Herramienta de texto](img/fotos_esquematico/Imagen 33.png)
@@ -205,7 +209,7 @@ El texto en KiCad puede comportarse visualmente como un componente anclado a un 
 ![Etiqueta conectada](img/fotos_esquematico/Imagen 34.png)
 *Figura 5.2: Inserción de rotulación descriptiva en el área de trabajo.*
 
-### 5.2 Inserción de Conectores (Pin Headers)
+#### 5.2 Inserción de Conectores (Pin Headers)
 Procedemos a buscar los terminales físicos de conexión tipo *Through-Hole* (THT). Utilizaremos la familia `PinHeader_01x...`. Requerimos insertar dos de estos componentes:
 * Uno de 2 pines (`1x02`) destinado al ingreso del voltaje de alimentación general.
 * Uno de 4 pines (`1x04`) destinado a exportar o importar las señales lógicas de nuestros 4 circuitos.
@@ -221,7 +225,7 @@ Para facilitar la interpretación por parte de terceros, damos doble clic sobre 
 ![Headers renombrados](img/fotos_esquematico/Imagen 37.png)
 *Figura 5.5: Nomenclatura técnica aplicada a los puertos de interconexión.*
 
-### 5.3 Implementación de Etiquetas de Red (Netlabels)
+#### 5.3 Implementación de Etiquetas de Red (Netlabels)
 En el diseño avanzado de PCBs, extender cables a lo largo de todo el diagrama cruzando otros componentes es una práctica deficiente que genera diagramas ilegibles (comúnmente llamado "espagueti"). La solución profesional es el uso de **Etiquetas de Red** (Net Labels).
 
 Asignamos etiquetas lógicas específicas a los pines de nuestros conectores (por ejemplo, `Led 1`, `Led 2`, `V 3.3`, `GND`). El motor lógico de KiCad buscará en todo el diagrama y unirá internamente cualquier pin que comparta exactamente el mismo nombre de etiqueta, estableciendo una conexión virtual perfecta sin ensuciar visualmente el plano.
@@ -236,13 +240,13 @@ Con la correcta asignación de los puertos, la integración de módulos de lectu
 
 ---
 
-# 🛠️ Editor de Placas (PCB Layout)
+## 2. Editor de Placas (PCB Layout)
 
 Una vez que el diseño lógico ha sido validado en el esquemático, el siguiente paso crítico en nuestro flujo de trabajo es la traducción de este circuito a su forma física. En esta sección documentamos la importación de huellas (footprints), la definición del área de trabajo, el ruteo y la preparación para la exportación a manufactura CNC.
 
 ---
 
-## 1. Transición al Entorno de PCB
+### 2.1 Transición al Entorno de PCB
 
 Para comenzar con el diseño físico, utilizamos el botón **Abrir editor de placas** ubicado en la barra de herramientas superior del Eeschema. Una vez listo el esquemático, vas a ir a la esquina superior izquierda y vas a dar clic en el icono verde que está marcado en la imagen con un cuadro rojo, para empezar con el editor de placas[cite: 9].
 
@@ -255,7 +259,7 @@ Para comenzar con el diseño físico, utilizamos el botón **Abrir editor de pla
 
 ---
 
-## 2. Sincronización y Organización de Componentes
+### 2.2 Sincronización y Organización de Componentes
 
 Con el editor de placas abierto, procedemos a importar los componentes lógicos a su representación física. Esto se logra ejecutando la herramienta **Actualizar placa desde esquema** (atajo de teclado `F8`). 
 
@@ -270,7 +274,7 @@ Al aplicar los cambios, tus componentes aparecerán así en la parte principal d
 
 ---
 
-## 3. Configuración de Capas de Trabajo y Reglas de Diseño (DRC)
+### 2.3 Configuración de Capas de Trabajo y Reglas de Diseño (DRC)
 
 Antes de iniciar el trazado de pistas o contornos, debemos comprender el apilamiento de capas (Layer Stackup). Dado que el diseño actual es una placa de cara simple (una sola capa de cobre), todo nuestro trabajo conductivo se realizará en la capa **F.Cu** (Front Copper / Cobre Frontal).
 
@@ -293,7 +297,7 @@ Te aparecerán varias opciones, pero las importantes son los tamaños predefinid
 
 ---
 
-## 4. Enrutamiento y Conexiones (Capa F.Cu)
+### 2.4 Enrutamiento y Conexiones (Capa F.Cu)
 
 Seleccionarás la medida de 0.4 mm y es hora de conectar todos tus componentes[cite: 9].
 
@@ -311,7 +315,7 @@ Al seleccionar la herramienta de pistas y hacer clic sobre un pad, KiCad ilumina
 | :---: | :---: |
 | ![Proceso de enrutamiento inicial](img/Imagen%2033.png) | ![Conexión completada entre dos pads](img/Imagen%2034.png) |
 
-### Herramientas de Alineación y Buenas Prácticas
+#### Herramientas de Alineación y Buenas Prácticas
 Algunas opciones para acomodar mejor tus componentes es seleccionar dos componentes y dar clic derecho, seleccionar **alinear/distribuir**; puedes ocupar la alineación a la izquierda o las otras alineaciones para ayudarte a acomodar tus componentes[cite: 9].
 
 ![Alinear y distribuir](img/fotos_editor/Imagen7.png)
@@ -324,7 +328,7 @@ Cuando juntes tus componentes, recuerda que **no debe haber ángulos de 90°** e
 
 ---
 
-## 5. Trucos de Ruteo: Puentes (Jumpers)
+### 2.5 Trucos de Ruteo: Puentes (Jumpers)
 
 Al trabajar exclusivamente en una cara (Capa `F.Cu`), es común encontrarnos con cruces inevitables donde una pista bloquea el paso de otra.
 
@@ -339,7 +343,7 @@ Aunque cuando llega a pasar el caso de necesitar poner una línea encima de la o
 
 ---
 
-## 6. Delimitación del Contorno (Edge.Cuts)
+### 2.6 Delimitación del Contorno (Edge.Cuts)
 
 Toda PCB necesita un límite físico definido para que la máquina CNC o el fabricante sepa por dónde cortar la placa terminada. 
 
@@ -371,7 +375,7 @@ Como puedes observar, las líneas de la figura que está alrededor de tu circuit
 
 ---
 
-## 7. Perforaciones Manuales (Capas de Usuario)
+### 2.7 Perforaciones Manuales (Capas de Usuario)
 
 Para la colocación de pines (pin headers) y sujeciones, necesitamos definir perforaciones precisas sin interferir con las capas estándar.
 
@@ -390,7 +394,7 @@ Con la herramienta de círculo dibujamos guías con la propiedad de **Rellenar c
 
 ---
 
-## 8. Creación de Zonas de Cobre (Copper Pour)
+### 2.8 Creación de Zonas de Cobre (Copper Pour)
 
 El último paso del diseño físico consiste en generar una zona de relleno (Copper Pour). Esto delimita el área de cobre que la CNC debe procesar y optimiza el tiempo de fresado al evitar remover material innecesario.
 
@@ -407,7 +411,7 @@ Una vez le des clic en la herramienta te aparecerá una forma parecida a la del 
 
 ---
 
-## 9. Ejecución del Relleno de Cobre
+### 2.9 Ejecución del Relleno de Cobre
 
 Y por último, solo deberás presionar la **tecla B** para que se complete la figura[cite: 9]. Este comando obliga a KiCad a recalcular y renderizar el relleno de cobre, esquivando automáticamente las pistas y los pads según las reglas de aislamiento configuradas previamente.
 
@@ -420,7 +424,7 @@ Y por último, solo deberás presionar la **tecla B** para que se complete la fi
 
 ---
 
-## 10. Verificación de Reglas de Diseño (DRC)
+### 2.10 Verificación de Reglas de Diseño (DRC)
 
 El último filtro de seguridad antes de fabricar es ejecutar el **DRC (Design Rule Checker)**. A diferencia del ERC en el esquemático, el DRC verifica errores físicos.
 
@@ -434,7 +438,7 @@ Los avisos que están en amarillo no afectan al funcionamiento de la placa, es n
 
 ---
 
-## 11. Inspección en el Visor 3D y Orientación
+### 2.11 Inspección en el Visor 3D y Orientación
 
 Antes de exportar los archivos para fabricación, es una excelente práctica revisar el aspecto físico de la placa. Otra de las herramientas es la que está en la parte superior y se llama **visor 3D (Alt+3)**, te ayuda a observar tu placa en formato 3D con sus componentes y todo[cite: 9].
 
@@ -454,7 +458,7 @@ Por la forma de la cortadora de monofab y la placa, es importante que coloques t
 
 ---
 
-## 12. Salidas de Fabricación (Exportación SVG)
+### 2.12 Salidas de Fabricación (Exportación SVG)
 
 Para procesar nuestra placa en la fresadora CNC, necesitamos exportar el diseño. Cuando ya tengas tu placa sin errores y con la dirección correcta, es hora de que te vayas a la ventana de archivo, luego a **salidas de fabricación** y por último a **Gerbers**[cite: 9].
 
@@ -471,7 +475,7 @@ Para finalizar, seleccionarás la opción de **Ajustar página a la placa** y de
 ![Botón Trazar y Ajuste](img/fotos_editor/Imagen25.png)
 *Ejecución de la herramienta de trazado vectorial.*
 
-### Archivos de Salida (Arte de Manufactura)
+#### Archivos de Salida (Arte de Manufactura)
 
 Como resultado, KiCad generará un conjunto de archivos `.svg` independientes. Podrás abrir cada uno de los archivos para comprobar que todo esté bien y ponerles su respectivo nombre[cite: 9].
 
@@ -485,7 +489,7 @@ A continuación, se muestra una previsualización del archivo de pistas principa
 
 ---
 
-# 3. Manufactura CAM y Generación de Trayectorias (Mods CE)
+## 3. Manufactura CAM y Generación de Trayectorias (Mods CE)
 
 !!! abstract "Objetivo de esta fase"
     Una vez validados los diseños y generados los archivos de las capas de nuestra placa en KiCad, es necesario "traducirlos" a un formato de trayectorias espaciales (G-Code/Toolpaths) que la fresadora CNC **Roland Monofab (SRM-20)** pueda interpretar para realizar el corte y desgaste físico del cobre.
@@ -493,7 +497,7 @@ A continuación, se muestra una previsualización del archivo de pistas principa
 
 ---
 
-## 3.1 Exportación Vectorial desde KiCad (Archivos Base)
+### 3.1 Exportación Vectorial desde KiCad (Archivos Base)
 
 El proceso comienza aislando y exportando las capas necesarias desde el editor de KiCad en formato vectorial (`.svg`). 
 
@@ -522,7 +526,7 @@ Los archivos estarán guardados en formato Microsoft Edge documents (o el navega
 
 ---
 
-## 3.2 Acceso y Configuración del Entorno Mods CE
+### 3.2 Acceso y Configuración del Entorno Mods CE
 
 Para configurar nuestro espacio de trabajo CAM, seguimos esta ruta de inicialización:
 
@@ -551,7 +555,7 @@ Al cargar el programa, se desplegará una red de nodos interconectados (diagrama
 
 ---
 
-## 3.3 Configuración de Pistas (Traces)
+### 3.3 Configuración de Pistas (Traces)
 
 Comenzaremos procesando el archivo de las pistas (`Pistas.svg`). En el nodo de entrada `Roland Monofab PCB`, seleccionamos y cargamos nuestro archivo SVG.
 
@@ -572,7 +576,7 @@ A continuación, configuramos los parámetros de la herramienta física:
 | :---: | :---: |
 | ![Selección de fresa de ruteo](img/fotos_mods/Imagen51.jpg) | ![Configuración de herramienta](img/Imagen%2059.png) |
 
-### Ajuste de Pasadas (Offsets)
+#### Ajuste de Pasadas (Offsets)
 En el nodo **mill raster 2D**, definiremos cuánto material queremos remover alrededor de cada pista:
 *   **Offset number:** Lo configuramos en `2`. Esto indica que el taladro realizará dos pasadas concéntricas alrededor de las pistas para asegurar un aislamiento adecuado, ajustado a este valor para evitar problemas técnicos de ruteo.
 *   Una vez configurado, hacemos clic en el botón **Calculate**.
@@ -583,7 +587,7 @@ En el nodo **mill raster 2D**, definiremos cuánto material queremos remover alr
 
 ---
 
-## 3.4 Visualización y Renderizado
+### 3.4 Visualización y Renderizado
 
 Al presionar *Calculate*, Mods CE generará visualmente el trazado de las rutas de corte de la herramienta (toolpath). 
 
@@ -598,7 +602,7 @@ Podemos hacer clic en el botón **View** para obtener un renderizado 3D de cómo
 
 ---
 
-## 3.5 Origen y Velocidad (Nodo SRM-20)
+### 3.5 Origen y Velocidad (Nodo SRM-20)
 
 El paso final antes de exportar el archivo es configurar los parámetros físicos y la cinemática de la máquina en el nodo final **Roland SRM-20 milling machine**:
 
@@ -614,7 +618,7 @@ El paso final antes de exportar el archivo es configurar los parámetros físico
 
 ---
 
-## 3.6 Guardado y Organización de Archivos
+### 3.6 Guardado y Organización de Archivos
 
 Para finalizar con el primer documento, nos dirigimos a este apartado de cálculo, confirmamos que todo esté en orden, nos vamos al final de la página (al último nodo) y le picamos al botón **`save file`**. El navegador descargará automáticamente un archivo con la extensión `.rml` (Roland Machine Language). 
 
@@ -634,7 +638,7 @@ Para finalizar con el primer documento, nos dirigimos a este apartado de cálcul
 
 ---
 
-## 🛠️ Solución de Problemas Frecuentes
+### 🛠️ Solución de Problemas Frecuentes
 
 Durante el procesamiento de las pistas, pueden surgir un par de complicaciones comunes que tienen solución rápida:
 
@@ -645,7 +649,7 @@ Durante el procesamiento de las pistas, pueden surgir un par de complicaciones c
 
 ---
 
-## 3.7 Configuración de Perforaciones (Drills)
+### 3.7 Configuración de Perforaciones (Drills)
 
 Una vez asegurado el archivo de las pistas, repetiremos el proceso para las perforaciones cargando el archivo `Perforaciones.svg`. La lógica de los nodos es idéntica, pero los parámetros de corte cambian.
 
@@ -664,7 +668,7 @@ Una vez asegurado el archivo de las pistas, repetiremos el proceso para las perf
 ![Render Perforaciones](img/Imagen%2071.png)
 *Renderizado 3D de las perforaciones calculadas.*
 
-### Parámetros Críticos y Guardado (Perforaciones)
+#### Parámetros Críticos y Guardado (Perforaciones)
 
 !!! danger "Velocidad de Corte Crítica (Speed)"
     En el nodo final **Roland SRM-20 milling machine**, la velocidad aparte cambia en perforaciones. La punta es sumamente delicada; es **obligatorio reducir la velocidad a `0.3 mm/s`**. Las brocas de perforación de 0.8 mm son extremadamente frágiles; si la máquina intenta taladrar muy rápido o entra al material de forma inestable, la broca se romperá instantáneamente.
@@ -677,7 +681,7 @@ En este mismo nodo, podemos observar el tiempo estimado de trabajo (*Estimated t
 
 ---
 
-## 3.8 Configuración del Corte de Contorno (Cutout / Edge)
+### 3.8 Configuración del Corte de Contorno (Cutout / Edge)
 
 Para realizar el corte perimetral que separará la placa del material base, cargamos el archivo vectorizado del contorno (por ejemplo, `Bordes.svg`).
 
@@ -694,7 +698,7 @@ Para realizar el corte perimetral que separará la placa del material base, carg
 | :---: | :---: |
 | ![Configuración de diámetro y pasadas](img/Imagen%2075.png) | ![Parámetros de cálculo del contorno](img/Imagen%2076.png) |
 
-### Verificación y Exportación del Contorno
+#### Verificación y Exportación del Contorno
 
 1.  **Cálculo de la trayectoria:** En el nodo **mill raster 2D**, hacemos clic en **Calculate** para generar el código de corte.
 2.  **Visualización y Renderizado:** Presionamos **View** para inspeccionar la trayectoria en 2D y verificar la simulación 3D de la placa recortada.
@@ -712,7 +716,7 @@ Para realizar el corte perimetral que separará la placa del material base, carg
 
 ---
 
-## 3.9 Instalación del Software de Control (VPanel para SRM-20)
+### 3.9 Instalación del Software de Control (VPanel para SRM-20)
 
 Una vez generados los tres archivos de trabajo (`.rml`), es necesario instalar el software del fabricante para controlar la fresadora Roland SRM-20 y enviar las instrucciones de mecanizado.
 
@@ -728,4 +732,3 @@ Una vez generados los tres archivos de trabajo (`.rml`), es necesario instalar e
 | Portal de Descargas Oficial | Contrato de Licencia |
 | :---: | :---: |
 | ![Centro de descargas de Roland SRM-20](img/Imagen%2083.png) | ![Aceptación de la licencia de VPanel](img/Imagen%2084.png) |
-

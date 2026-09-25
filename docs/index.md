@@ -81,3 +81,27 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     [Ver recursos ➔](recursos.md)
 
 </div>
+
+---
+
+## Nuestro Equipo: KiCad Squad
+<p style="text-align: center; color: #888; margin-top: -10px;">Proyecto de Electrónica - IBERO Puebla</p>
+
+<!-- Contenedor del equipo ajustado para 4 personas -->
+<div style="display: flex; justify-content: center; gap: 40px; text-align: center; margin-top: 30px; flex-wrap: wrap;">
+  
+  <!-- Carlos -->
+  <div style="width: 200px; margin-bottom: 20px;">
+    <img src="img/carlos.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
+    <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Carlos Alberto Vázquez Peraza</h3>
+    <p style="color: #888; font-size: 0.9em;">Ingeniería de Diseño</p>
+  </div>
+
+  <!-- Luis -->
+  <div style="width: 200px; margin-bottom: 20px;">
+    <img src="img/luis.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
+    <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Luis Ernesto Tamez Velásquez</h3>
+    <p style="color: #888; font-size: 0.9em;">Desarrollo y Documentación</p>
+  </div>
+
+</div>

@@ -48,68 +48,36 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
 
 <div class="grid cards" markdown>
 
--   <img src="img/icono-esquematico.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[1. Esquemático](esquematico.md)**
+-   <img src="img/icono-esquematico.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[1. Esquemático](desarrollo-pcb.md)**
     
     ---
     
     Documentación del diagrama lógico, selección de componentes y cableado.
     
-    [Ver documentación ➔](esquematico.md)
+    [Ver documentación ➔](desarrollo-pcb.md)
 
--   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Editor de Placas (Layout)](editor-placas.md)**
+-   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Editor de Placas (Layout)](desarrollo-pcb.md#2-editor-de-placas-pcb-layout)**
     
     ---
     
-    Proceso de ruteo, distribución de huellas y diseño físico de la PCB.
+    Distribución de huellas, ruteo físico de pistas y zonas de cobre.
     
-    [Ver documentación ➔](editor-placas.md)
+    [Ver documentación ➔](desarrollo-pcb.md#2-editor-de-placas-pcb-layout)
 
--   ⚙️ **[3. Mods CE](mods-ce.md)**
-    
-    ---
-    
-    Modificaciones aplicadas, correcciones y consideraciones técnicas.
-    
-    [Ver documentación ➔](mods-ce.md)
-
--   📚 **[4. Recursos](recursos.md)**
+-   <img src="img/icono-monofab.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[3. Manufactura CAM (Mods CE)](desarrollo-pcb.md#3-manufactura-cam-y-generacion-de-trayectorias-mods-ce)**
     
     ---
     
-    Material de referencia, hojas de datos y guías para el manejo de KiCad.
+    Generación de trayectorias (G-Code/Toolpaths) para la fresadora CNC SRM-20.
     
-    [Ver documentación ➔](recursos.md)
+    [Ver documentación ➔](desarrollo-pcb.md#3-manufactura-cam-y-generacion-de-trayectorias-mods-ce)
 
-</div>
-
----
-
-## Nuestro Equipo: KiCad Squad
-<p style="text-align: center; color: #888; margin-top: -10px;">Proyecto de Electrónica - IBERO Puebla</p>
-
-<!-- Contenedor del equipo ajustado para 2 personas con descripciones -->
-<div style="display: flex; justify-content: center; gap: 40px; text-align: center; margin-top: 30px; flex-wrap: wrap;">
-  
-  <!-- Carlos -->
-  <div style="width: 300px; margin-bottom: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px;">
-    <img src="img/carlos.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
-    <h3 style="margin-bottom: 5px; margin-top: 15px; font-size: 1.2em;">Carlos Alberto Vázquez Peraza</h3>
-    <p style="color: #e53935; font-weight: bold; margin: 0; font-size: 0.95em;">Ingeniero Mecatrónico</p>
-    <p style="color: #888; font-size: 0.85em; margin-top: 2px; margin-bottom: 15px;">18 años | Xalapa, Veracruz</p>
-    <blockquote style="font-size: 0.9em; color: #bbb; border-left: 3px solid #e53935; text-align: left; padding-left: 15px; margin: 0; font-style: italic;">
-      "Me metí a ingeniería mecatrónica porque siempre me ha gustado todo lo relacionado con la electrónica."
-    </blockquote>
-  </div>
-
-  <!-- Luis -->
-  <div style="width: 300px; margin-bottom: 20px; background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px;">
-    <img src="img/luis.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
-    <h3 style="margin-bottom: 5px; margin-top: 15px; font-size: 1.2em;">Luis Ernesto Tamez Velásquez</h3>
-    <p style="color: #e53935; font-weight: bold; margin: 0; font-size: 0.95em;">Ingeniero Mecatrónico</p>
-    <p style="color: #888; font-size: 0.85em; margin-top: 2px; margin-bottom: 15px;">19 años | Tampico, Tamaulipas</p>
-    <blockquote style="font-size: 0.9em; color: #bbb; border-left: 3px solid #e53935; text-align: left; padding-left: 15px; margin: 0; font-style: italic;">
-      "Vine a esta carrera por una razón muy clara: seré el próximo Tony Stark."
-    </blockquote>
-  </div>
+-   :material-book-open-variant: **[4. Recursos y Referencias](recursos.md)**
+    
+    ---
+    
+    Material de referencia, repositorios y guías útiles para el proyecto.
+    
+    [Ver recursos ➔](recursos.md)
 
 </div>

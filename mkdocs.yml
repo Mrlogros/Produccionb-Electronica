@@ -5,12 +5,9 @@ site_author: Tu Nombre
 repo_url: https://github.com/Mrlogros/Produccionb-Electronica
 repo_name: Mrlogros/Produccionb-Electronica
 
-# Menú agrupado
 nav:
   - Inicio: index.md
-  - Desarrollo de PCB:
-    - 1. Diseño en KiCad (Esquemático y PCB): diseno-kicad.md
-    - 2. Manufactura (Mods CE): mods-ce.md
+  - Desarrollo Completo de PCB: diseno-kicad.md
   - Referencias: recursos.md
 
 

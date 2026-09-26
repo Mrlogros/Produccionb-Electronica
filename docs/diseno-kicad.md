@@ -541,12 +541,6 @@ Para configurar nuestro espacio de trabajo CAM, seguimos esta ruta de inicializa
 ![Selección de programa CAM](img/fotos_mods/Imagen47.jpg)
 *Figura 3.5: Selección del algoritmo de ruteo 2D para la máquina Roland SRM-20.*
 
-<div style="display: flex; gap: 10px; justify-content: center; margin-top: 15px;" markdown="1">
-![Paso 55](img/Imagen%2055.png){ width="30%" }
-![Paso 56](img/Imagen%2056.png){ width="30%" }
-![Paso 57](img/Imagen%2057.png){ width="30%" }
-</div>
-
 Al cargar el programa, se desplegará una red de nodos interconectados (diagrama de flujo de datos) que procesarán nuestro archivo desde el SVG hasta el archivo de corte de la máquina. El paso siguiente es venir al primer apartado (nodo raíz) para seleccionar el archivo.
 
 | Nodo Raíz de Inserción | Entorno Completo de Nodos |

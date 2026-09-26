@@ -776,9 +776,9 @@ La precisión del ruteo depende enteramente de la inmovilidad de la pieza. Posic
 
 Como medida de seguridad adicional y para absorber vibraciones, aplicamos cinta de carrocero (Masking Tape) en todo el perímetro, garantizando que los bordes no se levanten por ninguna parte. Finalmente, fijamos todo el bloque a la cama de la máquina utilizando los 4 pernos hexagonales, aplicando un torque firme.
 
-| Adhesión de la Placa | Refuerzo Perimetral | Sujeción Mecánica |
-| :---: | :---: | :---: |
-| ![Placa sobre base](img/fotos_monofab/Imagen8.jpg){ width="220" } | ![Cinta de seguridad](img/fotos_monofab/Imagen9.jpg){ width="220" } | ![Tornillos de sujeción](img/fotos_monofab/Imagen10.jpg){ width="220" } |
+| Refuerzo Perimetral | Sujeción Mecánica |
+| :---: | :---: |
+| ![Cinta de seguridad](img/fotos_monofab/Imagen9.jpg){ width="220" } | ![Tornillos de sujeción](img/fotos_monofab/Imagen10.jpg){ width="220" } |
 
 ![Vista interior SRM-20](img/fotos_monofab/Imagen11.jpg){ width="500" }
 *Figura 4.3: Vista del ensamble físico asegurado dentro de la fresadora SRM-20.*

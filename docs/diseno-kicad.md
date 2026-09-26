@@ -741,14 +741,14 @@ El lienzo de nuestro proyecto es una placa de revestimiento de cobre (Copper Cla
 
 | Superficie de Cobre | Material Base (Fenólico/FR4) |
 | :---: | :---: |
-| <img src="img/fotos_monofab/Imagen1.jpg" width="300" style="border-radius: 8px;"> | <img src="img/fotos_monofab/Imagen2.png" width="300" style="border-radius: 8px;"> |
+| ![Placa de cobre base](img/fotos_monofab/Imagen1.jpg){ width="300" } | ![Variantes de placa base](img/fotos_monofab/Imagen2.png){ width="300" } |
 
 !!! danger "Equipo de Protección Personal (EPP)"
     El mecanizado de estas placas libera micropartículas de fibra de vidrio y resinas sintéticas. Es **estrictamente obligatorio** el uso de cubrebocas y lentes de seguridad (gafas) durante toda la manipulación, ya que la inhalación de este polvo residual es altamente perjudicial para la salud respiratoria.
 
 Para proteger la base metálica de la máquina durante cortes profundos (contornos), emplearemos una **placa de sacrificio**. La placa de cobre virgen se fijará directamente sobre ella, asegurando que esté perfectamente alineada.
 
-<img src="img/fotos_monofab/Imagen3.jpg" width="400" style="border-radius: 8px;">
+![Placa de sacrificio](img/fotos_monofab/Imagen3.jpg){ width="400" }
 *Figura 4.1: Placa de sacrificio empleada para evitar daños en la cama de la CNC.*
 
 ---
@@ -757,7 +757,7 @@ Para proteger la base metálica de la máquina durante cortes profundos (contorn
 
 El proceso de maquinado consta de tres etapas lógicas, cada una requiere una herramienta con geometría específica:
 
-<img src="img/fotos_monofab/Imagen4.jpg" width="400" style="border-radius: 8px;">
+![Set de herramientas de corte](img/fotos_monofab/Imagen4.jpg){ width="400" }
 *Figura 4.2: Juego de herramientas utilizadas en el proceso CAM.*
 
 1. **Broca de 0.8 mm (Perforaciones):** Herramienta destinada exclusivamente a taladrar los agujeros pasantes para componentes THT. Dada su extrema fragilidad, es crítico configurar su velocidad de avance a máximo `0.3 mm/s`. Los movimientos manuales con esta broca deben ser sumamente suaves.
@@ -766,7 +766,7 @@ El proceso de maquinado consta de tres etapas lógicas, cada una requiere una he
 
 | Broca 0.8mm (Drill) | Fresa en V (Engraving) | Fresa Contorno (Cutout) |
 | :---: | :---: | :---: |
-| <img src="img/fotos_monofab/Imagen5.jpg" width="200" style="border-radius: 8px;"> | <img src="img/fotos_monofab/Imagen6.jpg" width="200" style="border-radius: 8px;"> | <img src="img/fotos_monofab/Imagen7.jpg" width="200" style="border-radius: 8px;"> |
+| ![Broca 0.8](img/fotos_monofab/Imagen5.jpg){ width="200" } | ![Fresa en V](img/fotos_monofab/Imagen6.jpg){ width="200" } | ![Fresa de contorno](img/fotos_monofab/Imagen7.jpg){ width="200" } |
 
 ---
 
@@ -778,9 +778,9 @@ Como medida de seguridad adicional y para absorber vibraciones, aplicamos cinta 
 
 | Adhesión de la Placa | Refuerzo Perimetral | Sujeción Mecánica |
 | :---: | :---: | :---: |
-| <img src="img/fotos_monofab/Imagen8.jpg" width="220" style="border-radius: 8px;"> | <img src="img/fotos_monofab/Imagen9.jpg" width="220" style="border-radius: 8px;"> | <img src="img/fotos_monofab/Imagen10.jpg" width="220" style="border-radius: 8px;"> |
+| ![Placa sobre base](img/fotos_monofab/Imagen8.jpg){ width="220" } | ![Cinta de seguridad](img/fotos_monofab/Imagen9.jpg){ width="220" } | ![Tornillos de sujeción](img/fotos_monofab/Imagen10.jpg){ width="220" } |
 
-<img src="img/fotos_monofab/Imagen11.jpg" width="500" style="border-radius: 8px;">
+![Vista interior SRM-20](img/fotos_monofab/Imagen11.jpg){ width="500" }
 *Figura 4.3: Vista del ensamble físico asegurado dentro de la fresadora SRM-20.*
 
 ---
@@ -789,7 +789,7 @@ Como medida de seguridad adicional y para absorber vibraciones, aplicamos cinta 
 
 El control cinemático de la fresadora se realiza mediante el software VPanel. Para que la interfaz establezca comunicación, el controlador (Driver) del equipo debe estar previamente instalado. 
 
-<img src="img/fotos_monofab/Imagen12.png" width="600" style="border-radius: 8px;">
+![Interfaz Principal VPanel](img/fotos_monofab/Imagen12.png){ width="600" }
 *Figura 4.4: Pantalla principal del software de operación VPanel.*
 
 #### Navegación y Calibración Espacial
@@ -797,7 +797,7 @@ La interfaz se divide en controles críticos (resaltados por colores para su an�
 *   **Controles de Ejes (Azul y Rojo):** El recuadro azul controla los ejes cartesianos horizontales X/Y. El recuadro rojo controla el eje Z, ajustando la altura de la herramienta. 
 *   **Resolución de Pasos (Verde):** Permite modular la agresividad del desplazamiento (`Continue`, `x100`, `x10`, `x1`). 
 
-<img src="img/fotos_monofab/Imagen13.png" width="600" style="border-radius: 8px;">
+![Controles de Movimiento](img/fotos_monofab/Imagen13.png){ width="600" }
 *Figura 4.5: Mapeo de controles direccionales y escalas de resolución de pasos.*
 
 #### Definición del Origen (Zeroing)
@@ -809,9 +809,9 @@ Una vez que el husillo se ha llevado al punto deseado en la placa, las coordenad
 
 | Panel de Origen y Husillo | Confirmación XY | Confirmación Z |
 | :---: | :---: | :---: |
-| <img src="img/fotos_monofab/Imagen14.png" width="220" style="border-radius: 8px;"> | <img src="img/fotos_monofab/Imagen15.jpg" width="220" style="border-radius: 8px;"> | <img src="img/fotos_monofab/Imagen16.png" width="220" style="border-radius: 8px;"> |
+| ![Panel de Origen](img/fotos_monofab/Imagen14.png){ width="220" } | ![Confirmación XY](img/fotos_monofab/Imagen15.jpg){ width="220" } | ![Confirmación Z](img/fotos_monofab/Imagen16.png){ width="220" } |
 
-<img src="img/fotos_monofab/Imagen17.jpg" width="400" style="border-radius: 8px;">
+![Máquina en Origen](img/fotos_monofab/Imagen17.jpg){ width="400" }
 *Figura 4.6: Perspectiva de la fresa posicionada y calibrada en su origen Cero absoluto.*
 
 ---
@@ -822,7 +822,7 @@ Con el origen definido, inicializamos la lectura del código G presionando el bo
 
 | Botones de Control de Corte | Gestor de Archivos (Output) |
 | :---: | :---: |
-| <img src="img/fotos_monofab/Imagen18.png" width="300" style="border-radius: 8px;"> | <img src="img/fotos_monofab/Imagen19.png" width="300" style="border-radius: 8px;"> |
+| ![Botón Cut](img/fotos_monofab/Imagen18.png){ width="300" } | ![Ventana de envío de código G](img/fotos_monofab/Imagen19.png){ width="300" } |
 
 !!! danger "Protocolo de Aborto de Emergencia"
     Si durante el proceso se detecta una falla crítica, **NO se debe oprimir "Cancel" directamente**. 
@@ -866,5 +866,5 @@ Con el origen definido, inicializamos la lectura del código G presionando el bo
 
 Aplicando rigurosamente estas pautas, el fresado concluirá de manera óptima, arrojando una placa de circuito impreso lista para el ensamble.
 
-<img src="img/fotos_monofab/Imagen20.jpg" width="400" style="border-radius: 8px;">
+![Placa Milled Result](img/fotos_monofab/Imagen20.jpg){ width="400" }
 *Figura 4.7: Placa de circuito impreso (PCB) finalizada tras completar las operaciones de desgaste, perforación y corte de contorno.*

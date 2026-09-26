@@ -832,29 +832,23 @@ Con el origen definido, inicializamos la lectura del código G presionando el bo
 
 ## 4.6 Registros en Video del Maquinado
 
-<div class="grid cards" markdown>
+A continuación, se documenta el comportamiento visual y sonoro del equipo operando de manera estable en cada una de sus fases. Estos registros sirven como referencia paramétrica del correcto funcionamiento.
 
--   **🎬 1. Proceso de Calibración**
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 10px;">
-      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/IyW2ds94XEg" frameborder="0" allowfullscreen></iframe>
-    </div>
+### 🎬 1. Proceso de Calibración
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/IyW2ds94XEg" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
+*Comportamiento del equipo durante la fijación de origen.*
 
--   **🎬 2. Corte de Perforaciones (Drills)**
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 10px;">
-      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/UbnT4TOCsE4" frameborder="0" allowfullscreen></iframe>
-    </div>
+### 🎬 2. Corte de Perforaciones (Drills)
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/UbnT4TOCsE4" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
+*Taladrado lento y preciso para pads THT.*
 
--   **🎬 3. Fresado de Pistas (Traces)**
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 10px;">
-      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/9RfUi29YqvA" frameborder="0" allowfullscreen></iframe>
-    </div>
+### 🎬 3. Fresado de Pistas (Traces)
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/9RfUi29YqvA" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
+*Desgaste de cobre para aislamiento eléctrico.*
 
--   **🎬 4. Corte de Contorno (Cutout)**
-    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 10px;">
-      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/hr0GlR7TEDo" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-</div>
+### 🎬 4. Corte de Contorno (Cutout)
+<iframe width="100%" height="450" src="https://www.youtube.com/embed/hr0GlR7TEDo" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
+*Corte perimetral profundo para desprendimiento.*
 
 ---
 

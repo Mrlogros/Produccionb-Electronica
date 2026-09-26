@@ -243,8 +243,3 @@ h1 {
     display: block;
     margin: 0 auto 15px auto; 
 }
-
-/* Expandir el ancho del contenido de la página para que no se vea comprimido */
-.md-grid {
-    max-width: 90%; 
-}

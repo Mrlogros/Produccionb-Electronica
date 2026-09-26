@@ -725,3 +725,158 @@ Una vez generados los tres archivos de trabajo (`.rml`), es necesario instalar e
 | Portal de Descargas Oficial | Contrato de Licencia |
 | :---: | :---: |
 | ![Centro de descargas de Roland SRM-20](img/Imagen%2083.png) | ![Aceptación de la licencia de VPanel](img/Imagen%2084.png) |
+
+---
+
+# 4. Operación de la Fresadora Monofab (SRM-20)
+
+La culminación de nuestro diseño se materializa en el mecanizado de la placa. En esta sección documentamos los procedimientos operativos estándar, la calibración de herramientas y las normativas de seguridad para operar la fresadora CNC Roland Monofab SRM-20.
+
+---
+
+## 4.1 Preparación del Material Base y Seguridad
+
+El lienzo de nuestro proyecto es una placa de revestimiento de cobre (Copper Clad)[cite: 14]. En la industria existen principalmente dos variantes según su material base: las compuestas por papel impregnado (fenólicas) y las de fibra de vidrio (FR4)[cite: 14]. 
+
+| Superficie de Cobre | Material Base (Fenólico/FR4) |
+| :---: | :---: |
+| ![Placa de cobre base](img/fotos_monofab/Imagen1.jpg) | ![Variantes de placa base](img/fotos_monofab/Imagen2.png) |
+
+!!! danger "Equipo de Protección Personal (EPP)"
+    El mecanizado de estas placas libera micropartículas de fibra de vidrio y resinas sintéticas[cite: 14]. Es **estrictamente obligatorio** el uso de cubrebocas y lentes de seguridad (gafas) durante toda la manipulación, ya que la inhalación de este polvo residual es altamente perjudicial para la salud respiratoria[cite: 14].
+
+Para proteger la base metálica de la máquina durante cortes profundos (contornos), emplearemos una **placa de sacrificio**[cite: 14]. La placa de cobre virgen se fijará directamente sobre ella, asegurando que esté perfectamente alineada[cite: 14].
+
+![Placa de sacrificio](img/fotos_monofab/Imagen3.jpg)
+*Figura 4.1: Placa de sacrificio empleada para evitar daños en la cama de la CNC.*
+
+---
+
+## 4.2 Selección de Herramientas de Corte (Fresas y Brocas)
+
+El proceso de maquinado consta de tres etapas lógicas, cada una requiere una herramienta con geometría específica[cite: 14]:
+
+![Set de herramientas de corte](img/fotos_monofab/Imagen4.jpg)
+*Figura 4.2: Juego de herramientas utilizadas en el proceso CAM.*
+
+1. **Broca de 0.8 mm (Perforaciones):** Herramienta destinada exclusivamente a taladrar los agujeros pasantes para componentes THT[cite: 14]. Dada su extrema fragilidad, es crítico configurar su velocidad de avance a máximo `0.3 mm/s`[cite: 14]. Los movimientos manuales con esta broca deben ser sumamente suaves; cualquier desliz brusco provocará su ruptura inmediata[cite: 14]. *(Se recomienda tener repuestos; existen paquetes económicos en plataformas como Mercado Libre)*[cite: 14].
+2. **Fresa de Grabado en V (Pistas):** Herramienta principal de desgaste que aísla las pistas eléctricas[cite: 14]. Es vital inspeccionar visualmente que la punta no esté achatada o desgastada antes de iniciar[cite: 14]. Una calibración deficiente o una punta roma generará pistas excesivamente delgadas, lo que puede provocar que el cobre se fracture o que la pista no soporte el amperaje nominal del circuito[cite: 14].
+3. **Fresa de Contorno (End Mill):** Herramienta cilíndrica robusta que se utilizará en la etapa final para cortar el perímetro y desprender nuestra PCB de la placa matriz[cite: 14].
+
+| Broca 0.8mm (Drill) | Fresa en V (Engraving) | Fresa Contorno (Cutout) |
+| :---: | :---: | :---: |
+| ![Broca 0.8](img/fotos_monofab/Imagen5.jpg) | ![Fresa en V](img/fotos_monofab/Imagen6.jpg) | ![Fresa de contorno](img/fotos_monofab/Imagen7.jpg) |
+
+---
+
+## 4.3 Montaje y Fijación de la Placa
+
+La precisión del ruteo depende enteramente de la inmovilidad de la pieza. Posicionamos la placa de cobre sobre la de sacrificio asegurando su adherencia[cite: 14]. 
+
+Como medida de seguridad adicional y para absorber vibraciones, aplicamos cinta de carrocero (Masking Tape) en todo el perímetro, garantizando que los bordes no se levanten por ninguna parte[cite: 14]. Finalmente, fijamos todo el bloque a la cama de la máquina utilizando los 4 pernos hexagonales, aplicando un torque firme y verificando que la base no sufra pandeo (curvaturas) tras el apriete[cite: 14].
+
+| Adhesión de la Placa | Refuerzo Perimetral | Sujeción Mecánica |
+| :---: | :---: | :---: |
+| ![Placa sobre base](img/fotos_monofab/Imagen8.jpg) | ![Cinta de seguridad](img/fotos_monofab/Imagen9.jpg) | ![Tornillos de sujeción](img/fotos_monofab/Imagen10.jpg) |
+
+![Vista interior SRM-20](img/fotos_monofab/Imagen11.jpg)
+*Figura 4.3: Vista del ensamble físico asegurado dentro de la fresadora SRM-20.*
+
+---
+
+## 4.4 Interfaz de Control: VPanel for SRM-20
+
+El control cinemático de la fresadora se realiza mediante el software VPanel[cite: 14]. Para que la interfaz establezca comunicación, el controlador (Driver) del equipo debe estar previamente instalado[cite: 14]. Además, por protocolos de seguridad integrados, la máquina bloqueará cualquier movimiento en los ejes si la cubierta frontal de acrílico permanece abierta[cite: 14].
+
+![Interfaz Principal VPanel](img/fotos_monofab/Imagen12.png)
+*Figura 4.4: Pantalla principal del software de operación VPanel.*
+
+### Navegación y Calibración Espacial
+La interfaz se divide en controles críticos (resaltados por colores para su análisis)[cite: 14]:
+*   **Controles de Ejes (Azul y Rojo):** El recuadro azul controla los ejes cartesianos horizontales X/Y (izquierda/derecha, adelante/atrás)[cite: 14]. El recuadro rojo controla el eje Z, ajustando la altura de la herramienta respecto al material[cite: 14]. Es obligatorio recalibrar el eje Z cada vez que se realice un cambio de herramienta[cite: 14].
+*   **Resolución de Pasos (Verde):** Permite modular la agresividad del desplazamiento[cite: 14]. `Continue` mueve el cabezal de forma constante; `x100` avanza 1 mm; `x10` avanza 0.10 mm; y `x1` avanza 0.01 mm[cite: 14]. Conforme la herramienta se aproxima a la placa inferior, es imperativo reducir la escala a `x10` o `x1` para un acercamiento suave[cite: 14].
+
+![Controles de Movimiento](img/fotos_monofab/Imagen13.png)
+*Figura 4.5: Mapeo de controles direccionales y escalas de resolución de pasos.*
+
+### Definición del Origen (Zeroing)
+Una vez que el husillo se ha llevado al punto deseado en la placa, las coordenadas actuales se mostrarán en el recuadro naranja[cite: 14]. Para indicar que este punto físico corresponde al `(0,0,0)` de nuestros archivos de Mods CE, utilizamos los botones del recuadro verde claro (`Set Origin Point`)[cite: 14].
+
+!!! warning "Procedimiento Crítico para Brocas de 0.8 mm"
+    Al calibrar el eje Z para perforaciones, **el husillo (Spindle) debe estar encendido** (recuadro cian)[cite: 14]. Si se intenta bajar la broca de 0.8 mm tocando el cobre con el motor apagado, la tensión física fracturará la herramienta inmediatamente[cite: 14]. 
+    **El flujo correcto es:** Encender husillo ➔ Bajar hasta tocar el material ➔ Fijar Origen Z ➔ Subir eje Z ➔ Apagar husillo[cite: 14]. Nunca apagar el motor mientras la broca esté en contacto con el cobre[cite: 14].
+
+| Panel de Origen y Husillo | Confirmación XY | Confirmación Z |
+| :---: | :---: | :---: |
+| ![Panel de Origen](img/fotos_monofab/Imagen14.png) | ![Confirmación XY](img/fotos_monofab/Imagen15.jpg) | ![Confirmación Z](img/fotos_monofab/Imagen16.png) |
+
+![Máquina en Origen](img/fotos_monofab/Imagen17.jpg)
+*Figura 4.6: Perspectiva de la fresa posicionada y calibrada en su origen Cero absoluto.*
+
+---
+
+## 4.5 Ejecución del Corte y Gestión de Archivos
+
+Con el origen definido, inicializamos la lectura del código G presionando el botón `Cut` (Círculo Verde)[cite: 14]. En la ventana emergente, agregamos nuestros archivos `.rml` generados en la etapa anterior[cite: 14]. 
+
+*Nota de multipanelización:* Si se maquinarán múltiples placas de forma consecutiva, se debe garantizar un margen físico de separación de 2 mm entre ellas para permitir el paso de la fresa de corte de borde, pudiendo gestionarse mediante la casilla `Pause at Each File`[cite: 14].
+
+| Botones de Control de Corte | Gestor de Archivos (Output) |
+| :---: | :---: |
+| ![Botón Cut](img/fotos_monofab/Imagen18.png) | ![Ventana de envío de código G](img/fotos_monofab/Imagen19.png) |
+
+!!! danger "Protocolo de Aborto de Emergencia"
+    Si durante el proceso se detecta una falla crítica (sonido anómalo, vibración, corte demasiado profundo), **NO se debe oprimir "Cancel" directamente**[cite: 14]. 
+    El protocolo correcto es: Primero oprimir **Pause (Amarillo)** para detener suavemente la inercia, y posteriormente **Cancel (Naranja)**[cite: 14]. Cancelar de golpe detiene los motores en seco mientras la herramienta sigue inyectada en el material, lo que provocará la rotura o el achatamiento inmediato de la fresa[cite: 14].
+
+---
+
+## 4.6 Registros en Video del Maquinado
+
+A continuación, se documenta el comportamiento visual y sonoro del equipo operando de manera estable en cada una de sus fases. Estos registros sirven como referencia paramétrica del correcto funcionamiento.
+
+<div class="grid cards" markdown>
+
+-   **🎬 1. Proceso de Calibración**
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 10px;">
+      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/IyW2ds94XEg" frameborder="0" allowfullscreen></iframe>
+    </div>
+    *Comportamiento del equipo durante la fijación de origen[cite: 14].*
+
+-   **🎬 2. Corte de Perforaciones (Drills)**
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 10px;">
+      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/UbnT4TOCsE4" frameborder="0" allowfullscreen></iframe>
+    </div>
+    *Taladrado lento y preciso para pads THT[cite: 14].*
+
+-   **🎬 3. Fresado de Pistas (Traces)**
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 10px;">
+      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/9RfUi29YqvA" frameborder="0" allowfullscreen></iframe>
+    </div>
+    *Desgaste de cobre para aislamiento eléctrico[cite: 14].*
+
+-   **🎬 4. Corte de Contorno (Cutout)**
+    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 10px;">
+      <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/hr0GlR7TEDo" frameborder="0" allowfullscreen></iframe>
+    </div>
+    *Corte perimetral profundo para desprendimiento[cite: 14].*
+
+</div>
+
+---
+
+## 4.7 Tips y Recomendaciones Técnicas de Manufactura
+
+Basado en la experiencia de múltiples fabricaciones exitosas, se establecen las siguientes directrices empíricas para asegurar la máxima calidad de la placa[cite: 14]:
+
+!!! tip "Recomendaciones Operativas Comprobadas"
+    *   **Calibración Dinámica de Pistas:** El método de la hoja de papel suele fallar porque asume que el material base es perfectamente plano, lo cual rara vez ocurre[cite: 14]. La técnica superior consiste en: Posicionar la herramienta levemente arriba, encender el maquinado y observar. Si la herramienta baja pero no genera residuos (solo "dibuja" sobre el cobre), usar la interfaz para bajar en incrementos finos (Baby-stepping) hasta que comience a desprender material[cite: 14]. 
+    *   **Inspección Temprana:** Los códigos G suelen programarse para recorrer el contorno exterior primero. Si observas que el aislamiento en ese primer marco se traza exitosamente en los cuatro lados de la placa sin que la fresa pierda contacto, es casi seguro que el resto del ruteo será perfecto[cite: 14].
+    *   **Perforaciones Delicadas:** Al calibrar la altura de las perforaciones, basta con bajar el eje Z hasta que comience a generar un mínimo de polvillo de cobre[cite: 14]. No forzar mayor profundidad manual, o la broca colapsará[cite: 14].
+    *   **Diagnóstico Sonoro y Visual:** Si la máquina emite mucho ruido, vibra excesivamente o expulsa una cantidad exagerada de viruta gruesa que opaca las pistas, significa que la profundidad Z es excesiva[cite: 14]. El resultado inminente serán pistas adelgazadas al grosor de un cabello[cite: 14].
+    *   **Profundidad del Contorno:** Evitar calibrar el corte de contorno más profundo de lo estrictamente necesario[cite: 14]. Una inmersión exagerada dispara alertas de sobrecarga en el husillo, deteniendo la operación, o puede levantar la pieza causando una desviación catastrófica del trazo[cite: 14].
+
+Aplicando rigurosamente estas pautas, el fresado concluirá de manera óptima, arrojando una placa de circuito impreso lista para el ensamble de componentes.
+
+![Placa Milled Result](img/fotos_monofab/Imagen20.jpg)
+*Figura 4.7: Placa de circuito impreso (PCB) finalizada tras completar las operaciones de desgaste, perforación y corte de contorno[cite: 14].*

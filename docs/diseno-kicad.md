@@ -553,12 +553,12 @@ Al cargar el programa, se desplegará una red de nodos interconectados (diagrama
 
 Comenzaremos procesando el archivo de las pistas (`Pistas.svg`). En el nodo de entrada `Roland Monofab PCB`, seleccionamos y cargamos nuestro archivo SVG.
 
-![Archivo SVG cargado](img/fotos_mods/Imagen49.jpg)
+![Archivo SVG cargado](img/fotos_mods/Imagen49.png)
 *Figura 3.6: Geometría de las pistas importada exitosamente al entorno CAM.*
 
 Ahora damos clic en el botón **`invert`**. Esto es un paso técnico crítico: le indica a la máquina que el objetivo es realizar un fresado de aislamiento (remover el cobre *alrededor* de los vectores) y no taladrar sobre las líneas de la pista, lo cual destruiría nuestro circuito.
 
-![Inversión de vectores](img/fotos_mods/Imagen50.jpg)
+![Inversión de vectores](img/fotos_mods/Imagen50.png)
 *Figura 3.7: Proceso de inversión lógica para ruteo de aislamiento.*
 
 A continuación, configuramos los parámetros de la herramienta física:

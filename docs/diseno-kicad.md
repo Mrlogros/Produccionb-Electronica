@@ -842,7 +842,7 @@ A continuación, se documenta el comportamiento visual y sonoro del equipo opera
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/UbnT4TOCsE4" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
 *Taladrado lento y preciso para pads THT.*
 
-#### 🎬 3. Fresado de Pistas (Traces)
+### 🎬 3. Fresado de Pistas (Traces)
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/9RfUi29YqvA" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
 *Desgaste de cobre para aislamiento eléctrico.*
 

@@ -656,7 +656,7 @@ Una vez asegurado el archivo de las pistas, repetiremos el proceso para las perf
 
 | Ajuste de Offsets | Cálculo de Rutas |
 | :---: | :---: |
-| ![Paso 69](img/Imagen%2069.png) | ![Paso 70](img/Imagen%2070.png) |
+| ![Paso 69](img/Imagen%2072.png) | ![Paso 70](img/Imagen%2070.png) |
 
 ![Render Perforaciones](img/Imagen%2071.png)
 *Renderizado 3D de las perforaciones calculadas.*
@@ -670,7 +670,7 @@ En este mismo nodo, podemos observar el tiempo estimado de trabajo (*Estimated t
 
 | Ajuste a 0.3 mm/s | Guardado de Perforaciones |
 | :---: | :---: |
-| ![Paso 72](img/Imagen%2072.png) | ![Paso 73](img/Imagen%2073.png) |
+| ![Paso 72](img/Imagen%2069.png) | ![Paso 73](img/Imagen%2073.png) |
 
 ---
 

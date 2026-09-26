@@ -575,9 +575,9 @@ En el nodo **mill raster 2D**, definiremos cuánto material queremos remover alr
 *   **Offset number:** Lo configuramos en `2`. Esto indica que el taladro realizará dos pasadas concéntricas alrededor de las pistas para asegurar un aislamiento adecuado, ajustado a este valor para evitar problemas técnicos de ruteo.
 *   Una vez configurado, hacemos clic en el botón **Calculate**.
 
-| Nodo General | Cálculo de Trayectorias |
-| :---: | :---: |
-| ![Configuración general](img/fotos_mods/Imagen52.jpg) | ![Cálculo de trayectorias](img/Imagen%2060.png) |
+| Cálculo de Trayectorias |
+| :---: |
+| ![Cálculo de trayectorias](img/Imagen%2060.png) |
 
 ---
 

@@ -729,13 +729,13 @@ Una vez generados los tres archivos de trabajo (`.rml`), es necesario instalar e
 
 ---
 
-# 4. Operación de la Fresadora Monofab (SRM-20)
+## 4. Operación de la Fresadora Monofab (SRM-20)
 
 La culminación de nuestro diseño se materializa en el mecanizado de la placa. En esta sección documentamos los procedimientos operativos estándar, la calibración de herramientas y las normativas de seguridad para operar la fresadora CNC Roland Monofab SRM-20.
 
 ---
 
-## 4.1 Preparación del Material Base y Seguridad
+### 4.1 Preparación del Material Base y Seguridad
 
 El lienzo de nuestro proyecto es una placa de revestimiento de cobre (Copper Clad). En la industria existen principalmente dos variantes según su material base: las compuestas por papel impregnado (fenólicas) y las de fibra de vidrio (FR4). 
 
@@ -753,7 +753,7 @@ Para proteger la base metálica de la máquina durante cortes profundos (contorn
 
 ---
 
-## 4.2 Selección de Herramientas de Corte (Fresas y Brocas)
+### 4.2 Selección de Herramientas de Corte (Fresas y Brocas)
 
 El proceso de maquinado consta de tres etapas lógicas, cada una requiere una herramienta con geometría específica:
 
@@ -770,7 +770,7 @@ El proceso de maquinado consta de tres etapas lógicas, cada una requiere una he
 
 ---
 
-## 4.3 Montaje y Fijación de la Placa
+### 4.3 Montaje y Fijación de la Placa
 
 La precisión del ruteo depende enteramente de la inmovilidad de la pieza. Posicionamos la placa de cobre sobre la de sacrificio asegurando su adherencia. 
 
@@ -785,7 +785,7 @@ Como medida de seguridad adicional y para absorber vibraciones, aplicamos cinta 
 
 ---
 
-## 4.4 Interfaz de Control: VPanel for SRM-20
+### 4.4 Interfaz de Control: VPanel for SRM-20
 
 El control cinemático de la fresadora se realiza mediante el software VPanel. Para que la interfaz establezca comunicación, el controlador (Driver) del equipo debe estar previamente instalado. 
 
@@ -816,7 +816,7 @@ Una vez que el husillo se ha llevado al punto deseado en la placa, las coordenad
 
 ---
 
-## 4.5 Ejecución del Corte y Gestión de Archivos
+### 4.5 Ejecución del Corte y Gestión de Archivos
 
 Con el origen definido, inicializamos la lectura del código G presionando el botón `Cut` (Círculo Verde). En la ventana emergente, agregamos nuestros archivos `.rml` generados en la etapa anterior. 
 
@@ -830,7 +830,7 @@ Con el origen definido, inicializamos la lectura del código G presionando el bo
 
 ---
 
-## 4.6 Registros en Video del Maquinado
+### 4.6 Registros en Video del Maquinado
 
 A continuación, se documenta el comportamiento visual y sonoro del equipo operando de manera estable en cada una de sus fases. Estos registros sirven como referencia paramétrica del correcto funcionamiento.
 
@@ -842,7 +842,7 @@ A continuación, se documenta el comportamiento visual y sonoro del equipo opera
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/UbnT4TOCsE4" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
 *Taladrado lento y preciso para pads THT.*
 
-### 🎬 3. Fresado de Pistas (Traces)
+#### 🎬 3. Fresado de Pistas (Traces)
 <iframe width="100%" height="450" src="https://www.youtube.com/embed/9RfUi29YqvA" frameborder="0" allowfullscreen style="border-radius: 8px;"></iframe>
 *Desgaste de cobre para aislamiento eléctrico.*
 
@@ -852,7 +852,7 @@ A continuación, se documenta el comportamiento visual y sonoro del equipo opera
 
 ---
 
-## 4.7 Tips y Recomendaciones Técnicas de Manufactura
+### 4.7 Tips y Recomendaciones Técnicas de Manufactura
 
 !!! tip "Recomendaciones Operativas Comprobadas"
     *   **Calibración Dinámica de Pistas:** El método de la hoja de papel suele fallar porque asume que el material base es perfectamente plano. La técnica superior consiste en posicionar la herramienta levemente arriba, encender el maquinado y bajar en incrementos finos (Baby-stepping) hasta que comience a desprender material. 

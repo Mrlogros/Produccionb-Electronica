@@ -520,9 +520,9 @@ Ahora en la flecha verde (columna izquierda) seleccionamos solo las capas que ut
 
 Los archivos estarán guardados en formato Microsoft Edge documents (o el navegador por defecto), con la extensión en SVG. Debemos tener listos los archivos correspondientes a las **pistas**, **perforaciones**, **bordes** y **etiquetas** (opcional).
 
-| Archivos Exportados Localmente | Archivos Base Listos para Mods CE |
-| :---: | :---: |
-| ![Archivos exportados](img/fotos_mods/Imagen45.jpg) | ![Archivos SVG exportados](img/Imagen%2054.png) |
+| Archivos Base Listos para Mods CE |
+| :---: |
+| ![Archivos SVG exportados](img/Imagen%2054.png) |
 
 ---
 

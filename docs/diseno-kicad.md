@@ -606,26 +606,25 @@ El paso final antes de exportar el archivo es configurar los parámetros físico
 !!! tip "Optimización de Material (Multipanel)"
     Es importante saber que si queremos agregar otra placa para imprimir (panelización), solo modificamos el eje de las X, con un margen de 2 mm extra para que se hagan adecuadamente los bordes perimetrales sin chocar.
 
-| Origen 0,0,0 (Detalle) | Configuración final de máquina |
-| :---: | :---: |
-| ![Configuración de ejes y velocidades](img/fotos_mods/Imagen53.jpg) | ![Configuración final de máquina](img/Imagen%2063.png) |
-
+| Origen 0,0,0 (Detalle) |
+| :---: |
+| ![Configuración de ejes y velocidades](img/fotos_mods/Imagen53.jpg) |
 ---
 
 ### 3.6 Guardado y Organización de Archivos
 
 Para finalizar con el primer documento, nos dirigimos a este apartado de cálculo, confirmamos que todo esté en orden, nos vamos al final de la página (al último nodo) y le picamos al botón **`save file`**. El navegador descargará automáticamente un archivo con la extensión `.rml` (Roland Machine Language). 
 
-| Confirmación de Cálculo | Botón Save File |
-| :---: | :---: |
-| ![Cálculo de rutas de herramienta](img/fotos_mods/Imagen54.jpg) | ![Guardado del archivo de manufactura](img/fotos_mods/Imagen55.jpg) |
+| Confirmación de Cálculo |
+| :---: |
+| ![Cálculo de rutas de herramienta](img/fotos_mods/Imagen54.jpg) |
 
 !!! danger "Importante: Renombrar los archivos"
     Por defecto, Mods CE guarda todos los archivos bajo el nombre genérico `SVG image.rml`. Es **crucial** ubicar el archivo descargado inmediatamente y renombrarlo (por ejemplo, a `1_Pistas.rml`) para mantener una organización estricta y evitar confusiones fatales al momento de operar la fresadora.
 
-| Botón Save File (Detalle) | Archivo Descargado |
-| :---: | :---: |
-| ![Paso 64](img/Imagen%2064.png) | ![Paso 65](img/Imagen%2065.png) |
+| Botón Save File (Detalle) |
+| :---: |
+| ![Paso 64](img/Imagen%2064.png) |
 
 ![Archivos RML exportados](img/fotos_mods/Imagen56.jpg)
 *Figura 3.8: Archivos RML listos y renombrados correctamente en el directorio.*

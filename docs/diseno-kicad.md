@@ -545,7 +545,7 @@ Al cargar el programa, se desplegará una red de nodos interconectados (diagrama
 
 | Nodo Raíz de Inserción | Entorno Completo de Nodos |
 | :---: | :---: |
-| ![Nodo inicial de Mods CE](img/fotos_mods/Imagen48.jpg) | ![Entorno de nodos de Mods CE](img/Imagen%2058.png) |
+| ![Nodo inicial de Mods CE](img/fotos_mods/Imagen48.png) | ![Entorno de nodos de Mods CE](img/Imagen%2058.png) |
 
 ---
 

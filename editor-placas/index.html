@@ -1,0 +1,775 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación técnica del diseño y ruteo de circuito impreso.">
+      
+      
+        <meta name="author" content="Tu Nombre">
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../material/developer-board">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>🛠️ Editor de Placas (PCB Layout) - Diseño de PCB - Proyecto KiCad</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#editor-de-placas-pcb-layout" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Diseño de PCB - Proyecto KiCad" class="md-header__button md-logo" aria-label="Diseño de PCB - Proyecto KiCad" data-md-component="logo">
+      
+  <img src="../material/memory" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de PCB - Proyecto KiCad
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              🛠️ Editor de Placas (PCB Layout)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Mrlogros/Produccionb-Electronica" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mrlogros/Produccionb-Electronica
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../diseno-kicad/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Desarrollo Completo de PCB
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../recursos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Referencias
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Diseño de PCB - Proyecto KiCad" class="md-nav__button md-logo" aria-label="Diseño de PCB - Proyecto KiCad" data-md-component="logo">
+      
+  <img src="../material/memory" alt="logo">
+
+    </a>
+    Diseño de PCB - Proyecto KiCad
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Mrlogros/Produccionb-Electronica" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mrlogros/Produccionb-Electronica
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diseno-kicad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Desarrollo Completo de PCB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="editor-de-placas-pcb-layout">🛠️ Editor de Placas (PCB Layout)</h1>
+<p>Una vez que el diseño lógico ha sido validado en el esquemático, el siguiente paso crítico en nuestro flujo de trabajo es la traducción de este circuito a su forma física. En esta sección documentamos la importación de huellas (footprints), la definición del área de trabajo, el ruteo y la preparación para la exportación a manufactura CNC.</p>
+<hr />
+<h2 id="1-transicion-al-entorno-de-pcb">1. Transición al Entorno de PCB</h2>
+<p>Para comenzar con el diseño físico, utilizamos el botón <strong>Abrir editor de placas</strong> ubicado en la barra de herramientas superior del Eeschema. Una vez listo el esquemático, vas a ir a la esquina superior izquierda y vas a dar clic en el icono verde que está marcado en la imagen con un cuadro rojo, para empezar con el editor de placas[cite: 9].</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Icono Editor de Placas</th>
+<th style="text-align: center;">Acceso desde Eeschema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Botón de cambio al editor de placas" src="../img/fotos_editor/Imagen1.png" /></td>
+<td style="text-align: center;"><img alt="Icono de acceso al editor de PCB" src="../img/Imagen%2020.png" /></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title">Importante: Gestión del Proyecto</p>
+<p>Es fundamental realizar este paso con la ventana principal del <strong>Proyecto de KiCad</strong> abierta en segundo plano. Si se abre el editor de placas de manera independiente, el software perderá el enlace con el esquemático, imposibilitando la sincronización de componentes y arrojando errores de conectividad al intentar actualizar.</p>
+</div>
+<hr />
+<h2 id="2-sincronizacion-y-organizacion-de-componentes">2. Sincronización y Organización de Componentes</h2>
+<p>Con el editor de placas abierto, procedemos a importar los componentes lógicos a su representación física. Esto se logra ejecutando la herramienta <strong>Actualizar placa desde esquema</strong> (atajo de teclado <code>F8</code>). </p>
+<p>Al aplicar los cambios, tus componentes aparecerán así en la parte principal de la pantalla y, como se puede observar en las flechas, hay pequeñas líneas azules que conectan los componentes entre sí[cite: 9]. A esta red de guías virtuales se le conoce como <strong>Ratsnest</strong> (nido de ratas), el cual nos indica el orden, la topología y el destino exacto de cada conexión.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Ventana de Actualización</th>
+<th style="text-align: center;">Disposición con Ratsnest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Gestor de actualización" src="../img/Imagen%2021.png" /></td>
+<td style="text-align: center;"><img alt="Componentes importados con ratsnest" src="../img/fotos_editor/Imagen2.png" /></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Disposición inicial completa" src="../img/Imagen%2023.png" />
+<em>Disposición de los componentes interconectados mostrando las conexiones virtuales.</em></p>
+<hr />
+<h2 id="3-configuracion-de-capas-de-trabajo-y-reglas-de-diseno-drc">3. Configuración de Capas de Trabajo y Reglas de Diseño (DRC)</h2>
+<p>Antes de iniciar el trazado de pistas o contornos, debemos comprender el apilamiento de capas (Layer Stackup). Dado que el diseño actual es una placa de cara simple (una sola capa de cobre), todo nuestro trabajo conductivo se realizará en la capa <strong>F.Cu</strong> (Front Copper / Cobre Frontal).</p>
+<p>En la parte superior izquierda podemos observar una opción que dice “Pista: usar el ancho de clase de red”; le vas a dar clic y te abrirá una lista de opciones y después pondrás la opción de editar tamaños predefinidos que está seleccionada con color morado[cite: 9].</p>
+<p><img alt="Menú rápido de ancho de pistas" src="../img/fotos_editor/Imagen3.png" />
+<em>Selección rápida de anchos de pista predefinidos.</em></p>
+<p>Te aparecerán varias opciones, pero las importantes son los tamaños predefinidos; darás clic en la parte de abajo donde hay un signo de más (+) y añadirás dos medidas: una de <strong>0.4 mm</strong> y otra de <strong>0.8 mm</strong>, igual como se muestra en la imagen[cite: 9].</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Configuración de Tamaños Predefinidos</th>
+<th style="text-align: center;">Menú de Propiedades de la Placa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Añadir medidas" src="../img/fotos_editor/Imagen4.png" /></td>
+<td style="text-align: center;"><img alt="Configuración de la placa" src="../img/Imagen%2031.png" /></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Reglas de diseño y requerimientos" src="../img/Imagen%2032.png" />
+<em>Definición de márgenes mínimos, aislamiento y tolerancias de diseño.</em></p>
+<div class="admonition info">
+<p class="admonition-title">Parámetros para CNC Monofab SRM-20</p>
+<p>Se estableció un <strong>ancho de pista de 0.4 mm</strong> para las líneas de señal. Este grosor garantiza que la fresadora pueda aislar las pistas correctamente sin comprometer su integridad mecánica ni su conductividad.</p>
+</div>
+<hr />
+<h2 id="4-enrutamiento-y-conexiones-capa-fcu">4. Enrutamiento y Conexiones (Capa F.Cu)</h2>
+<p>Seleccionarás la medida de 0.4 mm y es hora de conectar todos tus componentes[cite: 9].</p>
+<p><img alt="Selección de pista a 0.4" src="../img/fotos_editor/Imagen5.png" /></p>
+<p>Después, deberás seleccionar la capa <strong>F.Cu</strong> que está marcada con un recuadro rojo y usarás la herramienta que está marcada de verde (Enrutar pistas), que nos va a ayudar a poder conectar nuestros componentes, de igual manera como se logra ver en el recuadro naranja[cite: 9].</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Selección de Capa F.Cu</th>
+<th style="text-align: center;">Herramienta de Enrutamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Capa F.Cu" src="../img/fotos_editor/Imagen6.png" /></td>
+<td style="text-align: center;"><img alt="Herramienta de enrutamiento" src="../img/Imagen%2025.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Al seleccionar la herramienta de pistas y hacer clic sobre un pad, KiCad ilumina automáticamente los pads de destino correspondientes, facilitando la visualización del camino a seguir.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Resaltado de Destino</th>
+<th style="text-align: center;">Conexión Completada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Proceso de enrutamiento inicial" src="../img/Imagen%2033.png" /></td>
+<td style="text-align: center;"><img alt="Conexión completada entre dos pads" src="../img/Imagen%2034.png" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="herramientas-de-alineacion-y-buenas-practicas">Herramientas de Alineación y Buenas Prácticas</h3>
+<p>Algunas opciones para acomodar mejor tus componentes es seleccionar dos componentes y dar clic derecho, seleccionar <strong>alinear/distribuir</strong>; puedes ocupar la alineación a la izquierda o las otras alineaciones para ayudarte a acomodar tus componentes[cite: 9].</p>
+<p><img alt="Alinear y distribuir" src="../img/fotos_editor/Imagen7.png" />
+<em>Menú contextual para simetría y distribución de huellas.</em></p>
+<p>Cuando juntes tus componentes, recuerda que <strong>no debe haber ángulos de 90°</strong> en las líneas rojas y tampoco se pueden encimar[cite: 9].</p>
+<p><img alt="Pistas sin ángulos rectos" src="../img/fotos_editor/Imagen8.png" />
+<em>Trazos óptimos a 45 grados evitando esquinas de 90 grados.</em></p>
+<hr />
+<h2 id="5-trucos-de-ruteo-puentes-jumpers">5. Trucos de Ruteo: Puentes (Jumpers)</h2>
+<p>Al trabajar exclusivamente en una cara (Capa <code>F.Cu</code>), es común encontrarnos con cruces inevitables donde una pista bloquea el paso de otra.</p>
+<p>Aunque cuando llega a pasar el caso de necesitar poner una línea encima de la otra, puedes ocupar el truco de la <strong>resistencia 0</strong>[cite: 9]. El truco consiste en agregar una resistencia 0 (0 ohmios) y poder unir las dos líneas actuando físicamente como un puente o "jumper", aunque tengas una línea de frente igual como se muestra en el recuadro verde[cite: 9].</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Implementación Práctica del Jumper</th>
+<th style="text-align: center;">Vista en el Layout</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Resistencia 0" src="../img/fotos_editor/Imagen9.png" /></td>
+<td style="text-align: center;"><img alt="Puente implementado en el ruteo" src="../img/Imagen%2035.png" /></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Consideración en el DRC</p>
+<p>El uso de este puente puede generar advertencias en el chequeo de reglas de diseño (DRC), ya que lógicamente el software lo ve como una interrupción de la red. Sin embargo, en la manufactura física, esta es una técnica completamente válida y la advertencia puede ser ignorada de forma segura.</p>
+</div>
+<hr />
+<h2 id="6-delimitacion-del-contorno-edgecuts">6. Delimitación del Contorno (Edge.Cuts)</h2>
+<p>Toda PCB necesita un límite físico definido para que la máquina CNC o el fabricante sepa por dónde cortar la placa terminada. </p>
+<p>Una vez ya tengas tus componentes acomodados y conectados, vas a seleccionar la capa <strong>Edge.Cuts</strong> y deberás usar las diferentes herramientas (como crear cuadrados regulares, círculos regulares y polígonos irregulares) para poder crear una figura alrededor de tus componentes haciendo la delimitación de la placa[cite: 9].</p>
+<p><img alt="Herramientas de formas" src="../img/fotos_editor/Imagen10.png" />
+<em>Selección de la capa Edge.Cuts y herramienta gráfica.</em></p>
+<p>El contorno de tu figura debería verse algo parecido a esta imagen[cite: 9].</p>
+<p><img alt="Contorno delimitador" src="../img/fotos_editor/Imagen11.png" />
+<em>Geometría de corte exterior encapsulando los componentes.</em></p>
+<p>Si das doble clic en el cuadro te aparecerán las propiedades de la figura que creaste, aunque del lado izquierdo en el rectángulo violeta también podrás observar las propiedades[cite: 9].</p>
+<p><img alt="Propiedades de la forma" src="../img/fotos_editor/Imagen12.png" />
+<em>Inspector de propiedades del trazado.</em></p>
+<p>Deberás cambiar el ancho de la línea dependiendo los puntos que tengas disponibles para tu máquina; en mi caso son <strong>dos milímetros</strong>, el estado de línea debe ser sólida y en relleno es ninguno, además de observar la capa en la que se encuentra tu figura, es importante que esté en <strong>Edge.Cuts</strong>[cite: 9].</p>
+<p><img alt="Ancho de línea de 2mm" src="../img/fotos_editor/Imagen13.png" />
+<em>Configuración geométrica adaptada a la fresa de la CNC.</em></p>
+<p>Como puedes observar, las líneas de la figura que está alrededor de tu circuito ya miden <strong>2mm de ancho</strong>, el tamaño de la broca que se tiene[cite: 9]. Para confirmar esto, podemos usar la <strong>Herramienta de medida (Ctrl+Shift+M)</strong>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Verificación de Grosor (Cota)</th>
+<th style="text-align: center;">Herramienta de Medición</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Cota de 2mm" src="../img/fotos_editor/Imagen14.png" /></td>
+<td style="text-align: center;"><img alt="Herramienta de medición" src="../img/Imagen%2026.png" /></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="7-perforaciones-manuales-capas-de-usuario">7. Perforaciones Manuales (Capas de Usuario)</h2>
+<p>Para la colocación de pines (pin headers) y sujeciones, necesitamos definir perforaciones precisas sin interferir con las capas estándar.</p>
+<p>Cuando acabes con la figura de alrededor, seleccionarás la capa <strong>User.1</strong> y pondrás la herramienta de círculo para crear círculos en la parte de pines, voltaje y GND; es importante que sean del mismo tamaño de los agujeros[cite: 9]. </p>
+<div class="admonition info">
+<p class="admonition-title">Gestión de Capas de Usuario</p>
+<ul>
+<li><strong>User.1</strong> es para perforaciones[cite: 9].</li>
+<li><strong>User.2</strong> va a ser para etiquetas[cite: 9].</li>
+<li><strong>User.3</strong> se ocupa normalmente para círculos donde van los tornillos[cite: 9].</li>
+</ul>
+</div>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Trazado en User.1</th>
+<th style="text-align: center;">Ajuste de Radio y Relleno</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Capa User.1" src="../img/fotos_editor/Imagen15.png" /></td>
+<td style="text-align: center;"><img alt="Propiedades de círculo de perforación" src="../img/Imagen%2036.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Con la herramienta de círculo dibujamos guías con la propiedad de <strong>Rellenar con Sólido</strong> y un radio de aproximadamente 0.72 mm a 0.8 mm. Es vital asegurarse de que estos círculos queden perfectamente centrados en los pads para guiar la broca.</p>
+<hr />
+<h2 id="8-creacion-de-zonas-de-cobre-copper-pour">8. Creación de Zonas de Cobre (Copper Pour)</h2>
+<p>El último paso del diseño físico consiste en generar una zona de relleno (Copper Pour). Esto delimita el área de cobre que la CNC debe procesar y optimiza el tiempo de fresado al evitar remover material innecesario.</p>
+<p>Después vas a seleccionar la capa <strong>F.Cu</strong> otra vez, donde darás clic en la herramienta de añadir zonas rellenas y te aparecerá una advertencia (indicando <code>&lt;sin red&gt;</code>); lo único que debes hacer es dar clic en aceptar[cite: 9].</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Selección de Herramienta</th>
+<th style="text-align: center;">Advertencia de Zona</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Herramienta de zonas rellenas" src="../img/Imagen%2037.png" /></td>
+<td style="text-align: center;"><img alt="Advertencia sin red" src="../img/fotos_editor/Imagen16.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Una vez le des clic en la herramienta te aparecerá una forma parecida a la del polígono irregular, es importante que cierres bien el sistema trazando el polígono por el interior de nuestro contorno para que se vea rojo el polígono[cite: 9]. La regla fundamental es que <strong>el polígono debe ser un lazo completamente cerrado</strong>.</p>
+<p><img alt="Trazado del polígono" src="../img/fotos_editor/Imagen17.png" />
+<em>El contorno del área de relleno delimitando todo el circuito.</em></p>
+<hr />
+<h2 id="9-ejecucion-del-relleno-de-cobre">9. Ejecución del Relleno de Cobre</h2>
+<p>Y por último, solo deberás presionar la <strong>tecla B</strong> para que se complete la figura[cite: 9]. Este comando obliga a KiCad a recalcular y renderizar el relleno de cobre, esquivando automáticamente las pistas y los pads según las reglas de aislamiento configuradas previamente.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Polígono Procesado</th>
+<th style="text-align: center;">Detalle de Aislamiento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Tecla B" src="../img/fotos_editor/Imagen18.png" /></td>
+<td style="text-align: center;"><img alt="Detalle de pistas aisladas" src="../img/Imagen%2041.png" /></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Placa finalizada (Modo contraste)" src="../img/Imagen%2043.jpeg" />
+<em>Visualización general de la placa terminada en alto contraste.</em></p>
+<hr />
+<h2 id="10-verificacion-de-reglas-de-diseno-drc">10. Verificación de Reglas de Diseño (DRC)</h2>
+<p>El último filtro de seguridad antes de fabricar es ejecutar el <strong>DRC (Design Rule Checker)</strong>. A diferencia del ERC en el esquemático, el DRC verifica errores físicos.</p>
+<p>Para comprobar si hay errores en la placa existe la herramienta que está seleccionada con el cuadrado verde y te abrirá el cuadro verde más grande[cite: 9]. En la parte inferior, en el recuadro rojo, podrás observar los errores que están en la placa; en mi caso me aparece un error, pero es porque falta una conexión, pero esa conexión ya está conectada internamente en los botones, por lo tanto no es tan importante conectarlas[cite: 9]. </p>
+<p>Los avisos que están en amarillo no afectan al funcionamiento de la placa, es normal que aparezcan varios avisos al crear una placa tan compacta[cite: 9].</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Botón Ejecutar DRC</th>
+<th style="text-align: center;">Resultados de la Verificación</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Botón Ejecutar DRC" src="../img/Imagen%2049.png" /></td>
+<td style="text-align: center;"><img alt="Resultados del DRC" src="../img/fotos_editor/Imagen19.png" /></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11-inspeccion-en-el-visor-3d-y-orientacion">11. Inspección en el Visor 3D y Orientación</h2>
+<p>Antes de exportar los archivos para fabricación, es una excelente práctica revisar el aspecto físico de la placa. Otra de las herramientas es la que está en la parte superior y se llama <strong>visor 3D (Alt+3)</strong>, te ayuda a observar tu placa en formato 3D con sus componentes y todo[cite: 9].</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Acceso al Visor 3D</th>
+<th style="text-align: center;">Renderizado Frontal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Visor 3D Tool" src="../img/fotos_editor/Imagen20.png" /></td>
+<td style="text-align: center;"><img alt="3D View General" src="../img/fotos_editor/Imagen21.png" /></td>
+</tr>
+</tbody>
+</table>
+<p>Al darle clic podrás visualizar en tercera dimensión tu placa, lo que te puede ayudar a ver si los componentes están organizados de buena forma o si necesitan algún arreglo y verificar que las perforaciones mecánicas no colisionen[cite: 9].</p>
+<p><img alt="Vista isométrica de la placa terminada" src="../img/Imagen%2046.jpeg" />
+<em>Inspección final isométrica de la distribución física.</em></p>
+<p>Por la forma de la cortadora de monofab y la placa, es importante que coloques tu figura en la dirección que más te convenga; solo tienes que seleccionar toda tu placa y presionar la <strong>letra R</strong> para rotar[cite: 9].</p>
+<p><img alt="Rotación de placa" src="../img/fotos_editor/Imagen22.png" />
+<em>Orientación geométrica de todo el bloque (Rotate).</em></p>
+<hr />
+<h2 id="12-salidas-de-fabricacion-exportacion-svg">12. Salidas de Fabricación (Exportación SVG)</h2>
+<p>Para procesar nuestra placa en la fresadora CNC, necesitamos exportar el diseño. Cuando ya tengas tu placa sin errores y con la dirección correcta, es hora de que te vayas a la ventana de archivo, luego a <strong>salidas de fabricación</strong> y por último a <strong>Gerbers</strong>[cite: 9].</p>
+<p><img alt="Menú de Salidas de Fabricación" src="../img/fotos_editor/Imagen23.png" />
+<em>Acceso al menú de exportación de archivos.</em></p>
+<p>Te abrirá una ventana y apretarás en la ventana roja donde diga Gerber y seleccionarás <strong>SVG</strong>[cite: 9]. En el recuadro naranja encontrarás una lista de las capas y seleccionarás las capas que ocupaste, en nuestro caso serían <strong>F.Cu, Edge.Cuts, y User.1</strong>[cite: 9].</p>
+<p><img alt="Configuración de trazado SVG" src="../img/fotos_editor/Imagen24.png" />
+<em>Selección del formato vectorial monocromático y las capas necesarias.</em></p>
+<p>Para finalizar, seleccionarás la opción de <strong>Ajustar página a la placa</strong> y después pondrás en <strong>Trazar</strong>, lo que te creará la misma cantidad de archivos que seleccionaste en incluir capas en la misma carpeta de tu proyecto[cite: 9].</p>
+<p><img alt="Botón Trazar y Ajuste" src="../img/fotos_editor/Imagen25.png" />
+<em>Ejecución de la herramienta de trazado vectorial.</em></p>
+<h3 id="archivos-de-salida-arte-de-manufactura">Archivos de Salida (Arte de Manufactura)</h3>
+<p>Como resultado, KiCad generará un conjunto de archivos <code>.svg</code> independientes. Podrás abrir cada uno de los archivos para comprobar que todo esté bien y ponerles su respectivo nombre[cite: 9].</p>
+<p><img alt="Archivos exportados en carpeta" src="../img/Imagen%2052.png" />
+<em>Listado de archivos vectoriales (Bordes, Perforaciones y Pistas) listos para el maquinado CAM.</em></p>
+<p>A continuación, se muestra una previsualización del archivo de pistas principales. Este formato de alto contraste permite al software de la fresadora calcular las rutas de corte impecablemente.</p>
+<p><img alt="Previsualización de Pistas SVG" src="../img/Imagen%2053.png" />
+<em>Vista de alto contraste del arte generado para la capa de cobre frontal.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

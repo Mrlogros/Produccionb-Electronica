@@ -566,9 +566,9 @@ A continuación, configuramos los parámetros de la herramienta física:
 !!! tip "Parámetros de la Broca"
     Para el fresado de las pistas utilizaremos una broca plana estándar. En el nodo de configuración (*set PCB defaults*), bajamos un poco en la página, damos clic donde señala la flecha azul (para cambiar a mm) y escogemos la opción **`0.40mm flat`** señalada por la flecha roja (lo que equivale aproximadamente a 1/64 de pulgada).
 
-| Selección de Herramienta | Parámetros del Nodo |
-| :---: | :---: |
-| ![Selección de fresa de ruteo](img/fotos_mods/Imagen51.jpg) | ![Configuración de herramienta](img/Imagen%2059.png) |
+| Parámetros del Nodo |
+| :---: |
+| ![Configuración de herramienta](img/Imagen%2059.png) |
 
 #### Ajuste de Pasadas (Offsets)
 En el nodo **mill raster 2D**, definiremos cuánto material queremos remover alrededor de cada pista:

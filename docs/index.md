@@ -48,31 +48,39 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
 
 <div class="grid cards" markdown>
 
--   <img src="img/icono-esquematico.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[1. Esquemático](diseno-kicad.md)**
+-   <img src="img/icono-esquematico.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[1. Diseño de Placa (KiCad)](diseno-kicad.md)**
     
     ---
     
-    Documentación del diagrama lógico, selección de componentes y cableado.
+    Documentación del diagrama lógico, selección de componentes y ruteo físico de pistas.
     
     [Ver documentación ➔](diseno-kicad.md)
 
--   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Editor de Placas (Layout)](diseno-kicad.md#2-editor-de-placas-pcb-layout)**
-    
-    ---
-    
-    Distribución de huellas, ruteo físico de pistas y zonas de cobre.
-    
-    [Ver documentación ➔](diseno-kicad.md#2-editor-de-placas-pcb-layout)
-
--   <img src="img/mods-icono.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[3. Manufactura CAM (Mods CE)](diseno-kicad.md#3-manufactura-cam-y-generacion-de-trayectorias-mods-ce)**
+-   <img src="img/icono-monofab.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Manufactura CAM (Mods CE)](mods-ce.md)**
     
     ---
     
     Generación de trayectorias (G-Code/Toolpaths) para la fresadora CNC SRM-20.
     
-    [Ver documentación ➔](diseno-kicad.md#3-manufactura-cam-y-generacion-de-trayectorias-mods-ce)
+    [Ver documentación ➔](mods-ce.md)
 
--   📚 **[4. Recursos y Referencias](recursos.md)**
+-   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[3. Operación Monofab SRM-20](monofab.md)**
+    
+    ---
+    
+    Procedimientos operativos, calibración de herramientas y uso de la fresadora CNC.
+    
+    [Ver documentación ➔](monofab.md)
+
+-   💻 **[4. Simulación de Circuitos (Multisim)](multisim.md)**
+    
+    ---
+    
+    Análisis de barrido DC (DC Sweep) e instrumentación virtual (Osciloscopio y Generador).
+    
+    [Ver simulación ➔](multisim.md)
+
+-   📚 **[5. Recursos y Referencias](recursos.md)**
     
     ---
     

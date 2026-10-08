@@ -7,7 +7,9 @@ repo_name: Mrlogros/Produccionb-Electronica
 
 nav:
   - Inicio: index.md
-  - Desarrollo Completo de PCB: diseno-kicad.md
+  - 1. Diseño de Placa (KiCad): diseno-kicad.md
+  - 2. Manufactura CAM (Mods CE): mods-ce.md
+  - 3. Operación Monofab SRM-20: monofab.md
   - Referencias: recursos.md
 
 

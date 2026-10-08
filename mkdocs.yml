@@ -10,8 +10,8 @@ nav:
   - 1. Diseño de Placa (KiCad): diseno-kicad.md
   - 2. Manufactura CAM (Mods CE): mods-ce.md
   - 3. Operación Monofab SRM-20: monofab.md
+  - 4. Simulación (Multisim): multisim.md
   - Referencias: recursos.md
-
 
 theme:
   name: material

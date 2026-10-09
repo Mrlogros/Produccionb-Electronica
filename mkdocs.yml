@@ -7,10 +7,10 @@ repo_name: Mrlogros/Produccionb-Electronica
 
 nav:
   - Inicio: index.md
-  - 1. Diseño de Placa (KiCad): diseno-kicad.md
-  - 2. Manufactura CAM (Mods CE): mods-ce.md
-  - 3. Operación Monofab SRM-20: monofab.md
-  - 4. Simulación (Multisim): multisim.md
+  - Diseño de Placa (KiCad): diseno-kicad.md
+  - Manufactura CAM (Mods CE): mods-ce.md
+  - Operación Monofab SRM-20: monofab.md
+  - Simulación (Multisim): multisim.md
   - Referencias: recursos.md
 
 theme:

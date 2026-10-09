@@ -56,7 +56,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver documentación ➔](diseno-kicad.md)
 
--   <img src="img/icono-monofab.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Manufactura CAM (Mods CE)](mods-ce.md)**
+-   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Manufactura CAM (Mods CE)](mods-ce.md)**
     
     ---
     
@@ -64,7 +64,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver documentación ➔](mods-ce.md)
 
--   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[3. Operación Monofab SRM-20](monofab.md)**
+-   <img src="img/icono-monofab.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[3. Operación Monofab SRM-20](monofab.md)**
     
     ---
     

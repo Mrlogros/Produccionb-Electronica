@@ -105,15 +105,15 @@ Al iniciar la simulación en modo interactivo, podremos hacer doble clic en el o
 
 ## 5.3 Técnicas Avanzadas de Visualización 
 
-Cuando se analizan múltiples señales simultáneamente, es imperativo establecer un código de colores en el esquemático. El color de las trazas graficadas por el osciloscopio virtual hereda automáticamente el color del cable (Net) conectado a su canal de entrada[cite: 24].
+Cuando se analizan múltiples señales simultáneamente, es imperativo establecer un código de colores en el esquemático. El color de las trazas graficadas por el osciloscopio virtual hereda automáticamente el color del cable (Net) conectado a su canal de entrada.
 
 ### Asignación de Color a Redes (Nets)
-Para diferenciar las señales en el graficador, aplicaremos colores distintos a los nodos de entrada y salida[cite: 24]:
+Para diferenciar las señales en el graficador, aplicaremos colores distintos a los nodos de entrada y salida:
 
-1.  Hacemos clic derecho sobre el segmento de cable deseado y seleccionamos **`Properties`** (Propiedades) en el menú contextual[cite: 24].
-2.  En la ventana `Net Properties`, navegamos a la pestaña `Net name`[cite: 24].
-3.  Hacemos clic en el cuadro inferior denominado **`Net color`** para desplegar la paleta hexadecimal[cite: 24].
-4.  Seleccionamos un color de alto contraste (por ejemplo, verde claro) y confirmamos haciendo clic en **OK**[cite: 24].
+1.  Hacemos clic derecho sobre el segmento de cable deseado y seleccionamos **`Properties`** (Propiedades) en el menú contextual.
+2.  En la ventana `Net Properties`, navegamos a la pestaña `Net name`.
+3.  Hacemos clic en el cuadro inferior denominado **`Net color`** para desplegar la paleta cromática.
+4.  Seleccionamos un color de alto contraste (por ejemplo, verde claro) y confirmamos haciendo clic en **OK**.
 
 | Menú Contextual (Clic Derecho) | Propiedades de Red | Paleta de Colores |
 | :---: | :---: | :---: |
@@ -121,19 +121,22 @@ Para diferenciar las señales en el graficador, aplicaremos colores distintos a 
 
 ### Implementación del Osciloscopio Tektronix (4 Canales)
 
-Multisim ofrece simulaciones de equipos de laboratorio comerciales[cite: 24]. Para obtener una lectura más robusta y detallada, podemos sustituir el osciloscopio genérico por el modelo **Tektronix TDS 2024** (ubicado en la barra lateral derecha)[cite: 24].
+Multisim ofrece simulaciones de equipos de laboratorio comerciales. Para obtener una lectura más robusta y detallada, podemos sustituir el osciloscopio genérico por el modelo **Tektronix TDS 2024** (ubicado en la barra lateral derecha).
 
 | Selección Tektronix | Conexiones de Prueba |
 | :---: | :---: |
 | ![Icono Tektronix](img/fotos_multisim/Imagen27.png){ width="150" } | ![Conexión Avanzada](img/fotos_multisim/Imagen26.png){ width="450" } |
 
-Reconfiguramos nuestro circuito aplicando la técnica de color en los cables y enlazándolos a los puertos del nuevo instrumento[cite: 24]:
-*   **Canal 1 (Cable Verde):** Conectado al nodo inicial (antes del diodo) para monitorear la señal senoidal completa proveniente del generador[cite: 24].
-*   **Canal 2 (Cable Rojo):** Conectado al nodo central (entre el diodo y la resistencia) para registrar la señal resultante (rectificada)[cite: 24].
+Reconfiguramos nuestro circuito aplicando la técnica de color en los cables y enlazándolos a los puertos del nuevo instrumento:
+*   **Canal 1 (Cable Verde):** Conectado al nodo inicial (antes del diodo) para monitorear la señal senoidal completa proveniente del generador.
+*   **Canal 2 (Cable Rojo):** Conectado al nodo central (entre el diodo y la resistencia) para registrar la señal resultante (rectificada).
 
-Al correr la simulación y hacer doble clic sobre el bloque del Tektronix, se desplegará una interfaz idéntica al equipo físico real[cite: 24]. 
+![Conexión en Circuito con Tektronix](img/fotos_multisim/Imagen28.png){ width="600" }
+*Figura 5.3.1: Configuración final del circuito integrando el osciloscopio avanzado.*
 
-![Interfaz Tektronix Real](img/fotos_multisim/Imagen28.png){ width="600" }
-*Figura 5.3.1: Osciloscopio Tektronix mostrando la comparación simultánea entre la señal de entrada completa (Canal 1 - Verde) y la señal rectificada (Canal 2 - Rojo).*
+Al correr la simulación y hacer doble clic sobre el bloque del Tektronix, se desplegará una interfaz idéntica al equipo físico real. 
 
-Este tipo de instrumentos virtuales avanzados permite no solo visualizar las formas de onda, sino que incorpora botoneras funcionales para activar cursores matemáticos, medir desfases y analizar frecuencias mediante la Transformada Rápida de Fourier (FFT), demostrando la potencia de la simulación previa a la fabricación[cite: 24].
+![Interfaz Tektronix Real](img/fotos_multisim/Imagen29.png){ width="600" }
+*Figura 5.3.2: Osciloscopio Tektronix mostrando la comparación simultánea entre la señal de entrada completa (Canal 1 - Verde) y la señal rectificada (Canal 2 - Rojo).*
+
+Este tipo de instrumentos virtuales avanzados permite no solo visualizar las formas de onda, sino que incorpora botoneras funcionales para activar cursores matemáticos, medir desfases y analizar frecuencias mediante la Transformada Rápida de Fourier (FFT), demostrando la potencia de la simulación previa a la fabricación.

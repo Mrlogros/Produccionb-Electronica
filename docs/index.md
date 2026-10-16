@@ -9,28 +9,28 @@
 # Documentación de Diseño de PCB
 
 <!-- BARRA LATERAL FLOTANTE DE ICONOS -->
-<div class="sidebar-glass">
+<div class="sidebar-glass" style="display: flex; flex-direction: column; align-items: center; padding: 10px;">
   
   <a href="https://discord.com/invite/FANuKv8sZn" target="_blank" title="Discord Oficial de KiCad">
-    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" width="40" style="border-radius: 8px;">
+    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" width="40" style="border-radius: 8px; margin-bottom: 10px;">
   </a>
   
   <a href="https://www.kicad.org/blog/" target="_blank" title="Blog de KiCad">
-    <img src="img/kicad-icon.png" width="40" style="border-radius: 8px; background: white; padding: 4px;">
+    <img src="img/kicad-icon.png" width="40" style="border-radius: 8px; background: white; padding: 4px; margin-bottom: 10px;">
   </a>
   
   <a href="https://downloadcenter.rolanddg.com/SRM-20" target="_blank" title="Descargar VPanel SRM-20">
-    <img src="img/icono-monofab.jpg" width="40" style="border-radius: 8px;">
+    <img src="img/icono-monofab.jpg" width="40" style="border-radius: 8px; margin-bottom: 10px;">
   </a>
 
   <!-- Enlace de Descarga: Multisim -->
   <a href="https://www.ni.com/es/support/downloads/software-products/download.multisim.html?srsltid=AU7gw4VyQXhXUoUYVR8GfAfdBV_6RXiq1QLoDG85aA6fxwGMiii15wR8#452133" target="_blank" title="Descargar NI Multisim">
-    <img src="img/multisim.png" width="40" style="border-radius: 8px;">
+    <img src="img/multisim.png" width="40" style="border-radius: 8px; margin-bottom: 10px;">
   </a>
 
   <!-- Enlace de Descarga: Altium Designer -->
   <a href="https://www.altium.com/products/downloads?srsltid=AU7gw4WSmUXKihLXSqgDFZRRx2tkguR2PVqrmsXBSwy_cC1e5Udt1nNs" target="_blank" title="Descargar Altium Designer">
-    <img src="img/altium.png" width="40" style="border-radius: 8px; background: white;">
+    <img src="img/altium.png" width="40" style="border-radius: 8px; background: white; margin-bottom: 10px;">
   </a>
 
 </div>

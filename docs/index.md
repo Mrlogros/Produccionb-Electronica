@@ -129,19 +129,3 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Luis Ernesto Tamez Velásquez</h3>
     <p style="color: #888; font-size: 0.9em;">Desarrollo y Documentación</p>
   </div>
-
-  <!-- Juan Manuel -->
-  <div style="width: 200px; margin-bottom: 20px;">
-    <img src="img/juan.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
-    <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Juan Manuel Gaona Serrano</h3>
-    <p style="color: #888; font-size: 0.9em;">Integración y Pruebas</p>
-  </div>
-
-  <!-- Brandon -->
-  <div style="width: 200px; margin-bottom: 20px;">
-    <img src="img/brandon.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
-    <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Brandon Saúl Ruvalcaba Pérez</h3>
-    <p style="color: #888; font-size: 0.9em;">Control de Calidad</p>
-  </div>
-
-</div>

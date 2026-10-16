@@ -58,7 +58,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
 
 <div class="grid cards" markdown>
 
--   <img src="img/icono-esquematico.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[1. Diseño de Placa (KiCad)](diseno-kicad.md)**
+-   <img src="img/icono-esquematico.jpg" width="35" align="left" style="margin-right: 15px; margin-top: 5px; border-radius: 6px;"> **[1. Diseño de Placa (KiCad)](diseno-kicad.md)**
     
     ---
     
@@ -66,7 +66,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver documentación ➔](diseno-kicad.md)
 
--   <img src="img/icono-monofab.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Manufactura CAM (Mods CE)](mods-ce.md)**
+-   <img src="img/icono-monofab.jpg" width="35" align="left" style="margin-right: 15px; margin-top: 5px; border-radius: 6px;"> **[2. Manufactura CAM (Mods CE)](mods-ce.md)**
     
     ---
     
@@ -74,7 +74,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver documentación ➔](mods-ce.md)
 
--   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[3. Operación Monofab SRM-20](monofab.md)**
+-   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 15px; margin-top: 5px; border-radius: 6px;"> **[3. Operación Monofab SRM-20](monofab.md)**
     
     ---
     
@@ -82,7 +82,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver documentación ➔](monofab.md)
 
--   <img src="img/multisim.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[4. Simulación de Circuitos (Multisim)](multisim.md)**
+-   <img src="img/multisim.png" width="35" align="left" style="margin-right: 15px; margin-top: 5px; border-radius: 6px;"> **[4. Simulación de Circuitos (Multisim)](multisim.md)**
     
     ---
     
@@ -90,7 +90,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver simulación ➔](multisim.md)
 
--   <img src="img/altium.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px; background: white; padding: 2px;"> **[5. Diseño Avanzado (Altium Designer)](altium.md)**
+-   <img src="img/altium.png" width="35" align="left" style="margin-right: 15px; margin-top: 5px; border-radius: 6px; background: white; padding: 2px;"> **[5. Diseño Avanzado (Altium Designer)](altium.md)**
     
     ---
     

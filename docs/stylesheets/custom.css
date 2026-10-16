@@ -243,3 +243,27 @@ h1 {
     display: block;
     margin: 0 auto 15px auto; 
 }
+
+/* --- Animación de la Barra Lateral Expandible --- */
+
+/* Contenedor que oculta los iconos extra */
+.hidden-icons {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Efecto hover: expande la caja y muestra los iconos */
+.expandable-sidebar:hover .hidden-icons {
+    max-height: 200px; /* Ajusta este valor si agregas más iconos en el futuro */
+    opacity: 1;
+}
+
+/* Oculta la flechita cuando se expande la barra */
+.expandable-sidebar:hover .expand-indicator {
+    display: none;
+}

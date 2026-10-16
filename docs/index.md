@@ -23,10 +23,20 @@
     <img src="img/icono-monofab.jpg" width="40" style="border-radius: 8px;">
   </a>
 
+  <!-- Enlace de Descarga: Multisim -->
+  <a href="https://www.ni.com/es/support/downloads/software-products/download.multisim.html?srsltid=AU7gw4VyQXhXUoUYVR8GfAfdBV_6RXiq1QLoDG85aA6fxwGMiii15wR8#452133" target="_blank" title="Descargar NI Multisim">
+    <img src="img/multisim.png" width="40" style="border-radius: 8px;">
+  </a>
+
+  <!-- Enlace de Descarga: Altium Designer -->
+  <a href="https://www.altium.com/products/downloads?srsltid=AU7gw4WSmUXKihLXSqgDFZRRx2tkguR2PVqrmsXBSwy_cC1e5Udt1nNs" target="_blank" title="Descargar Altium Designer">
+    <img src="img/altium.png" width="40" style="border-radius: 8px; background: white;">
+  </a>
+
 </div>
 <!-- FIN BARRA LATERAL -->
 
-Bienvenido a la bitácora del proyecto de diseño de nuestra placa de circuito impreso (PCB). Este sitio documenta el flujo de trabajo realizado en **KiCad**.
+Bienvenido a la bitácora del proyecto de diseño de nuestra placa de circuito impreso (PCB). Este sitio documenta el flujo de trabajo realizado en **KiCad**, así como herramientas adicionales de simulación y ruteo.
 
 <div align="center" style="margin-top: 20px; margin-bottom: 40px;">
   <a href="https://www.kicad.org/download/" target="_blank" class="btn-descarga">
@@ -56,7 +66,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver documentación ➔](diseno-kicad.md)
 
--   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Manufactura CAM (Mods CE)](mods-ce.md)**
+-   <img src="img/icono-monofab.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[2. Manufactura CAM (Mods CE)](mods-ce.md)**
     
     ---
     
@@ -64,7 +74,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver documentación ➔](mods-ce.md)
 
--   <img src="img/icono-monofab.jpg" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[3. Operación Monofab SRM-20](monofab.md)**
+-   <img src="img/icono-placa.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[3. Operación Monofab SRM-20](monofab.md)**
     
     ---
     
@@ -72,7 +82,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver documentación ➔](monofab.md)
 
--   💻 **[4. Simulación de Circuitos (Multisim)](multisim.md)**
+-   <img src="img/multisim.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px;"> **[4. Simulación de Circuitos (Multisim)](multisim.md)**
     
     ---
     
@@ -80,7 +90,15 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver simulación ➔](multisim.md)
 
--   📚 **[5. Recursos y Referencias](recursos.md)**
+-   <img src="img/altium.png" width="35" align="left" style="margin-right: 12px; border-radius: 6px; background: white; padding: 2px;"> **[5. Diseño Avanzado (Altium Designer)](altium.md)**
+    
+    ---
+    
+    Próximamente: Integración y flujo de trabajo utilizando el entorno profesional de Altium.
+    
+    [Ver documentación ➔](altium.md)
+
+-   📚 **[6. Recursos y Referencias](recursos.md)**
     
     ---
     
@@ -89,6 +107,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     [Ver recursos ➔](recursos.md)
 
 </div>
+
 ---
 
 ## Nuestro Equipo: KiCad Squad
@@ -109,6 +128,20 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     <img src="img/luis.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
     <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Luis Ernesto Tamez Velásquez</h3>
     <p style="color: #888; font-size: 0.9em;">Desarrollo y Documentación</p>
+  </div>
+
+  <!-- Juan Manuel -->
+  <div style="width: 200px; margin-bottom: 20px;">
+    <img src="img/juan.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
+    <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Juan Manuel Gaona Serrano</h3>
+    <p style="color: #888; font-size: 0.9em;">Integración y Pruebas</p>
+  </div>
+
+  <!-- Brandon -->
+  <div style="width: 200px; margin-bottom: 20px;">
+    <img src="img/brandon.jpg" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; border: 4px solid #e53935; box-shadow: 0 4px 15px rgba(229, 57, 53, 0.4); margin: 0 auto;">
+    <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Brandon Saúl Ruvalcaba Pérez</h3>
+    <p style="color: #888; font-size: 0.9em;">Control de Calidad</p>
   </div>
 
 </div>

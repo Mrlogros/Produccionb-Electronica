@@ -142,7 +142,7 @@ Al seleccionar un componente de la lista, en la sección inferior `Details` se m
 | ![Modelos y Footprints](img/fotos_altium/Imagen24.png){ width="150" } | ![Enlaces a Referencias](img/fotos_altium/Imagen25.png){ width="150" } | ![Datasheet Tyco Electronics](img/fotos_altium/Imagen26.png){ width="300" } |
 
 ### Solución a Componentes sin Huella (SnapMagic)
-Si el componente deseado no incluye una huella en las librerías predeterminadas, podemos recurrir a repositorios CAD externos como **SnapMagic Search** (anteriormente SnapEDA). Esta plataforma permite buscar la matrícula exacta y descargar gratuitamente el símbolo, huella y modelo 3D en formato nativo para integrarlo a Altium.
+Si el componente deseado no incluye una huella en las librerías predeterminadas, podemos recurrir a repositorios CAD externos como **SnapMagic Search** (anteriormente SnapEDA) https://www.snapeda.com/. Esta plataforma permite buscar la matrícula exacta y descargar gratuitamente el símbolo, huella y modelo 3D en formato nativo para integrarlo a Altium.
 
 | Modelo 3D Ausente/Básico | Plataforma SnapMagic |
 | :---: | :---: |

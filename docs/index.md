@@ -30,7 +30,7 @@
     </a>
 
     <a href="https://www.altium.com/products/downloads?srsltid=AU7gw4WSmUXKihLXSqgDFZRRx2tkguR2PVqrmsXBSwy_cC1e5Udt1nNs" target="_blank" title="Descargar Altium Designer">
-      <img src="img/altium.png" width="40" style="border-radius: 8px; background: white; margin-bottom: 10px;">
+      <img src="img/altium.png" width="40" style="border-radius: 8px; margin-bottom: 10px;">
     </a>
   </div>
 
@@ -96,7 +96,7 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     
     [Ver simulación ➔](multisim.md)
 
--   <img src="img/altium.png" width="35" align="left" style="margin-right: 15px; margin-top: 5px; border-radius: 6px; background: white; padding: 2px;"> **[5. Diseño Avanzado (Altium Designer)](altium.md)**
+-   <img src="img/altium.png" width="35" align="left" style="margin-right: 15px; margin-top: 5px; border-radius: 6px;"> **[5. Diseño Avanzado (Altium Designer)](altium.md)**
     
     ---
     
@@ -135,3 +135,5 @@ Si apenas estás comenzando, te recomendamos ver el primer episodio del curso **
     <h3 style="margin-bottom: 0; margin-top: 15px; font-size: 1.1em;">Luis Ernesto Tamez Velásquez</h3>
     <p style="color: #888; font-size: 0.9em;">Desarrollo y Documentación</p>
   </div>
+
+</div>

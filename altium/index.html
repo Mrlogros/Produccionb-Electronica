@@ -1,0 +1,1324 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación técnica del diseño y ruteo de circuito impreso.">
+      
+      
+        <meta name="author" content="Tu Nombre">
+      
+      
+      
+        <link rel="prev" href="../multisim/">
+      
+      
+        <link rel="next" href="../recursos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../material/developer-board">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Diseño Avanzado (Altium) - Diseño de PCB - Proyecto KiCad</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-diseno-avanzado-de-pcb-en-altium-designer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Diseño de PCB - Proyecto KiCad" class="md-header__button md-logo" aria-label="Diseño de PCB - Proyecto KiCad" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de PCB - Proyecto KiCad
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Diseño Avanzado (Altium)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Mrlogros/Produccionb-Electronica" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mrlogros/Produccionb-Electronica
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../diseno-kicad/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Diseño de Placa (KiCad)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../mods-ce/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Manufactura CAM (Mods CE)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../monofab/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operación Monofab SRM-20
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../multisim/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Simulación (Multisim)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Diseño Avanzado (Altium)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../recursos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Referencias
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Diseño de PCB - Proyecto KiCad" class="md-nav__button md-logo" aria-label="Diseño de PCB - Proyecto KiCad" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Diseño de PCB - Proyecto KiCad
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Mrlogros/Produccionb-Electronica" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mrlogros/Produccionb-Electronica
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diseno-kicad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diseño de Placa (KiCad)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mods-ce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manufactura CAM (Mods CE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monofab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operación Monofab SRM-20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multisim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulación (Multisim)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diseño Avanzado (Altium)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diseño Avanzado (Altium)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-instalacion-y-configuracion-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Instalación y Configuración del Entorno
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 Instalación y Configuración del Entorno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descarga-del-instalador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descarga del Instalador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-de-licencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestión de Licencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-al-workspace-institucional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conexión al Workspace Institucional
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-creacion-y-estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Creación y Estructura del Proyecto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Creación y Estructura del Proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#inicializacion-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inicialización del Proyecto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creacion-del-diagrama-esquematico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creación del Diagrama Esquemático
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-exploracion-de-paneles-y-herramientas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Exploración de Paneles y Herramientas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Exploración de Paneles y Herramientas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#paneles-laterales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Paneles Laterales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#busqueda-avanzada-manufacturer-part-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Búsqueda Avanzada: Manufacturer Part Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activacion-de-barras-de-herramientas-superiores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activación de Barras de Herramientas Superiores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-organizacion-visual-del-esquematico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Organización Visual del Esquemático
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 Organización Visual del Esquemático">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dibujo-de-figuras-geometricas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dibujo de Figuras Geométricas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edicion-de-propiedades-visuales" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edición de Propiedades Visuales
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etiquetado-de-bloques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Etiquetado de Bloques
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-seleccion-y-verificacion-de-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Selección y Verificación de Componentes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.5 Selección y Verificación de Componentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#busqueda-de-componentes-en-la-libreria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Búsqueda de Componentes en la Librería
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verificacion-de-huella-footprint-y-datasheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verificación de Huella (Footprint) y Datasheet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solucion-a-componentes-sin-huella-snapmagic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solución a Componentes sin Huella (SnapMagic)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-emplazamiento-y-ruteo-logico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 Emplazamiento y Ruteo Lógico
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.6 Emplazamiento y Ruteo Lógico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#acomodo-y-rotacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acomodo y Rotación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trazado-de-conexiones-wires" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Trazado de Conexiones (Wires)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puertos-de-alimentacion-power-ports" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Puertos de Alimentación (Power Ports)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-etiquetas-de-red-net-labels-y-anotacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 Etiquetas de Red (Net Labels) y Anotación
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.7 Etiquetas de Red (Net Labels) y Anotación">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementacion-de-net-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementación de Net Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anotacion-automatica-de-designadores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anotación Automática de Designadores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-exportacion-al-entorno-pcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 Exportación al Entorno PCB
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="6-diseno-avanzado-de-pcb-en-altium-designer">6. Diseño Avanzado de PCB en Altium Designer</h1>
+<p>Altium Designer es una de las herramientas de automatización de diseño electrónico (EDA) más potentes y utilizadas a nivel industrial. En esta sección documentaremos el flujo de trabajo inicial, desde la configuración del entorno y licencias académicas, hasta la creación del proyecto y captura del diagrama esquemático.</p>
+<hr />
+<h2 id="61-instalacion-y-configuracion-del-entorno">6.1 Instalación y Configuración del Entorno</h2>
+<p>El primer paso para utilizar Altium Designer es instalar la suite y vincular la licencia correspondiente a nuestra institución.</p>
+<h3 id="descarga-del-instalador">Descarga del Instalador</h3>
+<p>Para obtener el software, nos dirigimos al portal oficial de descargas de Altium. En la sección de Altium Designer, seleccionamos la opción de <strong>Online Installer (exe)</strong>, la cual se encargará de gestionar los paquetes necesarios durante la instalación.</p>
+<p><img alt="Descarga Altium Designer" src="../img/fotos_altium/Imagen1.png" width="700" />
+<em>Figura 6.1.1: Portal oficial de descargas de Altium.</em></p>
+<h3 id="gestion-de-licencias">Gestión de Licencias</h3>
+<p>La primera vez que ejecutemos el programa, se mostrará el panel de administración de licencias (<code>License Management</code>). Para habilitar las herramientas de diseño, es necesario iniciar sesión y seleccionar una licencia activa. En este caso, seleccionaremos la licencia profesional institucional (indicada en el recuadro rojo) y haremos clic en el botón para activarla.</p>
+<p><img alt="Gestión de Licencias" src="../img/fotos_altium/Imagen3.png" width="700" />
+<em>Figura 6.1.2: Activación de la licencia institucional en el panel de Altium.</em></p>
+<h3 id="conexion-al-workspace-institucional">Conexión al Workspace Institucional</h3>
+<p>El último paso crítico antes de diseñar es vincular nuestro entorno con el espacio de trabajo en la nube de la universidad (Altium 365). </p>
+<p>Nos dirigimos a la esquina superior derecha de la interfaz. Si no estamos conectados, hacemos clic en el icono de usuario y seleccionamos <strong>Unirse a un grupo</strong>. Introducimos nuestro correo institucional, la contraseña asignada, y el código de verificación enviado al correo. Al finalizar, el indicador mostrará el estado de conexión activa.</p>
+<p><img alt="Conexión Workspace" src="../img/fotos_altium/Imagen4.png" width="400" />
+<em>Figura 6.1.3: Verificación de conexión activa al Workspace universitario.</em></p>
+<hr />
+<h2 id="62-creacion-y-estructura-del-proyecto">6.2 Creación y Estructura del Proyecto</h2>
+<p>Altium Designer organiza los archivos mediante un archivo maestro de proyecto (<code>.PrjPcb</code>) que vincula lógicamente los esquemáticos y los diseños físicos de la placa.</p>
+<h3 id="inicializacion-del-proyecto">Inicialización del Proyecto</h3>
+<p>Para crear el directorio contenedor, nos dirigimos a la esquina superior izquierda y seleccionamos la ruta: <strong><code>File &gt; New &gt; Project...</code></strong>.</p>
+<p><img alt="Crear Nuevo Proyecto" src="../img/fotos_altium/Imagen5.png" width="300" />
+<em>Figura 6.2.1: Ruta de acceso para la creación de un nuevo proyecto.</em></p>
+<p>En la ventana de creación (<code>Create Project</code>), por defecto el sistema sugiere guardar el proyecto en la nube institucional. Si deseamos trabajarlo localmente, seleccionamos la opción de <strong>Version Control</strong> o <strong>Local Projects</strong>. Asignamos un nombre estructurado (por ejemplo, <code>Placa_prueba</code>) en el campo <code>Project Name</code> y hacemos clic en <strong>Create</strong>.</p>
+<p><img alt="Ventana Create Project" src="../img/fotos_altium/Imagen6.png" width="600" />
+<em>Figura 6.2.2: Configuración de nombre y ubicación del proyecto.</em></p>
+<p>Una vez creado, en el panel lateral <strong><code>Projects</code></strong> aparecerá el contenedor principal identificado con el ícono verde característico (<code>.PrjPcb</code>).</p>
+<p><img alt="Panel Projects" src="../img/fotos_altium/Imagen7.png" width="200" />
+<em>Figura 6.2.3: Contenedor del proyecto inicializado en el panel lateral.</em></p>
+<h3 id="creacion-del-diagrama-esquematico">Creación del Diagrama Esquemático</h3>
+<p>Para agregar nuestra primera hoja de diseño, hacemos clic derecho sobre el nombre del proyecto en el panel lateral, pasamos el cursor sobre <strong><code>Add New to Project</code></strong> y seleccionamos <strong><code>Schematic</code></strong>.</p>
+<p><img alt="Añadir Esquemático" src="../img/fotos_altium/Imagen8.png" width="400" />
+<em>Figura 6.2.4: Ruta para añadir un nuevo documento esquemático al proyecto.</em></p>
+<p>Al realizar esta acción, se generará una hoja en blanco y se abrirá el entorno de captura lógica. Es imperativo <strong>guardar localmente el archivo</strong>. Al notar que el documento tiene un ícono rojo en el panel (indicando que no está guardado), presionamos <code>Ctrl + S</code>, asignamos un nombre (<code>Placa_prueba.SchDoc</code>) y lo guardamos en nuestro directorio de trabajo.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Guardado de Archivo</th>
+<th style="text-align: center;">Explorador de Archivos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Archivo no guardado" src="../img/fotos_altium/Imagen10.png" width="200" /></td>
+<td style="text-align: center;"><img alt="Guardar archivo local" src="../img/fotos_altium/Imagen11.png" width="400" /></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Lienzo Esquemático" src="../img/fotos_altium/Imagen9.png" width="600" />
+<em>Figura 6.2.5: Interfaz del editor de esquemas listo para trabajar.</em></p>
+<hr />
+<h2 id="63-exploracion-de-paneles-y-herramientas">6.3 Exploración de Paneles y Herramientas</h2>
+<p>Para trabajar de manera fluida, es necesario familiarizarse con la activación y el uso de los paneles de herramientas de Altium Designer.</p>
+<h3 id="paneles-laterales">Paneles Laterales</h3>
+<p>En el borde derecho de la interfaz se encuentran pestañas de acceso rápido colapsadas por defecto (<code>Components</code>, <code>Properties</code>, etc.). El panel <strong><code>Components</code></strong> es la vía principal para buscar y colocar piezas desde librerías locales. </p>
+<p>Si por error cerramos algún panel lateral, podemos recuperarlo dirigiéndonos a la esquina inferior derecha, haciendo clic en el botón <strong><code>Panels</code></strong> y seleccionando el panel deseado.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Panel Components</th>
+<th style="text-align: center;">Recuperación de Paneles</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Pestaña Components" src="../img/fotos_altium/Imagen12.png" width="250" /></td>
+<td style="text-align: center;"><img alt="Botón Panels" src="../img/fotos_altium/Imagen13.png" width="200" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="busqueda-avanzada-manufacturer-part-search">Búsqueda Avanzada: Manufacturer Part Search</h3>
+<p>A diferencia de las librerías estáticas, Altium ofrece el panel <strong><code>Manufacturer Part Search</code></strong>. Esta herramienta se conecta en tiempo real con bases de datos globales de proveedores, permitiendo buscar cualquier componente mediante su matrícula o navegando por categorías.</p>
+<p><img alt="Manufacturer Part Search" src="../img/fotos_altium/Imagen14.png" width="250" />
+<em>Figura 6.3.1: Interfaz de búsqueda global de componentes.</em></p>
+<h3 id="activacion-de-barras-de-herramientas-superiores">Activación de Barras de Herramientas Superiores</h3>
+<p>Para agilizar el proceso de dibujo, debemos activar las barras de acceso rápido. Al hacer clic derecho sobre el espacio vacío en la barra superior, desplegaremos un menú contextual.</p>
+<p>Activamos la casilla <strong><code>Wiring</code></strong> (Cableado) para mostrar las herramientas de conexión eléctrica (cables, GND, VCC). También activamos <strong><code>Schematic Standard</code></strong>, <strong><code>Formatting</code></strong> y <strong><code>Utilities</code></strong> para habilitar las opciones de dibujo gráfico, zoom y guardado rápido.</p>
+<p><img alt="Activación de Barras" src="../img/fotos_altium/Imagen15.png" width="700" />
+<em>Figura 6.3.2: Configuración y habilitación de barras de herramientas superiores.</em></p>
+<hr />
+<h2 id="64-organizacion-visual-del-esquematico">6.4 Organización Visual del Esquemático</h2>
+<p>Para mantener un diseño profesional y ordenado, estructuraremos el lienzo en bloques funcionales utilizando herramientas de dibujo gráfico.</p>
+<h3 id="dibujo-de-figuras-geometricas">Dibujo de Figuras Geométricas</h3>
+<p>En la barra de utilidades superior, desplegamos el menú del ícono de la regla y el lápiz. Esta herramienta nos permite dibujar formas (<code>Rectangle</code>, <code>Polyline</code>, <code>Ellipse</code>) que servirán como delimitadores visuales para distintas etapas del circuito (ej. entradas, salidas, potencia).</p>
+<p><img alt="Herramientas Gráficas" src="../img/fotos_altium/Imagen16.png" width="300" />
+<em>Figura 6.4.1: Menú de formas geométricas y anotaciones.</em></p>
+<h3 id="edicion-de-propiedades-visuales">Edición de Propiedades Visuales</h3>
+<p>Al trazar una figura y hacer doble clic sobre ella, se abrirá el panel <strong><code>Properties</code></strong>. Aquí podemos modificar el grosor de línea (<code>Line Size</code>), el color del borde y, activando la casilla <code>Fill Color</code>, asignar un color de fondo para resaltar el área.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Trazo Inicial</th>
+<th style="text-align: center;">Propiedades de Línea</th>
+<th style="text-align: center;">Propiedades de Relleno</th>
+<th style="text-align: center;">Cuadro Terminado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Cuadro sin formato" src="../img/fotos_altium/Imagen17.png" width="150" /></td>
+<td style="text-align: center;"><img alt="Propiedades Linea" src="../img/fotos_altium/Imagen18.png" width="200" /></td>
+<td style="text-align: center;"><img alt="Propiedades Relleno" src="../img/fotos_altium/Imagen19.png" width="200" /></td>
+<td style="text-align: center;"><img alt="Cuadro Relleno" src="../img/fotos_altium/Imagen20.png" width="150" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="etiquetado-de-bloques">Etiquetado de Bloques</h3>
+<p>Para identificar cada área, seleccionamos la herramienta de texto (ícono de la letra "A") y la colocamos dentro de nuestro bloque. En el panel <code>Properties</code> del texto, ingresamos el nombre de la sección (ej. "Entradas") y ajustamos la fuente, tamaño, color y justificación.</p>
+<p><img alt="Anotación de Texto" src="../img/fotos_altium/Imagen21.png" width="500" />
+<em>Figura 6.4.2: Bloque funcional delimitado e identificado profesionalmente.</em></p>
+<hr />
+<h2 id="65-seleccion-y-verificacion-de-componentes">6.5 Selección y Verificación de Componentes</h2>
+<p>La correcta elección de componentes es el pilar de un buen diseño. En Altium, debemos garantizar que cada símbolo esquemático posea su representación física correspondiente.</p>
+<h3 id="busqueda-de-componentes-en-la-libreria">Búsqueda de Componentes en la Librería</h3>
+<p>Abrimos el panel <strong><code>Components</code></strong>. Podemos filtrar la búsqueda desplegando la lista de categorías (ej. <code>Connectors</code>, <code>Diodes</code>) o ingresando directamente la matrícula del componente en la barra de búsqueda superior.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Filtrado por Categoría</th>
+<th style="text-align: center;">Búsqueda por Matrícula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Filtro de Categorías" src="../img/fotos_altium/Imagen22.png" width="250" /></td>
+<td style="text-align: center;"><img alt="Barra de búsqueda" src="../img/fotos_altium/Imagen23.png" width="250" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="verificacion-de-huella-footprint-y-datasheet">Verificación de Huella (Footprint) y Datasheet</h3>
+<p>Al seleccionar un componente de la lista, en la sección inferior <code>Details</code> se mostrarán sus propiedades técnicas.
+1.  <strong>Modelos 3D y Huellas:</strong> Es obligatorio verificar en la sección <code>Models</code> que el componente cuente con su símbolo, huella de PCB y diseño 3D. Si carece de huella, no se podrá maquinar.
+2.  <strong>Hojas de Datos:</strong> En la sección <code>References</code> o <code>Part Choices</code>, encontraremos enlaces directos al <code>Datasheet</code> en formato PDF. Al hacer clic, Altium abrirá el documento técnico del fabricante para consultar límites de corriente y distribución de pines.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Verificación de Huella</th>
+<th style="text-align: center;">Enlace a Datasheet</th>
+<th style="text-align: center;">Visualización de PDF</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Modelos y Footprints" src="../img/fotos_altium/Imagen24.png" width="150" /></td>
+<td style="text-align: center;"><img alt="Enlaces a Referencias" src="../img/fotos_altium/Imagen25.png" width="150" /></td>
+<td style="text-align: center;"><img alt="Datasheet Tyco Electronics" src="../img/fotos_altium/Imagen26.png" width="300" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="solucion-a-componentes-sin-huella-snapmagic">Solución a Componentes sin Huella (SnapMagic)</h3>
+<p>Si el componente deseado no incluye una huella en las librerías predeterminadas, podemos recurrir a repositorios CAD externos como <strong>SnapMagic Search</strong> (anteriormente SnapEDA) https://www.snapeda.com/. Esta plataforma permite buscar la matrícula exacta y descargar gratuitamente el símbolo, huella y modelo 3D en formato nativo para integrarlo a Altium.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Modelo 3D Ausente/Básico</th>
+<th style="text-align: center;">Plataforma SnapMagic</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Verificación de modelos" src="../img/fotos_altium/Imagen27.png" width="200" /></td>
+<td style="text-align: center;"><img alt="SnapMagic Search" src="../img/fotos_altium/Imagen28.png" width="400" /></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="66-emplazamiento-y-ruteo-logico">6.6 Emplazamiento y Ruteo Lógico</h2>
+<p>Con los componentes verificados, procedemos a armar el esquema del circuito eléctrico.</p>
+<h3 id="acomodo-y-rotacion">Acomodo y Rotación</h3>
+<p>Arrastramos los componentes desde el panel al área de trabajo. Para rotar un componente $90^\circ$, lo seleccionamos con un clic (o mientras lo arrastramos) y presionamos la barra espaciadora.</p>
+<p>Ubicamos estratégicamente los elementos en el lienzo. Por ejemplo, situamos el conector dentro del bloque "Entradas" creado anteriormente, y los demás semiconductores a un lado para facilitar el trazado.</p>
+<p><img alt="Acomodo de Componentes" src="../img/fotos_altium/Imagen29.png" width="600" />
+<em>Figura 6.6.1: Distribución preliminar de los componentes en el lienzo.</em></p>
+<h3 id="trazado-de-conexiones-wires">Trazado de Conexiones (Wires)</h3>
+<p>Para interconectar los elementos, activamos el modo de cableado haciendo clic en el ícono <strong><code>Place Wire</code></strong> (en la barra <code>Wiring</code>) o usando el atajo <code>Ctrl + W</code>.</p>
+<p>Al acercar el cursor a la terminal de un componente, aparecerá una cruz roja indicando un nodo válido. Hacemos clic para iniciar, arrastramos siguiendo trayectorias a $90^\circ$ y hacemos clic en el destino.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Herramienta Place Wire</th>
+<th style="text-align: center;">Detección de Nodo (Cruz Roja)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Icono Wire" src="../img/fotos_altium/Imagen30.png" width="300" /></td>
+<td style="text-align: center;"><img alt="Cruce de conexión" src="../img/fotos_altium/Imagen31.png" width="250" /></td>
+</tr>
+</tbody>
+</table>
+<h3 id="puertos-de-alimentacion-power-ports">Puertos de Alimentación (Power Ports)</h3>
+<p>Para conectar las referencias de energía, localizamos el ícono de Tierra en la barra de cableado. Haciendo clic derecho sobre él, desplegamos el menú completo de opciones de voltaje.</p>
+<p>Seleccionamos <strong><code>Place GND power port</code></strong> para el retorno de energía y lo conectamos a la terminal inferior. Luego seleccionamos <strong><code>Place +12 power port</code></strong> (o el voltaje deseado) y lo conectamos a las terminales de las resistencias.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Menú de Puertos</th>
+<th style="text-align: center;">Opciones de Alimentación</th>
+<th style="text-align: center;">Circuito Alimentado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Icono GND" src="../img/fotos_altium/Imagen32.png" width="250" /></td>
+<td style="text-align: center;"><img alt="Lista Power Ports" src="../img/fotos_altium/Imagen33.png" width="150" /></td>
+<td style="text-align: center;"><img alt="Circuito con Voltaje" src="../img/fotos_altium/Imagen34.png" width="350" /></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="67-etiquetas-de-red-net-labels-y-anotacion">6.7 Etiquetas de Red (Net Labels) y Anotación</h2>
+<p>Para evitar un exceso de cables cruzando todo el diseño (lo cual disminuye la legibilidad profesional), utilizaremos variables de interconexión inalámbrica.</p>
+<h3 id="implementacion-de-net-labels">Implementación de Net Labels</h3>
+<p>En la barra de herramientas, hacemos clic derecho sobre el ícono de alambre y seleccionamos <strong><code>Net Label</code></strong>. Colocamos la etiqueta asegurándonos de que su punto de anclaje toque la línea del cable de destino.</p>
+<p>En el panel <code>Properties</code>, modificamos el <code>Net Name</code> asignando identificadores técnicos (ej. E1, E2, GND, +12). Si repetimos este proceso en las terminales del conector de entradas, Altium creará una unión eléctrica virtual perfecta entre ellos sin necesidad de trazos físicos.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Selección de Herramienta</th>
+<th style="text-align: center;">Edición de Nombre</th>
+<th style="text-align: center;">Lista de Redes</th>
+<th style="text-align: center;">Conector Etiquetado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Herramienta Net Label" src="../img/fotos_altium/Imagen35.png" width="150" /></td>
+<td style="text-align: center;"><img alt="Panel Net Name" src="../img/fotos_altium/Imagen36.png" width="150" /></td>
+<td style="text-align: center;"><img alt="Opciones Net Name" src="../img/fotos_altium/Imagen37.png" width="150" /></td>
+<td style="text-align: center;"><img alt="Conector con Nets" src="../img/fotos_altium/Imagen38.png" width="200" /></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Circuito Etiquetado" src="../img/fotos_altium/Imagen39.png" width="600" />
+<em>Figura 6.7.1: Circuito lógico interconectado mediante Etiquetas de Red.</em></p>
+<h3 id="anotacion-automatica-de-designadores">Anotación Automática de Designadores</h3>
+<p>Al colocar componentes nuevos, Altium les asigna un signo de interrogación por defecto (R?, D?, C?). Si el diseño se exporta en este estado, el software generará un error fatal.</p>
+<p>Para resolverlo, ejecutamos la herramienta de anotación automática:
+1. Nos dirigimos al menú superior <strong><code>Tools</code></strong>.
+2. Seleccionamos <strong><code>Annotation</code></strong>.
+3. Hacemos clic en <strong><code>Annotate Schematics Quietly</code></strong>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Menú de Anotación</th>
+<th style="text-align: center;">Circuito Final Numerado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><img alt="Herramienta de Anotación" src="../img/fotos_altium/Imagen40.png" width="300" /></td>
+<td style="text-align: center;"><img alt="Circuito Designado" src="../img/fotos_altium/Imagen41.png" width="450" /></td>
+</tr>
+</tbody>
+</table>
+<p>Esta acción asignará un número secuencial único a cada componente (D1, L1, R2, Q1). Con este paso completado, nuestro diagrama esquemático queda totalmente validado y listo para ser exportado al entorno de diseño físico de PCB.</p>
+<hr />
+<h2 id="68-exportacion-al-entorno-pcb">6.8 Exportación al Entorno PCB</h2>
+<p>Con el esquemático finalizado, procedemos a crear el documento de la placa. En el panel lateral, hacemos clic derecho sobre el proyecto (<code>Placa_prueba.PrjPcb</code>), seleccionamos <strong><code>Add New to Project</code></strong> y elegimos <strong><code>PCB</code></strong>.</p>
+<p><img alt="Añadir Documento PCB" src="../img/fotos_altium/Imagen42.png" width="400" />
+<em>Figura 6.8.1: Ruta para generar el lienzo de ruteo físico de la tarjeta de circuito impreso.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

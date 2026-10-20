@@ -222,320 +222,372 @@ Con el esquemático finalizado, procedemos a crear el documento de la placa. En 
 
 En este apartado se realiza lo siguiente:
 
-### Agregar Documento PCB
-En el panel lateral izquierdo `Projects`, se hace clic derecho sobre el archivo contenedor del proyecto (`Placa_prueba.PrjPcb`, indicado con la flecha verde). En el menú contextual, se pasa el cursor sobre `Add New to Project` y se selecciona la opción `PCB` (resaltada en el recuadro verde de la derecha).
+**Agregar documento PCB:**
+En el panel lateral izquierdo `Projects`, se hace clic derecho sobre el archivo contenedor del proyecto (`Placa_prueba.PrjPcb`, indicado con la flecha verde). En el menú contextual, se pasa el cursor sobre `Add New to Project` y se selecciona la opción `PCB` (resaltada en el recuadro verde de la derecha). 
 
-![Agregar PCB](img/fotos_altium_2/Imagen1.png)
-*Figura 6.9.1: Selección de PCB en el menú contextual.*
-
-<br><br>
-
-### Guardado del archivo de circuito impreso
+**Guardado del archivo de circuito impreso:** 
 Se abrirá un lienzo de trabajo negro correspondiente al diseño de la placa. Inmediatamente, se debe guardar el nuevo archivo mediante `Ctrl + S` (o `File > Save`), asignándole un nombre dentro de la misma carpeta del proyecto (por ejemplo, `Placa_prueba.PcbDoc`). 
 
-Estructura completa: Con este paso, el panel de proyectos contará con los dos documentos fundamentales vinculados: el esquemático (`.SchDoc`) y la placa PCB (`.PcbDoc`), preparados para la transferencia de componentes y huellas.
+**Estructura completa:** 
+Con este paso, el panel de proyectos contará con los dos documentos fundamentales vinculados: el esquemático (`.SchDoc`) y la placa PCB (`.PcbDoc`), preparados para la transferencia de componentes y huellas.
 
-![Guardar PcbDoc](img/fotos_altium_2/Imagen2.png)
-*Figura 6.9.2: Archivo PcbDoc guardado en el panel de proyectos.*
+![Agregar PCB](img/fotos_altium_2/Imagen1.png)
+*Figura 6.9.1: Creación del documento PCB.*
 
 <br><br>
 
-### Validación y Ejecución de Cambios (ECO)
+![Update PCB Document](img/fotos_altium_2/Imagen2.png)
+*Figura 6.9.2: Menú para actualizar el documento PCB con los datos del esquemático.*
+
+<br><br>
+
+---
+
+## 6.10 Validación y Transferencia de Datos (ECO)
+
 En este apartado se realiza la validación y transferencia de datos considerando lo siguiente:
 
 *   **Advertencia de compilación:** En la parte inferior izquierda se observa una leyenda en texto rojo (resaltada con el recuadro verde): *"Warning: Errors occurred during compilation of the project!"*. Esta advertencia puede aparecer si alguna etiqueta de red no tiene un destino explícito o si existe alguna pequeña inconsistencia de conexión.
 *   **Validación de cambios (Validate Changes):** Antes de volcar los componentes a la placa, se debe hacer clic en el botón `Validate Changes` (resaltado en el recuadro rojo inferior). Esto verifica que todas las huellas, componentes (C1, D1, D2, L1, P1, Q1, R1, R2) y redes (+12, E1, E2, E3, GND) estén listos y disponibles.
 *   **Ejecución de cambios (Execute Changes):** Una vez que aparezcan las marcas verdes de verificación en la columna Check, se habilita el botón `Execute Changes` (indicado por la flecha azul). Al presionarlo, el sistema transferirá automáticamente todas las huellas y conexiones físicas al lienzo de la PCB, tras lo cual se presiona el botón Close para cerrar la ventana.
 
-![Update PCB Document](img/fotos_altium_2/Imagen3.png)
-*Figura 6.9.3: Herramienta Update PCB Document.*
+![Ventana ECO](img/fotos_altium_2/Imagen3.png)
+*Figura 6.10.1: Ventana de Engineering Change Order (ECO).*
 
 <br><br>
-
-![Ventana ECO](img/fotos_altium_2/Imagen4.png)
-*Figura 6.9.4: Ventana de Engineering Change Order (ECO).*
-
-<br><br>
-
-![Componentes Importados](img/fotos_altium_2/Imagen5.png)
-*Figura 6.9.5: Huellas transferidas al lienzo negro de la PCB.*
 
 ---
 
-## 6.10 Origen y Distribución de Huellas
+## 6.11 Establecer el Origen del Circuito
 
 En estas imágenes se ilustra el primer paso tras importar los componentes al entorno de PCB (`.PcbDoc`), así como la configuración del origen de referencia (0,0). En este apartado se realizan las siguientes acciones explicadas en la clase:
 
-### Organización Preliminar de las Huellas
-Una vez ejecutada la orden ECO, los componentes importados se posicionan dentro del área de trabajo negra. En esta vista preliminar se observan las líneas finas de conexión (*ratsnest*), las cuales indican las conexiones eléctricas lógicas que deberán rutearse posteriormente. Para rotar cualquier componente mientras se arrastra con el clic izquierdo, se debe mantener presionado el clic y pulsar la barra espaciadora.
+**Organización preliminar de las huellas:** 
+Una vez ejecutada la orden ECO, los componentes importados (Q1, C1, L1, D2, D1, P1, R1, R2) se posicionan dentro del área de trabajo negra. En esta vista preliminar se observan las líneas finas de conexión (*ratsnest*), las cuales indican las conexiones eléctricas lógicas que deberán rutearse posteriormente. Para rotar cualquier componente mientras se arrastra con el clic izquierdo, se debe mantener presionado el clic y pulsar la barra espaciadora.
 
-### Establecer el Origen del Circuito (Set Origin)
-Para facilitar las mediciones, el ruteado y las reglas de fabricación, se define el punto de origen (0,0) en la esquina de la placa:
-1. En la barra de menús superior, se hace clic en `Edit` (resaltado en el recuadro rojo de la segunda imagen).
-2. Se desplaza el cursor sobre `Origin` y se selecciona la opción `Set` (indicada por la flecha roja).
-3. El puntero del mouse cambiará a una cruz de precisión; con ella, se hace clic exactamente en la esquina inferior izquierda del borde negro de la PCB (resaltada dentro del círculo rojo de la tercera imagen).
-
-![Menú Edit](img/fotos_altium_2/Imagen6.png)
-*Figura 6.10.1: Selección del menú Origin > Set.*
+![Componentes Importados](img/fotos_altium_2/Imagen4.png)
+*Figura 6.11.1: Componentes y líneas ratsnest importados a la PCB.*
 
 <br><br>
 
-![Definición Origen](img/fotos_altium_2/Imagen7.png)
-*Figura 6.10.2: Clic en la esquina inferior izquierda para el origen.*
+**Establecer el origen del circuito (Set Origin):** 
+Para facilitar las mediciones, el ruteado y las reglas de fabricación, se define el punto de origen (0,0) en la esquina de la placa:
+1. En la barra de menús superior, se hace clic en `Edit` (resaltado en el recuadro rojo de la segunda imagen). 
+2. Se desplaza el cursor sobre `Origin` y se selecciona la opción `Set` (indicada por la flecha roja). 
+3. El puntero del mouse cambiará a una cruz de precisión; con ella, se hace clic exactamente en la esquina inferior izquierda del borde negro de la PCB (resaltada dentro del círculo rojo de la tercera imagen).
+
+![Menú Edit Origin](img/fotos_altium_2/Imagen5.png)
+*Figura 6.11.2: Ruta para establecer el origen.*
+
+<br><br>
+
+![Crosshair de Origen](img/fotos_altium_2/Imagen6.png)
+*Figura 6.11.3: Clic de precisión en la esquina inferior izquierda.*
+
+<br><br>
 
 ---
 
-## 6.11 Visor 3D y Navegación Espacial
+## 6.12 Organización Funcional y Vista 3D
 
 En este apartado se consideran las siguientes acciones y atajos explicados en la clase:
 
-### Organización Funcional del Layout (Vista 2D)
-Como se aprecia al comparar la primera y segunda captura, los componentes se distribuyen estratégicamente sobre el lienzo negro. Se rotan y acomodan para minimizar el cruce de las líneas finas de conexión (*ratsnest*).
+**Organización funcional del layout (Vista 2D):**
+Como se aprecia al comparar la primera y segunda captura, los componentes se distribuyen estratégicamente sobre el lienzo negro. Se rotan y acomodan para minimizar el cruce de las líneas finas de conexión (*ratsnest*). Para rotar un elemento durante el arrastre con el clic izquierdo, se presiona la barra espaciadora.
 
-![Acomodo Inicial](img/fotos_altium_2/Imagen8.png)
-*Figura 6.11.1: Componentes en proceso de organización.*
-
-<br><br>
-
-![Acomodo Final](img/fotos_altium_2/Imagen9.png)
-*Figura 6.11.2: Componentes organizados minimizando el cruce de ratsnest.*
+![Acomodo Inicial](img/fotos_altium_2/Imagen7.png)
+*Figura 6.12.1: Acomodo preliminar de componentes.*
 
 <br><br>
 
-### Conmutación a la Vista 3D
+![Acomodo Final](img/fotos_altium_2/Imagen8.png)
+*Figura 6.12.2: Distribución optimizada para el ruteo.*
+
+<br><br>
+
+**Conmutación a la vista 3D:**
 Para verificar la disposición física de los componentes y comprobar la altura o interferencias mecánicas, se presiona la tecla `3`. El lienzo cambiará a una representación tridimensional fotorrealista de la PCB (tercera imagen). Para regresar al plano bidimensional de ruteado (2D), simplemente se presiona la tecla `2`.
 
-![Vista 3D](img/fotos_altium_2/Imagen10.png)
-*Figura 6.11.3: Vista tridimensional de la PCB.*
+![Vista 3D](img/fotos_altium_2/Imagen9.png)
+*Figura 6.12.3: Representación en 3D de los componentes.*
 
 <br><br>
 
-### Navegación y Rotación en el Espacio 3D
+**Navegación y rotación en el espacio 3D:**
 Como se ilustra en la cuarta captura, al mantener presionada la tecla `Shift` y hacer clic derecho sobre el lienzo, aparece una esfera de orientación con flechas (ejes X, Y, Z). Moviendo el mouse en esta modalidad, se puede rotar libremente la placa en cualquier ángulo e inclinación para inspeccionar la tarjeta desde diversas perspectivas mecánicas.
 
-![Rotación 3D](img/fotos_altium_2/Imagen11.png)
-*Figura 6.11.4: Esfera de orientación espacial 3D.*
+![Navegación 3D](img/fotos_altium_2/Imagen10.png)
+*Figura 6.12.4: Esfera de rotación en el visor 3D.*
+
+<br><br>
 
 ---
 
-## 6.12 Entorno PCB: Barras, Unidades y Filtro de Redes
+## 6.13 Despliegue de Barras en el Entorno PCB
 
 En este apartado se consideran los siguientes aspectos explicados durante la sesión:
 
-### Despliegue de Barras en el Entorno PCB
-Al hacer clic derecho sobre el área libre de la barra de menús superior dentro de la pestaña de la PCB (`Placa_prueba.PcbDoc`), se despliega el menú contextual de barras de herramientas.
-
+*   **Despliegue de barras en el entorno PCB:** Al hacer clic derecho sobre el área libre de la barra de menús superior dentro de la pestaña de la PCB (`Placa_prueba.PcbDoc`), se despliega el menú contextual de barras de herramientas.
 *   **Barra PCB Standard:** Al marcar la casilla `PCB Standard`, se habilita la barra superior dedicada al ruteado. Esta incluye las herramientas de trazado de pistas (Interactive Routing), colocación de vías, polígonos de cobre, arcos, reglas de medición y textos para capas del circuito impreso.
 *   **Barras Utilities, Filter y Wiring:** Al mantener activadas las casillas `Utilities`, `Filter` y `Wiring`, se integran los accesos directos para la selección de elementos por filtros, opciones de zoom, edición visual y botones de navegación rápida dentro de la tarjeta de circuito impreso.
 
-![Barras PCB](img/fotos_altium_2/Imagen12.png)
-*Figura 6.12.1: Activación de barras de herramientas en PCB.*
+![Menú de Barras](img/fotos_altium_2/Imagen11.png)
+*Figura 6.13.1: Menú contextual para habilitar barras de herramientas.*
 
 <br><br>
 
-### Sistema de Unidades (Atajo Q)
-Atajo de teclado "Q": Al presionar la tecla `Q` en cualquier momento dentro del lienzo de la PCB, Altium Designer conmuta el sistema de medición activo entre unidades métricas (mm) e imperiales (mils o milésimas de pulgada).
+---
 
-*   **Modo Métrico (mm):** La visualización de coordenadas y la rejilla de captura (Snap) se muestran en milímetros (por ejemplo, Snap: 0.127mm).
-*   **Modo Imperial (mils):** Al volver a pulsar la tecla Q, las lecturas cambian automáticamente a milésimas de pulgada (por ejemplo, Snap: 5mil). Este sistema es el estándar industrial para especificar anchos de pista, separaciones de aislamiento (clearances) y footprints con distribución de pines basada en 100 mil (2.54 mm).
+## 6.14 Filtro de Redes y Aislamiento Visual
 
-![Unidades Mils](img/fotos_altium_2/Imagen22.png)
-*Figura 6.12.2: Coordenadas y Snap en Mils.*
+En estas capturas se ilustra el procedimiento para aislar e identificar visualmente las conexiones pertenecientes a un nodo o red específica (como +12, GND o E1) dentro de la tarjeta. En este apartado se consideran las siguientes acciones explicadas en la clase:
 
-<br><br>
-
-![Unidades MM](img/fotos_altium_2/Imagen23.png)
-*Figura 6.12.3: Coordenadas y Snap en Milímetros.*
-
-<br><br>
-
-### Aislamiento e Identificación Visual (Filtro de Redes)
-En estas capturas se ilustra el procedimiento para aislar e identificar visualmente las conexiones pertenecientes a un nodo o red específica (como +12, GND o E1) dentro de la tarjeta.
-*   **Uso del menú desplegable de redes:** En la barra de herramientas superior de la PCB, se localiza el menú desplegable de filtro de redes (resaltado con el recuadro rojo en la primera imagen).
+*   **Uso del menú desplegable de redes:** En la barra de herramientas superior de la PCB, se localiza el menú desplegable de filtro de redes (resaltado con el recuadro rojo en la primera imagen). Al dar clic sobre él, se muestra el listado completo de los nodos del circuito (+12, E1, E2, E3, GND, NetC1_1, NetL1_2, O1).
 *   **Aislamiento y resaltado visual (Dim Mode):** Al seleccionar una red en particular (por ejemplo, +12), el entorno atenúa o oscurece en tono gris todos los componentes y pistas que no pertenecen a esa red, manteniendo iluminados únicamente los pads y conexiones de la red seleccionada (segunda imagen).
 *   **Facilidad para el ruteado:** Esta herramienta resulta sumamente útil para identificar rápidamente los puntos de destino antes de trazar pistas manuales, evitando confusiones en circuitos con alta densidad de conexiones.
 
-![Menú de Redes](img/fotos_altium_2/Imagen13.png)
-*Figura 6.12.4: Menú desplegable de selección de red.*
+![Filtro de Redes](img/fotos_altium_2/Imagen12.png)
+*Figura 6.14.1: Despliegue del filtro de redes.*
 
 <br><br>
 
-![Red Aislada](img/fotos_altium_2/Imagen14.png)
-*Figura 6.12.5: Resaltado visual (Dim Mode) de la red +12.*
+![Dim Mode](img/fotos_altium_2/Imagen13.png)
+*Figura 6.14.2: Modo de resaltado visual (Dim Mode) para la red +12.*
+
+<br><br>
 
 ---
 
-## 6.13 Reglas de Diseño (Design Rules) y DRC
+## 6.15 Resolución de Errores de Diseño (DRC)
 
-### Importación de Reglas de Manufactura (.rul)
-En estas capturas se detalla el proceso para abrir el editor de reglas de diseño (Design Rules) e importar un archivo de reglas preconfigurado según los estándares de manufactura de un fabricante (como JLCPCB).
+**Paso 24: Identificación y resolución de errores de reglas de diseño (DRC - Clearances y Violaciones)**
 
-1.  **Acceso al editor de reglas:** En la barra de menús superior dentro del documento PCB, se hace clic en la pestaña `Design` y se selecciona la opción `Rules...` Esto desplegará la ventana emergente `PCB Rules and Constraints Editor`.
-2.  **Importar reglas del fabricante:** Dentro del árbol de navegación izquierdo, se hace clic derecho sobre el directorio principal `Default Rule Set` y en el menú contextual, se selecciona la opción `Import Rules...`
-3.  **Carga del archivo de reglas (JLCPCB.rul):** Se abrirá el explorador de archivos de Windows. Al cargar el archivo con extensión `.rul` proporcionado por la casa de fabricación (por ejemplo, `JLCPCB.rul`), Altium ajustará automáticamente los grosores mínimos de pista, separaciones, diámetros de vía y tolerancias a las capacidades reales de la máquina de producción del fabricante, eliminando falsas alertas de error en la placa.
+En esta captura se ilustra la representación visual de los errores de reglas de diseño (Design Rule Check - DRC) que surgen durante la colocación de componentes en el lienzo de la PCB. En este apartado se consideran las siguientes causas y soluciones explicadas en la clase:
 
-![Menú Design Rules](img/fotos_altium_2/Imagen24.png)
-*Figura 6.13.1: Acceso a las Design Rules.*
+**Identificación de infracciones (Marcas verdes y cruzadas):**
+*   Cuando un componente o pad se ilumina en color verde brillante con pequeñas cruces (como el pin 1 GND de la imagen), Altium indica que se está violando una regla de diseño (Clearance Constraint o colisión física).
+*   Las cotas en color amarillo que marcan `< 10mil` señalan que la distancia entre los pads adyacentes (O1, NetL1_2 y GND) es menor que la separación mínima permitida por las reglas de fabricación predeterminadas.
 
-<br><br>
+**Causas comunes:**
+*   Proximidad excesiva entre componentes o encapsulados pequeños (como transistores o conectores).
+*   Superposición de capas de serigrafía (Silkscreen) o bordes del cuerpo del componente sobre las zonas de soldadura.
 
-![Editor de Reglas](img/fotos_altium_2/Imagen25.png)
-*Figura 6.13.2: Editor general de Reglas y Restricciones.*
+**Formas de solución:**
+*   **Reorganización manual:** Separar ligeramente los componentes arrastrándolos con el cursor hasta que la marca verde desaparezca y el pad recupere su color normal.
+*   **Ajuste de reglas de diseño (Rules):** Si las dimensiones del componente son correctas según su datasheet, se puede ingresar al menú `Design > Rules > Clearance` para reducir el margen mínimo de separación (por ejemplo, ajustándolo a 6 mil u 8 mil) según la capacidad del fabricante de la PCB.
 
-<br><br>
-
-![Importar Reglas](img/fotos_altium_2/Imagen26.png)
-*Figura 6.13.3: Opción de Import Rules.*
-
-<br><br>
-
-![Archivo RUL](img/fotos_altium_2/Imagen27.png)
-*Figura 6.13.4: Selección del archivo JLCPCB.rul.*
+![Marcas Verdes DRC](img/fotos_altium_2/Imagen14.png)
+*Figura 6.15.1: Violaciones de reglas de diseño visualizadas en el lienzo.*
 
 <br><br>
-
-### Configuración Manual de Ancho de Pista (Width)
-En esta captura se muestra cómo ajustar las reglas de ancho de pista (Width) de forma manual directamente desde el PCB Rules and Constraints Editor.
-
-*   **Edición directa por regla (Width):** Se navega en el menú de la izquierda hacia la categoría `Routing > Width`. Al seleccionar la regla, se despliegan sus parámetros en el panel central.
-*   **Ajuste de parámetros:** Se pueden modificar los valores celda por celda para las diferentes capas de la placa:
-    *   **Min Width:** Grosor mínimo de pista permitido (por ejemplo, 0.24mil o 10 mil).
-    *   **Preferred Width:** Valor por defecto que Altium utilizará al iniciar el ruteado interactivo (por ejemplo, 0.254mil / 10 mil / 0.25 mm).
-    *   **Max Width:** Limita el grosor máximo al que se puede expandir una pista.
-*   Al modificar manualmente estos campos y presionar Apply y OK, Altium actualizará los límites de ruteado sin necesidad de depender de un archivo externo.
-
-![Regla Width](img/fotos_altium_2/Imagen28.png)
-*Figura 6.13.5: Ajuste paramétrico de la regla de Width (Ancho de Pista).*
-
-<br><br>
-
-### Identificación de Infracciones Visuales (Clearance)
-En esta captura se ilustra la representación visual de los errores de reglas de diseño (Design Rule Check - DRC) que surgen durante la colocación de componentes en el lienzo.
-
-Cuando un componente o pad se ilumina en color verde brillante con pequeñas cruces (como el pin 1 GND de la imagen), Altium indica que se está violando una regla de diseño (Clearance Constraint o colisión física). Las cotas en color amarillo que marcan `< 10mil` señalan que la distancia entre los pads adyacentes es menor que la separación mínima permitida.
-
-*   **Causas comunes:** Proximidad excesiva entre componentes o encapsulados pequeños, superposición de capas de serigrafía (Silkscreen).
-*   **Formas de solución:** Reorganización manual separando ligeramente los componentes, o ajuste de reglas de diseño en `Design > Rules > Clearance` para reducir el margen mínimo de separación según la capacidad del fabricante.
-
-![Violación Clearance](img/fotos_altium_2/Imagen15_2.png)
-*Figura 6.13.6: Advertencia visual en verde indicando violación de Clearance.*
 
 ---
 
-## 6.14 Trazado Físico (Ruteado)
+## 6.16 Sistema de Medición y Atajos
+
+En este apartado se consideran los siguientes detalles técnicos explicados en la clase:
+
+**Atajo de teclado "Q":** Al presionar la tecla `Q` en cualquier momento dentro del lienzo de la PCB, Altium Designer conmuta el sistema de medición activo entre unidades métricas (mm) e imperiales (mils o milésimas de pulgada).
+
+*   **Modo Métrico (mm):** Como se observa en la primera imagen, la visualización de coordenadas (x, y, dx, dy) y la rejilla de captura (Snap) se muestran en milímetros (por ejemplo, Snap: 0.127mm). Este sistema es ideal para definir dimensiones mecánicas de la placa y posicionar conectores con paso métrico.
+*   **Modo Imperial (mils):** Al volver a pulsar la tecla `Q` (segunda imagen), las lecturas cambian automáticamente a milésimas de pulgada (por ejemplo, Snap: 5mil, dx: 15.000mil). Este sistema es el estándar industrial para especificar anchos de pista, separaciones de aislamiento (clearances) y footprints con distribución de pines basada en 100 mil (2.54 mm).
+
+![Unidades Mils](img/fotos_altium_2/Imagen15.png)
+*Figura 6.16.1: Lecturas en unidades imperiales (Mils).*
+
+<br><br>
+
+![Unidades MM](img/fotos_altium_2/Imagen16.png)
+*Figura 6.16.2: Lecturas en unidades métricas (mm).*
+
+<br><br>
+
+---
+
+## 6.17 Importación de Reglas de Diseño (Rules)
+
+En estas capturas se detalla el proceso para abrir el editor de reglas de diseño (Design Rules) e importar un archivo de reglas preconfigurado según los estándares de manufactura de un fabricante (como JLCPCB). En este apartado se consideran los siguientes pasos explicados durante la sesión:
+
+**Acceso al editor de reglas (PCB Rules and Constraints Editor):**
+1. En la barra de menús superior dentro del documento PCB, se hace clic en la pestaña `Design` (indicada por la flecha roja en la primera imagen).
+2. En el menú desplegable, se selecciona la opción `Rules...` (resaltada en el recuadro rojo). Esto desplegará la ventana emergente PCB Rules and Constraints Editor (segunda imagen), donde se listan todas las categorías de diseño (Electrical, Routing, SMT, Manufacturing, Placement, etc.).
+
+**Importar reglas del fabricante (Import Rules):**
+1. Dentro del árbol de navegación izquierdo en la ventana de reglas, se hace clic derecho sobre el directorio principal `Default Rule Set` (resaltado en el recuadro rojo superior de la tercera imagen).
+2. En el menú contextual, se selecciona la opción `Import Rules...` (resaltada en el recuadro rojo inferior).
+
+**Carga del archivo de reglas (JLCPCB.rul):**
+Se abrirá el explorador de archivos de Windows (cuarta imagen), en el cual se navega hasta ubicar el archivo con extensión `.rul` proporcionado por la casa de fabricación (por ejemplo, `JLCPCB.rul`). Al cargarlo y confirmar la sobreescritura/actualización, Altium ajustará automáticamente los grosores mínimos de pista, separaciones (clearances), diámetros de vía y tolerancias a las capacidades reales de la máquina de producción del fabricante, eliminando falsas alertas de error en la placa.
+
+![Menú Rules](img/fotos_altium_2/Imagen17.png)
+*Figura 6.17.1: Acceso a Design > Rules.*
+
+<br><br>
+
+![Editor de Reglas](img/fotos_altium_2/Imagen18.png)
+*Figura 6.17.2: Ventana PCB Rules and Constraints Editor.*
+
+<br><br>
+
+![Importar Reglas](img/fotos_altium_2/Imagen19.png)
+*Figura 6.17.3: Opción Import Rules desde el árbol de navegación.*
+
+<br><br>
+
+![Archivo RUL](img/fotos_altium_2/Imagen20.png)
+*Figura 6.17.4: Archivo de reglas JLCPCB.rul en el explorador.*
+
+<br><br>
+
+---
+
+## 6.18 Ajuste Manual de Ancho de Pista
+
+En esta captura se muestra cómo ajustar las reglas de ancho de pista (Width) de forma manual directamente desde el PCB Rules and Constraints Editor. En este apartado se consideran las siguientes acciones para configurar las reglas manualmente:
+
+*   **Edición directa por regla (Width):** En lugar de importar un archivo `.rul`, se puede navegar en el menú de la izquierda hacia la categoría `Routing > Width`. Al seleccionar la regla (en este caso, Width), se despliegan sus parámetros en el panel central.
+*   **Ajuste de parámetros en la tabla de capas (Constraints):** Dentro de la sección de restricciones (Constraints), se pueden modificar los valores celda por celda para las diferentes capas de la placa (Top Layer, Bottom Layer):
+    *   **Min Width (Ancho mínimo):** Define el grosor mínimo de pista permitido por el fabricante o el diseño (por ejemplo, 0.24mil o 10 mil según la unidad configurada).
+    *   **Preferred Width (Ancho preferido):** Es el valor por defecto que Altium utilizará al iniciar el ruteado interactivo de las pistas (por ejemplo, 0.254mil / 10 mil / 0.25 mm).
+    *   **Max Width (Ancho máximo):** Limita el grosor máximo al que se puede expandir una pista en esta regla.
+*   **Aplicación de cambios:** Al modificar manualmente estos campos y presionar `Apply` y `OK`, Altium actualizará los límites de ruteado sin necesidad de depender de un archivo externo.
+
+![Regla de Width](img/fotos_altium_2/Imagen21.png)
+*Figura 6.18.1: Configuración de la regla de ancho de pista.*
+
+<br><br>
+
+---
+
+## 6.19 Ruteo Interactivo y Ancho Dinámico
 
 En estas capturas se ilustra el inicio del trazado físico de las pistas sobre la PCB, así como la técnica para modificar dinámicamente el grosor de la línea mientras se realiza el ruteado. En este apartado se consideran los siguientes aspectos clave expuestos en la clase:
 
-### Estrategia de Ruteado (GND al Final)
-Como buena práctica de diseño, la red de tierra (GND) suele dejar para el final. Esto se debe a que habitualmente se cubre la placa con un plano o vertido de cobre (Polygon Pour) conectado a GND al terminar, el cual une automáticamente todos los pads de tierra. Por ello, se rutean primero las señales de datos, entradas, salidas y líneas de alimentación como +12.
+**Estrategia de ruteado (GND al final):** 
+Como buena práctica de diseño, la red de tierra (GND) se suele dejar para el final. Esto se debe a que habitualmente se cubre la placa con un plano o vertido de cobre (Polygon Pour) conectado a GND al terminar, el cual une automáticamente todos los pads de tierra. Por ello, se rutean primero las señales de datos, entradas, salidas y líneas de alimentación como +12.
 
-### Activar el Ruteado Interactivo (Interactive Routing)
-Para comenzar a tirar pistas, se hace clic en el ícono de ruteado interactivo (indicado por la flecha roja en la primera imagen) o se utiliza el atajo de teclado `Ctrl + W` (o P > T). Al hacer clic sobre un pad de origen, se genera la pista interactiva en color rojo (correspondiente a la capa superior o Top Layer) siguiendo el cursor.
+**Activar el ruteado interactivo (Interactive Routing):**
+Para comenzar a tirar pistas, se hace clic en el ícono de ruteado interactivo (indicado por la flecha roja en la primera imagen) o se utiliza el atajo de teclado `Ctrl + W` (o `P > T`). Al hacer clic sobre un pad de origen (como el pin 1 NetC1_1 del capacitor C1 en la segunda imagen), se genera la pista interactiva en color rojo (correspondiente a la capa superior o Top Layer) siguiendo el cursor.
 
-![Icono Ruteo](img/fotos_altium_2/Imagen29.png)
-*Figura 6.14.1: Herramienta Interactive Routing.*
-
-<br><br>
-
-![Pista Roja](img/fotos_altium_2/Imagen30.png)
-*Figura 6.14.2: Trazado interactivo de pista en la capa Top Layer.*
+![Icono Ruteo](img/fotos_altium_2/Imagen22.png)
+*Figura 6.19.1: Selección de la herramienta Interactive Routing.*
 
 <br><br>
 
-### Cambio Dinámico de Ancho de Pista (Shift + W)
-Si durante el trazo de una línea se requiere cambiar su ancho (por ejemplo, para hacer más gruesa una pista de potencia), se presiona la combinación de teclas `Shift + W`. Esto desplegará en pantalla la ventana emergente `Choose Width` (tercera imagen), permitiendo seleccionar de forma rápida un valor predefinido en milésimas de pulgada o en milímetros sin necesidad de interrumpir el ruteado o regresar al menú de reglas.
-
-![Choose Width](img/fotos_altium_2/Imagen31.png)
-*Figura 6.14.3: Ventana emergente Choose Width (Shift+W).*
+![Pista Activa](img/fotos_altium_2/Imagen23.png)
+*Figura 6.19.2: Trazado interactivo desde un pad de origen.*
 
 <br><br>
 
-![Ruteo con Grosor Modificado](img/fotos_altium_2/Imagen32.png)
-*Figura 6.14.4: Pista ruteada aplicando un ancho dinámico modificado.*
+**Cambio dinámico de ancho de pista (Atajo Shift + W):**
+Si durante el trazo de una línea se requiere cambiar su ancho (por ejemplo, para hacer más gruesa una pista de potencia o más delgada una de señal), se presiona la combinación de teclas `Shift + W`. 
+
+Esto desplegará en pantalla la ventana emergente `Choose Width` (tercera imagen), permitiendo seleccionar de forma rápida un valor predefinido en milésimas de pulgada (10 mil, 12 mil, 20 mil, etc.) o en milímetros (0.25 mm, 0.5 mm, etc.) sin necesidad de interrumpir el ruteado o regresar al menú de reglas.
+
+![Choose Width](img/fotos_altium_2/Imagen24.png)
+*Figura 6.19.3: Menú desplegable para el ajuste dinámico del grosor de pista.*
 
 <br><br>
 
-### Modalidades de Ruteado Automático (Auto Route)
-En este apartado se explican las tres modalidades principales:
-
-1.  **Ruteado automático de toda la placa (Auto Route All):** Se hace clic en `Route > Auto Route > All...` El sistema intenta trazar de forma autónoma la totalidad de las pistas sobre las capas disponibles (Top Layer en rojo y Bottom Layer en azul). Aunque es rápido, habitualmente requiere ajustes manuales posteriores.
-2.  **Ruteado automático por red (Auto Route Net):** Se navega a `Route > Auto Route > Net` y se selecciona un nodo específico. Altium rutea únicamente la red seleccionada dejando las demás pendientes.
-3.  **Ruteado automático por área (Auto Route Area):** Se selecciona `Route > Auto Route > Area` y se dibuja un recuadro sobre una zona concreta de la placa. El motor procesa e interconecta únicamente los pads contenidos dentro del área seleccionada.
-
-Estas opciones selectivas son útiles para delegar partes repetitivas del trazo mientras mantienes el control manual sobre pistas críticas.
-
-![Auto Route All](img/fotos_altium_2/Imagen33.png)
-*Figura 6.14.5: Opción de ruteo automático global.*
+![Pista Finalizada](img/fotos_altium_2/Imagen25.png)
+*Figura 6.19.4: Ruteado completado de la pista seleccionada.*
 
 <br><br>
-
-![Resultado Auto All](img/fotos_altium_2/Imagen34.png)
-*Figura 6.14.6: Trazado generado automáticamente en capas Top y Bottom.*
-
-<br><br>
-
-![Auto Route Net](img/fotos_altium_2/Imagen35.png)
-*Figura 6.14.7: Selección de Auto Route por red específica.*
-
-<br><br>
-
-![Resultado Auto Net](img/fotos_altium_2/Imagen36.png)
-*Figura 6.14.8: Ruteo automático aplicado solo al nodo seleccionado.*
-
-<br><br>
-
-![Auto Route Area](img/fotos_altium_2/Imagen37.png)
-*Figura 6.14.9: Selección de Auto Route por área delimitada.*
-
-<br><br>
-
-![Resultado Auto Area](img/fotos_altium_2/Imagen38.png)
-*Figura 6.14.10: Ruteo automático aplicado exclusivamente dentro de un bloque funcional.*
 
 ---
 
-## 6.15 Contorno de Placa e Inspección Final
+## 6.20 Modalidades de Ruteado Automático
 
-### Definir Contorno Físico (Board Shape)
-En este apartado se explica cómo generar un corte físico (Board Shape) a partir de trazos mecánicos.
+En este apartado se explican las tres modalidades principales:
 
-1.  Se cambia a la capa mecánica (`Mechanical 1`, indicada por la flecha azul).
-2.  Se utiliza la herramienta de dibujo de línea (`Place Line`) para dibujar un polígono cerrado alrededor de los componentes, delimitando físicamente el tamaño personalizado que tendrá la placa de circuito impreso.
-3.  Una vez que el contorno violeta está completamente cerrado (como se muestra en la tercera imagen), se seleccionan todas las líneas del polígono mecánico que se acaba de dibujar.
-4.  Con las líneas seleccionadas, se navega en la barra superior a `Design > Board Shape > Define Board Shape from Selected Objects` (cuarta imagen). Al dar clic, el fondo oscuro del entorno de Altium se ajustará y recortará exactamente a la forma del polígono trazado (quinta imagen), eliminando el área excedente y definiendo la geometría real de la PCB.
+**1. Ruteado automático de toda la placa (Auto Route All):**
+*   **Procedimiento:** Se hace clic en `Route > Auto Route > All...` (indicado con la flecha roja en la primera imagen).
+*   **Resultado:** El sistema intenta trazar de forma autónoma la totalidad de las pistas del circuito sobre las capas disponibles (Top Layer en rojo y Bottom Layer en azul), como se observa en la segunda captura. Aunque es una función rápida, habitualmente requiere ajustes manuales posteriores para optimizar caminos o evitar ángulos inadecuados.
 
-![Capa Mecanica](img/fotos_altium_2/Imagen16_2.png)
-*Figura 6.15.1: Selección de la capa Mechanical 1.*
+![Auto Route All](img/fotos_altium_2/Imagen26.png)
+*Figura 6.20.1: Selección de ruteado automático completo.*
 
 <br><br>
 
-![Dibujo Linea](img/fotos_altium_2/Imagen17_2.png)
-*Figura 6.15.2: Selección de la herramienta Place Line.*
+![Resultado Auto All](img/fotos_altium_2/Imagen27.png)
+*Figura 6.20.2: Pistas generadas por el auto ruteador global.*
 
 <br><br>
 
-![Contorno Trazado](img/fotos_altium_2/Imagen18_2.png)
-*Figura 6.15.3: Perímetro de corte mecánico dibujado.*
+**2. Ruteado automático por red (Auto Route Net):**
+*   **Procedimiento:** Se navega a `Route > Auto Route > Net` (indicado por la flecha verde en la tercera imagen) y se selecciona un nodo específico sobre la placa.
+*   **Resultado:** Altium rutea únicamente la red seleccionada (por ejemplo, la red que conecta el capacitor C1 con el diodo D1), dejando las demás conexiones pendientes (cuarta imagen).
+
+![Auto Route Net](img/fotos_altium_2/Imagen28.png)
+*Figura 6.20.3: Selección de ruteado automático por red específica.*
 
 <br><br>
 
-![Menu Define Shape](img/fotos_altium_2/Imagen19_2.png)
-*Figura 6.15.4: Herramienta Define Board Shape from Selected Objects.*
+![Resultado Auto Net](img/fotos_altium_2/Imagen29.png)
+*Figura 6.20.4: Pista ruteada automáticamente sobre el nodo seleccionado.*
 
 <br><br>
 
-![Placa Recortada](img/fotos_altium_2/Imagen20_2.png)
-*Figura 6.15.5: Tarjeta recortada con las dimensiones mecánicas personalizadas.*
+**3. Ruteado automático por área (Auto Route Area):**
+*   **Procedimiento:** Se selecciona `Route > Auto Route > Area` (flecha azul en la quinta imagen) y se dibuja un recuadro sobre una zona concreta de la placa.
+*   **Resultado:** El motor de ruteado procesa e interconecta únicamente los componentes y pads contenidos dentro del área seleccionada (como la sección del transistor Q1 y las resistencias R1, R2 en la sexta imagen). 
+
+Estas opciones de ruteado selectivo son útiles para delegar partes repetitivas del trazo mientras mantienes el control manual sobre las pistas críticas de alimentación o señal.
+
+![Auto Route Area](img/fotos_altium_2/Imagen30.png)
+*Figura 6.20.5: Selección de ruteado por área.*
 
 <br><br>
 
-### Inspección Tridimensional Final y Verificación Mecánica
-En esta captura se aprecia la tarjeta finalizada en la vista tridimensional fotorrealista (3D View), recortada exactamente según el contorno personalizado definido en el paso anterior. 
+![Resultado Auto Area](img/fotos_altium_2/Imagen31.png)
+*Figura 6.20.6: Pistas generadas solo en el área delimitada.*
 
-En este apartado se consideran los siguientes puntos de verificación final:
-*   **Inspección de volumetría y colisiones físicas:** Al presionar la tecla `3` e inspeccionar la placa en 3D, se valida que todos los componentes cuenten con su modelo 3D correctamente alineado sobre sus pads de soldadura.
-*   **Verificación de orientación y altura:** Permite comprobar que conectores de ángulo recto como `P1` sobresalgan adecuadamente hacia el borde de la placa para su posterior ensamble o acople mecánico en un chasis.
-*   **Validación de serigrafía (Silkscreen):** Se confirma la visibilidad de los designadores e indicativos de polaridad (como la banda blanca y signo + del capacitor) sobre la capa de máscara superior.
+<br><br>
 
-![Verificación Final 3D](img/fotos_altium_2/Imagen21_2.png)
-*Figura 6.15.6: Renderizado 3D final de la placa con contorno ajustado y ruteo finalizado.*
+---
+
+## 6.21 Definición de Contorno de Placa (Board Shape)
+
+Para definir el corte mecánico exacto que tendrá la placa de circuito impreso, utilizaremos la capa de dibujo mecánico para crear un polígono y recortar el área excedente.
+
+Cambiamos a la pestaña de la capa **`Mechanical 1`** y seleccionamos la herramienta de dibujo de línea (`Place Line`). Trazamos un contorno cerrado (color magenta) alrededor de nuestros componentes para delimitar la geometría final. Una vez trazado, seleccionamos estas líneas, nos dirigimos al menú superior y hacemos clic en **`Design > Board Shape > Define Board Shape from Selected Objects`**.
+
+![Capa Mecanica](img/fotos_altium_2/Imagen32.png)
+*Figura 6.21.1: Selección de la capa Mechanical 1.*
+
+<br><br>
+
+![Dibujo Linea](img/fotos_altium_2/Imagen33.png)
+*Figura 6.21.2: Herramienta Place Line activada.*
+
+<br><br>
+
+![Contorno Trazado](img/fotos_altium_2/Imagen34.png)
+*Figura 6.21.3: Contorno físico de la placa delimitado.*
+
+<br><br>
+
+![Define Shape](img/fotos_altium_2/Imagen35.png)
+*Figura 6.21.4: Herramienta Define Board Shape from Selected Objects.*
+
+<br><br>
+
+![Placa Recortada](img/fotos_altium_2/Imagen36.png)
+*Figura 6.21.5: Tarjeta recortada con sus nuevas dimensiones físicas.*
+
+<br><br>
+
+---
+
+## 6.22 Inspección Tridimensional Final
+
+**Paso 31: Inspección tridimensional final y verificación mecánica de la tarjeta**
+
+En esta captura se aprecia la tarjeta finalizada en la vista tridimensional fotorrealista (3D View), recortada exactamente según el contorno personalizado definido en el paso anterior. En este apartado se consideran los siguientes puntos de verificación final:
+
+*   **Inspección de volumetría y colisiones físicas:** Al presionar la tecla `3` e inspeccionar la placa en 3D, se valida que todos los componentes (capacitor electrolítico C1, inductor L1, transistor Q1, diodos D1/D2, conector P1 y resistencias) cuenten con su modelo 3D correctamente alineado sobre sus pads de soldadura.
+*   **Verificación de orientación y altura:** Permite comprobar que conectores de ángulo recto como P1 sobresalgan adecuadamente hacia el borde de la placa para su posterior ensamble o acople mecánico en un chasis.
+*   **Validación de serigrafía (Silkscreen):** Se confirma la visibilidad de los designadores (C1, Q1, R1, R2, L1, D1, D2, P1) e indicativos de polaridad (como la banda blanca y signo + del capacitor) sobre la capa de máscara superior.
+
+![Verificación Final 3D](img/fotos_altium_2/Imagen37.png)
+*Figura 6.22.1: Modelo tridimensional final de la tarjeta de circuito impreso validada.*

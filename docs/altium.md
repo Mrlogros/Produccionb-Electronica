@@ -220,3 +220,152 @@ Con el esquemático finalizado, procedemos a crear el documento de la placa. En 
 
 ![Añadir Documento PCB](img/fotos_altium/Imagen42.png){ width="400" }
 *Figura 6.8.1: Ruta para generar el lienzo de ruteo físico de la tarjeta de circuito impreso.*
+
+## 6.9 Transferencia del Diseño al Entorno PCB
+
+Una vez creado el archivo de la placa (`.PcbDoc`), debemos transferir toda la información lógica (Netlist) y las huellas de los componentes desde el esquemático hacia el lienzo físico.
+
+### Actualización del Documento PCB
+Desde el editor del esquemático, nos dirigimos a la barra superior y seleccionamos **`Design > Update PCB Document Placa_prueba.PcbDoc`**. 
+
+![Update PCB Document](img/fotos_altium_2/Imagen2.png){ width="450" }
+*Figura 6.9.1: Herramienta de sincronización entre el esquemático y la placa.*
+
+Se abrirá la ventana de Órdenes de Cambio de Ingeniería (ECO - Engineering Change Order). Aquí debemos hacer clic primero en **`Validate Changes`** (Validar cambios) para comprobar que no haya errores de librerías, y posteriormente en **`Execute Changes`** (Ejecutar cambios) para importar los componentes.
+
+![Ventana ECO](img/fotos_altium_2/Imagen3.png){ width="500" }
+*Figura 6.9.2: Validación y ejecución de cambios (ECO).*
+
+Al cerrar la ventana, los componentes aparecerán agrupados en un recuadro de color a un costado de la zona de trabajo, interconectados por finas líneas de guía conocidas como *Ratsnest* (nido de ratas).
+
+![Componentes Importados](img/fotos_altium_2/Imagen4.png){ width="500" }
+*Figura 6.9.3: Componentes y huellas importados exitosamente al entorno PCB.*
+
+---
+
+## 6.10 Definición de la Tarjeta (Board Shape) y Origen
+
+Antes de acomodar los componentes, es fundamental establecer las dimensiones físicas de la placa de cobre y su punto de origen coordenado.
+
+### Área de Trabajo
+Para ajustar el tamaño del lienzo oscuro (la placa de circuito impreso), seleccionamos **`Design > Board Shape > Edit Board Shape`**. Esto activará nodos en las esquinas del área oscura, permitiéndonos arrastrarlos para reducir o ampliar las dimensiones físicas de la tarjeta según las necesidades mecánicas de nuestro ensamble.
+
+![Edit Board Shape](img/fotos_altium_2/Imagen5.png){ width="300" }
+*Figura 6.10.1: Edición del contorno y dimensiones de la placa (Board Shape).*
+
+### Definición del Origen (Zeroing)
+Para que los archivos de manufactura CNC o Gerber se generen correctamente, debemos establecer un punto de origen `(X:0, Y:0)`. Nos dirigimos a **`Edit > Origin > Set`** y hacemos clic en la esquina inferior izquierda de nuestra placa delimitada.
+
+![Definición de Origen](img/fotos_altium_2/Imagen6.png){ width="300" }
+*Figura 6.10.2: Punto de origen anclado en la esquina inferior izquierda del Board Shape.*
+
+---
+
+## 6.11 Emplazamiento de Componentes y Visor 3D
+
+El acomodo de los componentes (Placement) dicta la viabilidad del ruteo. Arrastramos individualmente las huellas hacia el interior de la placa, buscando minimizar el cruce de las líneas del Ratsnest.
+
+![Placement 2D](img/fotos_altium_2/Imagen7.png){ width="400" }
+*Figura 6.11.1: Distribución 2D de componentes sobre la tarjeta.*
+
+### Visualización y Ajuste en 3D
+Altium Designer integra un potente motor de renderizado 3D en tiempo real. Presionando la **tecla `3`**, el lienzo pasará a modo tridimensional (para regresar al modo 2D se presiona la **tecla `2`**). 
+
+En el modo 3D podemos verificar la altura, interferencia mecánica y el aspecto real de los encapsulados. Incluso es posible seleccionar y mover componentes directamente en esta vista, presionando la barra espaciadora para rotarlos.
+
+| Vista 3D Frontal | Inspección de Interferencia |
+| :---: | :---: |
+| ![Vista 3D 1](img/fotos_altium_2/Imagen8.png){ width="300" } | ![Vista 3D 2](img/fotos_altium_2/Imagen9.png){ width="300" } |
+
+![Rotación 3D](img/fotos_altium_2/Imagen10.png){ width="300" }
+*Figura 6.11.2: Ajuste de posición y rotación directamente desde el visor tridimensional.*
+
+---
+
+## 6.12 Configuración de Cuadrícula y Reglas de Diseño (DRC)
+
+El diseño de una placa requiere precisión milimétrica. Para garantizar la manufactura, debemos parametrizar las reglas de diseño eléctrico y físico.
+
+### Unidades y Cuadrícula (Grid)
+En el panel `Properties` (sin tener nada seleccionado), verificamos que el sistema de unidades esté configurado correctamente (mm o mils). Además, presionando la tecla **`G`**, podemos ajustar la resolución de la cuadrícula de chasquido (Snap Grid) para lograr mayor precisión al mover trazos.
+
+| Panel Properties (Placa) | Gestor de Capas | Snap Grid |
+| :---: | :---: | :---: |
+| ![Unidades](img/fotos_altium_2/Imagen11.png){ width="200" } | ![Layer Stack](img/fotos_altium_2/Imagen15.png){ width="200" } | ![Snap Grid](img/fotos_altium_2/Imagen16.png){ width="200" } |
+
+*(Nota: En la pestaña inferior, nos aseguramos de estar trabajando en la capa `Top Layer` (roja) para placas de una sola cara).*
+
+### Parámetros de Diseño (Design Rules)
+Nos dirigimos a **`Design > Rules...`** para abrir el gestor de reglas de diseño. 
+
+1. **Clearance (Aislamiento):** En la sección `Electrical > Clearance`, establecemos la separación mínima permitida entre pistas y pads. Esto evita cortocircuitos durante el fresado o atacado químico.
+2. **Width (Ancho de Pista):** En la sección `Routing > Width`, definimos el grosor de nuestras líneas de cobre (Mínimo, Preferido y Máximo). Un grosor adecuado asegura que la pista soporte la corriente necesaria sin sobrecalentarse.
+
+| Acceso a Design Rules | Ventana de Reglas | Regla de Clearance | Regla de Ancho (Width) |
+| :---: | :---: | :---: | :---: |
+| ![Design Rules Menu](img/fotos_altium_2/Imagen17.png){ width="150" } | ![DRC Editor](img/fotos_altium_2/Imagen18.png){ width="200" } | ![Clearance](img/fotos_altium_2/Imagen19.png){ width="200" } | ![Width](img/fotos_altium_2/Imagen20.png){ width="200" } |
+
+![Aplicación de Reglas](img/fotos_altium_2/Imagen22.png){ width="400" }
+*Figura 6.12.1: Confirmación de los valores paramétricos antes de rutear.*
+
+---
+
+## 6.13 Ruteo Interactivo (Interactive Routing)
+
+Con las reglas establecidas, procedemos a trazar el cableado físico de cobre. Activamos la herramienta **`Interactive Routing`** (`Ctrl + W` o ícono en la barra superior). 
+
+Hacemos clic en un pad y guiamos la pista hacia su destino. Altium respetará automáticamente el aislamiento (Clearance) configurado, empujando o rodeando obstáculos de ser necesario.
+
+| Inicio de Ruteo | Trazado a 45 grados | Ruteo Finalizado |
+| :---: | :---: | :---: |
+| ![Ruteo 1](img/fotos_altium_2/Imagen23.png){ width="200" } | ![Ruteo 2](img/fotos_altium_2/Imagen24.png){ width="200" } | ![Ruteo 3](img/fotos_altium_2/Imagen25.png){ width="200" } |
+
+---
+
+## 6.14 Plano de Masa (Polygon Pour)
+
+Para mejorar la disipación térmica, aislar ruidos electromagnéticos y ahorrar tiempo de mecanizado, implementaremos un vertido de cobre o plano de masa.
+
+Nos dirigimos a **`Place > Polygon Pour`**. Se activará el cursor para trazar un polígono cerrado por el borde interior de nuestra placa. 
+
+| Trazado de Polígono | Asignación a GND |
+| :---: | :---: |
+| ![Polygon Pour Menu](img/fotos_altium_2/Imagen26.png){ width="250" } | ![Propiedades Polygon](img/fotos_altium_2/Imagen27.png){ width="250" } |
+
+Una vez cerrado el polígono, debemos seleccionarlo e ir al panel de `Properties`. En el apartado de `Net`, es obligatorio **asignarlo a la red `GND`**. Al presionar aplicar, el software rellenará automáticamente las áreas vacías con cobre, respetando las zonas de aislamiento térmico de los pads.
+
+![Plano de Masa Rellenado](img/fotos_altium_2/Imagen28.png){ width="250" } ![Plano GND](img/fotos_altium_2/Imagen29.png){ width="250" }
+*Figura 6.14.1: Renderizado del polígono de cobre conectado a tierra.*
+
+---
+
+## 6.15 Verificación Final (DRC) y Contorno (Keep-Out)
+
+El último filtro de seguridad es el chequeo automatizado de reglas. Ejecutamos **`Tools > Design Rule Check`** y presionamos **`Run Design Rule Check`**. El sistema emitirá un reporte detallando si existen pistas superpuestas, aislamientos violados o componentes sin conectar. Si todo está correcto, el informe mostrará cero errores.
+
+| Ejecutar DRC | Reporte Sin Errores |
+| :---: | :---: |
+| ![Run DRC](img/fotos_altium_2/Imagen30.png){ width="250" } | ![DRC Report](img/fotos_altium_2/Imagen31.png){ width="250" } |
+
+### Capa de Contorno (Keep-Out Layer)
+Para que la máquina CNC sepa exactamente por dónde cortar físicamente la tarjeta terminada, debemos trazar un límite de restricción. Cambiamos a la capa **`Keep-Out Layer`** (pestaña inferior rosada) y trazamos una línea perimetral utilizando `Place > Keepout > Track`.
+
+![Capa Keep-Out](img/fotos_altium_2/Imagen32.png){ width="300" } ![Trazo Keep-Out](img/fotos_altium_2/Imagen33.png){ width="300" }
+*Figura 6.15.1: Definición del perímetro de corte físico en la capa Keep-Out.*
+
+---
+
+## 6.16 Salidas de Fabricación (Gerber y NC Drill)
+
+El paso culminante de nuestro diseño es la generación de los archivos universales de manufactura, listos para ser enviados a la fresadora CNC o a una casa fabricante de placas.
+
+Nos dirigimos a **`File > Fabrication Outputs`** y seleccionamos **`Gerber Files`** (para las pistas, polígonos y bordes) y posteriormente **`NC Drill Files`** (para las coordenadas y diámetros de perforación).
+
+| Menú Fabrication Outputs | Exportación Gerber | Archivos NC Drill |
+| :---: | :---: | :---: |
+| ![Fab Outputs](img/fotos_altium_2/Imagen34.png){ width="200" } | ![Gerber Setup](img/fotos_altium_2/Imagen35.png){ width="200" } | ![NC Drill](img/fotos_altium_2/Imagen36.png){ width="200" } |
+
+Con los archivos Gerber exportados, nuestro diseño está oficialmente terminado y listo para producción.
+
+![PCB Final en 3D](img/fotos_altium_2/Imagen37.png){ width="500" }
+*Figura 6.16.1: Modelo tridimensional de la placa de circuito impreso completamente ruteada y validada en Altium Designer.*

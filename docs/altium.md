@@ -1006,3 +1006,283 @@ En esta captura se aprecia la tarjeta finalizada en la vista tridimensional foto
 
 ![Verificación Final 3D](img/fotos_altium_2/Imagen37.png)
 *Figura 6.22.1: Modelo tridimensional final de la tarjeta de circuito impreso validada.*
+
+## 6.17 Vertido de Cobre (Polygon Pour)
+
+Para cubrir la superficie de la placa con un vertido de cobre (Polygon Pour) vinculado a la red de tierra (GND), y así mejorar la masa térmica y eléctrica de la tarjeta, realizamos los siguientes pasos:
+
+**1. Seleccionar la capa de cobre (Top Layer / Bottom Layer):**
+En la barra inferior de capas de trabajo, se selecciona la capa correspondiente donde se verterá el cobre (por ejemplo, `[1] Top Layer` en color rojo o `[2] Bottom Layer` en azul). 
+
+![Capa de cobre](img/fotos_altium_3/Imagen1.png)
+*Figura 6.17.1: Selección de la capa Top Layer.*
+
+<br><br>
+
+**2. Activar la herramienta Polygon Pour:**
+En la barra de herramientas flotante superior, se localiza el ícono de vertido de polígono o se presiona el atajo `P > G` (Place Polygon Pour). En la ventana de propiedades que se despliega, se selecciona en el campo Net la red de tierra (GND) y se establece la forma de vertido. 
+
+![Icono Polygon Pour](img/fotos_altium_3/Imagen2.png)
+*Figura 6.17.2: Activación de la herramienta de vertido.*
+
+<br><br>
+
+**3. Delimitar la zona de vertido:**
+Haciendo clics sucesivos alrededor del borde exterior del contorno magenta (Mechanical 1), se dibuja un área poligonal que envuelva toda la placa. 
+
+![Plano de masa GND](img/fotos_altium_3/Imagen3.png)
+*Figura 6.17.3: Vertido trazado alrededor del contorno mecánico de la placa.*
+
+<br><br>
+
+---
+
+## 6.18 Asignación de Red y Regeneración
+
+Para vincular correctamente el plano de vertido de cobre a la red de masa y regenerarlo sobre el lienzo de la PCB, se realizan las siguientes acciones en el panel Properties:
+
+**1. Asignar la red de conexión (Net -> GND):**
+Al seleccionar el polígono dibujado, se despliega el panel Properties a la derecha de la pantalla. En la sección Properties, se ubica el campo `Net` y se despliega el menú para seleccionar la red `GND`. De esta forma, el vertido se conectará eléctricamente a todos los pads y terminales de tierra. 
+
+![Asignar Red GND](img/fotos_altium_3/Imagen4.png)
+*Figura 6.18.1: Asignación de la red GND en el panel Properties.*
+
+<br><br>
+
+**2. Regenerar el plano de cobre (Repour):**
+Si el polígono aún no ha sido vertido o sufrió modificaciones en sus propiedades, aparecerá un aviso azul en la parte superior del panel con la leyenda *"Polygon not poured"*. Se hace clic en el botón `Repour`. 
+
+![Botón Repour](img/fotos_altium_3/Imagen5.png)
+*Figura 6.18.2: Función Repour para recalcular la geometría.*
+
+<br><br>
+
+**Resultado final del vertido de masa:**
+Altium recalcula la geometría del cobre inundando toda la cara superior en color rojo. Los pads pertenecientes a la red GND se integran automáticamente mediante conexiones térmicas en cruz (Thermal Reliefs), mientras que las pistas de otras señales (+12, E1, O1, etc.) quedan aisladas con un margen de separación (clearance) respetando las reglas de diseño, eliminando las líneas de conexión (ratsnest) sin necesidad de rutearlas manualmente.
+
+![Resultado del vertido](img/fotos_altium_3/Imagen6.png)
+*Figura 6.18.3: Polígono de cobre completamente vertido y aislado.*
+
+<br><br>
+
+---
+
+## 6.19 Vertido en Rejilla (Hatched)
+
+La alternativa de vertido de cobre en forma de rejilla o malla (Hatched) es utilizada comúnmente para reducir el estrés térmico en la placa o para aplicaciones específicas de flexibilidad y radiofrecuencia. 
+
+**1. Selección del estilo Hatched:**
+En el panel Properties del polígono seleccionado, se cambia el modo de relleno de `Solid` a `Hatched`. 
+
+![Estilo Hatched](img/fotos_altium_3/Imagen7.png)
+*Figura 6.19.1: Cambio de relleno de Solid a Hatched.*
+
+<br><br>
+
+**2. Ajuste de parámetros de la malla:**
+En las opciones avanzadas del polígono, se ajustan el ancho de la pista (Track Width) y el espaciado de la rejilla (Grid Size). En la sección `Hatch mode`, se define la orientación del trazado de la malla, como `90 Degree` (perpendicular), `45 Degree` (diagonal), Horizontal o Vertical. 
+
+![Parámetros de malla](img/fotos_altium_3/Imagen8.png)
+*Figura 6.19.2: Parámetros de grosor, espaciado y orientación de la rejilla.*
+
+<br><br>
+
+**3. Regenerar el polígono (Repour):**
+Se presiona el botón `Repour` en la parte superior de las propiedades para recalcular la geometría del cobre. La zona de cobre sobre la capa roja deja de ser una capa sólida continua y pasa a mostrar un patrón en cuadrícula regular, manteniendo todas las interconexiones eléctricas a la red GND e integrando los relieves térmicos en los pads correspondientes.
+
+![Resultado malla](img/fotos_altium_3/Imagen9.png)
+*Figura 6.19.3: Patrón de cobre en formato de malla integrado en la capa Top.*
+
+<br><br>
+
+---
+
+## 6.20 Plano Inferior e Inspección Tridimensional Final
+
+Para concluir el procedimiento de diseño, aplicamos el plano de vertido de cobre en la cara inferior y realizamos la inspección tridimensional de la tarjeta.
+
+**1. Plano de masa en la capa inferior (Bottom Layer):**
+En la barra inferior de capas, se selecciona la pestaña `[2] Bottom Layer` (color azul). Se utiliza nuevamente la herramienta Polygon Pour (P > G) asignando la red GND para crear un plano de masa en la cara inferior. En este caso se ilustra un vertido sólido. 
+
+![Bottom Layer](img/fotos_altium_3/Imagen10.png)
+*Figura 6.20.1: Selección de la capa de ruteo inferior (Bottom Layer).*
+
+<br><br>
+
+**2. Inspección 3D cara superior (Top View):**
+Al presionar la tecla `3`, se verifica la disposición final en la cara superior, donde destacan los componentes Through-Hole (electrolítico C1, inductor L1, transistor Q1, diodo D2 y conector P1) y los componentes de montaje superficial (SMD). 
+
+![Vista 3D Top](img/fotos_altium_3/Imagen11.png)
+*Figura 6.20.2: Vista tridimensional final de la cara superior de la PCB.*
+
+<br><br>
+
+**3. Inspección 3D cara inferior (Bottom View):**
+Rotando la vista 3D con `Shift + Clic derecho`, se inspecciona la cara inferior de la PCB. Se comprueba la proyección de los pines de soldadura Through-Hole, las pistas ruteadas en azul y el patrón de relieve del plano de cobre en la parte posterior. 
+
+![Vista 3D Bottom](img/fotos_altium_3/Imagen12.png)
+*Figura 6.20.3: Vista tridimensional final de la cara inferior.*
+
+<br><br>
+
+---
+
+## 6.21 Ejecución del Chequeo Final de Reglas de Diseño (DRC)
+
+Para ejecutar la verificación automática de reglas de diseño (DRC) sobre la placa terminada y evaluar el reporte de resultados, seguimos estos pasos:
+
+**1. Acceso a la herramienta de verificación:**
+En la barra de menús superior dentro de la PCB, se hace clic en la pestaña `Tools`. En el menú desplegable, se selecciona la primera opción: `Design Rule Check...`. 
+
+![Menu Design Rule Check](img/fotos_altium_3/Imagen13.png)
+*Figura 6.21.1: Menú Tools > Design Rule Check.*
+
+<br><br>
+
+**2. Configuración y ejecución del reporte (Design Rule Checker):**
+Se desplegará la ventana emergente Design Rule Checker. En este cuadro se pueden habilitar o deshabilitar las categorías de reglas a inspeccionar (Electrical, Routing, Manufacturing, Placement, etc.). Para procesar la verificación completa, se hace clic en el botón `Run Design Rule Check...` ubicado en la esquina inferior izquierda. 
+
+![Design Rule Checker](img/fotos_altium_3/Imagen14.png)
+*Figura 6.21.2: Configuración del informe de reglas.*
+
+<br><br>
+
+**3. Análisis del informe (Design Rule Verification Report):**
+Altium abrirá automáticamente una pestaña de reporte HTML con el resumen del análisis. El informe contabiliza las advertencias (Warnings) y las violaciones de reglas (Rule Violations). Un conteo mayor a cero en Rule Violations indica que existen infracciones físicas o eléctricas en la placa. Haciendo clic sobre el desglose de cada error dentro del reporte, Altium redirige automáticamente al punto exacto del lienzo de la PCB donde se encuentra la falla para corregirla.
+
+![Reporte DRC](img/fotos_altium_3/Imagen15.png)
+*Figura 6.21.3: Informe HTML con advertencias y violaciones detectadas.*
+
+<br><br>
+
+---
+
+## 6.22 Etiquetas de Texto en Serigrafía (Top Overlay)
+
+Para añadir texto personalizado o marcado de serigrafía (Silkscreen) sobre la tarjeta sin interferir con las pistas de cobre o los planos de masa:
+
+**1. Seleccionar la capa de serigrafía (Top Overlay):**
+En la barra inferior de capas de trabajo, se hace clic en la pestaña `Top Overlay` (de color amarillo). Esta capa está destinada exclusivamente a la impresión de tinta blanca sobre la placa (nombres de señales, logos y designadores). Al ser una capa aislante no conductora, no afecta ni altera las pistas de cobre.
+
+![Top Overlay](img/fotos_altium_3/Imagen16.png)
+*Figura 6.22.1: Selección de la capa Top Overlay (Serigrafía).*
+
+<br><br>
+
+**2. Insertar texto interactivo:**
+En la barra de herramientas flotante superior, se selecciona la herramienta de texto con el ícono `A` o se presiona el atajo `P > T` (Place String). Se hace clic en el área deseada de la tarjeta y, desde el panel Properties, se ingresa el texto personalizado.
+
+![Texto Carlos](img/fotos_altium_3/Imagen17.png)
+*Figura 6.22.2: Texto colocado en la cara superior.*
+
+<br><br>
+
+**3. Verificación tridimensional (3D View):**
+Al conmutar a la vista fotorrealista presionado la tecla `3`, se confirma que el texto impreso aparece de color blanco sobre la máscara antisoldante verde. Se debe asegurar que el texto no quede ubicado directamente sobre zonas expuestas de soldadura.
+
+![Vista 3D Texto](img/fotos_altium_3/Imagen18.png)
+*Figura 6.22.3: Visualización de la tinta blanca en el modelo tridimensional.*
+
+<br><br>
+
+---
+
+## 6.23 Serigrafía en la Cara Inferior (Bottom Overlay y Mirror)
+
+**Selección de capa inferior y opción de espejo (Mirror):**
+Al colocar una etiqueta de texto en la parte posterior de la placa, se selecciona la capa `Bottom Overlay`. Como se observa en el panel de propiedades, al trabajar en la capa inferior es estrictamente necesario marcar la casilla **Mirror**. 
+
+*Razón técnica:* La vista 2D del software siempre es superior (se está "mirando a través" de la tarjeta). Al aplicar Mirror, el texto se invierte horizontalmente en el lienzo de diseño (mostrando el texto al revés), para que, cuando la PCB sea fabricada y se observe físicamente desde la cara posterior, las letras puedan leerse en la dirección correcta.
+
+![Bottom Overlay Mirror](img/fotos_altium_3/Imagen19.png)
+*Figura 6.23.1: Configuración de la propiedad Mirror para texto en la capa inferior.*
+
+<br><br>
+
+---
+
+## 6.24 Salidas de Fabricación (Archivos Gerber)
+
+El siguiente procedimiento permite exportar los archivos Gerber, los cuales contienen la información geométrica de cada capa requerida por los fabricantes de PCB. 
+
+**1. Acceso al menú de generación de archivos Gerber:**
+En la barra de menús superior, se hace clic en `File > Fabrication Outputs > Gerber Files`. 
+
+![Fabrication Outputs Gerber](img/fotos_altium_3/Imagen20.png)
+*Figura 6.24.1: Menú para la generación de archivos Gerber.*
+
+<br><br>
+
+**2. Configuración de capas a exportar (Gerber Setup):**
+En la ventana emergente, se asegura que las unidades estén configuradas de acuerdo con la necesidad del fabricante. Para seleccionar únicamente las capas que contienen información utilizada en el diseño, se despliega el menú inferior `Plot Layers` y se elige `Select Used`. Para procesar la exportación, se presiona el botón Apply. 
+
+![Gerber Setup](img/fotos_altium_3/Imagen21.png)
+*Figura 6.24.2: Ventana de configuración Gerber Setup.*
+
+<br><br>
+
+**3. Generación y visualización del archivo CAMtastic:**
+Altium abrirá automáticamente un visor interno de fotolitos en formato CAMtastic, donde se muestran las capas exportadas (como se aprecia con la capa inferior y la etiqueta reflejada en espejo). 
+
+![CAMtastic](img/fotos_altium_3/Imagen22.png)
+*Figura 6.24.3: Visor CAMtastic confirmando las capas generadas.*
+
+<br><br>
+
+**4. Ubicación de los archivos generados:**
+Altium crea automáticamente la carpeta `Project Outputs for [Nombre_Proyecto]` dentro de la ubicación del proyecto. En esta carpeta se almacenan todos los archivos individuales con sus respectivas extensiones estándar (.GTL, .GBL, .GTO, .GBO, etc.).
+
+![Carpetas Project Outputs](img/fotos_altium_3/Imagen23.png)
+*Figura 6.24.4: Listado de archivos .GBR creados en el explorador de Windows.*
+
+<br><br>
+
+---
+
+## 6.25 Archivos de Perforación (NC Drill)
+
+Para completar el paquete de fabricación, resta generar el archivo de brocas y taladros:
+
+**Generar perforaciones:**
+Ir al menú `File > Fabrication Outputs > NC Drill Files`. En la ventana emergente de configuración, mantener las mismas unidades (métrica/imperial) e igual formato numérico que los archivos Gerber. Hacer clic en OK y confirmar el procesamiento en la ventana emergente de la lista de herramientas. 
+
+![Fabrication Outputs NC Drill](img/fotos_altium_3/Imagen24.png)
+*Figura 6.25.1: Exportación de datos de brocas y perforaciones.*
+
+<br><br>
+
+**Archivos de salida:**
+En la misma carpeta `Project Outputs` se agregarán los archivos con extensión `.txt` o `.drl` correspondiente a la tabla de barrenos y coordenadas de perforación. 
+
+![Visor de Perforaciones](img/fotos_altium_3/Imagen25.png)
+*Figura 6.25.2: Coordenadas mecánicas visualizadas como taladros en el visor.*
+
+<br><br>
+
+---
+
+## 6.26 Empaquetado y Validación en JLCPCB
+
+La etapa final del flujo de trabajo es el empaquetado de las salidas de fabricación y la carga en la plataforma del fabricante para su verificación y cotización.
+
+**1. Compresión de los archivos de salida (Creación de archivo .ZIP):**
+Se ubica la carpeta `Project Outputs` generada por Altium Designer. Se hace clic derecho sobre la carpeta y se selecciona la opción `Comprimir a... > Archivo ZIP` para crear el contenedor comprimido con los archivos Gerber y de perforación. 
+
+![Comprimir ZIP](img/fotos_altium_3/Imagen26.png)
+*Figura 6.26.1: Compresión de los ficheros de fabricación.*
+
+<br><br>
+
+**2. Carga en la plataforma de fabricación (Uploading Gerber):**
+En el sitio web del fabricante (JLCPCB), se selecciona la herramienta de cotización en línea (Online PCB Quote) e importación de archivos. Se arrastra el archivo `.ZIP` recién creado; el sistema iniciará el procesamiento y la lectura automática del archivo. 
+
+![JLCPCB Upload](img/fotos_altium_3/Imagen27.png)
+*Figura 6.26.2: Carga del archivo .zip en JLCPCB.*
+
+<br><br>
+
+**3. Inspección y verificación de cotización (Gerber Viewer):**
+Una vez procesado el archivo, el visor integrado del fabricante renderiza la vista previa de la tarjeta por ambas caras. Se valida la lectura correcta del contorno, dimensiones y capas. Finalmente, se seleccionan los parámetros de fabricación deseados (cantidad de placas, grosor de PCB de 1.6mm, color de máscara, etc.) para proceder con la orden de producción.
+
+![JLCPCB Gerber Viewer](img/fotos_altium_3/Imagen28.png)
+*Figura 6.26.3: Validación visual final y cotización del circuito en la plataforma web.*

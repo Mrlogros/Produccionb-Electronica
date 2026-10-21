@@ -1,7 +1,28 @@
-# 🤖 Proceso de Desarrollo de Proyecto: Siguelíneas
+---
+hide:
+  - navigation
+---
 
-Bienvenido a la bitácora de desarrollo de nuestro robot siguelíneas. En esta sección documentaremos toda la investigación previa, la selección de componentes, el diseño del chasis y la lógica de control.
-
+<div style="display: flex; flex-wrap: wrap; gap: 30px; align-items: center; margin-bottom: 50px; margin-top: 20px;">
+  <div style="flex: 1; min-width: 300px;">
+    <span style="color: #7b1fa2; font-weight: bold; font-size: 0.8em; letter-spacing: 1px; text-transform: uppercase;">
+      • Ruta de Construcción &nbsp;&nbsp; Principiante &nbsp;&nbsp; Diseño PCB
+    </span>
+    <h1 style="font-size: 3em; line-height: 1.1; margin-top: 15px; margin-bottom: 15px; font-weight: 800; border: none;">
+      Construya un robot seguidor de línea desde cero
+    </h1>
+    <p style="font-size: 1.15em; opacity: 0.85; line-height: 1.5;">
+      Un robot seguidor de línea funcional y comprendido en su totalidad: desde la cinemática de dirección hasta el lazo PID validado en pista.
+    </p>
+    <p style="font-size: 0.9em; opacity: 0.6;">
+      Por <strong>Carlos Alberto Vazquez Peraza</strong><br>
+      Publicado 20 de octubre de 2026
+    </p>
+  </div>
+  <div style="flex: 1; min-width: 300px;">
+    <img src="img/siguelineas/fotos_intoduccion/Imagen1.jpg" style="border-radius: 12px; width: 100%; box-shadow: 0 8px 16px rgba(0,0,0,0.2);">
+  </div>
+</div>
 ---
 
 ## Introducción

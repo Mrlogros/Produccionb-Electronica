@@ -1,4 +1,4 @@
-# 🤖 Proceso de Desarrollo de Proyecto: Siguelíneas
+# Proceso de Desarrollo de Proyecto: Siguelíneas
 
 Bienvenido a la bitácora de desarrollo de nuestro robot siguelíneas. En esta sección documentaremos toda la investigación previa, la selección de componentes, el diseño del chasis y la lógica de control.
 

@@ -168,19 +168,19 @@ La integración electrónica y mecánica de un robot siguelíneas profesional re
 ## 5. Selección de Materiales y Componentes
 
 ### 5.1. Unidad de Procesamiento Principal (MCU): ESP32-C6 Super Mini
-Para el desarrollo del robot siguelíneas de alta velocidad se seleccionó el módulo ESP32-C6 Super Mini (MakerGO), una plataforma de cómputo de arquitectura RISC-V de 32 bits que combina un factor de forma ultra compacto con un elevado rendimiento de procesamiento.
+Para el desarrollo del robot siguelíneas de alta velocidad se seleccionó el módulo ESP32-C6 Super Mini (MakerGO)[cite: 18]. Esta plataforma de arquitectura RISC-V de 32 bits combina un factor de forma ultra compacto con un elevado rendimiento de procesamiento[cite: 18].
 
 **Justificación Técnica de la Elección:**
-*   **Arquitectura y Rendimiento:** Basado en el SoC Espressif ESP32-C6FH4 con procesador de un solo núcleo RISC-V trabajando a frecuencias de hasta 160 MHz. Ofrece un desempeño significativamente superior frente a arquitecturas de 8 bits (como el ATmega328P del Arduino Nano), reduciendo dramáticamente el tiempo de ejecución del bucle de control (muestreo de sensores, cálculo del error PID y generación de señales PWM).
-*   **Factor de Forma Ultra Compacto y Bajo Peso:** Con dimensiones reducidas y un peso inferior a los 3 gramos, cumple con el criterio de ligereza y reducción de masa del vehículo. Su empaquetado permite solderarlo directamente como módulo de tarjeta hija (stamp/breakout) sobre la PCB principal, ahorrando espacio en la superficie.
-*   **Distribución de Pines y Capacidad de I/O (Pinout):**
-    *   **Entradas Analógicas (ADC):** Cuenta con canales ADC1 de 12 bits (GPIO0 a GPIO3) idóneos para la lectura analógica de la barra de sensores infrarrojos con alta resolución espacial.
-    *   **Periféricos de Comunicación:** Dispone de puertos I2C nativos (GPIO19 para SCL y GPIO20 para SDA) para la interfaz de la pantalla OLED 128x32, así como buses SPI (GPIO4 a GPIO7) e interfaces UART (GPIO16 y GPIO17).
-    *   **Control de Potencia (PWM):** Sus pines GPIO programables permiten generar señales PWM de alta frecuencia para el control fino del puente H (TB6612FNG).
-*   **Conectividad Inalámbrica Integrada:** Incorpora conectividad Wi-Fi 6 (802.11ax) y Bluetooth 5 (LE/Mesh). Esto abre la posibilidad de implementar telemetría en tiempo real, calibración remota de las constantes del PID y monitoreo de sensores vía inalámbrica sin añadir peso extra por módulos de radio externos.
-*   **Nivel Lógico y Alimentación:** Opera a una tensión de trabajo de 3.3V, incorporando un regulador LDO en placa accesible por el pin 5V (alimentado desde la batería o la etapa de regulación principal de la PCB).
 
-![Pinout ESP32-C6](img/siguelineas/fotos_materiales/Imagen1.jpg)
+| Característica | Detalle Técnico y Ventaja |
+| :--- | :--- |
+| **Arquitectura** | Procesador RISC-V de un núcleo a 160 MHz[cite: 18]. Supera a plataformas de 8 bits (como el ATmega328P), reduciendo drásticamente el tiempo de cálculo del bucle de control[cite: 18]. |
+| **Factor de Forma** | Peso inferior a 3 gramos; su empaquetado permite soldarlo directamente como módulo de tarjeta hija (*breakout*) para ahorrar espacio y masa total[cite: 18]. |
+| **Periféricos (I/O)** | ADC de 12 bits para lectura de sensores, I2C/SPI para la pantalla OLED, y PWM de alta resolución para el control fino del puente H[cite: 18]. |
+| **Conectividad** | Wi-Fi 6 y Bluetooth 5 integrados, lo que permite implementar telemetría y calibración remota sin añadir el peso extra de módulos externos de radio[cite: 18]. |
+| **Alimentación** | Nivel lógico de 3.3V con regulador LDO en placa, alimentable directamente desde el pin de 5V[cite: 18]. |
+
+![Pinout ESP32-C6](img/siguelineas/fotos_materiales/Imagen1.jpg)[cite: 17]
 *Figura 5.1.1: Diagrama de pines (Pinout) del módulo ESP32-C6 Super Mini.*
 
 <br><br>
@@ -188,76 +188,54 @@ Para el desarrollo del robot siguelíneas de alta velocidad se seleccionó el m�
 ---
 
 ### 5.2. Sistema de Percepción: Barra de 16 Sensores Infrarrojos Multiplexados
-Para garantizar una alta precisión en la detección del vector de error sobre la pista, se evalúa la implementación de una barra frontal de 16 sensores reflectivos, desarrollada como un módulo propio o mediante integración modular en la PCB principal.
+Para garantizar una alta precisión en la detección del vector de error sobre la pista, se implementará una barra frontal de 16 sensores reflectivos[cite: 18].
 
 #### 5.2.1. Principio Optoelectrónico de Detección
-El funcionamiento se basa en pares emisor-receptor de luz infrarroja (IR): 
-*   **Emisión:** Un LED emisor transmite luz en el espectro infrarrojo no visible hacia la superficie de la pista. 
-*   **Reflexión y Recepción:**
-    *   **Superficie Clara / Sin Obstáculo:** Reflecta un alto porcentaje de radiación IR hacia el fototransistor o fotodiodo receptor, provocando su conducción y variando el nivel de tensión en el nodo de salida. 
-    *   **Superficie Oscura / Absorbente:** Absorbe la radiación emitida, evitando el retorno de luz hacia el receptor y manteniendo un nivel de tensión cercano al valor de reposo (pull-up). 
+El funcionamiento se basa en pares emisor-receptor de luz infrarroja[cite: 18]. El LED emisor transmite luz infrarroja hacia la pista; si la superficie es clara (sin obstáculo), refleja un alto porcentaje de radiación hacia el fototransistor receptor, provocando su conducción y variando su tensión de salida[cite: 18]. Si la superficie es oscura, absorbe la luz y mantiene la tensión cercana al valor de reposo[cite: 18].
 
-![Principio Optoelectrónico](img/siguelineas/fotos_materiales/Imagen2.gif)
+![Principio Optoelectrónico](img/siguelineas/fotos_materiales/Imagen2.gif)[cite: 17]
 *Figura 5.2.1: Dinámica de reflexión infrarroja sobre superficies.*
 
 <br><br>
 
-![Sensor IR Genérico](img/siguelineas/fotos_materiales/Imagen3.jpg)
+![Sensor IR Genérico](img/siguelineas/fotos_materiales/Imagen3.jpg)[cite: 17]
 *Figura 5.2.2: Elementos de un módulo sensor infrarrojo estándar.*
 
 <br><br>
 
 #### 5.2.2. Selección del Sensor: QRE1113 (SMD)
-Frente a módulos comerciales voluminosos basados en LED IR discretos o sensores tipo TCRT5000, se selecciona el fototransistor reflectivo QRE1113GR en empaquetado de montaje superficial (SMD): 
-*   **Dimensiones Reducidas:** Su formato de montaje superficial permite una alta densidad de integración, logrando una distancia inter-sensor mínima para aumentar la resolución espacial de la lectura.
-*   **Respuesta Analógica:** Permite cuantificar no solo la presencia/ausencia de la línea, sino también los valores intermedios (zonas grises o bordes de línea) para algoritmos de interpolación ponderada.
+Frente a módulos comerciales voluminosos basados en sensores tipo TCRT5000, se seleccionó el fototransistor reflectivo QRE1113GR en formato de montaje superficial (SMD)[cite: 18]. Su tamaño reducido permite una alta densidad de integración, disminuyendo la distancia entre sensores para mejorar la resolución espacial de la lectura[cite: 18]. Además, su respuesta analógica permite cuantificar zonas grises o bordes de línea para utilizarlos en algoritmos de interpolación[cite: 18].
 
-![Tipos de Sensores](img/siguelineas/fotos_materiales/Imagen4.png)
-*Figura 5.2.3: Comparativa visual entre sensores IR estándar y sensores SMD (QRE1113).*
+![Tipos de Sensores](img/siguelineas/fotos_materiales/Imagen4.png)[cite: 17]
+*Figura 5.2.3: Comparativa visual entre sensores IR estándar y el encapsulado QRE1113.*
 
 <br><br>
 
-![Barras de Sensores](img/siguelineas/fotos_materiales/Imagen5.png)
+![Barras de Sensores](img/siguelineas/fotos_materiales/Imagen5.png)[cite: 17]
 *Figura 5.2.4: Evolución en la densidad de integración en barras de sensores.*
 
 <br><br>
 
-![Sensor QRE1113](img/siguelineas/fotos_materiales/Imagen6.png)
+![Sensor QRE1113](img/siguelineas/fotos_materiales/Imagen6.png)[cite: 17]
 *Figura 5.2.5: Empaquetado SMD del fototransistor reflectivo QRE1113GR.*
 
 <br><br>
 
-![Esquemático QRE1113](img/siguelineas/fotos_materiales/Imagen7.png)
-*Figura 5.2.6: Circuito base de acondicionamiento analógico para el QRE1113.*
-
-<br><br>
-
 #### 5.2.3. Esquema de Multiplexación Analógica (CD74HC4067)
-La lectura directa de 16 canales analógicos saturaría las líneas de entrada/salida (I/O) del microcontrolador. Para solventar esta restricción, se integra un multiplexor analógico/digital de 16 canales 74HC4067: 
-*   **Optimización de Pines (I/O):** Reduce las 16 salidas analógicas de los sensores a un único pin de entrada analógica (SIG) conectado al ADC del ESP32-C6. 
-*   **Control de Selección:** Requiere únicamente 4 pines digitales del microcontrolador (S0, S1, S2, S3) para seleccionar secuencialmente el canal deseado (2^4 = 16 combinaciones). 
-*   **Alta Velocidad de Conmutación:** El CI 74HC4067 opera a frecuencias elevadas, permitiendo muestrear la totalidad de la barra de 16 sensores en una fracción de milisegundo, manteniendo un bucle de control en tiempo real imperceptible al desplazamiento del robot.
+Leer 16 canales analógicos de forma directa saturaría los pines del microcontrolador[cite: 18]. Por ello, se integra un multiplexor analógico 74HC4067, el cual reduce las 16 salidas a un único pin analógico conectado al ESP32-C6[cite: 18]. Utiliza solo 4 pines digitales (S0 a S3) para seleccionar el canal y opera a frecuencias elevadas para muestrear toda la barra en fracciones de milisegundo[cite: 18].
 
-![Multiplexor 74HC4067](img/siguelineas/fotos_materiales/Imagen8.jpg)
-*Figura 5.2.7: Módulo multiplexor analógico de 16 canales 74HC4067.*
+![Multiplexor 74HC4067](img/siguelineas/fotos_materiales/Imagen8.jpg)[cite: 17]
+*Figura 5.2.6: Módulo multiplexor analógico de 16 canales 74HC4067.*
 
 <br><br>
 
-#### 5.2.4. Topología del Circuito Electrónico (Esquemático)
-Como se muestra en la topología de diseño: 
-*   **Red Emisora:** Cada LED infrarrojo integrado en el QRE1113 se alimenta a 5V polarizado por una resistencia en serie de 330 Ω (R1, R4, R6...). 
-*   **Red Receptora:** Cada fototransistor se configura con una resistencia de carga de 4.7 kΩ (R2, R5, R7...) conectada a la línea de alimentación VCC. El nodo entre el fototransistor y la resistencia genera la señal analógica (Q0 a Q15) dirigida a las entradas Y0–Y15 (o C0–C15) del multiplexor 74HC4067. 
-*   **Filtro de Ruido:** Se coloca un capacitor de desacoplo de 0.1 µF (C1) en la línea de alimentación del multiplexor para estabilizar las lecturas y suprimir ruido electromagnético. 
+#### 5.2.4. Topología del Circuito Electrónico
+A nivel de esquemático, cada LED infrarrojo se alimenta a 5V polarizado por una resistencia en serie de 330 Ω[cite: 18]. La red receptora utiliza resistencias de carga de 4.7 kΩ conectadas a VCC; este nodo genera la señal analógica individual (Q0 a Q15) dirigida al multiplexor[cite: 18]. Se incluye también un capacitor de desacoplo de 0.1 µF para estabilizar las lecturas y suprimir el ruido electromagnético[cite: 18].
 
-![Topología Multiplexada](img/siguelineas/fotos_materiales/Imagen9.png)
-*Figura 5.2.8: Diseño de red completa integrando 16 sensores reflectivos hacia el IC multiplexor.*
+![Esquemático QRE1113](img/siguelineas/fotos_materiales/Imagen7.png)[cite: 17]
+*Figura 5.2.7: Circuito base de acondicionamiento analógico para el QRE1113.*
 
 <br><br>
 
----
-
-### 5.3 Motores y Actuación Mecánica
-Existen diversas tecnologías de motores eléctricos aplicables a sistemas robóticos móviles. La selección depende del equilibrio requerido entre torque, velocidad, peso y consumo energético.
-
-![Tipos de Motores](img/siguelineas/fotos_materiales/Imagen10.png)
-*Figura 5.3.1: Comparativa general de tecnologías de motores (Escobillas, Sin Escobillas/BLDC, Coreless).*
+![Topología Multiplexada](img/siguelineas/fotos_materiales/Imagen9.png)[cite: 17]
+*Figura 5.2.8: Diseño integrando los 16 sensores reflectivos hacia el IC multiplexor.*

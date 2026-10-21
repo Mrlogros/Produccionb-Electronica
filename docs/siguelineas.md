@@ -3,6 +3,7 @@
 Bienvenido a la bitácora de desarrollo de nuestro robot siguelíneas. En esta sección documentaremos toda la investigación previa, la selección de componentes, el diseño del chasis y la lógica de control.
 
 ---
+
 ## Introducción
 
 ![Mecánica de giro](img/siguelineas/fotos_intoduccion/Imagen1.jpg)

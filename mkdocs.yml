@@ -7,12 +7,14 @@ repo_name: Mrlogros/Produccionb-Electronica
 
 nav:
   - Inicio: index.md
-  - Diseño de Placa (KiCad): diseno-kicad.md
-  - Manufactura CAM (Mods CE): mods-ce.md
-  - Operación Monofab SRM-20: monofab.md
-  - Simulación (Multisim): multisim.md
-  - Diseño Avanzado (Altium): altium.md
-  - Proyecto Siguelíneas: siguelineas.md
+  - Herramientas y Guías:
+    - Diseño de Placa (KiCad): diseno-kicad.md
+    - Manufactura CAM (Mods CE): mods-ce.md
+    - Operación Monofab SRM-20: monofab.md
+    - Simulación (Multisim): multisim.md
+    - Diseño Avanzado (Altium): altium.md
+  - Proyectos:
+    - Proyecto Siguelíneas: siguelineas.md
   - Referencias: recursos.md
 
 theme:

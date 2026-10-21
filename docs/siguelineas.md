@@ -20,9 +20,10 @@ hide:
     </p>
   </div>
   <div style="flex: 1; min-width: 300px;">
-    <img src="img/siguelineas/fotos_intoduccion/Imagen1.jpg" style="border-radius: 12px; width: 100%; box-shadow: 0 8px 16px rgba(0,0,0,0.2);">
+    <img src="../img/siguelineas/fotos_intoduccion/Imagen1.jpg" style="border-radius: 12px; width: 100%; box-shadow: 0 8px 16px rgba(0,0,0,0.2);">
   </div>
 </div>
+
 ---
 
 ## Introducción

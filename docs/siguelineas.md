@@ -19,13 +19,14 @@ hide:
       Publicado 20 de octubre de 2026
     </p>
   </div>
-  <div style="flex: 1; min-width: 300px;">
-    <img src="../img/siguelineas/fotos_intoduccion/Imagen1.jpg" style="border-radius: 12px; width: 100%; box-shadow: 0 8px 16px rgba(0,0,0,0.2);">
+  <div style="flex: 1; min-width: 300px;" markdown="1">
+
+![Portada](img/siguelineas/fotos_intoduccion/Imagen1.jpg){ style="border-radius: 12px; width: 100%; box-shadow: 0 8px 16px rgba(0,0,0,0.2);" }
+
   </div>
 </div>
 
 ---
-
 ## Introducción
 
 ![Mecánica de giro](img/siguelineas/fotos_intoduccion/Imagen1.jpg)

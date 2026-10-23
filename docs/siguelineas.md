@@ -275,7 +275,7 @@ La selección de los motores para un robot velocista determina directamente la a
 *   **Ventajas:** Su inercia rotacional es prácticamente nula, lo que les otorga una respuesta dinámica y tasas de aceleración/frenado comparables a las de un motor brushless, manteniendo la simplicidad de control de un motor de escobillas tradicional mediante puente H. Alcanzan un régimen de RPM muy elevado. 
 *   **Desventajas:** Entregan un par motor (torque) nominal bajo en su eje directo, por lo que requieren indefectiblemente el acople de una caja reductora de engranajes (gearbox) para elevar el torque utilizable a las ruedas. 
 
-![Motor Coreless Interno](img/siguelineas/fotos_materiales/Imagen13.jpg)
+![Motor Coreless Interno](img/siguelineas/fotos_materiales/Imagen13.jpg){ width="800" }
 *Figura 5.3.4: Despiece interno de un motor Coreless mostrando su devanado cilíndrico libre.*
 
 <br><br>
@@ -297,7 +297,7 @@ Inicialmente, los micromotores N20 con caja de engranajes metálica recta integr
 Posteriormente, la categoría adoptó de forma masiva los motores de formato 180 con tecnología coreless acoplados a reductoras tipo Mabuchi, posicionándose en el pico de uso por cerca del 90% de los competidores internacionales. 
 *   **Ventajas:** Ofrecen un equilibrio superior entre par de salida y velocidad final, garantizando tracción constante en curvas exigentes. 
 
-![Motor 180 Mabuchi](img/siguelineas/fotos_materiales/Imagen15.png)
+![Motor 180 Mabuchi](img/siguelineas/fotos_materiales/Imagen15.png){ width="800" }
 *Figura 5.3.6: Ensambles de motores 180 Coreless adaptados con reductores.*
 
 <br><br>

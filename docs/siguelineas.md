@@ -239,3 +239,72 @@ A nivel de esquemático, cada LED infrarrojo se alimenta a 5V polarizado por una
 
 ![Topología Multiplexada](img/siguelineas/fotos_materiales/Imagen9.png)
 *Figura 5.2.8: Diseño integrando los 16 sensores reflectivos hacia el IC multiplexor.*
+
+### 5.3. Actuadores de Tracción: Comparativa Tecnológica y Evolución de Motores
+La selección de los motores para un robot velocista determina directamente la aceleración, velocidad máxima y capacidad de frenado del vehículo. A continuación, se analiza la clasificación general de motores de corriente directa (DC) y la evolución de los estándares empleados en competencia: 
+
+#### 5.3.1. Clasificación Tecnológica de Motores de DC
+
+**Motores con Escobillas (Brushed DC):**
+*   **Características:** Constituyen la solución clásica y más accesible. Se componen de un rotor bobinado con colector de delgas y escobillas físicas para conmutar la corriente. 
+*   **Ventajas:** Son económicos, de fácil adquisición y sencillos de controlar mediante etapas de potencia estándar (puentes H convencionales). 
+*   **Desventajas:** La fricción mecánica de las escobillas limita su vida útil, genera ruido eléctrico y disminuye la eficiencia energética global. 
+
+![Motor Brushed Interno](img/siguelineas/fotos_materiales/Imagen10.jpg)
+*Figura 5.3.1: Estructura interna de un motor DC clásico con escobillas.*
+
+<br><br>
+
+**Motores sin Escobillas (Brushless DC / BLDC):**
+*   **Características:** Reemplazan la conmutación mecánica por una conmutación electrónica trifásica en el estator, con un rotor de imanes permanentes. 
+*   **Ventajas:** Ofrecen la mayor eficiencia energética, elevada densidad de potencia y soportan un número de RPM extremadamente alto sin desgaste mecánico por escobillas. 
+*   **Desventajas:** Exigen controladores electrónicos de velocidad dedicados (ESC) de mayor costo y complejidad de integración. Además, la inversión rápida del sentido de giro (frenado activo/reversa) resulta compleja y lenta en comparación con los esquemas de DC convencionales. 
+
+![Motor BLDC Interno](img/siguelineas/fotos_materiales/Imagen11.jpg)
+*Figura 5.3.2: Estator de bobinas y rotor de imanes permanentes en un motor BLDC.*
+
+<br><br>
+
+![Controlador ESC](img/siguelineas/fotos_materiales/Imagen12.jpg)
+*Figura 5.3.3: Controlador electrónico de velocidad (ESC) necesario para motores BLDC.*
+
+<br><br>
+
+**Motores sin Núcleo (Coreless DC):**
+*   **Características:** Eliminan el núcleo de hierro dulce en el rotor, utilizando un devanado cilíndrico auto-soportado que gira alrededor de un imán central de alta densidad magnética. 
+*   **Ventajas:** Su inercia rotacional es prácticamente nula, lo que les otorga una respuesta dinámica y tasas de aceleración/frenado comparables a las de un motor brushless, manteniendo la simplicidad de control de un motor de escobillas tradicional mediante puente H. Alcanzan un régimen de RPM muy elevado. 
+*   **Desventajas:** Entregan un par motor (torque) nominal bajo en su eje directo, por lo que requieren indefectiblemente el acople de una caja reductora de engranajes (gearbox) para elevar el torque utilizable a las ruedas. 
+
+![Motor Coreless Interno](img/siguelineas/fotos_materiales/Imagen13.jpg)
+*Figura 5.3.4: Despiece interno de un motor Coreless mostrando su devanado cilíndrico libre.*
+
+<br><br>
+
+---
+
+#### 5.3.2. Evolución Histórica y Tendencias en la Robótica de Competencia
+
+**Etapa Inicial – Micromotores N20 (Estándar Pololu):**
+Inicialmente, los micromotores N20 con caja de engranajes metálica recta integrados (popularizados por Pololu) fueron la opción predominante debido a su extrema conveniencia física, incluyendo un eje en "D" estandarizado para el montaje directo de llantas. 
+*   **Limitación:** Su formato ultra compacto limita el tamaño del bobinado, resultando en un torque insuficiente y una disipación térmica deficiente bajo regímenes de exigencia severa en pista. 
+
+![Motor N20](img/siguelineas/fotos_materiales/Imagen14.jpg)
+*Figura 5.3.5: Micromotor N20 clásico con caja reductora de piñones metálicos.*
+
+<br><br>
+
+**Etapa de Consolidación – Motores 180 Coreless con Caja Mabuchi:**
+Posteriormente, la categoría adoptó de forma masiva los motores de formato 180 con tecnología coreless acoplados a reductoras tipo Mabuchi, posicionándose en el pico de uso por cerca del 90% de los competidores internacionales. 
+*   **Ventajas:** Ofrecen un equilibrio superior entre par de salida y velocidad final, garantizando tracción constante en curvas exigentes. 
+
+![Motor 180 Mabuchi](img/siguelineas/fotos_materiales/Imagen15.png)
+*Figura 5.3.6: Ensambles de motores 180 Coreless adaptados con reductores.*
+
+<br><br>
+
+**Innovación Reciente – Motores N60 Coreless:**
+En años recientes, desarrollos liderados por equipos de alto rendimiento (como Space Invaders Robotics) popularizaron el uso de motores N60 Coreless. 
+*   **Ventajas Competitivas:** A pesar de ser más ligeros y compactos que los motores de tamaño 180, los motores N60 entregaron una densidad de potencia superior, superando los parámetros de torque, RPM y respuesta dinámica sin comprometer la ligereza del chasis ni alterar el centro de masa del vehículo.
+
+![Motor N60 Coreless](img/siguelineas/fotos_materiales/Imagen16.jpg)
+*Figura 5.3.7: Integración compacta del motor N60 Coreless con llanta adherente de silicón.*

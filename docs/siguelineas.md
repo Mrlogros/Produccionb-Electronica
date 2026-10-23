@@ -308,3 +308,59 @@ En años recientes, desarrollos liderados por equipos de alto rendimiento (como 
 
 ![Motor N60 Coreless](img/siguelineas/fotos_materiales/Imagen16.jpg)
 *Figura 5.3.7: Integración compacta del motor N60 Coreless con llanta adherente de silicón.*
+
+---
+
+### 5.4. Etapa de Potencia: Transición del Driver Estándar al Controlador BTN9960
+El diseño de la etapa de potencia debe garantizar la entrega fluida de corriente hacia los actuadores principales sin sufrir caídas de tensión ni sobrecalentamientos durante los cambios bruscos de dirección o frenados dinámicos.
+
+#### 5.4.1. Limitaciones del Driver Estándar (TB6612FNG)
+El módulo TB6612FNG es el controlador dual de tipo Puente H más extendido en robótica móvil debido a su empaquetado reducido y facilidad de interfaz PWM. 
+*   **Capacidad de Corriente:** Soporta hasta 1.2 A continuos (3.2 A pico) por canal. 
+*   **Cuello de Botella:** Aunque es adecuado para motores N20 o prototipos de baja velocidad, resulta insuficiente para motores de alto rendimiento (como los N60 Coreless o 180 Coreless). En maniobras de aceleración máxima, curvas cerradas o reversa activa, los transistores del TB6612FNG entran en saturación térmica o se destruyen por picos de corriente inductiva. 
+
+![TB6612FNG Breakout](img/siguelineas/fotos_materiales/Imagen17.png)
+*Figura 5.4.1: Módulo estándar de puente H comercial.*
+
+<br><br>
+
+#### 5.4.2. Selección del Controlador de Alta Corriente: BTN9960LV (NovalithIC™)
+Para superar estas limitaciones, se adopta la solución basada en el CI BTN9960LV (Infineon), popularizada en la categoría de alta competencia por equipos de alto rendimiento (como Space Invaders Robotics) y utilizada por los vehículos velocistas más rápidos. 
+
+*   **Topología de Medio Puente (Half-Bridge):** El BTN9960LV no es un Puente H completo en un solo encapsulado, sino un medio puente integrado que incluye un MOSFET de lado alto (High-Side) y un MOSFET de lado bajo (Low-Side) con su respectivo circuito de disparo (driver IC). Para controlar un motor en ambos sentidos de giro, es necesario interconectar dos módulos BTN9960LV en paralelo para conformar un Puente H completo por cada motor. 
+*   **Capacidad de Corriente y Tolerancia a Transitorios:**
+    *   **Protección de Sobrecorriente Integrada:** Cuenta con un umbral de apagado por sobrecorriente (Overcurrent Shutdown) con valores típicos de 47 A (con mínimos de 35 A y máximos de 60 A a Vs = 13.5V). 
+    *   **Gestión de Picos:** Dado que los motores de competencia jamás alcanzarán de forma continua dicho amperaje, este margen térmico y eléctrico asegura que los picos transitorios de corriente generados al alternar abruptamente la velocidad o polaridad sean absorbidos sin riesgo de falla o reinicio del sistema. 
+
+![IC BTN9960](img/siguelineas/fotos_materiales/Imagen18.jpg)
+*Figura 5.4.2: Encapsulado de potencia del integrado BTN9960LV.*
+
+<br><br>
+
+#### 5.4.3. Implementación del Circuito Optimizado (Esquemático de Aplicación)
+Aprovechando las recomendaciones del fabricante y la optimización de circuito realizada por la comunidad de robótica de competencia, se implementa una topología de medio puente desacoplada que se duplica por cada actuador: 
+
+**Entradas de Control Lógico:**
+*   **Pin de Habilitación (INH):** Controlado mediante lógica de 5V o 3.3V en serie con una resistencia de aislamiento de 1 kΩ (R1). 
+*   **Pin de Modulación / Dirección (IN):** Recibe la señal PWM directamente desde el microcontrolador a través de una resistencia de 1 kΩ (R5). 
+
+**Red de Desacoplo y Estabilización de Potencia:**
+La línea de entrada de voltaje de potencia (VIN / Vs) se acopla mediante un arreglo de capacitores en paralelo para suprimir el ruido electromagnético de conmutación (EMC) y proveer reserva de corriente instantánea: 
+*   Capacitores cerámicos de alta frecuencia: 100 nF (C4) y 470 nF (C2, C3). 
+*   Capacitores de estandarización y filtrado: 10 µF (C5) y un electrolítico de reserva de 220 µF (C6) directo a la línea de tierra GND. 
+
+**Salida al Motor (OUT / MOTCON):**
+La terminal de salida OUT (pines 7 y 8) provee la conexión directa al borne del motor. Para construir el sistema de tracción diferencial del robot, se integran 4 integrados BTN9960LV en total sobre la PCB (2 medios puentes conformando el Puente H del Motor Izquierdo y 2 para el Motor Derecho). 
+
+![Aplicación Típica](img/siguelineas/fotos_materiales/Imagen19.png){ width="800" }
+*Figura 5.4.3: Esquemático de un solo medio puente.*
+
+<br><br>
+
+![Puente H Completo](img/siguelineas/fotos_materiales/Imagen20.png){ width="800" }
+*Figura 5.4.4: Conexión en paralelo de dos BTN9960 para conformar un puente H completo.*
+
+<br><br>
+
+![Circuito Optimizado](img/siguelineas/fotos_materiales/Imagen21.png){ width="800" }
+*Figura 5.4.5: Circuito optimizado y acoplado con red de capacitores y resistencias de aislamiento.*

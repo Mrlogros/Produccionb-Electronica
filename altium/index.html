@@ -1,0 +1,2414 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación técnica del diseño y ruteo de circuito impreso.">
+      
+      
+        <meta name="author" content="Tu Nombre">
+      
+      
+      
+        <link rel="prev" href="../multisim/">
+      
+      
+        <link rel="next" href="../siguelineas/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../material/developer-board">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Diseño Avanzado (Altium) - Diseño de PCB - Proyecto KiCad</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#6-diseno-avanzado-de-pcb-en-altium-designer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Diseño de PCB - Proyecto KiCad" class="md-header__button md-logo" aria-label="Diseño de PCB - Proyecto KiCad" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de PCB - Proyecto KiCad
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Diseño Avanzado (Altium)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Mrlogros/Produccionb-Electronica" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mrlogros/Produccionb-Electronica
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../diseno-kicad/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Diseño de Placa (KiCad)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../mods-ce/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Manufactura CAM (Mods CE)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../monofab/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operación Monofab SRM-20
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../multisim/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Simulación (Multisim)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Diseño Avanzado (Altium)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../siguelineas/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Proyecto Siguelíneas
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../recursos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Referencias
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Diseño de PCB - Proyecto KiCad" class="md-nav__button md-logo" aria-label="Diseño de PCB - Proyecto KiCad" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Diseño de PCB - Proyecto KiCad
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Mrlogros/Produccionb-Electronica" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mrlogros/Produccionb-Electronica
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diseno-kicad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diseño de Placa (KiCad)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mods-ce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manufactura CAM (Mods CE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monofab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operación Monofab SRM-20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multisim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulación (Multisim)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diseño Avanzado (Altium)
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diseño Avanzado (Altium)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-instalacion-y-configuracion-del-entorno" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Instalación y Configuración del Entorno
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.1 Instalación y Configuración del Entorno">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#descarga-del-instalador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Descarga del Instalador
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gestion-de-licencias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gestión de Licencias
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-a-la-red-universitaria" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conexión a la Red Universitaria
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-creacion-y-estructura-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Creación y Estructura del Proyecto
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.2 Creación y Estructura del Proyecto">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creacion-de-la-carpeta-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Creación de la Carpeta del Proyecto
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadir-la-hoja-de-esquematico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Añadir la Hoja de Esquemático
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#guardado-del-esquematico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guardado del Esquemático
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-exploracion-de-paneles-laterales-y-de-busqueda" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Exploración de Paneles Laterales y de Búsqueda
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.3 Exploración de Paneles Laterales y de Búsqueda">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pestana-de-componentes-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pestaña de Componentes (Components)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manufacturer-part-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Manufacturer Part Search
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-barras-de-herramientas-y-dibujo-grafico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Barras de Herramientas y Dibujo Gráfico
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.4 Barras de Herramientas y Dibujo Gráfico">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#menu-de-activacion-de-barras" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Menú de Activación de Barras
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#menu-de-herramientas-graficas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Menú de Herramientas Gráficas
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edicion-de-propiedades-visuales-cuadros-y-lineas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edición de Propiedades Visuales (Cuadros y Líneas)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colocacion-de-texto-descriptivo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Colocación de Texto Descriptivo
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-busqueda-de-componentes-y-consulta-de-datasheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Búsqueda de Componentes y Consulta de Datasheet
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.5 Búsqueda de Componentes y Consulta de Datasheet">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filtrar-por-familia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtrar por Familia
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#busqueda-y-previsualizacion-tecnica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Búsqueda y Previsualización Técnica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consulta-de-la-hoja-de-datos-datasheet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Consulta de la Hoja de Datos (Datasheet)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alternativas-para-huellas-faltantes-snapmagic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Alternativas para Huellas Faltantes (SnapMagic)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-emplazamiento-y-herramientas-de-cableado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.6 Emplazamiento y Herramientas de Cableado
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.6 Emplazamiento y Herramientas de Cableado">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arrastrar-acomodar-y-rotar-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arrastrar, Acomodar y Rotar Componentes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#herramienta-place-wire" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Herramienta Place Wire
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-puertos-de-alimentacion-y-net-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.7 Puertos de Alimentación y Net Labels
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.7 Puertos de Alimentación y Net Labels">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#agregar-alimentacion-12v-y-tierra-gnd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agregar Alimentación (+12V) y Tierra (GND)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colocacion-de-net-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Colocación de Net Labels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conexion-logica-en-conectores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Conexión Lógica en Conectores
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-anotacion-de-designadores-y-exportacion-a-pcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.8 Anotación de Designadores y Exportación a PCB
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.8 Anotación de Designadores y Exportación a PCB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#anotar-y-numerar-designadores-annotate-schematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anotar y Numerar Designadores (Annotate Schematics)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anadir-documento-pcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Añadir Documento PCB
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-guardado-y-sincronizacion-del-documento-pcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 Guardado y Sincronización del Documento PCB
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.9 Guardado y Sincronización del Documento PCB">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#validacion-y-transferencia-de-datos-eco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Validación y Transferencia de Datos (ECO)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-origen-y-distribucion-preliminar" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.10 Origen y Distribución Preliminar
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#611-organizacion-funcional-y-vista-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.11 Organización Funcional y Vista 3D
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#612-entorno-pcb-barras-filtros-y-unidades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.12 Entorno PCB: Barras, Filtros y Unidades
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.12 Entorno PCB: Barras, Filtros y Unidades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filtro-de-redes-y-aislamiento-visual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Filtro de Redes y Aislamiento Visual
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#identificacion-y-resolucion-de-errores-de-diseno-drc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Identificación y Resolución de Errores de Diseño (DRC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sistema-de-medicion-atajo-q" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Sistema de Medición (Atajo Q)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#613-importacion-de-reglas-de-diseno-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.13 Importación de Reglas de Diseño (Rules)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.13 Importación de Reglas de Diseño (Rules)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ajuste-manual-de-ancho-de-pista-width" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ajuste Manual de Ancho de Pista (Width)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#614-ruteo-interactivo-y-ancho-dinamico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.14 Ruteo Interactivo y Ancho Dinámico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#615-modalidades-de-ruteado-automatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.15 Modalidades de Ruteado Automático
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#616-definicion-de-contorno-de-placa-board-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.16 Definición de Contorno de Placa (Board Shape)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#617-inspeccion-tridimensional-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.17 Inspección Tridimensional Final
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-agregar-documento-pcb-y-transferencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.9 Agregar Documento PCB y Transferencia
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-validacion-y-transferencia-de-datos-eco" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.10 Validación y Transferencia de Datos (ECO)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#611-establecer-el-origen-del-circuito" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.11 Establecer el Origen del Circuito
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#612-organizacion-funcional-y-vista-3d" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.12 Organización Funcional y Vista 3D
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#613-despliegue-de-barras-en-el-entorno-pcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.13 Despliegue de Barras en el Entorno PCB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#614-filtro-de-redes-y-aislamiento-visual" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.14 Filtro de Redes y Aislamiento Visual
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#615-resolucion-de-errores-de-diseno-drc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.15 Resolución de Errores de Diseño (DRC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#616-sistema-de-medicion-y-atajos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.16 Sistema de Medición y Atajos
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#617-importacion-de-reglas-de-diseno-rules" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.17 Importación de Reglas de Diseño (Rules)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#618-ajuste-manual-de-ancho-de-pista" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.18 Ajuste Manual de Ancho de Pista
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#619-ruteo-interactivo-y-ancho-dinamico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.19 Ruteo Interactivo y Ancho Dinámico
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#620-modalidades-de-ruteado-automatico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.20 Modalidades de Ruteado Automático
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#621-definicion-de-contorno-de-placa-board-shape" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.21 Definición de Contorno de Placa (Board Shape)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#622-inspeccion-tridimensional-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.22 Inspección Tridimensional Final
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#617-vertido-de-cobre-polygon-pour" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.17 Vertido de Cobre (Polygon Pour)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#618-asignacion-de-red-y-regeneracion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.18 Asignación de Red y Regeneración
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#619-vertido-en-rejilla-hatched" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.19 Vertido en Rejilla (Hatched)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#620-plano-inferior-e-inspeccion-tridimensional-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.20 Plano Inferior e Inspección Tridimensional Final
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#621-ejecucion-del-chequeo-final-de-reglas-de-diseno-drc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.21 Ejecución del Chequeo Final de Reglas de Diseño (DRC)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#622-etiquetas-de-texto-en-serigrafia-top-overlay" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.22 Etiquetas de Texto en Serigrafía (Top Overlay)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#623-serigrafia-en-la-cara-inferior-bottom-overlay-y-mirror" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.23 Serigrafía en la Cara Inferior (Bottom Overlay y Mirror)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#624-salidas-de-fabricacion-archivos-gerber" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.24 Salidas de Fabricación (Archivos Gerber)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#625-archivos-de-perforacion-nc-drill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.25 Archivos de Perforación (NC Drill)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#626-empaquetado-y-validacion-en-jlcpcb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.26 Empaquetado y Validación en JLCPCB
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../siguelineas/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto Siguelíneas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="6-diseno-avanzado-de-pcb-en-altium-designer">6. Diseño Avanzado de PCB en Altium Designer</h1>
+<p>Altium Designer es una de las herramientas de automatización de diseño electrónico (EDA) más potentes y utilizadas a nivel industrial. En esta sección documentaremos el flujo de trabajo inicial, desde la configuración del entorno y licencias académicas, hasta la creación del proyecto y captura del diagrama esquemático.</p>
+<hr />
+<h2 id="61-instalacion-y-configuracion-del-entorno">6.1 Instalación y Configuración del Entorno</h2>
+<h3 id="descarga-del-instalador">Descarga del Instalador</h3>
+<p>Este es el link donde podemos descargar Altium: <a href="https://www.altium.com/products/downloads?srsltid=AU7gw4XECxHxSmIM7cCQc7f9E6-Uy8oNcmDMetrjfxTbEvQaKlSs0ehy">Descargar Altium Designer</a>. Aparecen 2 opciones de instalación (el ejecutable o instalado); para que sea más directo, solo le damos clic a donde está el recuadro rojo (<code>Online Installer</code>).</p>
+<p><img alt="Descarga Altium Designer" src="../img/fotos_altium/Imagen1.png" />
+<em>Figura 6.1.1: Opciones de descarga en la página oficial.</em></p>
+<p><br><br></p>
+<h3 id="gestion-de-licencias">Gestión de Licencias</h3>
+<p>La primera vez que lo abramos se verá algo así. Hay que seleccionar la licencia (en este caso la que está dentro del recuadro rojo) para que se nos habilite poder ocupar el programa.</p>
+<p><img alt="Gestión de Licencias" src="../img/fotos_altium/Imagen3.png" />
+<em>Figura 6.1.2: Activación de la licencia en el License Management.</em></p>
+<p><br><br></p>
+<h3 id="conexion-a-la-red-universitaria">Conexión a la Red Universitaria</h3>
+<p>El último paso para empezar a diseñar las placas es ver que estemos dentro de la red universitaria. En la esquina superior derecha podremos encontrar si estamos conectados o no; en caso de que no, le damos clic y seleccionamos "Unir a un grupo". Ahí pondremos nuestro correo universitario y la contraseña que nos llegó al correo. Después pedirá un código de verificación enviado al mismo correo, lo ingresamos y listo, debe verse como en la imagen.</p>
+<p><img alt="Conexión Workspace" src="../img/fotos_altium/Imagen4.png" />
+<em>Figura 6.1.3: Verificación de conexión al Workspace de la Universidad.</em></p>
+<hr />
+<h2 id="62-creacion-y-estructura-del-proyecto">6.2 Creación y Estructura del Proyecto</h2>
+<h3 id="creacion-de-la-carpeta-del-proyecto">Creación de la Carpeta del Proyecto</h3>
+<p>Para comenzar nuestro proyecto crearemos la carpeta en donde guardaremos todos nuestros archivos. Le damos a <code>File</code> ubicado en la esquina superior izquierda (apuntado con la flecha roja), después a <code>New</code> (apuntado con la flecha azul) y después le damos a <code>Project</code> (apuntado con la flecha verde).</p>
+<p><img alt="Crear Nuevo Proyecto" src="../img/fotos_altium/Imagen5.png" />
+<em>Figura 6.2.1: Menú para la creación de un nuevo proyecto.</em></p>
+<p><br><br></p>
+<p>Por default se guardará en la nube de nuestro correo institucional, pero en caso de tener instalado Altium en nuestro equipo le damos a <code>Version control</code> y en el recuadro azul podremos cambiar el nombre de nuestro proyecto. Una vez teniendo el nombre y la ubicación de nuestro proyecto, le damos a <code>Create</code>.</p>
+<p><img alt="Ventana Create Project" src="../img/fotos_altium/Imagen6.png" />
+<em>Figura 6.2.2: Configuración de nombre y ubicación.</em></p>
+<p><br><br></p>
+<p>Una vez asignado el nombre al proyecto (como se muestra en la imagen con <code>Placa_prueba.PrjPcb</code>), se creará el contenedor principal identificado con el ícono verde de proyecto. En este apartado se organiza el espacio de trabajo antes de agregar las hojas de esquemático o los archivos de PCB.</p>
+<p><img alt="Panel Projects" src="../img/fotos_altium/Imagen7.png" />
+<em>Figura 6.2.3: Contenedor del proyecto inicializado.</em></p>
+<p><br><br></p>
+<h3 id="anadir-la-hoja-de-esquematico">Añadir la Hoja de Esquemático</h3>
+<p>En esta parte se muestra cómo añadir la primera hoja de diseño dentro de la estructura que se creó en el paso anterior. Para crear el esquemático, se da clic derecho sobre el nombre del proyecto en el panel lateral izquierdo de <code>Projects</code>. En el menú desplegable que aparece, se pasa el cursor sobre la opción <code>Add New to Project</code> y se selecciona <code>Schematic</code>. </p>
+<p><img alt="Añadir Esquemático" src="../img/fotos_altium/Imagen8.png" />
+<em>Figura 6.2.4: Agregar nuevo Schematic al proyecto.</em></p>
+<p><br><br></p>
+<p>Al hacer esto, se creará un archivo nuevo con el símbolo de esquema dentro de la estructura del proyecto y se abrirá el lienzo en blanco para comenzar a colocar los componentes electrónicos.</p>
+<p><img alt="Lienzo Esquemático" src="../img/fotos_altium/Imagen9.png" />
+<em>Figura 6.2.5: Lienzo de diseño en blanco.</em></p>
+<p><br><br></p>
+<h3 id="guardado-del-esquematico">Guardado del Esquemático</h3>
+<p>De acuerdo con lo explicado en la clase, una vez creado el documento, se debe guardar localmente en la carpeta de trabajo asignada. En el panel lateral <code>Projects</code>, el documento aparece marcado con un ícono rojo. Esto indica que el archivo aún no se ha guardado localmente en el disco duro. </p>
+<p>Para guardarlo, se selecciona la hoja, se presiona <code>Ctrl + S</code> (o <code>File &gt; Save</code>) y se asigna una ubicación dentro de la carpeta del proyecto.</p>
+<p><img alt="Archivo no guardado" src="../img/fotos_altium/Imagen10.png" />
+<em>Figura 6.2.6: Indicador rojo de archivo sin guardar.</em></p>
+<p><br><br></p>
+<p><img alt="Guardar archivo local" src="../img/fotos_altium/Imagen11.png" />
+<em>Figura 6.2.7: Ventana de guardado local.</em></p>
+<hr />
+<h2 id="63-exploracion-de-paneles-laterales-y-de-busqueda">6.3 Exploración de Paneles Laterales y de Búsqueda</h2>
+<h3 id="pestana-de-componentes-components">Pestaña de Componentes (Components)</h3>
+<p>En el borde derecho de la interfaz se encuentran desplegadas las pestañas de acceso rápido a <code>Components</code>, <code>Comments and Tasks</code> y <code>Properties</code>. Como se explicó en la sesión, la pestaña de Components será la vía principal para buscar y desplegar las librerías en el área de dibujo.</p>
+<p><img alt="Pestaña Components" src="../img/fotos_altium/Imagen12.png" />
+<em>Figura 6.3.1: Panel de componentes estándar.</em></p>
+<p><br><br></p>
+<p>En caso de llegar a cerrar la pestaña de componentes, podemos dirigirnos a la esquina inferior derecha donde está un apartado llamado <code>Panels</code>. Le damos clic, buscamos <code>Components</code> y le damos clic para tenerlo de nuevo. Lo mismo aplicaría si cerramos el panel lateral izquierdo, solo vamos a Panels y le damos a <code>Projects</code>.</p>
+<p><img alt="Botón Panels" src="../img/fotos_altium/Imagen13.png" />
+<em>Figura 6.3.2: Botón de recuperación de paneles.</em></p>
+<p><br><br></p>
+<h3 id="manufacturer-part-search">Manufacturer Part Search</h3>
+<p>En este apartado se consideran los siguientes aspectos explicados en la sesión:
+*   <strong>Búsqueda e importación directa:</strong> A diferencia de las librerías locales, este panel se conecta en tiempo real con bases de datos globales de proveedores y fabricantes. Permite buscar componentes específicos mediante su matrícula o navegando por categorías (Passive Components, Connectors, etc.).
+*   <strong>Asegurar la huella (Footprint) y el modelo 3D:</strong> Es fundamental utilizar este buscador para verificar que el componente cuente con el símbolo, la huella (PCB footprint) y su modelo 3D. Como destacó el profesor, si un componente no incluye su huella desde el catálogo, no se podrá exportar hacia el diseño final de la PCB.
+*   <strong>Acceso a hojas de datos:</strong> El panel permite consultar de forma inmediata la hoja de datos (datasheet), especificaciones físicas y disponibilidad.</p>
+<p><img alt="Manufacturer Part Search" src="../img/fotos_altium/Imagen14.png" />
+<em>Figura 6.3.3: Panel Manufacturer Part Search.</em></p>
+<hr />
+<h2 id="64-barras-de-herramientas-y-dibujo-grafico">6.4 Barras de Herramientas y Dibujo Gráfico</h2>
+<h3 id="menu-de-activacion-de-barras">Menú de Activación de Barras</h3>
+<p>Al dar clic derecho sobre el espacio vacío de la barra de menús superior, se despliega una lista contextual. Se debe activar la casilla <strong><code>Wiring</code></strong>; esto despliega el grupo de herramientas para colocar cables, tierras (GND), puertos de voltaje y Net Labels.</p>
+<p>Al seleccionar opciones como <strong><code>Schematic Standard</code></strong>, <strong><code>Formatting</code></strong> o <strong><code>Utilities</code></strong>, se habilita la segunda barra. Esta contiene los íconos para guardar, hacer zoom, copiar y ajustar la visualización.</p>
+<p><img alt="Activación de Barras" src="../img/fotos_altium/Imagen15.png" />
+<em>Figura 6.4.1: Activación de las barras Wiring y Utilities.</em></p>
+<p><br><br></p>
+<h3 id="menu-de-herramientas-graficas">Menú de Herramientas Gráficas</h3>
+<p>En la barra de utilidades se encuentra el menú desplegable del ícono de la regla y el lápiz. Contiene diversas formas geométricas y opciones de dibujo para organizar el diagrama por bloques funcionales. Dentro de este menú también se encuentra la herramienta de texto (letra "A").</p>
+<p><img alt="Herramientas Gráficas" src="../img/fotos_altium/Imagen16.png" />
+<em>Figura 6.4.2: Opciones de figuras geométricas y texto.</em></p>
+<p><br><br></p>
+<h3 id="edicion-de-propiedades-visuales-cuadros-y-lineas">Edición de Propiedades Visuales (Cuadros y Líneas)</h3>
+<p>Al hacer doble clic sobre cualquier figura creada, se despliega el panel <code>Properties</code> para modificarla:
+*   <strong>Líneas (Polyline):</strong> Permite modificar el grosor (Line), el estilo del trazo (sólido, punteado) y los extremos.
+*   <strong>Bloques (Rectangle):</strong> Se pueden definir sus dimensiones exactas (Width y Height), color del borde y activar la casilla <code>Fill Color</code> para asignarle un fondo de color (como el tono amarillo que se observa en el ejemplo). </p>
+<p><img alt="Propiedades de Linea" src="../img/fotos_altium/Imagen18.png" />
+<em>Figura 6.4.3: Ajustes de grosor y estilo de línea.</em></p>
+<p><br><br></p>
+<p><img alt="Propiedades de Rectangulo" src="../img/fotos_altium/Imagen19.png" />
+<em>Figura 6.4.4: Activación del color de relleno (Fill Color).</em></p>
+<p><br><br></p>
+<p><img alt="Cuadro Relleno" src="../img/fotos_altium/Imagen20.png" />
+<em>Figura 6.4.5: Bloque funcional dibujado y rellenado en amarillo.</em></p>
+<p><br><br></p>
+<h3 id="colocacion-de-texto-descriptivo">Colocación de Texto Descriptivo</h3>
+<p>Para agregar una etiqueta de texto, se selecciona la herramienta de texto y se da clic sobre el área deseada dentro del cuadro. Al hacer doble clic sobre el texto, se modifica el campo <code>Text</code> (ej. "Entradas"). Dentro de la sección <code>Properties</code>, se pueden ajustar parámetros como la fuente, tamaño, alineación y estilo (negrita, cursiva, subrayado). De esta manera, el bloque queda identificado de forma clara.</p>
+<p><img alt="Anotación de Texto" src="../img/fotos_altium/Imagen21.png" />
+<em>Figura 6.4.6: Ajuste de propiedades de texto.</em></p>
+<hr />
+<h2 id="65-busqueda-de-componentes-y-consulta-de-datasheet">6.5 Búsqueda de Componentes y Consulta de Datasheet</h2>
+<h3 id="filtrar-por-familia">Filtrar por Familia</h3>
+<p>En el panel <code>Components</code>, se da clic en el menú desplegable de categorías para desplegar el listado de familias disponibles y seleccionar la deseada, como <code>Connectors</code> (Conectores).</p>
+<p><img alt="Filtro de Categorías" src="../img/fotos_altium/Imagen22.png" />
+<em>Figura 6.5.1: Despliegue de familias de componentes.</em></p>
+<p><br><br></p>
+<h3 id="busqueda-y-previsualizacion-tecnica">Búsqueda y Previsualización Técnica</h3>
+<p>Al escribir una matrícula o palabra clave en la barra de búsqueda (por ejemplo, <code>79</code>), el panel filtra los resultados. En la sección inferior <code>Details</code>, se muestran las especificaciones del encapsulado, el símbolo esquemático y la huella para la PCB (Footprint / Modelo 3D).</p>
+<p><img alt="Barra de búsqueda" src="../img/fotos_altium/Imagen23.png" />
+<em>Figura 6.5.2: Búsqueda específica de la matrícula.</em></p>
+<p><br><br></p>
+<h3 id="consulta-de-la-hoja-de-datos-datasheet">Consulta de la Hoja de Datos (Datasheet)</h3>
+<p>Al desplegar la sección <code>References</code> o <code>Part Choices</code>, se encuentra el enlace al documento PDF del fabricante. Al hacer clic sobre el archivo (por ejemplo, <code>796136-1</code>), el sistema abre directamente en el navegador la hoja de datos técnica de Tyco Electronics.</p>
+<p><img alt="Enlaces a Referencias" src="../img/fotos_altium/Imagen25.png" />
+<em>Figura 6.5.3: Enlace de referencia al PDF.</em></p>
+<p><br><br></p>
+<p><img alt="Datasheet Tyco Electronics" src="../img/fotos_altium/Imagen26.png" />
+<em>Figura 6.5.4: Datasheet original del fabricante abierto desde Altium.</em></p>
+<p><br><br></p>
+<h3 id="alternativas-para-huellas-faltantes-snapmagic">Alternativas para Huellas Faltantes (SnapMagic)</h3>
+<p>Este es un aspecto crítico mencionado durante la clase: si un componente no incluye su huella integrada, no se podrá exportar. Si el componente deseado no incluye huella en las librerías, una solución rápida y eficiente es recurrir a plataformas como <strong>SnapMagic Search</strong> (anteriormente conocida como SnapEDA): <a href="https://www.snapeda.com/">https://www.snapeda.com/</a>.</p>
+<p>Desde este sitio web se puede buscar la matrícula exacta del componente para descargar gratuitamente el símbolo, la huella y el modelo 3D en formato compatible con Altium Designer.</p>
+<p><img alt="Verificación de modelos" src="../img/fotos_altium/Imagen27.png" />
+<em>Figura 6.5.5: Verificación de presencia de modelo 3D.</em></p>
+<p><br><br></p>
+<p><img alt="SnapMagic Search" src="../img/fotos_altium/Imagen28.png" />
+<em>Figura 6.5.6: Plataforma SnapMagic para descarga de footprints externos.</em></p>
+<hr />
+<h2 id="66-emplazamiento-y-herramientas-de-cableado">6.6 Emplazamiento y Herramientas de Cableado</h2>
+<h3 id="arrastrar-acomodar-y-rotar-componentes">Arrastrar, Acomodar y Rotar Componentes</h3>
+<p>Una vez verificados los componentes, basta con hacer clic izquierdo sobre ellos y arrastrarlos hacia el área de trabajo. Para orientar un componente en la posición requerida para el cableado, se hace clic sobre él mientras está seleccionado y se presiona la <strong>barra espaciadora</strong> (esto lo girará en ángulos de 90°).</p>
+<p>Se pueden ubicar los elementos estratégicamente. En este ejemplo, se coloca el conector (<code>68021-210HLF</code>) dentro del bloque amarillo delimitado previamente como "Entradas", mientras que el resto de los elementos se acomodan a un costado.</p>
+<p><img alt="Acomodo de Componentes" src="../img/fotos_altium/Imagen29.png" />
+<em>Figura 6.6.1: Distribución estratégica de los componentes en la hoja.</em></p>
+<p><br><br></p>
+<h3 id="herramienta-place-wire">Herramienta Place Wire</h3>
+<p>Para activar el modo de cableado, se puede hacer clic sobre el ícono de alambre o utilizar el atajo de teclado <strong><code>Ctrl + W</code></strong> (o presionar la tecla W).</p>
+<p>Al desplazar el cursor sobre la terminal de un componente, el puntero cambiará a una <strong>cruz roja</strong>. Esto indica que se ha detectado un nodo válido. Se debe hacer clic izquierdo sobre la primera terminal, arrastrar el trazo (siguiendo trayectorias a 90° o 45°) y hacer clic de nuevo sobre la terminal final para consolidar la unión. (Para salir del modo de cableado se presiona Esc).</p>
+<p><img alt="Icono Wire" src="../img/fotos_altium/Imagen30.png" />
+<em>Figura 6.6.2: Ícono de la herramienta Place Wire.</em></p>
+<p><br><br></p>
+<p><img alt="Cruce de conexión" src="../img/fotos_altium/Imagen31.png" />
+<em>Figura 6.6.3: Identificación de nodos mediante cruz roja.</em></p>
+<hr />
+<h2 id="67-puertos-de-alimentacion-y-net-labels">6.7 Puertos de Alimentación y Net Labels</h2>
+<h3 id="agregar-alimentacion-12v-y-tierra-gnd">Agregar Alimentación (+12V) y Tierra (GND)</h3>
+<p>En la barra flotante de herramientas superiores, se localiza el ícono del símbolo de tierra. Al hacer clic derecho sobre este ícono, se desplegará una lista con todas las opciones de Power Ports.</p>
+<ul>
+<li><strong>Tierra (GND):</strong> Se selecciona <code>Place GND power port</code> y se posiciona en el nodo común inferior del circuito.</li>
+<li><strong>Voltaje (+12V):</strong> Se selecciona <code>Place +12 power port</code> y se conecta en el punto superior donde se unen las resistencias. Con esto, todas las etapas quedan debidamente referenciadas.</li>
+</ul>
+<p><img alt="Lista Power Ports" src="../img/fotos_altium/Imagen33.png" />
+<em>Figura 6.7.1: Menú desplegable de puertos de alimentación.</em></p>
+<p><br><br></p>
+<p><img alt="Circuito con Voltaje" src="../img/fotos_altium/Imagen34.png" />
+<em>Figura 6.7.2: Circuito consolidado con nodos de +12V y GND.</em></p>
+<p><br><br></p>
+<h3 id="colocacion-de-net-labels">Colocación de Net Labels</h3>
+<p>En la barra de herramientas flotante, se hace clic derecho sobre el ícono de cableado y se selecciona la opción <strong><code>Net Label</code></strong>. Al desplazar la etiqueta, debe asegurarse de que el pequeño punto blanco de origen toque la línea de conexión.</p>
+<p>Al hacer doble clic sobre la etiqueta colocada (o desde el panel Properties), se modifica el campo <code>Net Name</code> para asignar un identificador (ej. E1, E2, O1, +12, GND). </p>
+<p><img alt="Herramienta Net Label" src="../img/fotos_altium/Imagen35.png" />
+<em>Figura 6.7.3: Selección de la herramienta Net Label.</em></p>
+<p><br><br></p>
+<p><img alt="Panel Net Name" src="../img/fotos_altium/Imagen36.png" />
+<em>Figura 6.7.4: Modificación del nombre de la red.</em></p>
+<p><br><br></p>
+<h3 id="conexion-logica-en-conectores">Conexión Lógica en Conectores</h3>
+<p>Si la etiqueta ya fue definida anteriormente, el menú desplegable del campo permite seleccionarla. Al colocar las etiquetas en los pines del conector de entradas, estos quedan interconectados eléctricamente con el resto del circuito sin necesidad de tirar líneas que crucen toda la hoja.</p>
+<p><img alt="Conector con Nets" src="../img/fotos_altium/Imagen38.png" />
+<em>Figura 6.7.5: Conector etiquetado para interconexión virtual.</em></p>
+<p><br><br></p>
+<p><img alt="Circuito Etiquetado" src="../img/fotos_altium/Imagen39.png" />
+<em>Figura 6.7.6: Circuito completo con Net Labels aplicadas.</em></p>
+<hr />
+<h2 id="68-anotacion-de-designadores-y-exportacion-a-pcb">6.8 Anotación de Designadores y Exportación a PCB</h2>
+<h3 id="anotar-y-numerar-designadores-annotate-schematics">Anotar y Numerar Designadores (Annotate Schematics)</h3>
+<p>Como se observa en el circuito, los componentes colocados inicialmente tienen un signo de interrogación en su designador (R?, D?, C?). Si se dejan así, el sistema no podrá exportar la PCB.</p>
+<p>En la barra de menús superior, se selecciona la opción <strong><code>Tools</code></strong>, se desplaza el cursor sobre <strong><code>Annotation</code></strong> y se hace clic en <strong><code>Annotate Schematics Quietly</code></strong>.</p>
+<p><img alt="Herramienta de Anotación" src="../img/fotos_altium/Imagen40.png" />
+<em>Figura 6.8.1: Ruta para ejecutar la anotación automática.</em></p>
+<p><br><br></p>
+<p>Altium asignará automáticamente un número secuencial a cada componente (D2, L1, C1, R1, etc.). De esta forma, el esquemático queda totalmente validado.</p>
+<p><img alt="Circuito Designado" src="../img/fotos_altium/Imagen41.png" />
+<em>Figura 6.8.2: Circuito con numeración secuencial finalizada.</em></p>
+<p><br><br></p>
+<h3 id="anadir-documento-pcb">Añadir Documento PCB</h3>
+<p>Para transferirlo al diseño físico, hacemos clic derecho sobre el proyecto en el panel lateral, seleccionamos <strong><code>Add New to Project</code></strong> y elegimos <strong><code>PCB</code></strong>.</p>
+<p><img alt="Añadir Documento PCB" src="../img/fotos_altium/Imagen42.png" />
+<em>Figura 6.8.3: Creación del documento PCB para iniciar el ruteo.</em></p>
+<hr />
+<h2 id="69-guardado-y-sincronizacion-del-documento-pcb">6.9 Guardado y Sincronización del Documento PCB</h2>
+<p>En este apartado se realiza lo siguiente:</p>
+<p><strong>Guardado del archivo de circuito impreso:</strong> 
+Se abrirá un lienzo de trabajo negro correspondiente al diseño de la placa. Inmediatamente, se debe guardar el nuevo archivo mediante <code>Ctrl + S</code> (o <code>File &gt; Save</code>), asignándole un nombre dentro de la misma carpeta del proyecto (por ejemplo, <code>Placa_prueba.PcbDoc</code>). </p>
+<p>Estructura completa: Con este paso, el panel de proyectos contará con los dos documentos fundamentales vinculados: el esquemático (<code>.SchDoc</code>) y la placa PCB (<code>.PcbDoc</code>), preparados para la transferencia de componentes y huellas.</p>
+<p><img alt="Guardar PcbDoc" src="../img/fotos_altium_2/Imagen1.png" />
+<em>Figura 6.9.1: Guardado local del nuevo archivo PCB.</em></p>
+<p><br><br></p>
+<p><strong>Actualización del documento PCB:</strong>
+En la barra de menú, nos dirigimos a <code>Design &gt; Update PCB Document Placa_prueba.PcbDoc</code>. Esta es la herramienta encargada de sincronizar la información y los componentes desde el esquemático hacia la placa física.</p>
+<p><img alt="Update PCB Document" src="../img/fotos_altium_2/Imagen2.png" />
+<em>Figura 6.9.2: Menú para actualizar el documento PCB con los datos del esquemático.</em></p>
+<p><br><br></p>
+<h3 id="validacion-y-transferencia-de-datos-eco">Validación y Transferencia de Datos (ECO)</h3>
+<p>En este apartado se realiza la validación y transferencia de datos considerando lo siguiente:</p>
+<ul>
+<li><strong>Advertencia de compilación:</strong> En la parte inferior izquierda se observa una leyenda en texto rojo: <em>"Warning: Errors occurred during compilation of the project!"</em>. Esta advertencia puede aparecer si alguna etiqueta de red no tiene un destino explícito o si existe alguna pequeña inconsistencia de conexión.</li>
+<li><strong>Validación de cambios (Validate Changes):</strong> Antes de volcar los componentes a la placa, se debe hacer clic en el botón <code>Validate Changes</code> (resaltado en el recuadro rojo inferior). Esto verifica que todas las huellas y redes estén listos y disponibles.</li>
+<li><strong>Ejecución de cambios (Execute Changes):</strong> Una vez que aparezcan las marcas verdes de verificación, se habilita el botón <code>Execute Changes</code> (indicado por la flecha azul). Al presionarlo, el sistema transferirá automáticamente todas las huellas y conexiones físicas al lienzo de la PCB.</li>
+</ul>
+<p><img alt="Ventana ECO" src="../img/fotos_altium_2/Imagen3.png" />
+<em>Figura 6.9.3: Ventana de Engineering Change Order (ECO).</em></p>
+<hr />
+<h2 id="610-origen-y-distribucion-preliminar">6.10 Origen y Distribución Preliminar</h2>
+<p>En estas imágenes se ilustra el primer paso tras importar los componentes al entorno de PCB (<code>.PcbDoc</code>), así como la configuración del origen de referencia (0,0). </p>
+<p><strong>Organización preliminar de las huellas:</strong> 
+Una vez ejecutada la orden ECO, los componentes importados se posicionan dentro del área de trabajo negra. En esta vista preliminar se observan las líneas finas de conexión (<em>ratsnest</em>), las cuales indican las conexiones eléctricas lógicas que deberán rutearse posteriormente. Para rotar cualquier componente mientras se arrastra con el clic izquierdo, se debe mantener presionado el clic y pulsar la barra espaciadora.</p>
+<p><img alt="Componentes Importados" src="../img/fotos_altium_2/Imagen4.png" />
+<em>Figura 6.10.1: Componentes y líneas ratsnest importados a la PCB.</em></p>
+<p><br><br></p>
+<p><strong>Establecer el origen del circuito (Set Origin):</strong> 
+Para facilitar las mediciones, el ruteado y las reglas de fabricación, se define el punto de origen (0,0) en la esquina de la placa:
+1. En la barra de menús superior, se hace clic en <code>Edit</code>. 
+2. Se desplaza el cursor sobre <code>Origin</code> y se selecciona la opción <code>Set</code> (indicada por la flecha roja). 
+3. El puntero del mouse cambiará a una cruz de precisión; con ella, se hace clic exactamente en la esquina inferior izquierda del borde negro de la PCB.</p>
+<p><img alt="Menú Edit Origin" src="../img/fotos_altium_2/Imagen5.png" />
+<em>Figura 6.10.2: Ruta para establecer el origen.</em></p>
+<p><br><br></p>
+<p><img alt="Crosshair de Origen" src="../img/fotos_altium_2/Imagen6.png" />
+<em>Figura 6.10.3: Clic de precisión en la esquina inferior izquierda.</em></p>
+<hr />
+<h2 id="611-organizacion-funcional-y-vista-3d">6.11 Organización Funcional y Vista 3D</h2>
+<p>En este apartado se consideran las siguientes acciones y atajos explicados en la clase:</p>
+<p><strong>Organización funcional del layout (Vista 2D):</strong>
+Los componentes se distribuyen estratégicamente sobre el lienzo negro. Se rotan y acomodan para minimizar el cruce de las líneas finas de conexión (<em>ratsnest</em>).</p>
+<p><img alt="Acomodo Inicial" src="../img/fotos_altium_2/Imagen7.png" />
+<em>Figura 6.11.1: Acomodo preliminar de componentes.</em></p>
+<p><br><br></p>
+<p><img alt="Acomodo Final" src="../img/fotos_altium_2/Imagen8.png" />
+<em>Figura 6.11.2: Distribución optimizada para el ruteo.</em></p>
+<p><br><br></p>
+<p><strong>Conmutación a la vista 3D:</strong>
+Para verificar la disposición física de los componentes y comprobar la altura o interferencias mecánicas, se presiona la tecla <code>3</code>. El lienzo cambiará a una representación tridimensional fotorrealista de la PCB. Para regresar al plano bidimensional de ruteado (2D), simplemente se presiona la tecla <code>2</code>.</p>
+<p><img alt="Vista 3D" src="../img/fotos_altium_2/Imagen9.png" />
+<em>Figura 6.11.3: Representación en 3D de los componentes.</em></p>
+<p><br><br></p>
+<p><strong>Navegación y rotación en el espacio 3D:</strong>
+Al mantener presionada la tecla <code>Shift</code> y hacer clic derecho sobre el lienzo, aparece una esfera de orientación con flechas. Moviendo el mouse en esta modalidad, se puede rotar libremente la placa en cualquier ángulo e inclinación para inspeccionar la tarjeta desde diversas perspectivas mecánicas.</p>
+<p><img alt="Navegación 3D" src="../img/fotos_altium_2/Imagen10.png" />
+<em>Figura 6.11.4: Esfera de rotación en el visor 3D.</em></p>
+<hr />
+<h2 id="612-entorno-pcb-barras-filtros-y-unidades">6.12 Entorno PCB: Barras, Filtros y Unidades</h2>
+<p>En este apartado se consideran los siguientes aspectos explicados durante la sesión:</p>
+<p><strong>Despliegue de barras en el entorno PCB:</strong> 
+Al hacer clic derecho sobre el área libre de la barra de menús superior dentro de la pestaña de la PCB, se despliega el menú contextual de barras de herramientas.</p>
+<ul>
+<li><strong>Barra PCB Standard:</strong> Al marcar la casilla <code>PCB Standard</code>, se habilita la barra superior dedicada al ruteado. </li>
+<li><strong>Barras Utilities, Filter y Wiring:</strong> Al mantener activadas las casillas <code>Utilities</code>, <code>Filter</code> y <code>Wiring</code>, se integran los accesos directos para la selección de elementos por filtros, opciones de zoom, edición visual y botones de navegación rápida.</li>
+</ul>
+<p><img alt="Menú de Barras" src="../img/fotos_altium_2/Imagen11.png" />
+<em>Figura 6.12.1: Menú contextual para habilitar barras de herramientas.</em></p>
+<p><br><br></p>
+<h3 id="filtro-de-redes-y-aislamiento-visual">Filtro de Redes y Aislamiento Visual</h3>
+<p>En estas capturas se ilustra el procedimiento para aislar e identificar visualmente las conexiones pertenecientes a un nodo o red específica (como +12, GND o E1) dentro de la tarjeta.</p>
+<ul>
+<li><strong>Uso del menú desplegable de redes:</strong> En la barra de herramientas superior de la PCB, se localiza el menú desplegable de filtro de redes. Al dar clic sobre él, se muestra el listado completo de los nodos del circuito.</li>
+<li><strong>Aislamiento y resaltado visual (Dim Mode):</strong> Al seleccionar una red en particular (por ejemplo, +12), el entorno atenúa o oscurece en tono gris todos los componentes y pistas que no pertenecen a esa red, manteniendo iluminados únicamente los pads y conexiones de la red seleccionada.</li>
+</ul>
+<p><img alt="Filtro de Redes" src="../img/fotos_altium_2/Imagen12.png" />
+<em>Figura 6.12.2: Despliegue del filtro de redes.</em></p>
+<p><br><br></p>
+<p><img alt="Dim Mode" src="../img/fotos_altium_2/Imagen13.png" />
+<em>Figura 6.12.3: Modo de resaltado visual (Dim Mode) para la red +12.</em></p>
+<p><br><br></p>
+<h3 id="identificacion-y-resolucion-de-errores-de-diseno-drc">Identificación y Resolución de Errores de Diseño (DRC)</h3>
+<p>En esta captura se ilustra la representación visual de los errores de reglas de diseño que surgen durante la colocación de componentes en el lienzo de la PCB.</p>
+<ul>
+<li><strong>Identificación de infracciones:</strong> Cuando un componente o pad se ilumina en color verde brillante con pequeñas cruces, Altium indica que se está violando una regla de diseño (Clearance Constraint o colisión física). Las cotas en color amarillo que marcan <code>&lt; 10mil</code> señalan que la distancia entre los pads adyacentes es menor que la separación mínima permitida.</li>
+<li><strong>Formas de solución:</strong> Reorganización manual separando ligeramente los componentes arrastrándolos con el cursor hasta que la marca verde desaparezca, o ajuste de reglas de diseño en <code>Design &gt; Rules &gt; Clearance</code>.</li>
+</ul>
+<p><img alt="Marcas Verdes DRC" src="../img/fotos_altium_2/Imagen14.png" />
+<em>Figura 6.12.4: Violaciones de reglas de diseño visualizadas en el lienzo.</em></p>
+<p><br><br></p>
+<h3 id="sistema-de-medicion-atajo-q">Sistema de Medición (Atajo Q)</h3>
+<p><strong>Atajo de teclado "Q":</strong> Al presionar la tecla <code>Q</code> en cualquier momento dentro del lienzo de la PCB, Altium Designer conmuta el sistema de medición activo entre unidades métricas (mm) e imperiales (mils o milésimas de pulgada).</p>
+<ul>
+<li><strong>Modo Imperial (mils):</strong> Las lecturas cambian automáticamente a milésimas de pulgada (por ejemplo, Snap: 5mil). Este sistema es el estándar industrial para especificar anchos de pista, separaciones de aislamiento (clearances) y footprints con distribución de pines basada en 100 mil (2.54 mm).</li>
+<li><strong>Modo Métrico (mm):</strong> La visualización de coordenadas y la rejilla de captura (Snap) se muestran en milímetros. Este sistema es ideal para definir dimensiones mecánicas de la placa y posicionar conectores con paso métrico.</li>
+</ul>
+<p><img alt="Unidades Mils" src="../img/fotos_altium_2/Imagen15.png" />
+<em>Figura 6.12.5: Lecturas en unidades imperiales (Mils).</em></p>
+<p><br><br></p>
+<p><img alt="Unidades MM" src="../img/fotos_altium_2/Imagen16.png" />
+<em>Figura 6.12.6: Lecturas en unidades métricas (mm).</em></p>
+<hr />
+<h2 id="613-importacion-de-reglas-de-diseno-rules">6.13 Importación de Reglas de Diseño (Rules)</h2>
+<p>En estas capturas se detalla el proceso para abrir el editor de reglas de diseño (Design Rules) e importar un archivo de reglas preconfigurado según los estándares de manufactura de un fabricante (como JLCPCB). </p>
+<p><strong>Acceso al editor de reglas:</strong>
+En la barra de menús superior dentro del documento PCB, se hace clic en la pestaña <code>Design</code> y se selecciona la opción <code>Rules...</code> Esto desplegará la ventana emergente PCB Rules and Constraints Editor.</p>
+<p><img alt="Menú Rules" src="../img/fotos_altium_2/Imagen17.png" />
+<em>Figura 6.13.1: Acceso a Design &gt; Rules.</em></p>
+<p><br><br></p>
+<p><img alt="Editor de Reglas" src="../img/fotos_altium_2/Imagen18.png" />
+<em>Figura 6.13.2: Ventana PCB Rules and Constraints Editor.</em></p>
+<p><br><br></p>
+<p><strong>Importar reglas del fabricante (Import Rules):</strong>
+1. Dentro del árbol de navegación izquierdo en la ventana de reglas, se hace clic derecho sobre el directorio principal <code>Default Rule Set</code>.
+2. En el menú contextual, se selecciona la opción <code>Import Rules...</code></p>
+<p><img alt="Importar Reglas" src="../img/fotos_altium_2/Imagen19.png" />
+<em>Figura 6.13.3: Opción Import Rules desde el árbol de navegación.</em></p>
+<p><br><br></p>
+<p><strong>Carga del archivo de reglas (JLCPCB.rul):</strong>
+Se abrirá el explorador de archivos de Windows, en el cual se navega hasta ubicar el archivo con extensión <code>.rul</code> proporcionado por la casa de fabricación (por ejemplo, <code>JLCPCB.rul</code>). Al cargarlo y confirmar la sobreescritura/actualización, Altium ajustará automáticamente los grosores mínimos de pista, separaciones, diámetros de vía y tolerancias a las capacidades reales de la máquina de producción.</p>
+<p><img alt="Archivo RUL" src="../img/fotos_altium_2/Imagen20.png" />
+<em>Figura 6.13.4: Archivo de reglas JLCPCB.rul en el explorador.</em></p>
+<p><br><br></p>
+<h3 id="ajuste-manual-de-ancho-de-pista-width">Ajuste Manual de Ancho de Pista (Width)</h3>
+<p>En esta captura se muestra cómo ajustar las reglas de ancho de pista (Width) de forma manual directamente desde el PCB Rules and Constraints Editor. </p>
+<ul>
+<li><strong>Edición directa por regla (Width):</strong> En lugar de importar un archivo <code>.rul</code>, se puede navegar en el menú de la izquierda hacia la categoría <code>Routing &gt; Width</code>. </li>
+<li><strong>Ajuste de parámetros en la tabla de capas (Constraints):</strong> Se pueden modificar los valores celda por celda para las diferentes capas de la placa:<ul>
+<li><strong>Min Width (Ancho mínimo):</strong> Define el grosor mínimo de pista permitido (por ejemplo, 0.24mil o 10 mil).</li>
+<li><strong>Preferred Width (Ancho preferido):</strong> Es el valor por defecto que Altium utilizará al iniciar el ruteado interactivo de las pistas.</li>
+<li><strong>Max Width (Ancho máximo):</strong> Limita el grosor máximo al que se puede expandir una pista en esta regla.</li>
+</ul>
+</li>
+</ul>
+<p><img alt="Regla de Width" src="../img/fotos_altium_2/Imagen21.png" />
+<em>Figura 6.13.5: Configuración de la regla de ancho de pista.</em></p>
+<hr />
+<h2 id="614-ruteo-interactivo-y-ancho-dinamico">6.14 Ruteo Interactivo y Ancho Dinámico</h2>
+<p>En estas capturas se ilustra el inicio del trazado físico de las pistas sobre la PCB, así como la técnica para modificar dinámicamente el grosor de la línea mientras se realiza el ruteado.</p>
+<p><strong>Estrategia de ruteado (GND al final):</strong> 
+Como buena práctica de diseño, la red de tierra (GND) se suele dejar para el final. Esto se debe a que habitualmente se cubre la placa con un plano o vertido de cobre (Polygon Pour) conectado a GND al terminar, el cual une automáticamente todos los pads de tierra. Por ello, se rutean primero las señales de datos, entradas, salidas y líneas de alimentación como +12.</p>
+<p><strong>Activar el ruteado interactivo (Interactive Routing):</strong>
+Para comenzar a tirar pistas, se hace clic en el ícono de ruteado interactivo o se utiliza el atajo de teclado <code>Ctrl + W</code> (o <code>P &gt; T</code>). Al hacer clic sobre un pad de origen (como el pin 1 NetC1_1 del capacitor C1 en la segunda imagen), se genera la pista interactiva en color rojo (correspondiente a la capa superior o Top Layer) siguiendo el cursor.</p>
+<p><img alt="Icono Ruteo" src="../img/fotos_altium_2/Imagen22.png" />
+<em>Figura 6.14.1: Selección de la herramienta Interactive Routing.</em></p>
+<p><br><br></p>
+<p><img alt="Pista Activa" src="../img/fotos_altium_2/Imagen23.png" />
+<em>Figura 6.14.2: Trazado interactivo desde un pad de origen.</em></p>
+<p><br><br></p>
+<p><strong>Cambio dinámico de ancho de pista (Atajo Shift + W):</strong>
+Si durante el trazo de una línea se requiere cambiar su ancho (por ejemplo, para hacer más gruesa una pista de potencia o más delgada una de señal), se presiona la combinación de teclas <code>Shift + W</code>. Esto desplegará en pantalla la ventana emergente <code>Choose Width</code> permitiendo seleccionar de forma rápida un valor predefinido en milésimas de pulgada o en milímetros sin necesidad de interrumpir el ruteado o regresar al menú de reglas.</p>
+<p><img alt="Choose Width" src="../img/fotos_altium_2/Imagen24.png" />
+<em>Figura 6.14.3: Menú desplegable para el ajuste dinámico del grosor de pista.</em></p>
+<p><br><br></p>
+<p><img alt="Pista Finalizada" src="../img/fotos_altium_2/Imagen25.png" />
+<em>Figura 6.14.4: Ruteado completado de la pista seleccionada.</em></p>
+<hr />
+<h2 id="615-modalidades-de-ruteado-automatico">6.15 Modalidades de Ruteado Automático</h2>
+<p>En este apartado se explican las tres modalidades principales:</p>
+<p><strong>1. Ruteado automático de toda la placa (Auto Route All):</strong>
+*   <strong>Procedimiento:</strong> Se hace clic en <code>Route &gt; Auto Route &gt; All...</code>
+*   <strong>Resultado:</strong> El sistema intenta trazar de forma autónoma la totalidad de las pistas del circuito sobre las capas disponibles (Top Layer en rojo y Bottom Layer en azul). Aunque es una función rápida, habitualmente requiere ajustes manuales posteriores para optimizar caminos o evitar ángulos inadecuados.</p>
+<p><img alt="Auto Route All" src="../img/fotos_altium_2/Imagen26.png" />
+<em>Figura 6.15.1: Selección de ruteado automático completo.</em></p>
+<p><br><br></p>
+<p><img alt="Resultado Auto All" src="../img/fotos_altium_2/Imagen27.png" />
+<em>Figura 6.15.2: Pistas generadas por el auto ruteador global.</em></p>
+<p><br><br></p>
+<p><strong>2. Ruteado automático por red (Auto Route Net):</strong>
+*   <strong>Procedimiento:</strong> Se navega a <code>Route &gt; Auto Route &gt; Net</code> y se selecciona un nodo específico sobre la placa.
+*   <strong>Resultado:</strong> Altium rutea únicamente la red seleccionada (por ejemplo, la red que conecta el capacitor C1 con el diodo D1), dejando las demás conexiones pendientes.</p>
+<p><img alt="Auto Route Net" src="../img/fotos_altium_2/Imagen28.png" />
+<em>Figura 6.15.3: Selección de ruteado automático por red específica.</em></p>
+<p><br><br></p>
+<p><img alt="Resultado Auto Net" src="../img/fotos_altium_2/Imagen29.png" />
+<em>Figura 6.15.4: Pista ruteada automáticamente sobre el nodo seleccionado.</em></p>
+<p><br><br></p>
+<p><strong>3. Ruteado automático por área (Auto Route Area):</strong>
+*   <strong>Procedimiento:</strong> Se selecciona <code>Route &gt; Auto Route &gt; Area</code> y se dibuja un recuadro sobre una zona concreta de la placa.
+*   <strong>Resultado:</strong> El motor de ruteado procesa e interconecta únicamente los componentes y pads contenidos dentro del área seleccionada (como la sección del transistor Q1 y las resistencias R1, R2). Estas opciones de ruteado selectivo son útiles para delegar partes repetitivas del trazo mientras mantienes el control manual sobre las pistas críticas de alimentación o señal.</p>
+<p><img alt="Auto Route Area" src="../img/fotos_altium_2/Imagen30.png" />
+<em>Figura 6.15.5: Selección de ruteado por área.</em></p>
+<p><br><br></p>
+<p><img alt="Resultado Auto Area" src="../img/fotos_altium_2/Imagen31.png" />
+<em>Figura 6.15.6: Pistas generadas solo en el área delimitada.</em></p>
+<hr />
+<h2 id="616-definicion-de-contorno-de-placa-board-shape">6.16 Definición de Contorno de Placa (Board Shape)</h2>
+<p>Para definir el corte mecánico exacto que tendrá la placa de circuito impreso, utilizaremos la capa de dibujo mecánico para crear un polígono y recortar el área excedente.</p>
+<ol>
+<li>Se cambia a la capa mecánica (<code>Mechanical 1</code>, indicada por la flecha azul).</li>
+<li>Se utiliza la herramienta de dibujo de línea (<code>Place Line</code>) para dibujar un polígono cerrado alrededor de los componentes, delimitando físicamente el tamaño personalizado que tendrá la placa de circuito impreso.</li>
+<li>Una vez que el contorno violeta está completamente cerrado (como se muestra en la tercera imagen), se seleccionan todas las líneas del polígono mecánico que se acaba de dibujar.</li>
+<li>Con las líneas seleccionadas, se navega en la barra superior a <code>Design &gt; Board Shape &gt; Define Board Shape from Selected Objects</code> (cuarta imagen). Al dar clic, el fondo oscuro del entorno de Altium se ajustará y recortará exactamente a la forma del polígono trazado (quinta imagen), eliminando el área excedente y definiendo la geometría real de la PCB.</li>
+</ol>
+<p><img alt="Capa Mecanica" src="../img/fotos_altium_2/Imagen32.png" />
+<em>Figura 6.16.1: Selección de la capa Mechanical 1.</em></p>
+<p><br><br></p>
+<p><img alt="Dibujo Linea" src="../img/fotos_altium_2/Imagen33.png" />
+<em>Figura 6.16.2: Herramienta Place Line activada.</em></p>
+<p><br><br></p>
+<p><img alt="Contorno Trazado" src="../img/fotos_altium_2/Imagen34.png" />
+<em>Figura 6.16.3: Contorno físico de la placa delimitado.</em></p>
+<p><br><br></p>
+<p><img alt="Define Shape" src="../img/fotos_altium_2/Imagen35.png" />
+<em>Figura 6.16.4: Herramienta Define Board Shape from Selected Objects.</em></p>
+<p><br><br></p>
+<p><img alt="Placa Recortada" src="../img/fotos_altium_2/Imagen36.png" />
+<em>Figura 6.16.5: Tarjeta recortada con las dimensiones mecánicas personalizadas.</em></p>
+<hr />
+<h2 id="617-inspeccion-tridimensional-final">6.17 Inspección Tridimensional Final</h2>
+<p><strong>Paso 31: Inspección tridimensional final y verificación mecánica de la tarjeta</strong></p>
+<p>En esta captura se aprecia la tarjeta finalizada en la vista tridimensional fotorrealista (3D View), recortada exactamente según el contorno personalizado definido en el paso anterior. En este apartado se consideran los siguientes puntos de verificación final:</p>
+<ul>
+<li><strong>Inspección de volumetría y colisiones físicas:</strong> Al presionar la tecla <code>3</code> e inspeccionar la placa en 3D, se valida que todos los componentes (capacitor electrolítico C1, inductor L1, transistor Q1, diodos D1/D2, conector P1 y resistencias) cuenten con su modelo 3D correctamente alineado sobre sus pads de soldadura.</li>
+<li><strong>Verificación de orientación y altura:</strong> Permite comprobar que conectores de ángulo recto como P1 sobresalgan adecuadamente hacia el borde de la placa para su posterior ensamble o acople mecánico en un chasis.</li>
+<li><strong>Validación de serigrafía (Silkscreen):</strong> Se confirma la visibilidad de los designadores (C1, Q1, R1, R2, L1, D1, D2, P1) e indicativos de polaridad (como la banda blanca y signo + del capacitor) sobre la capa de máscara superior.</li>
+</ul>
+<p><img alt="Verificación Final 3D" src="../img/fotos_altium_2/Imagen37.png" />
+<em>Figura 6.17.1: Modelo tridimensional final de la tarjeta de circuito impreso validada.</em></p>
+<h2 id="69-agregar-documento-pcb-y-transferencia">6.9 Agregar Documento PCB y Transferencia</h2>
+<p>En este apartado se realiza lo siguiente:</p>
+<p><strong>Agregar documento PCB:</strong>
+En el panel lateral izquierdo <code>Projects</code>, se hace clic derecho sobre el archivo contenedor del proyecto (<code>Placa_prueba.PrjPcb</code>, indicado con la flecha verde). En el menú contextual, se pasa el cursor sobre <code>Add New to Project</code> y se selecciona la opción <code>PCB</code> (resaltada en el recuadro verde de la derecha). </p>
+<p><strong>Guardado del archivo de circuito impreso:</strong> 
+Se abrirá un lienzo de trabajo negro correspondiente al diseño de la placa. Inmediatamente, se debe guardar el nuevo archivo mediante <code>Ctrl + S</code> (o <code>File &gt; Save</code>), asignándole un nombre dentro de la misma carpeta del proyecto (por ejemplo, <code>Placa_prueba.PcbDoc</code>). </p>
+<p><strong>Estructura completa:</strong> 
+Con este paso, el panel de proyectos contará con los dos documentos fundamentales vinculados: el esquemático (<code>.SchDoc</code>) y la placa PCB (<code>.PcbDoc</code>), preparados para la transferencia de componentes y huellas.</p>
+<p><img alt="Agregar PCB" src="../img/fotos_altium_2/Imagen1.png" />
+<em>Figura 6.9.1: Creación del documento PCB.</em></p>
+<p><br><br></p>
+<p><img alt="Update PCB Document" src="../img/fotos_altium_2/Imagen2.png" />
+<em>Figura 6.9.2: Menú para actualizar el documento PCB con los datos del esquemático.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="610-validacion-y-transferencia-de-datos-eco">6.10 Validación y Transferencia de Datos (ECO)</h2>
+<p>En este apartado se realiza la validación y transferencia de datos considerando lo siguiente:</p>
+<ul>
+<li><strong>Advertencia de compilación:</strong> En la parte inferior izquierda se observa una leyenda en texto rojo (resaltada con el recuadro verde): <em>"Warning: Errors occurred during compilation of the project!"</em>. Esta advertencia puede aparecer si alguna etiqueta de red no tiene un destino explícito o si existe alguna pequeña inconsistencia de conexión.</li>
+<li><strong>Validación de cambios (Validate Changes):</strong> Antes de volcar los componentes a la placa, se debe hacer clic en el botón <code>Validate Changes</code> (resaltado en el recuadro rojo inferior). Esto verifica que todas las huellas, componentes (C1, D1, D2, L1, P1, Q1, R1, R2) y redes (+12, E1, E2, E3, GND) estén listos y disponibles.</li>
+<li><strong>Ejecución de cambios (Execute Changes):</strong> Una vez que aparezcan las marcas verdes de verificación en la columna Check, se habilita el botón <code>Execute Changes</code> (indicado por la flecha azul). Al presionarlo, el sistema transferirá automáticamente todas las huellas y conexiones físicas al lienzo de la PCB, tras lo cual se presiona el botón Close para cerrar la ventana.</li>
+</ul>
+<p><img alt="Ventana ECO" src="../img/fotos_altium_2/Imagen3.png" />
+<em>Figura 6.10.1: Ventana de Engineering Change Order (ECO).</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="611-establecer-el-origen-del-circuito">6.11 Establecer el Origen del Circuito</h2>
+<p>En estas imágenes se ilustra el primer paso tras importar los componentes al entorno de PCB (<code>.PcbDoc</code>), así como la configuración del origen de referencia (0,0). En este apartado se realizan las siguientes acciones explicadas en la clase:</p>
+<p><strong>Organización preliminar de las huellas:</strong> 
+Una vez ejecutada la orden ECO, los componentes importados (Q1, C1, L1, D2, D1, P1, R1, R2) se posicionan dentro del área de trabajo negra. En esta vista preliminar se observan las líneas finas de conexión (<em>ratsnest</em>), las cuales indican las conexiones eléctricas lógicas que deberán rutearse posteriormente. Para rotar cualquier componente mientras se arrastra con el clic izquierdo, se debe mantener presionado el clic y pulsar la barra espaciadora.</p>
+<p><img alt="Componentes Importados" src="../img/fotos_altium_2/Imagen4.png" />
+<em>Figura 6.11.1: Componentes y líneas ratsnest importados a la PCB.</em></p>
+<p><br><br></p>
+<p><strong>Establecer el origen del circuito (Set Origin):</strong> 
+Para facilitar las mediciones, el ruteado y las reglas de fabricación, se define el punto de origen (0,0) en la esquina de la placa:
+1. En la barra de menús superior, se hace clic en <code>Edit</code> (resaltado en el recuadro rojo de la segunda imagen). 
+2. Se desplaza el cursor sobre <code>Origin</code> y se selecciona la opción <code>Set</code> (indicada por la flecha roja). 
+3. El puntero del mouse cambiará a una cruz de precisión; con ella, se hace clic exactamente en la esquina inferior izquierda del borde negro de la PCB (resaltada dentro del círculo rojo de la tercera imagen).</p>
+<p><img alt="Menú Edit Origin" src="../img/fotos_altium_2/Imagen5.png" />
+<em>Figura 6.11.2: Ruta para establecer el origen.</em></p>
+<p><br><br></p>
+<p><img alt="Crosshair de Origen" src="../img/fotos_altium_2/Imagen6.png" />
+<em>Figura 6.11.3: Clic de precisión en la esquina inferior izquierda.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="612-organizacion-funcional-y-vista-3d">6.12 Organización Funcional y Vista 3D</h2>
+<p>En este apartado se consideran las siguientes acciones y atajos explicados en la clase:</p>
+<p><strong>Organización funcional del layout (Vista 2D):</strong>
+Como se aprecia al comparar la primera y segunda captura, los componentes se distribuyen estratégicamente sobre el lienzo negro. Se rotan y acomodan para minimizar el cruce de las líneas finas de conexión (<em>ratsnest</em>). Para rotar un elemento durante el arrastre con el clic izquierdo, se presiona la barra espaciadora.</p>
+<p><img alt="Acomodo Inicial" src="../img/fotos_altium_2/Imagen7.png" />
+<em>Figura 6.12.1: Acomodo preliminar de componentes.</em></p>
+<p><br><br></p>
+<p><img alt="Acomodo Final" src="../img/fotos_altium_2/Imagen8.png" />
+<em>Figura 6.12.2: Distribución optimizada para el ruteo.</em></p>
+<p><br><br></p>
+<p><strong>Conmutación a la vista 3D:</strong>
+Para verificar la disposición física de los componentes y comprobar la altura o interferencias mecánicas, se presiona la tecla <code>3</code>. El lienzo cambiará a una representación tridimensional fotorrealista de la PCB (tercera imagen). Para regresar al plano bidimensional de ruteado (2D), simplemente se presiona la tecla <code>2</code>.</p>
+<p><img alt="Vista 3D" src="../img/fotos_altium_2/Imagen9.png" />
+<em>Figura 6.12.3: Representación en 3D de los componentes.</em></p>
+<p><br><br></p>
+<p><strong>Navegación y rotación en el espacio 3D:</strong>
+Como se ilustra en la cuarta captura, al mantener presionada la tecla <code>Shift</code> y hacer clic derecho sobre el lienzo, aparece una esfera de orientación con flechas (ejes X, Y, Z). Moviendo el mouse en esta modalidad, se puede rotar libremente la placa en cualquier ángulo e inclinación para inspeccionar la tarjeta desde diversas perspectivas mecánicas.</p>
+<p><img alt="Navegación 3D" src="../img/fotos_altium_2/Imagen10.png" />
+<em>Figura 6.12.4: Esfera de rotación en el visor 3D.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="613-despliegue-de-barras-en-el-entorno-pcb">6.13 Despliegue de Barras en el Entorno PCB</h2>
+<p>En este apartado se consideran los siguientes aspectos explicados durante la sesión:</p>
+<ul>
+<li><strong>Despliegue de barras en el entorno PCB:</strong> Al hacer clic derecho sobre el área libre de la barra de menús superior dentro de la pestaña de la PCB (<code>Placa_prueba.PcbDoc</code>), se despliega el menú contextual de barras de herramientas.</li>
+<li><strong>Barra PCB Standard:</strong> Al marcar la casilla <code>PCB Standard</code>, se habilita la barra superior dedicada al ruteado. Esta incluye las herramientas de trazado de pistas (Interactive Routing), colocación de vías, polígonos de cobre, arcos, reglas de medición y textos para capas del circuito impreso.</li>
+<li><strong>Barras Utilities, Filter y Wiring:</strong> Al mantener activadas las casillas <code>Utilities</code>, <code>Filter</code> y <code>Wiring</code>, se integran los accesos directos para la selección de elementos por filtros, opciones de zoom, edición visual y botones de navegación rápida dentro de la tarjeta de circuito impreso.</li>
+</ul>
+<p><img alt="Menú de Barras" src="../img/fotos_altium_2/Imagen11.png" />
+<em>Figura 6.13.1: Menú contextual para habilitar barras de herramientas.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="614-filtro-de-redes-y-aislamiento-visual">6.14 Filtro de Redes y Aislamiento Visual</h2>
+<p>En estas capturas se ilustra el procedimiento para aislar e identificar visualmente las conexiones pertenecientes a un nodo o red específica (como +12, GND o E1) dentro de la tarjeta. En este apartado se consideran las siguientes acciones explicadas en la clase:</p>
+<ul>
+<li><strong>Uso del menú desplegable de redes:</strong> En la barra de herramientas superior de la PCB, se localiza el menú desplegable de filtro de redes (resaltado con el recuadro rojo en la primera imagen). Al dar clic sobre él, se muestra el listado completo de los nodos del circuito (+12, E1, E2, E3, GND, NetC1_1, NetL1_2, O1).</li>
+<li><strong>Aislamiento y resaltado visual (Dim Mode):</strong> Al seleccionar una red en particular (por ejemplo, +12), el entorno atenúa o oscurece en tono gris todos los componentes y pistas que no pertenecen a esa red, manteniendo iluminados únicamente los pads y conexiones de la red seleccionada (segunda imagen).</li>
+<li><strong>Facilidad para el ruteado:</strong> Esta herramienta resulta sumamente útil para identificar rápidamente los puntos de destino antes de trazar pistas manuales, evitando confusiones en circuitos con alta densidad de conexiones.</li>
+</ul>
+<p><img alt="Filtro de Redes" src="../img/fotos_altium_2/Imagen12.png" />
+<em>Figura 6.14.1: Despliegue del filtro de redes.</em></p>
+<p><br><br></p>
+<p><img alt="Dim Mode" src="../img/fotos_altium_2/Imagen13.png" />
+<em>Figura 6.14.2: Modo de resaltado visual (Dim Mode) para la red +12.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="615-resolucion-de-errores-de-diseno-drc">6.15 Resolución de Errores de Diseño (DRC)</h2>
+<p><strong>Paso 24: Identificación y resolución de errores de reglas de diseño (DRC - Clearances y Violaciones)</strong></p>
+<p>En esta captura se ilustra la representación visual de los errores de reglas de diseño (Design Rule Check - DRC) que surgen durante la colocación de componentes en el lienzo de la PCB. En este apartado se consideran las siguientes causas y soluciones explicadas en la clase:</p>
+<p><strong>Identificación de infracciones (Marcas verdes y cruzadas):</strong>
+*   Cuando un componente o pad se ilumina en color verde brillante con pequeñas cruces (como el pin 1 GND de la imagen), Altium indica que se está violando una regla de diseño (Clearance Constraint o colisión física).
+*   Las cotas en color amarillo que marcan <code>&lt; 10mil</code> señalan que la distancia entre los pads adyacentes (O1, NetL1_2 y GND) es menor que la separación mínima permitida por las reglas de fabricación predeterminadas.</p>
+<p><strong>Causas comunes:</strong>
+*   Proximidad excesiva entre componentes o encapsulados pequeños (como transistores o conectores).
+*   Superposición de capas de serigrafía (Silkscreen) o bordes del cuerpo del componente sobre las zonas de soldadura.</p>
+<p><strong>Formas de solución:</strong>
+*   <strong>Reorganización manual:</strong> Separar ligeramente los componentes arrastrándolos con el cursor hasta que la marca verde desaparezca y el pad recupere su color normal.
+*   <strong>Ajuste de reglas de diseño (Rules):</strong> Si las dimensiones del componente son correctas según su datasheet, se puede ingresar al menú <code>Design &gt; Rules &gt; Clearance</code> para reducir el margen mínimo de separación (por ejemplo, ajustándolo a 6 mil u 8 mil) según la capacidad del fabricante de la PCB.</p>
+<p><img alt="Marcas Verdes DRC" src="../img/fotos_altium_2/Imagen14.png" />
+<em>Figura 6.15.1: Violaciones de reglas de diseño visualizadas en el lienzo.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="616-sistema-de-medicion-y-atajos">6.16 Sistema de Medición y Atajos</h2>
+<p>En este apartado se consideran los siguientes detalles técnicos explicados en la clase:</p>
+<p><strong>Atajo de teclado "Q":</strong> Al presionar la tecla <code>Q</code> en cualquier momento dentro del lienzo de la PCB, Altium Designer conmuta el sistema de medición activo entre unidades métricas (mm) e imperiales (mils o milésimas de pulgada).</p>
+<ul>
+<li><strong>Modo Métrico (mm):</strong> Como se observa en la primera imagen, la visualización de coordenadas (x, y, dx, dy) y la rejilla de captura (Snap) se muestran en milímetros (por ejemplo, Snap: 0.127mm). Este sistema es ideal para definir dimensiones mecánicas de la placa y posicionar conectores con paso métrico.</li>
+<li><strong>Modo Imperial (mils):</strong> Al volver a pulsar la tecla <code>Q</code> (segunda imagen), las lecturas cambian automáticamente a milésimas de pulgada (por ejemplo, Snap: 5mil, dx: 15.000mil). Este sistema es el estándar industrial para especificar anchos de pista, separaciones de aislamiento (clearances) y footprints con distribución de pines basada en 100 mil (2.54 mm).</li>
+</ul>
+<p><img alt="Unidades Mils" src="../img/fotos_altium_2/Imagen15.png" />
+<em>Figura 6.16.1: Lecturas en unidades imperiales (Mils).</em></p>
+<p><br><br></p>
+<p><img alt="Unidades MM" src="../img/fotos_altium_2/Imagen16.png" />
+<em>Figura 6.16.2: Lecturas en unidades métricas (mm).</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="617-importacion-de-reglas-de-diseno-rules">6.17 Importación de Reglas de Diseño (Rules)</h2>
+<p>En estas capturas se detalla el proceso para abrir el editor de reglas de diseño (Design Rules) e importar un archivo de reglas preconfigurado según los estándares de manufactura de un fabricante (como JLCPCB). En este apartado se consideran los siguientes pasos explicados durante la sesión:</p>
+<p><strong>Acceso al editor de reglas (PCB Rules and Constraints Editor):</strong>
+1. En la barra de menús superior dentro del documento PCB, se hace clic en la pestaña <code>Design</code> (indicada por la flecha roja en la primera imagen).
+2. En el menú desplegable, se selecciona la opción <code>Rules...</code> (resaltada en el recuadro rojo). Esto desplegará la ventana emergente PCB Rules and Constraints Editor (segunda imagen), donde se listan todas las categorías de diseño (Electrical, Routing, SMT, Manufacturing, Placement, etc.).</p>
+<p><strong>Importar reglas del fabricante (Import Rules):</strong>
+1. Dentro del árbol de navegación izquierdo en la ventana de reglas, se hace clic derecho sobre el directorio principal <code>Default Rule Set</code> (resaltado en el recuadro rojo superior de la tercera imagen).
+2. En el menú contextual, se selecciona la opción <code>Import Rules...</code> (resaltada en el recuadro rojo inferior).</p>
+<p><strong>Carga del archivo de reglas (JLCPCB.rul):</strong>
+Se abrirá el explorador de archivos de Windows (cuarta imagen), en el cual se navega hasta ubicar el archivo con extensión <code>.rul</code> proporcionado por la casa de fabricación (por ejemplo, <code>JLCPCB.rul</code>). Al cargarlo y confirmar la sobreescritura/actualización, Altium ajustará automáticamente los grosores mínimos de pista, separaciones (clearances), diámetros de vía y tolerancias a las capacidades reales de la máquina de producción del fabricante, eliminando falsas alertas de error en la placa.</p>
+<p><img alt="Menú Rules" src="../img/fotos_altium_2/Imagen17.png" />
+<em>Figura 6.17.1: Acceso a Design &gt; Rules.</em></p>
+<p><br><br></p>
+<p><img alt="Editor de Reglas" src="../img/fotos_altium_2/Imagen18.png" />
+<em>Figura 6.17.2: Ventana PCB Rules and Constraints Editor.</em></p>
+<p><br><br></p>
+<p><img alt="Importar Reglas" src="../img/fotos_altium_2/Imagen19.png" />
+<em>Figura 6.17.3: Opción Import Rules desde el árbol de navegación.</em></p>
+<p><br><br></p>
+<p><img alt="Archivo RUL" src="../img/fotos_altium_2/Imagen20.png" />
+<em>Figura 6.17.4: Archivo de reglas JLCPCB.rul en el explorador.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="618-ajuste-manual-de-ancho-de-pista">6.18 Ajuste Manual de Ancho de Pista</h2>
+<p>En esta captura se muestra cómo ajustar las reglas de ancho de pista (Width) de forma manual directamente desde el PCB Rules and Constraints Editor. En este apartado se consideran las siguientes acciones para configurar las reglas manualmente:</p>
+<ul>
+<li><strong>Edición directa por regla (Width):</strong> En lugar de importar un archivo <code>.rul</code>, se puede navegar en el menú de la izquierda hacia la categoría <code>Routing &gt; Width</code>. Al seleccionar la regla (en este caso, Width), se despliegan sus parámetros en el panel central.</li>
+<li><strong>Ajuste de parámetros en la tabla de capas (Constraints):</strong> Dentro de la sección de restricciones (Constraints), se pueden modificar los valores celda por celda para las diferentes capas de la placa (Top Layer, Bottom Layer):<ul>
+<li><strong>Min Width (Ancho mínimo):</strong> Define el grosor mínimo de pista permitido por el fabricante o el diseño (por ejemplo, 0.24mil o 10 mil según la unidad configurada).</li>
+<li><strong>Preferred Width (Ancho preferido):</strong> Es el valor por defecto que Altium utilizará al iniciar el ruteado interactivo de las pistas (por ejemplo, 0.254mil / 10 mil / 0.25 mm).</li>
+<li><strong>Max Width (Ancho máximo):</strong> Limita el grosor máximo al que se puede expandir una pista en esta regla.</li>
+</ul>
+</li>
+<li><strong>Aplicación de cambios:</strong> Al modificar manualmente estos campos y presionar <code>Apply</code> y <code>OK</code>, Altium actualizará los límites de ruteado sin necesidad de depender de un archivo externo.</li>
+</ul>
+<p><img alt="Regla de Width" src="../img/fotos_altium_2/Imagen21.png" />
+<em>Figura 6.18.1: Configuración de la regla de ancho de pista.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="619-ruteo-interactivo-y-ancho-dinamico">6.19 Ruteo Interactivo y Ancho Dinámico</h2>
+<p>En estas capturas se ilustra el inicio del trazado físico de las pistas sobre la PCB, así como la técnica para modificar dinámicamente el grosor de la línea mientras se realiza el ruteado. En este apartado se consideran los siguientes aspectos clave expuestos en la clase:</p>
+<p><strong>Estrategia de ruteado (GND al final):</strong> 
+Como buena práctica de diseño, la red de tierra (GND) se suele dejar para el final. Esto se debe a que habitualmente se cubre la placa con un plano o vertido de cobre (Polygon Pour) conectado a GND al terminar, el cual une automáticamente todos los pads de tierra. Por ello, se rutean primero las señales de datos, entradas, salidas y líneas de alimentación como +12.</p>
+<p><strong>Activar el ruteado interactivo (Interactive Routing):</strong>
+Para comenzar a tirar pistas, se hace clic en el ícono de ruteado interactivo (indicado por la flecha roja en la primera imagen) o se utiliza el atajo de teclado <code>Ctrl + W</code> (o <code>P &gt; T</code>). Al hacer clic sobre un pad de origen (como el pin 1 NetC1_1 del capacitor C1 en la segunda imagen), se genera la pista interactiva en color rojo (correspondiente a la capa superior o Top Layer) siguiendo el cursor.</p>
+<p><img alt="Icono Ruteo" src="../img/fotos_altium_2/Imagen22.png" />
+<em>Figura 6.19.1: Selección de la herramienta Interactive Routing.</em></p>
+<p><br><br></p>
+<p><img alt="Pista Activa" src="../img/fotos_altium_2/Imagen23.png" />
+<em>Figura 6.19.2: Trazado interactivo desde un pad de origen.</em></p>
+<p><br><br></p>
+<p><strong>Cambio dinámico de ancho de pista (Atajo Shift + W):</strong>
+Si durante el trazo de una línea se requiere cambiar su ancho (por ejemplo, para hacer más gruesa una pista de potencia o más delgada una de señal), se presiona la combinación de teclas <code>Shift + W</code>. </p>
+<p>Esto desplegará en pantalla la ventana emergente <code>Choose Width</code> (tercera imagen), permitiendo seleccionar de forma rápida un valor predefinido en milésimas de pulgada (10 mil, 12 mil, 20 mil, etc.) o en milímetros (0.25 mm, 0.5 mm, etc.) sin necesidad de interrumpir el ruteado o regresar al menú de reglas.</p>
+<p><img alt="Choose Width" src="../img/fotos_altium_2/Imagen24.png" />
+<em>Figura 6.19.3: Menú desplegable para el ajuste dinámico del grosor de pista.</em></p>
+<p><br><br></p>
+<p><img alt="Pista Finalizada" src="../img/fotos_altium_2/Imagen25.png" />
+<em>Figura 6.19.4: Ruteado completado de la pista seleccionada.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="620-modalidades-de-ruteado-automatico">6.20 Modalidades de Ruteado Automático</h2>
+<p>En este apartado se explican las tres modalidades principales:</p>
+<p><strong>1. Ruteado automático de toda la placa (Auto Route All):</strong>
+*   <strong>Procedimiento:</strong> Se hace clic en <code>Route &gt; Auto Route &gt; All...</code> (indicado con la flecha roja en la primera imagen).
+*   <strong>Resultado:</strong> El sistema intenta trazar de forma autónoma la totalidad de las pistas del circuito sobre las capas disponibles (Top Layer en rojo y Bottom Layer en azul), como se observa en la segunda captura. Aunque es una función rápida, habitualmente requiere ajustes manuales posteriores para optimizar caminos o evitar ángulos inadecuados.</p>
+<p><img alt="Auto Route All" src="../img/fotos_altium_2/Imagen26.png" />
+<em>Figura 6.20.1: Selección de ruteado automático completo.</em></p>
+<p><br><br></p>
+<p><img alt="Resultado Auto All" src="../img/fotos_altium_2/Imagen27.png" />
+<em>Figura 6.20.2: Pistas generadas por el auto ruteador global.</em></p>
+<p><br><br></p>
+<p><strong>2. Ruteado automático por red (Auto Route Net):</strong>
+*   <strong>Procedimiento:</strong> Se navega a <code>Route &gt; Auto Route &gt; Net</code> (indicado por la flecha verde en la tercera imagen) y se selecciona un nodo específico sobre la placa.
+*   <strong>Resultado:</strong> Altium rutea únicamente la red seleccionada (por ejemplo, la red que conecta el capacitor C1 con el diodo D1), dejando las demás conexiones pendientes (cuarta imagen).</p>
+<p><img alt="Auto Route Net" src="../img/fotos_altium_2/Imagen28.png" />
+<em>Figura 6.20.3: Selección de ruteado automático por red específica.</em></p>
+<p><br><br></p>
+<p><img alt="Resultado Auto Net" src="../img/fotos_altium_2/Imagen29.png" />
+<em>Figura 6.20.4: Pista ruteada automáticamente sobre el nodo seleccionado.</em></p>
+<p><br><br></p>
+<p><strong>3. Ruteado automático por área (Auto Route Area):</strong>
+*   <strong>Procedimiento:</strong> Se selecciona <code>Route &gt; Auto Route &gt; Area</code> (flecha azul en la quinta imagen) y se dibuja un recuadro sobre una zona concreta de la placa.
+*   <strong>Resultado:</strong> El motor de ruteado procesa e interconecta únicamente los componentes y pads contenidos dentro del área seleccionada (como la sección del transistor Q1 y las resistencias R1, R2 en la sexta imagen). </p>
+<p>Estas opciones de ruteado selectivo son útiles para delegar partes repetitivas del trazo mientras mantienes el control manual sobre las pistas críticas de alimentación o señal.</p>
+<p><img alt="Auto Route Area" src="../img/fotos_altium_2/Imagen30.png" />
+<em>Figura 6.20.5: Selección de ruteado por área.</em></p>
+<p><br><br></p>
+<p><img alt="Resultado Auto Area" src="../img/fotos_altium_2/Imagen31.png" />
+<em>Figura 6.20.6: Pistas generadas solo en el área delimitada.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="621-definicion-de-contorno-de-placa-board-shape">6.21 Definición de Contorno de Placa (Board Shape)</h2>
+<p>Para definir el corte mecánico exacto que tendrá la placa de circuito impreso, utilizaremos la capa de dibujo mecánico para crear un polígono y recortar el área excedente.</p>
+<p>Cambiamos a la pestaña de la capa <strong><code>Mechanical 1</code></strong> y seleccionamos la herramienta de dibujo de línea (<code>Place Line</code>). Trazamos un contorno cerrado (color magenta) alrededor de nuestros componentes para delimitar la geometría final. Una vez trazado, seleccionamos estas líneas, nos dirigimos al menú superior y hacemos clic en <strong><code>Design &gt; Board Shape &gt; Define Board Shape from Selected Objects</code></strong>.</p>
+<p><img alt="Capa Mecanica" src="../img/fotos_altium_2/Imagen32.png" />
+<em>Figura 6.21.1: Selección de la capa Mechanical 1.</em></p>
+<p><br><br></p>
+<p><img alt="Dibujo Linea" src="../img/fotos_altium_2/Imagen33.png" />
+<em>Figura 6.21.2: Herramienta Place Line activada.</em></p>
+<p><br><br></p>
+<p><img alt="Contorno Trazado" src="../img/fotos_altium_2/Imagen34.png" />
+<em>Figura 6.21.3: Contorno físico de la placa delimitado.</em></p>
+<p><br><br></p>
+<p><img alt="Define Shape" src="../img/fotos_altium_2/Imagen35.png" />
+<em>Figura 6.21.4: Herramienta Define Board Shape from Selected Objects.</em></p>
+<p><br><br></p>
+<p><img alt="Placa Recortada" src="../img/fotos_altium_2/Imagen36.png" />
+<em>Figura 6.21.5: Tarjeta recortada con sus nuevas dimensiones físicas.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="622-inspeccion-tridimensional-final">6.22 Inspección Tridimensional Final</h2>
+<p><strong>Paso 31: Inspección tridimensional final y verificación mecánica de la tarjeta</strong></p>
+<p>En esta captura se aprecia la tarjeta finalizada en la vista tridimensional fotorrealista (3D View), recortada exactamente según el contorno personalizado definido en el paso anterior. En este apartado se consideran los siguientes puntos de verificación final:</p>
+<ul>
+<li><strong>Inspección de volumetría y colisiones físicas:</strong> Al presionar la tecla <code>3</code> e inspeccionar la placa en 3D, se valida que todos los componentes (capacitor electrolítico C1, inductor L1, transistor Q1, diodos D1/D2, conector P1 y resistencias) cuenten con su modelo 3D correctamente alineado sobre sus pads de soldadura.</li>
+<li><strong>Verificación de orientación y altura:</strong> Permite comprobar que conectores de ángulo recto como P1 sobresalgan adecuadamente hacia el borde de la placa para su posterior ensamble o acople mecánico en un chasis.</li>
+<li><strong>Validación de serigrafía (Silkscreen):</strong> Se confirma la visibilidad de los designadores (C1, Q1, R1, R2, L1, D1, D2, P1) e indicativos de polaridad (como la banda blanca y signo + del capacitor) sobre la capa de máscara superior.</li>
+</ul>
+<p><img alt="Verificación Final 3D" src="../img/fotos_altium_2/Imagen37.png" />
+<em>Figura 6.22.1: Modelo tridimensional final de la tarjeta de circuito impreso validada.</em></p>
+<h2 id="617-vertido-de-cobre-polygon-pour">6.17 Vertido de Cobre (Polygon Pour)</h2>
+<p>Para cubrir la superficie de la placa con un vertido de cobre (Polygon Pour) vinculado a la red de tierra (GND), y así mejorar la masa térmica y eléctrica de la tarjeta, realizamos los siguientes pasos:</p>
+<p><strong>1. Seleccionar la capa de cobre (Top Layer / Bottom Layer):</strong>
+En la barra inferior de capas de trabajo, se selecciona la capa correspondiente donde se verterá el cobre (por ejemplo, <code>[1] Top Layer</code> en color rojo o <code>[2] Bottom Layer</code> en azul). </p>
+<p><img alt="Capa de cobre" src="../img/fotos_altium_3/Imagen1.png" />
+<em>Figura 6.17.1: Selección de la capa Top Layer.</em></p>
+<p><br><br></p>
+<p><strong>2. Activar la herramienta Polygon Pour:</strong>
+En la barra de herramientas flotante superior, se localiza el ícono de vertido de polígono o se presiona el atajo <code>P &gt; G</code> (Place Polygon Pour). En la ventana de propiedades que se despliega, se selecciona en el campo Net la red de tierra (GND) y se establece la forma de vertido. </p>
+<p><img alt="Icono Polygon Pour" src="../img/fotos_altium_3/Imagen2.png" />
+<em>Figura 6.17.2: Activación de la herramienta de vertido.</em></p>
+<p><br><br></p>
+<p><strong>3. Delimitar la zona de vertido:</strong>
+Haciendo clics sucesivos alrededor del borde exterior del contorno magenta (Mechanical 1), se dibuja un área poligonal que envuelva toda la placa. </p>
+<p><img alt="Plano de masa GND" src="../img/fotos_altium_3/Imagen3.png" />
+<em>Figura 6.17.3: Vertido trazado alrededor del contorno mecánico de la placa.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="618-asignacion-de-red-y-regeneracion">6.18 Asignación de Red y Regeneración</h2>
+<p>Para vincular correctamente el plano de vertido de cobre a la red de masa y regenerarlo sobre el lienzo de la PCB, se realizan las siguientes acciones en el panel Properties:</p>
+<p><strong>1. Asignar la red de conexión (Net -&gt; GND):</strong>
+Al seleccionar el polígono dibujado, se despliega el panel Properties a la derecha de la pantalla. En la sección Properties, se ubica el campo <code>Net</code> y se despliega el menú para seleccionar la red <code>GND</code>. De esta forma, el vertido se conectará eléctricamente a todos los pads y terminales de tierra. </p>
+<p><img alt="Asignar Red GND" src="../img/fotos_altium_3/Imagen4.png" />
+<em>Figura 6.18.1: Asignación de la red GND en el panel Properties.</em></p>
+<p><br><br></p>
+<p><strong>2. Regenerar el plano de cobre (Repour):</strong>
+Si el polígono aún no ha sido vertido o sufrió modificaciones en sus propiedades, aparecerá un aviso azul en la parte superior del panel con la leyenda <em>"Polygon not poured"</em>. Se hace clic en el botón <code>Repour</code>. </p>
+<p><img alt="Botón Repour" src="../img/fotos_altium_3/Imagen5.png" />
+<em>Figura 6.18.2: Función Repour para recalcular la geometría.</em></p>
+<p><br><br></p>
+<p><strong>Resultado final del vertido de masa:</strong>
+Altium recalcula la geometría del cobre inundando toda la cara superior en color rojo. Los pads pertenecientes a la red GND se integran automáticamente mediante conexiones térmicas en cruz (Thermal Reliefs), mientras que las pistas de otras señales (+12, E1, O1, etc.) quedan aisladas con un margen de separación (clearance) respetando las reglas de diseño, eliminando las líneas de conexión (ratsnest) sin necesidad de rutearlas manualmente.</p>
+<p><img alt="Resultado del vertido" src="../img/fotos_altium_3/Imagen6.png" />
+<em>Figura 6.18.3: Polígono de cobre completamente vertido y aislado.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="619-vertido-en-rejilla-hatched">6.19 Vertido en Rejilla (Hatched)</h2>
+<p>La alternativa de vertido de cobre en forma de rejilla o malla (Hatched) es utilizada comúnmente para reducir el estrés térmico en la placa o para aplicaciones específicas de flexibilidad y radiofrecuencia. </p>
+<p><strong>1. Selección del estilo Hatched:</strong>
+En el panel Properties del polígono seleccionado, se cambia el modo de relleno de <code>Solid</code> a <code>Hatched</code>. </p>
+<p><img alt="Estilo Hatched" src="../img/fotos_altium_3/Imagen7.png" />
+<em>Figura 6.19.1: Cambio de relleno de Solid a Hatched.</em></p>
+<p><br><br></p>
+<p><strong>2. Ajuste de parámetros de la malla:</strong>
+En las opciones avanzadas del polígono, se ajustan el ancho de la pista (Track Width) y el espaciado de la rejilla (Grid Size). En la sección <code>Hatch mode</code>, se define la orientación del trazado de la malla, como <code>90 Degree</code> (perpendicular), <code>45 Degree</code> (diagonal), Horizontal o Vertical. </p>
+<p><img alt="Parámetros de malla" src="../img/fotos_altium_3/Imagen8.png" />
+<em>Figura 6.19.2: Parámetros de grosor, espaciado y orientación de la rejilla.</em></p>
+<p><br><br></p>
+<p><strong>3. Regenerar el polígono (Repour):</strong>
+Se presiona el botón <code>Repour</code> en la parte superior de las propiedades para recalcular la geometría del cobre. La zona de cobre sobre la capa roja deja de ser una capa sólida continua y pasa a mostrar un patrón en cuadrícula regular, manteniendo todas las interconexiones eléctricas a la red GND e integrando los relieves térmicos en los pads correspondientes.</p>
+<p><img alt="Resultado malla" src="../img/fotos_altium_3/Imagen9.png" />
+<em>Figura 6.19.3: Patrón de cobre en formato de malla integrado en la capa Top.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="620-plano-inferior-e-inspeccion-tridimensional-final">6.20 Plano Inferior e Inspección Tridimensional Final</h2>
+<p>Para concluir el procedimiento de diseño, aplicamos el plano de vertido de cobre en la cara inferior y realizamos la inspección tridimensional de la tarjeta.</p>
+<p><strong>1. Plano de masa en la capa inferior (Bottom Layer):</strong>
+En la barra inferior de capas, se selecciona la pestaña <code>[2] Bottom Layer</code> (color azul). Se utiliza nuevamente la herramienta Polygon Pour (P &gt; G) asignando la red GND para crear un plano de masa en la cara inferior. En este caso se ilustra un vertido sólido. </p>
+<p><img alt="Bottom Layer" src="../img/fotos_altium_3/Imagen10.png" />
+<em>Figura 6.20.1: Selección de la capa de ruteo inferior (Bottom Layer).</em></p>
+<p><br><br></p>
+<p><strong>2. Inspección 3D cara superior (Top View):</strong>
+Al presionar la tecla <code>3</code>, se verifica la disposición final en la cara superior, donde destacan los componentes Through-Hole (electrolítico C1, inductor L1, transistor Q1, diodo D2 y conector P1) y los componentes de montaje superficial (SMD). </p>
+<p><img alt="Vista 3D Top" src="../img/fotos_altium_3/Imagen11.png" />
+<em>Figura 6.20.2: Vista tridimensional final de la cara superior de la PCB.</em></p>
+<p><br><br></p>
+<p><strong>3. Inspección 3D cara inferior (Bottom View):</strong>
+Rotando la vista 3D con <code>Shift + Clic derecho</code>, se inspecciona la cara inferior de la PCB. Se comprueba la proyección de los pines de soldadura Through-Hole, las pistas ruteadas en azul y el patrón de relieve del plano de cobre en la parte posterior. </p>
+<p><img alt="Vista 3D Bottom" src="../img/fotos_altium_3/Imagen12.png" />
+<em>Figura 6.20.3: Vista tridimensional final de la cara inferior.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="621-ejecucion-del-chequeo-final-de-reglas-de-diseno-drc">6.21 Ejecución del Chequeo Final de Reglas de Diseño (DRC)</h2>
+<p>Para ejecutar la verificación automática de reglas de diseño (DRC) sobre la placa terminada y evaluar el reporte de resultados, seguimos estos pasos:</p>
+<p><strong>1. Acceso a la herramienta de verificación:</strong>
+En la barra de menús superior dentro de la PCB, se hace clic en la pestaña <code>Tools</code>. En el menú desplegable, se selecciona la primera opción: <code>Design Rule Check...</code>. </p>
+<p><img alt="Menu Design Rule Check" src="../img/fotos_altium_3/Imagen13.png" />
+<em>Figura 6.21.1: Menú Tools &gt; Design Rule Check.</em></p>
+<p><br><br></p>
+<p><strong>2. Configuración y ejecución del reporte (Design Rule Checker):</strong>
+Se desplegará la ventana emergente Design Rule Checker. En este cuadro se pueden habilitar o deshabilitar las categorías de reglas a inspeccionar (Electrical, Routing, Manufacturing, Placement, etc.). Para procesar la verificación completa, se hace clic en el botón <code>Run Design Rule Check...</code> ubicado en la esquina inferior izquierda. </p>
+<p><img alt="Design Rule Checker" src="../img/fotos_altium_3/Imagen14.png" />
+<em>Figura 6.21.2: Configuración del informe de reglas.</em></p>
+<p><br><br></p>
+<p><strong>3. Análisis del informe (Design Rule Verification Report):</strong>
+Altium abrirá automáticamente una pestaña de reporte HTML con el resumen del análisis. El informe contabiliza las advertencias (Warnings) y las violaciones de reglas (Rule Violations). Un conteo mayor a cero en Rule Violations indica que existen infracciones físicas o eléctricas en la placa. Haciendo clic sobre el desglose de cada error dentro del reporte, Altium redirige automáticamente al punto exacto del lienzo de la PCB donde se encuentra la falla para corregirla.</p>
+<p><img alt="Reporte DRC" src="../img/fotos_altium_3/Imagen15.png" />
+<em>Figura 6.21.3: Informe HTML con advertencias y violaciones detectadas.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="622-etiquetas-de-texto-en-serigrafia-top-overlay">6.22 Etiquetas de Texto en Serigrafía (Top Overlay)</h2>
+<p>Para añadir texto personalizado o marcado de serigrafía (Silkscreen) sobre la tarjeta sin interferir con las pistas de cobre o los planos de masa:</p>
+<p><strong>1. Seleccionar la capa de serigrafía (Top Overlay):</strong>
+En la barra inferior de capas de trabajo, se hace clic en la pestaña <code>Top Overlay</code> (de color amarillo). Esta capa está destinada exclusivamente a la impresión de tinta blanca sobre la placa (nombres de señales, logos y designadores). Al ser una capa aislante no conductora, no afecta ni altera las pistas de cobre.</p>
+<p><img alt="Top Overlay" src="../img/fotos_altium_3/Imagen16.png" />
+<em>Figura 6.22.1: Selección de la capa Top Overlay (Serigrafía).</em></p>
+<p><br><br></p>
+<p><strong>2. Insertar texto interactivo:</strong>
+En la barra de herramientas flotante superior, se selecciona la herramienta de texto con el ícono <code>A</code> o se presiona el atajo <code>P &gt; T</code> (Place String). Se hace clic en el área deseada de la tarjeta y, desde el panel Properties, se ingresa el texto personalizado.</p>
+<p><img alt="Texto Carlos" src="../img/fotos_altium_3/Imagen17.png" />
+<em>Figura 6.22.2: Texto colocado en la cara superior.</em></p>
+<p><br><br></p>
+<p><strong>3. Verificación tridimensional (3D View):</strong>
+Al conmutar a la vista fotorrealista presionado la tecla <code>3</code>, se confirma que el texto impreso aparece de color blanco sobre la máscara antisoldante verde. Se debe asegurar que el texto no quede ubicado directamente sobre zonas expuestas de soldadura.</p>
+<p><img alt="Vista 3D Texto" src="../img/fotos_altium_3/Imagen18.png" />
+<em>Figura 6.22.3: Visualización de la tinta blanca en el modelo tridimensional.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="623-serigrafia-en-la-cara-inferior-bottom-overlay-y-mirror">6.23 Serigrafía en la Cara Inferior (Bottom Overlay y Mirror)</h2>
+<p><strong>Selección de capa inferior y opción de espejo (Mirror):</strong>
+Al colocar una etiqueta de texto en la parte posterior de la placa, se selecciona la capa <code>Bottom Overlay</code>. Como se observa en el panel de propiedades, al trabajar en la capa inferior es estrictamente necesario marcar la casilla <strong>Mirror</strong>. </p>
+<p><em>Razón técnica:</em> La vista 2D del software siempre es superior (se está "mirando a través" de la tarjeta). Al aplicar Mirror, el texto se invierte horizontalmente en el lienzo de diseño (mostrando el texto al revés), para que, cuando la PCB sea fabricada y se observe físicamente desde la cara posterior, las letras puedan leerse en la dirección correcta.</p>
+<p><img alt="Bottom Overlay Mirror" src="../img/fotos_altium_3/Imagen19.png" />
+<em>Figura 6.23.1: Configuración de la propiedad Mirror para texto en la capa inferior.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="624-salidas-de-fabricacion-archivos-gerber">6.24 Salidas de Fabricación (Archivos Gerber)</h2>
+<p>El siguiente procedimiento permite exportar los archivos Gerber, los cuales contienen la información geométrica de cada capa requerida por los fabricantes de PCB. </p>
+<p><strong>1. Acceso al menú de generación de archivos Gerber:</strong>
+En la barra de menús superior, se hace clic en <code>File &gt; Fabrication Outputs &gt; Gerber Files</code>. </p>
+<p><img alt="Fabrication Outputs Gerber" src="../img/fotos_altium_3/Imagen20.png" />
+<em>Figura 6.24.1: Menú para la generación de archivos Gerber.</em></p>
+<p><br><br></p>
+<p><strong>2. Configuración de capas a exportar (Gerber Setup):</strong>
+En la ventana emergente, se asegura que las unidades estén configuradas de acuerdo con la necesidad del fabricante. Para seleccionar únicamente las capas que contienen información utilizada en el diseño, se despliega el menú inferior <code>Plot Layers</code> y se elige <code>Select Used</code>. Para procesar la exportación, se presiona el botón Apply. </p>
+<p><img alt="Gerber Setup" src="../img/fotos_altium_3/Imagen21.png" />
+<em>Figura 6.24.2: Ventana de configuración Gerber Setup.</em></p>
+<p><br><br></p>
+<p><strong>3. Generación y visualización del archivo CAMtastic:</strong>
+Altium abrirá automáticamente un visor interno de fotolitos en formato CAMtastic, donde se muestran las capas exportadas (como se aprecia con la capa inferior y la etiqueta reflejada en espejo). </p>
+<p><img alt="CAMtastic" src="../img/fotos_altium_3/Imagen22.png" />
+<em>Figura 6.24.3: Visor CAMtastic confirmando las capas generadas.</em></p>
+<p><br><br></p>
+<p><strong>4. Ubicación de los archivos generados:</strong>
+Altium crea automáticamente la carpeta <code>Project Outputs for [Nombre_Proyecto]</code> dentro de la ubicación del proyecto. En esta carpeta se almacenan todos los archivos individuales con sus respectivas extensiones estándar (.GTL, .GBL, .GTO, .GBO, etc.).</p>
+<p><img alt="Carpetas Project Outputs" src="../img/fotos_altium_3/Imagen23.png" />
+<em>Figura 6.24.4: Listado de archivos .GBR creados en el explorador de Windows.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="625-archivos-de-perforacion-nc-drill">6.25 Archivos de Perforación (NC Drill)</h2>
+<p>Para completar el paquete de fabricación, resta generar el archivo de brocas y taladros:</p>
+<p><strong>Generar perforaciones:</strong>
+Ir al menú <code>File &gt; Fabrication Outputs &gt; NC Drill Files</code>. En la ventana emergente de configuración, mantener las mismas unidades (métrica/imperial) e igual formato numérico que los archivos Gerber. Hacer clic en OK y confirmar el procesamiento en la ventana emergente de la lista de herramientas. </p>
+<p><img alt="Fabrication Outputs NC Drill" src="../img/fotos_altium_3/Imagen24.png" />
+<em>Figura 6.25.1: Exportación de datos de brocas y perforaciones.</em></p>
+<p><br><br></p>
+<p><strong>Archivos de salida:</strong>
+En la misma carpeta <code>Project Outputs</code> se agregarán los archivos con extensión <code>.txt</code> o <code>.drl</code> correspondiente a la tabla de barrenos y coordenadas de perforación. </p>
+<p><img alt="Visor de Perforaciones" src="../img/fotos_altium_3/Imagen25.png" />
+<em>Figura 6.25.2: Coordenadas mecánicas visualizadas como taladros en el visor.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="626-empaquetado-y-validacion-en-jlcpcb">6.26 Empaquetado y Validación en JLCPCB</h2>
+<p>La etapa final del flujo de trabajo es el empaquetado de las salidas de fabricación y la carga en la plataforma del fabricante para su verificación y cotización.</p>
+<p><strong>1. Compresión de los archivos de salida (Creación de archivo .ZIP):</strong>
+Se ubica la carpeta <code>Project Outputs</code> generada por Altium Designer. Se hace clic derecho sobre la carpeta y se selecciona la opción <code>Comprimir a... &gt; Archivo ZIP</code> para crear el contenedor comprimido con los archivos Gerber y de perforación. </p>
+<p><img alt="Comprimir ZIP" src="../img/fotos_altium_3/Imagen26.png" />
+<em>Figura 6.26.1: Compresión de los ficheros de fabricación.</em></p>
+<p><br><br></p>
+<p><strong>2. Carga en la plataforma de fabricación (Uploading Gerber):</strong>
+En el sitio web del fabricante (JLCPCB), se selecciona la herramienta de cotización en línea (Online PCB Quote) e importación de archivos. Se arrastra el archivo <code>.ZIP</code> recién creado; el sistema iniciará el procesamiento y la lectura automática del archivo. </p>
+<p><img alt="JLCPCB Upload" src="../img/fotos_altium_3/Imagen27.png" />
+<em>Figura 6.26.2: Carga del archivo .zip en JLCPCB.</em></p>
+<p><br><br></p>
+<p><strong>3. Inspección y verificación de cotización (Gerber Viewer):</strong>
+Una vez procesado el archivo, el visor integrado del fabricante renderiza la vista previa de la tarjeta por ambas caras. Se valida la lectura correcta del contorno, dimensiones y capas. Finalmente, se seleccionan los parámetros de fabricación deseados (cantidad de placas, grosor de PCB de 1.6mm, color de máscara, etc.) para proceder con la orden de producción.</p>
+<p><img alt="JLCPCB Gerber Viewer" src="../img/fotos_altium_3/Imagen28.png" />
+<em>Figura 6.26.3: Validación visual final y cotización del circuito en la plataforma web.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

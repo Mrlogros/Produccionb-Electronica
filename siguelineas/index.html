@@ -1,0 +1,1708 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Documentación técnica del diseño y ruteo de circuito impreso.">
+      
+      
+        <meta name="author" content="Tu Nombre">
+      
+      
+      
+        <link rel="prev" href="../altium/">
+      
+      
+        <link rel="next" href="../recursos/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../material/developer-board">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Proyecto Siguelíneas - Diseño de PCB - Proyecto KiCad</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,700,700i%7CFira+Code:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Montserrat";--md-code-font:"Fira Code"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#proceso-de-desarrollo-de-proyecto-siguelineas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Diseño de PCB - Proyecto KiCad" class="md-header__button md-logo" aria-label="Diseño de PCB - Proyecto KiCad" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Diseño de PCB - Proyecto KiCad
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Proyecto Siguelíneas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo claro"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo claro" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="amber"  aria-label="Cambiar a modo oscuro"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Cambiar a modo oscuro" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Mrlogros/Produccionb-Electronica" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mrlogros/Produccionb-Electronica
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Inicio
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../diseno-kicad/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Diseño de Placa (KiCad)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../mods-ce/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Manufactura CAM (Mods CE)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../monofab/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Operación Monofab SRM-20
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../multisim/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Simulación (Multisim)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../altium/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Diseño Avanzado (Altium)
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Proyecto Siguelíneas
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../recursos/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Referencias
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Diseño de PCB - Proyecto KiCad" class="md-nav__button md-logo" aria-label="Diseño de PCB - Proyecto KiCad" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Diseño de PCB - Proyecto KiCad
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Mrlogros/Produccionb-Electronica" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Mrlogros/Produccionb-Electronica
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inicio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diseno-kicad/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diseño de Placa (KiCad)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mods-ce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manufactura CAM (Mods CE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../monofab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operación Monofab SRM-20
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../multisim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulación (Multisim)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../altium/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diseño Avanzado (Altium)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto Siguelíneas
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Proyecto Siguelíneas
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introducción
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Introducción">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-introduccion-y-fundamentos-del-robot-siguelineas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Introducción y Fundamentos del Robot Siguelíneas
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Introducción y Fundamentos del Robot Siguelíneas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-esquemas-de-color-y-configuracion-de-pista" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Esquemas de Color y Configuración de Pista
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-objetivo-del-proyecto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Objetivo del Proyecto
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-clasificacion-de-robots-siguelineas-segun-la-cinematica-de-direccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Clasificación de Robots Siguelíneas según la Cinemática de Dirección
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Clasificación de Robots Siguelíneas según la Cinemática de Dirección">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-direccion-diferencial-differential-drive" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. Dirección Diferencial (Differential Drive)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-direccion-mecanica-o-direccionable-ackermann-servodireccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Dirección Mecánica o Direccionable (Ackermann / Servodirección)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-criterios-de-diseno-e-ingenieria-para-robots-siguelineas-de-alta-velocidad-velocistas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Criterios de Diseño e Ingeniería para Robots Siguelíneas de Alta Velocidad (Velocistas)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Criterios de Diseño e Ingeniería para Robots Siguelíneas de Alta Velocidad (Velocistas)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-optimizacion-estructural-y-centro-de-masa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Optimización Estructural y Centro de Masa
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-reduccion-de-masa-criterio-de-ligereza" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Reducción de Masa (Criterio de Ligereza)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-control-dinamico-gestion-de-curvas-y-frenado" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Control Dinámico: Gestión de Curvas y Frenado
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-proceso-iterativo-de-calibracion-y-ajuste" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Proceso Iterativo de Calibración y Ajuste
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-arquitectura-de-hardware-y-partes-principales-del-robot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Arquitectura de Hardware y Partes Principales del Robot
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Arquitectura de Hardware y Partes Principales del Robot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-unidad-de-procesamiento-microcontrolador" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. Unidad de Procesamiento (Microcontrolador)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-arreglo-de-percepcion-barra-de-sensores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Arreglo de Percepción (Barra de Sensores)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-etapa-de-potencia-y-control-de-motores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3. Etapa de Potencia y Control de Motores
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-sistema-de-actuacion-mecanica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4. Sistema de Actuación Mecánica
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-sistema-de-alimentacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5. Sistema de Alimentación
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-chasis-estructural-e-interfaz-de-usuario" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6. Chasis Estructural e Interfaz de Usuario
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-seleccion-de-materiales-y-componentes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Selección de Materiales y Componentes
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. Selección de Materiales y Componentes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-unidad-de-procesamiento-principal-mcu-esp32-c6-super-mini" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Unidad de Procesamiento Principal (MCU): ESP32-C6 Super Mini
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-sistema-de-percepcion-barra-de-16-sensores-infrarrojos-multiplexados" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Sistema de Percepción: Barra de 16 Sensores Infrarrojos Multiplexados
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.2. Sistema de Percepción: Barra de 16 Sensores Infrarrojos Multiplexados">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#521-principio-optoelectronico-de-deteccion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.1. Principio Optoelectrónico de Detección
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#522-seleccion-del-sensor-qre1113-smd" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.2. Selección del Sensor: QRE1113 (SMD)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#523-esquema-de-multiplexacion-analogica-cd74hc4067" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.3. Esquema de Multiplexación Analógica (CD74HC4067)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#524-topologia-del-circuito-electronico" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2.4. Topología del Circuito Electrónico
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-actuadores-de-traccion-comparativa-tecnologica-y-evolucion-de-motores" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Actuadores de Tracción: Comparativa Tecnológica y Evolución de Motores
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3. Actuadores de Tracción: Comparativa Tecnológica y Evolución de Motores">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531-clasificacion-tecnologica-de-motores-de-dc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.1. Clasificación Tecnológica de Motores de DC
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532-evolucion-historica-y-tendencias-en-la-robotica-de-competencia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3.2. Evolución Histórica y Tendencias en la Robótica de Competencia
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-etapa-de-potencia-transicion-del-driver-estandar-al-controlador-btn9960" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Etapa de Potencia: Transición del Driver Estándar al Controlador BTN9960
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.4. Etapa de Potencia: Transición del Driver Estándar al Controlador BTN9960">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#541-limitaciones-del-driver-estandar-tb6612fng" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.1. Limitaciones del Driver Estándar (TB6612FNG)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#542-seleccion-del-controlador-de-alta-corriente-btn9960lv-novalithictm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.2. Selección del Controlador de Alta Corriente: BTN9960LV (NovalithIC™)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#543-implementacion-del-circuito-optimizado-esquematico-de-aplicacion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4.3. Implementación del Circuito Optimizado (Esquemático de Aplicación)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-interfaz-de-control-de-usuario-sistema-de-arranque-mediante-pulsador-en-configuracion-pull-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5. Interfaz de Control de Usuario: Sistema de Arranque mediante Pulsador en Configuración Pull-Down
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.5. Interfaz de Control de Usuario: Sistema de Arranque mediante Pulsador en Configuración Pull-Down">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#551-analisis-comparativo-de-topologias-de-entrada-digital" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5.1. Análisis Comparativo de Topologías de Entrada Digital
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#56-sistema-de-alimentacion-y-regulacion-de-voltaje-conversion-step-down-eficiente" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6. Sistema de Alimentación y Regulación de Voltaje: Conversión Step-Down Eficiente
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.6. Sistema de Alimentación y Regulación de Voltaje: Conversión Step-Down Eficiente">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#561-problematica-de-los-reguladores-lineales-tradicionales-l7805" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.1. Problemática de los Reguladores Lineales Tradicionales (L7805)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#562-solucion-mediante-reguladores-conmutados-step-down-buck-converter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.2. Solución Mediante Reguladores Conmutados (Step-Down / Buck Converter)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#563-comparativa-de-modulos-conmutados-y-seleccion-final" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6.3. Comparativa de Módulos Conmutados y Selección Final
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#57-fuente-de-alimentacion-principal-analisis-de-quimicas-de-baterias" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7. Fuente de Alimentación Principal: Análisis de Químicas de Baterías
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.7. Fuente de Alimentación Principal: Análisis de Químicas de Baterías">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#571-comparativa-tecnologica-de-fuentes-de-energia" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7.1. Comparativa Tecnológica de Fuentes de Energía
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#572-requerimientos-de-mantenimiento-y-seguridad" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.7.2. Requerimientos de Mantenimiento y Seguridad
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#58-sistema-de-adherencia-aerodinamica-turbina-de-succion-y-esc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8. Sistema de Adherencia Aerodinámica: Turbina de Succión y ESC
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.8. Sistema de Adherencia Aerodinámica: Turbina de Succión y ESC">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#581-principio-aerodinamico-de-succion-downforce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8.1. Principio Aerodinámico de Succión (Downforce)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#582-seleccion-del-controlador-electronico-de-velocidad-esc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.8.2. Selección del Controlador Electrónico de Velocidad (ESC)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../recursos/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Referencias
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="proceso-de-desarrollo-de-proyecto-siguelineas">Proceso de Desarrollo de Proyecto: Siguelíneas</h1>
+<p>Bienvenido a la bitácora de desarrollo de nuestro robot siguelíneas. En esta sección documentaremos toda la investigación previa, la selección de componentes, el diseño del chasis y la lógica de control.</p>
+<hr />
+<h2 id="introduccion">Introducción</h2>
+<p><img alt="Mecánica de giro" src="../img/siguelineas/fotos_intoduccion/Imagen1.jpg" />
+<em>Figura 1: Representación de la corrección de trayectoria en un robot siguelíneas.</em></p>
+<p><br><br></p>
+<h3 id="1-introduccion-y-fundamentos-del-robot-siguelineas">1. Introducción y Fundamentos del Robot Siguelíneas</h3>
+<p>Un robot siguelíneas (Line Follower Robot) es un sistema móvil autónomo diseñado para detectar y seguir de manera precisa una trayectoria definida sobre una pista de prueba. El principio de funcionamiento se basa en la lectura continua de contraste óptico mediante sensores reflectivos (como arreglos infrarrojos), permitiendo al sistema discernir entre la línea de guía y el fondo de la pista.</p>
+<h4 id="11-esquemas-de-color-y-configuracion-de-pista">1.1. Esquemas de Color y Configuración de Pista</h4>
+<p>En el ámbito de la robótica de competencia y desarrollo experimental, se consideran dos esquemas principales de contraste para el trazado de trayectorias:
+*   <strong>Fondo Negro con Línea Blanca:</strong> Es la configuración más habitual en competencias de velocistas y siguelíneas profesionales (como pistas de prueba tipo JSumo). Requiere que el arreglo de sensores detecte una franja reflectiva blanca sobre un fondo opaco o mate absorbente de luz.
+*   <strong>Fondo Blanco con Línea Negra:</strong> Empleado comúnmente en pruebas estandarizadas y entornos educativos, donde el sensor detecta la ausencia de reflexión infrarroja generada por la cinta o trazo negro sobre la superficie clara.</p>
+<h4 id="12-objetivo-del-proyecto">1.2. Objetivo del Proyecto</h4>
+<p>El propósito central de este desarrollo es el diseño, integración electrónica y ruteado de una placa de circuito impreso (PCB) optimizada para un robot siguelíneas profesional. La implementación busca garantizar estabilidad eléctrica, minimización de ruido en las lecturas analógicas de los sensores, respuesta dinámica en la etapa de potencia para el control de motores y un empaquetado compacto que reduzca el peso total del chasis para optimizar la velocidad en pista.</p>
+<hr />
+<h2 id="2-clasificacion-de-robots-siguelineas-segun-la-cinematica-de-direccion">2. Clasificación de Robots Siguelíneas según la Cinemática de Dirección</h2>
+<p>La arquitectura mecánica y el sistema de locomoción determinan la maniobrabilidad, velocidad máxima y complejidad del algoritmo de control del robot. Principalmente se dividen en dos categorías cinemáticas:</p>
+<h3 id="21-direccion-diferencial-differential-drive">2.1. Dirección Diferencial (Differential Drive)</h3>
+<p>Es la configuración más extendida en robots velocistas y siguelíneas de alta velocidad debido a su baja inercia y simplicidad mecánica.
+*   <strong>Principio de Operación:</strong> Se compone de dos ruedas motrices independientes montadas sobre un mismo eje transversal, asistidas por uno o dos puntos de apoyo pasivos (ruedas locas o apoyos deslizantes de PTFE/teflón).
+*   <strong>Mecanismo de Giro:</strong> Los cambios de dirección se logran variando la velocidad relativa entre ambos motores (mediante modulación por ancho de pulso, PWM). Para giros cerrados, las ruedas pueden girar en sentidos opuestos, permitiendo un radio de giro nulo sobre su propio eje.
+*   <strong>Impacto en el Diseño Electrónico / PCB:</strong> Requiere la integración de un controlador de motores doble (puente H como el TB6612FNG o drivers de MOSFETs discretos) capaz de manipular dos canales de potencia independientes.</p>
+<p><img alt="Dirección Diferencial" src="../img/siguelineas/fotos_intoduccion/Imagen3.png" />
+<em>Figura 2.1.1: Cinemática de dirección diferencial variando la velocidad de los motores.</em></p>
+<p><br><br></p>
+<h3 id="22-direccion-mecanica-o-direccionable-ackermann-servodireccion">2.2. Dirección Mecánica o Direccionable (Ackermann / Servodirección)</h3>
+<p>Esta configuración replica la cinemática de los vehículos convencionales de cuatro ruedas.
+*   <strong>Principio de Operación:</strong> Separa la función de tracción de la función de dirección. La tracción se ejerce sobre las ruedas traseras (o delanteras) mediante un motor principal, mientras que un mecanismo articulado (asistido por un servomotor) orienta el ángulo de las ruedas delanteras.
+*   <strong>Mecanismo de Giro:</strong> Sigue la geometría de giro de Ackermann, restringiendo el radio mínimo de giro pero ofreciendo una trayectoria más fluida en curvas amplias a alta velocidad.
+*   <strong>Impacto en el Diseño Electrónico / PCB:</strong> Exige salidas dedicadas para el control de servos de alta velocidad (PWM de precisión) y un canal de tracción de mayor potencia eléctrica para el motor principal.</p>
+<p><img alt="Diagrama Cinemático" src="../img/siguelineas/fotos_intoduccion/Imagen2.jpg" />
+<em>Figura 2.2.1: Diagrama geométrico ilustrando el centro de gravedad y el ángulo de dirección de las llantas delanteras.</em></p>
+<p><br><br></p>
+<p><img alt="Principio Ackermann" src="../img/siguelineas/fotos_intoduccion/Imagen4.jpg" />
+<em>Figura 2.2.2: Principio de Ackermann aplicado a sistemas de dirección mecánica.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="3-criterios-de-diseno-e-ingenieria-para-robots-siguelineas-de-alta-velocidad-velocistas">3. Criterios de Diseño e Ingeniería para Robots Siguelíneas de Alta Velocidad (Velocistas)</h2>
+<p>El desarrollo de un robot siguelíneas de grado de competencia no solo implica la correcta interconexión de sus componentes electrónicos, sino también el cumplimiento estricto de principios de diseño orientado al rendimiento dinámico. A continuación, se detallan los pilares fundamentales que rigen la optimización del sistema:</p>
+<h3 id="31-optimizacion-estructural-y-centro-de-masa">3.1. Optimización Estructural y Centro de Masa</h3>
+<p>El chasis del robot debe garantizar un equilibrio óptimo entre rigidez mecánica y baja inercia. 
+*   <strong>Estructura Rígida y Estable:</strong> La flexión en el chasis introduce variaciones indeseadas en la distancia de lectura de los sensores de suelo. Por ello, la estructura debe ser rígida para absorber las vibraciones mecánicas generadas por los motores a altas RPM. 
+*   <strong>Centro de Masa Bajo:</strong> Posicionar la batería, motores y componentes de mayor peso lo más cerca posible del plano de la pista reduce el momento de vuelco y evita derrapes en curvas de radio cerrado, maximizando el agarre (grip) de los neumáticos. </p>
+<p><img alt="Estructura Chasis" src="../img/siguelineas/fotos_intoduccion/Imagen5.jpg" />
+<em>Figura 3.1.1: Diseño estructural de bajo centro de gravedad.</em></p>
+<p><br><br></p>
+<h3 id="32-reduccion-de-masa-criterio-de-ligereza">3.2. Reducción de Masa (Criterio de Ligereza)</h3>
+<p>En sistemas dinámicos de alta aceleración, la masa es el factor crítico que limita la respuesta del robot (según la segunda ley de Newton, $F = m \cdot a$).
+*   <strong>Optimización de Peso:</strong> Cada gramo adicional incrementa el consumo de corriente de los motores y reduce el par disponible para acelerar o frenar. 
+*   <strong>Impacto en el Diseño de la PCB:</strong> La placa de circuito impreso suele cumplir una doble función: actuar como tarjeta electrónica y como propio chasis estructural (placa base). Se deben seleccionar espesores de PCB adecuados (por ejemplo, 1.0 mm o 1.6 mm) y optimizar el área de cobre para no añadir masa innecesaria. </p>
+<p><img alt="Física del Siguelíneas" src="../img/siguelineas/fotos_intoduccion/Imagen6.png" />
+<em>Figura 3.2.1: Principios físicos aplicados a la reducción de masa.</em></p>
+<p><br><br></p>
+<h3 id="33-control-dinamico-gestion-de-curvas-y-frenado">3.3. Control Dinámico: Gestión de Curvas y Frenado</h3>
+<p>El rendimiento en pista no se mide únicamente por la velocidad máxima en tramos rectos, sino por la eficiencia en la transición hacia tramos sinuosos. 
+*   <strong>Control de Velocidad:</strong> El algoritmo de control (usualmente un bucle PID) debe implementar esquemas de aceleración progresiva y desaceleración o frenado activo (frenado dinámico por puente H) antes de ingresar a una curva. 
+*   <strong>Recuperación Rápida:</strong> Minimizar el tiempo de asentamiento del sistema tras salir de una perturbación o curva para retomar la velocidad máxima de manera inmediata. </p>
+<p><img alt="Gestión de Curvas" src="../img/siguelineas/fotos_intoduccion/Imagen7.jpg" />
+<em>Figura 3.3.1: Comportamiento dinámico en curvas cerradas.</em></p>
+<p><br><br></p>
+<h3 id="34-proceso-iterativo-de-calibracion-y-ajuste">3.4. Proceso Iterativo de Calibración y Ajuste</h3>
+<p>El desarrollo de un siguelíneas profesional requiere una metodología experimental basada en pruebas sistemáticas: 
+*   <strong>Medición:</strong> Adquisición de datos en tiempo real (telemetría de sensores, velocidad de motores y tiempos de vuelta). 
+*   <strong>Ajuste:</strong> Ajuste fino de constantes del controlador (PID), umbrales de lectura en los sensores y perfiles de voltaje. 
+*   <strong>Validación:</strong> Pruebas repetitivas en pista para asegurar la repetibilidad y estabilidad del vehículo ante cambios de iluminación o textura del suelo.</p>
+<p><img alt="Control PID" src="../img/siguelineas/fotos_intoduccion/Imagen8.png" />
+<em>Figura 3.4.1: Cálculo y evaluación de errores en el arreglo de sensores.</em></p>
+<p><br><br></p>
+<hr />
+<h2 id="4-arquitectura-de-hardware-y-partes-principales-del-robot">4. Arquitectura de Hardware y Partes Principales del Robot</h2>
+<p>La integración electrónica y mecánica de un robot siguelíneas profesional requiere la selección coordinada de subsistemas clave. A continuación, se describen los componentes estructurales, de control, potencia y percepción que conforman la plataforma: </p>
+<h3 id="41-unidad-de-procesamiento-microcontrolador">4.1. Unidad de Procesamiento (Microcontrolador)</h3>
+<ul>
+<li><strong>Componente:</strong> Arduino Nano (o equivalente en tarjeta base). </li>
+<li><strong>Función:</strong> Actúa como la unidad central de procesamiento (cerebro del robot). Se encarga de ejecutar el bucle de control en tiempo real, muestrear las señales provenientes de la barra de sensores, calcular el error de trayectoria mediante algoritmos de control (por ejemplo, PID) y enviar las señales de modulación por ancho de pulso (PWM) a la etapa de potencia. </li>
+</ul>
+<p><img alt="Microcontroladores" src="../img/siguelineas/fotos_intoduccion/Imagen9.png" />
+<em>Figura 4.1.1: Opciones de microcontroladores para procesamiento lógico.</em></p>
+<p><br><br></p>
+<h3 id="42-arreglo-de-percepcion-barra-de-sensores">4.2. Arreglo de Percepción (Barra de Sensores)</h3>
+<ul>
+<li><strong>Componente:</strong> Arreglo frontal de sensores reflectivos infrarrojos. </li>
+<li><strong>Función:</strong> Detecta la posición relativa del vehículo con respecto a la línea de guía de la pista mediante la lectura del contraste infrarrojo entre la superficie reflectiva y el fondo. El diseño extendido de la barra sobre el eje frontal permite anticipar las curvas y calcular el vector de error con mayor resolución espacial. </li>
+</ul>
+<p><img alt="Barra de Sensores" src="../img/siguelineas/fotos_intoduccion/Imagen10.png" />
+<em>Figura 4.2.1: Arreglo curvo de sensores QTR para percepción de línea.</em></p>
+<p><br><br></p>
+<h3 id="43-etapa-de-potencia-y-control-de-motores">4.3. Etapa de Potencia y Control de Motores</h3>
+<ul>
+<li><strong>Componente:</strong> Controlador de motores Dual (Puente H TB6612FNG). </li>
+<li><strong>Función:</strong> Administra el flujo de corriente entregado a los actuadores desde la fuente de alimentación principal. Permite conmutar la dirección de giro y regular la velocidad de cada motor mediante señales PWM enviadas por el microcontrolador, garantizando una respuesta dinámica rápida y protección contra picos de corriente inductiva. </li>
+</ul>
+<p><img alt="Driver TB6612FNG" src="../img/siguelineas/fotos_intoduccion/Imagen11.jpg" />
+<em>Figura 4.3.1: Driver de motores puente H.</em></p>
+<p><br><br></p>
+<h3 id="44-sistema-de-actuacion-mecanica">4.4. Sistema de Actuación Mecánica</h3>
+<ul>
+<li><strong>Componentes:</strong> Micromotores de DC tipo N20 acoplados a llantas de alta tracción. </li>
+<li><strong>Función:</strong> Los motores N20 con caja reductora integrada transforman la energía eléctrica en par mecánico para desplazar el robot. Las ruedas (con neumáticos de hule o silicona de alto agarre) garantizan la transferencia eficiente de torque hacia la pista, minimizando el deslizamiento lateral en giros a alta velocidad. </li>
+</ul>
+<p><img alt="Motores N20" src="../img/siguelineas/fotos_intoduccion/Imagen12.png" />
+<em>Figura 4.4.1: Micromotores DC N20 con caja reductora metálica.</em></p>
+<p><br><br></p>
+<h3 id="45-sistema-de-alimentacion">4.5. Sistema de Alimentación</h3>
+<ul>
+<li><strong>Componente:</strong> Batería de Polímero de Litio (LiPo). </li>
+<li><strong>Función:</strong> Suministra la energía eléctrica necesaria para todo el sistema, proporcionando una alta tasa de descarga constante necesaria para el frenado y aceleración de los motores. </li>
+</ul>
+<p><img alt="Batería LiPo" src="../img/siguelineas/fotos_intoduccion/Imagen13.jpg" />
+<em>Figura 4.5.1: Batería LiPo de alta tasa de descarga.</em></p>
+<p><br><br></p>
+<h3 id="46-chasis-estructural-e-interfaz-de-usuario">4.6. Chasis Estructural e Interfaz de Usuario</h3>
+<ul>
+<li><strong>Componentes:</strong> Chasis integrado (PCB como base mecánica) y pantalla OLED (0.91" 128x32) o turbina EDF. </li>
+<li><strong>Función:</strong> El chasis soporta y distribuye mecánicamente cada elemento sobre el plano. La pantalla OLED desplegada sobre la placa facilita la depuración en campo, mostrando estados de calibración, lecturas de sensores y voltaje de la batería sin requerir una conexión cableada a la computadora. Adicionalmente, el uso de turbinas genera fuerza descendente (downforce) para un mayor agarre.</li>
+</ul>
+<p><img alt="Turbina EDF" src="../img/siguelineas/fotos_intoduccion/Imagen14.jpg" />
+<em>Figura 4.6.1: Turbina de succión (EDF) para downforce.</em></p>
+<p><br><br></p>
+<p><img alt="Placa Base Chasis" src="../img/siguelineas/fotos_intoduccion/Imagen15.png" />
+<em>Figura 4.6.2: Placa de circuito impreso fungiendo estructuralmente como chasis del robot.</em></p>
+<h2 id="5-seleccion-de-materiales-y-componentes">5. Selección de Materiales y Componentes</h2>
+<h3 id="51-unidad-de-procesamiento-principal-mcu-esp32-c6-super-mini">5.1. Unidad de Procesamiento Principal (MCU): ESP32-C6 Super Mini</h3>
+<p>Para el desarrollo del robot siguelíneas de alta velocidad se seleccionó el módulo ESP32-C6 Super Mini (MakerGO). Esta plataforma de arquitectura RISC-V de 32 bits combina un factor de forma ultra compacto con un elevado rendimiento de procesamiento.</p>
+<p><strong>Justificación Técnica de la Elección:</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Característica</th>
+<th style="text-align: left;">Detalle Técnico y Ventaja</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Arquitectura</strong></td>
+<td style="text-align: left;">Procesador RISC-V de un núcleo a 160 MHz. Supera a plataformas de 8 bits (como el ATmega328P), reduciendo drásticamente el tiempo de cálculo del bucle de control.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Factor de Forma</strong></td>
+<td style="text-align: left;">Peso inferior a 3 gramos; su empaquetado permite soldarlo directamente como módulo de tarjeta hija (<em>breakout</em>) para ahorrar espacio y masa total.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Periféricos (I/O)</strong></td>
+<td style="text-align: left;">ADC de 12 bits para lectura de sensores, I2C/SPI para la pantalla OLED, y PWM de alta resolución para el control fino del puente H.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Conectividad</strong></td>
+<td style="text-align: left;">Wi-Fi 6 y Bluetooth 5 integrados, lo que permite implementar telemetría y calibración remota sin añadir el peso extra de módulos externos de radio.</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Alimentación</strong></td>
+<td style="text-align: left;">Nivel lógico de 3.3V con regulador LDO en placa, alimentable directamente desde el pin de 5V.</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Pinout ESP32-C6" src="../img/siguelineas/fotos_materiales/Imagen1.jpg" width="800" />
+<em>Figura 5.1.1: Diagrama de pines (Pinout) del módulo ESP32-C6 Super Mini.</em></p>
+<p><br><br></p>
+<hr />
+<h3 id="52-sistema-de-percepcion-barra-de-16-sensores-infrarrojos-multiplexados">5.2. Sistema de Percepción: Barra de 16 Sensores Infrarrojos Multiplexados</h3>
+<p>Para garantizar una alta precisión en la detección del vector de error sobre la pista, se implementará una barra frontal de 16 sensores reflectivos.</p>
+<h4 id="521-principio-optoelectronico-de-deteccion">5.2.1. Principio Optoelectrónico de Detección</h4>
+<p>El funcionamiento se basa en pares emisor-receptor de luz infrarroja. El LED emisor transmite luz infrarroja hacia la pista; si la superficie es clara (sin obstáculo), refleja un alto porcentaje de radiación hacia el fototransistor receptor, provocando su conducción y variando su tensión de salida. Si la superficie es oscura, absorbe la luz y mantiene la tensión cercana al valor de reposo.</p>
+<p><img alt="Principio Optoelectrónico" src="../img/siguelineas/fotos_materiales/Imagen2.gif" />
+<em>Figura 5.2.1: Dinámica de reflexión infrarroja sobre superficies.</em></p>
+<p><br><br></p>
+<p><img alt="Sensor IR Genérico" src="../img/siguelineas/fotos_materiales/Imagen3.jpg" />
+<em>Figura 5.2.2: Elementos de un módulo sensor infrarrojo estándar.</em></p>
+<p><br><br></p>
+<h4 id="522-seleccion-del-sensor-qre1113-smd">5.2.2. Selección del Sensor: QRE1113 (SMD)</h4>
+<p>Frente a módulos comerciales voluminosos basados en sensores tipo TCRT5000, se seleccionó el fototransistor reflectivo QRE1113GR en formato de montaje superficial (SMD). Su tamaño reducido permite una alta densidad de integración, disminuyendo la distancia entre sensores para mejorar la resolución espacial de la lectura. Además, su respuesta analógica permite cuantificar zonas grises o bordes de línea para utilizarlos en algoritmos de interpolación.</p>
+<p><img alt="Tipos de Sensores" src="../img/siguelineas/fotos_materiales/Imagen4.png" />
+<em>Figura 5.2.3: Comparativa visual entre sensores IR estándar y el encapsulado QRE1113.</em></p>
+<p><br><br></p>
+<p><img alt="Barras de Sensores" src="../img/siguelineas/fotos_materiales/Imagen5.png" />
+<em>Figura 5.2.4: Evolución en la densidad de integración en barras de sensores.</em></p>
+<p><br><br></p>
+<p><img alt="Sensor QRE1113" src="../img/siguelineas/fotos_materiales/Imagen6.png" />
+<em>Figura 5.2.5: Empaquetado SMD del fototransistor reflectivo QRE1113GR.</em></p>
+<p><br><br></p>
+<h4 id="523-esquema-de-multiplexacion-analogica-cd74hc4067">5.2.3. Esquema de Multiplexación Analógica (CD74HC4067)</h4>
+<p>Leer 16 canales analógicos de forma directa saturaría los pines del microcontrolador. Por ello, se integra un multiplexor analógico 74HC4067, el cual reduce las 16 salidas a un único pin analógico conectado al ESP32-C6. Utiliza solo 4 pines digitales (S0 a S3) para seleccionar el canal y opera a frecuencias elevadas para muestrear toda la barra en fracciones de milisegundo.</p>
+<p><img alt="Multiplexor 74HC4067" src="../img/siguelineas/fotos_materiales/Imagen8.jpg" />
+<em>Figura 5.2.6: Módulo multiplexor analógico de 16 canales 74HC4067.</em></p>
+<p><br><br></p>
+<h4 id="524-topologia-del-circuito-electronico">5.2.4. Topología del Circuito Electrónico</h4>
+<p>A nivel de esquemático, cada LED infrarrojo se alimenta a 5V polarizado por una resistencia en serie de 330 Ω. La red receptora utiliza resistencias de carga de 4.7 kΩ conectadas a VCC; este nodo genera la señal analógica individual (Q0 a Q15) dirigida al multiplexor. Se incluye también un capacitor de desacoplo de 0.1 µF para estabilizar las lecturas y suprimir el ruido electromagnético.</p>
+<p><img alt="Esquemático QRE1113" src="../img/siguelineas/fotos_materiales/Imagen7.png" />
+<em>Figura 5.2.7: Circuito base de acondicionamiento analógico para el QRE1113.</em></p>
+<p><br><br></p>
+<p><img alt="Topología Multiplexada" src="../img/siguelineas/fotos_materiales/Imagen9.png" />
+<em>Figura 5.2.8: Diseño integrando los 16 sensores reflectivos hacia el IC multiplexor.</em></p>
+<h3 id="53-actuadores-de-traccion-comparativa-tecnologica-y-evolucion-de-motores">5.3. Actuadores de Tracción: Comparativa Tecnológica y Evolución de Motores</h3>
+<p>La selección de los motores para un robot velocista determina directamente la aceleración, velocidad máxima y capacidad de frenado del vehículo. A continuación, se analiza la clasificación general de motores de corriente directa (DC) y la evolución de los estándares empleados en competencia: </p>
+<h4 id="531-clasificacion-tecnologica-de-motores-de-dc">5.3.1. Clasificación Tecnológica de Motores de DC</h4>
+<p><strong>Motores con Escobillas (Brushed DC):</strong>
+*   <strong>Características:</strong> Constituyen la solución clásica y más accesible. Se componen de un rotor bobinado con colector de delgas y escobillas físicas para conmutar la corriente. 
+*   <strong>Ventajas:</strong> Son económicos, de fácil adquisición y sencillos de controlar mediante etapas de potencia estándar (puentes H convencionales). 
+*   <strong>Desventajas:</strong> La fricción mecánica de las escobillas limita su vida útil, genera ruido eléctrico y disminuye la eficiencia energética global. </p>
+<p><img alt="Motor Brushed Interno" src="../img/siguelineas/fotos_materiales/Imagen10.jpg" />
+<em>Figura 5.3.1: Estructura interna de un motor DC clásico con escobillas.</em></p>
+<p><br><br></p>
+<p><strong>Motores sin Escobillas (Brushless DC / BLDC):</strong>
+*   <strong>Características:</strong> Reemplazan la conmutación mecánica por una conmutación electrónica trifásica en el estator, con un rotor de imanes permanentes. 
+*   <strong>Ventajas:</strong> Ofrecen la mayor eficiencia energética, elevada densidad de potencia y soportan un número de RPM extremadamente alto sin desgaste mecánico por escobillas. 
+*   <strong>Desventajas:</strong> Exigen controladores electrónicos de velocidad dedicados (ESC) de mayor costo y complejidad de integración. Además, la inversión rápida del sentido de giro (frenado activo/reversa) resulta compleja y lenta en comparación con los esquemas de DC convencionales. </p>
+<p><img alt="Motor BLDC Interno" src="../img/siguelineas/fotos_materiales/Imagen11.jpg" />
+<em>Figura 5.3.2: Estator de bobinas y rotor de imanes permanentes en un motor BLDC.</em></p>
+<p><br><br></p>
+<p><img alt="Controlador ESC" src="../img/siguelineas/fotos_materiales/Imagen12.jpg" />
+<em>Figura 5.3.3: Controlador electrónico de velocidad (ESC) necesario para motores BLDC.</em></p>
+<p><br><br></p>
+<p><strong>Motores sin Núcleo (Coreless DC):</strong>
+*   <strong>Características:</strong> Eliminan el núcleo de hierro dulce en el rotor, utilizando un devanado cilíndrico auto-soportado que gira alrededor de un imán central de alta densidad magnética. 
+*   <strong>Ventajas:</strong> Su inercia rotacional es prácticamente nula, lo que les otorga una respuesta dinámica y tasas de aceleración/frenado comparables a las de un motor brushless, manteniendo la simplicidad de control de un motor de escobillas tradicional mediante puente H. Alcanzan un régimen de RPM muy elevado. 
+*   <strong>Desventajas:</strong> Entregan un par motor (torque) nominal bajo en su eje directo, por lo que requieren indefectiblemente el acople de una caja reductora de engranajes (gearbox) para elevar el torque utilizable a las ruedas. </p>
+<p><img alt="Motor Coreless Interno" src="../img/siguelineas/fotos_materiales/Imagen13.jpg" width="800" />
+<em>Figura 5.3.4: Despiece interno de un motor Coreless mostrando su devanado cilíndrico libre.</em></p>
+<p><br><br></p>
+<hr />
+<h4 id="532-evolucion-historica-y-tendencias-en-la-robotica-de-competencia">5.3.2. Evolución Histórica y Tendencias en la Robótica de Competencia</h4>
+<p><strong>Etapa Inicial – Micromotores N20 (Estándar Pololu):</strong>
+Inicialmente, los micromotores N20 con caja de engranajes metálica recta integrados (popularizados por Pololu) fueron la opción predominante debido a su extrema conveniencia física, incluyendo un eje en "D" estandarizado para el montaje directo de llantas. 
+*   <strong>Limitación:</strong> Su formato ultra compacto limita el tamaño del bobinado, resultando en un torque insuficiente y una disipación térmica deficiente bajo regímenes de exigencia severa en pista. </p>
+<p><img alt="Motor N20" src="../img/siguelineas/fotos_materiales/Imagen14.jpg" />
+<em>Figura 5.3.5: Micromotor N20 clásico con caja reductora de piñones metálicos.</em></p>
+<p><br><br></p>
+<p><strong>Etapa de Consolidación – Motores 180 Coreless con Caja Mabuchi:</strong>
+Posteriormente, la categoría adoptó de forma masiva los motores de formato 180 con tecnología coreless acoplados a reductoras tipo Mabuchi, posicionándose en el pico de uso por cerca del 90% de los competidores internacionales. 
+*   <strong>Ventajas:</strong> Ofrecen un equilibrio superior entre par de salida y velocidad final, garantizando tracción constante en curvas exigentes. </p>
+<p><img alt="Motor 180 Mabuchi" src="../img/siguelineas/fotos_materiales/Imagen15.png" width="800" />
+<em>Figura 5.3.6: Ensambles de motores 180 Coreless adaptados con reductores.</em></p>
+<p><br><br></p>
+<p><strong>Innovación Reciente – Motores N60 Coreless:</strong>
+En años recientes, desarrollos liderados por equipos de alto rendimiento (como Space Invaders Robotics) popularizaron el uso de motores N60 Coreless. 
+*   <strong>Ventajas Competitivas:</strong> A pesar de ser más ligeros y compactos que los motores de tamaño 180, los motores N60 entregaron una densidad de potencia superior, superando los parámetros de torque, RPM y respuesta dinámica sin comprometer la ligereza del chasis ni alterar el centro de masa del vehículo.</p>
+<p><img alt="Motor N60 Coreless" src="../img/siguelineas/fotos_materiales/Imagen16.jpg" />
+<em>Figura 5.3.7: Integración compacta del motor N60 Coreless con llanta adherente de silicón.</em></p>
+<hr />
+<h3 id="54-etapa-de-potencia-transicion-del-driver-estandar-al-controlador-btn9960">5.4. Etapa de Potencia: Transición del Driver Estándar al Controlador BTN9960</h3>
+<p>El diseño de la etapa de potencia debe garantizar la entrega fluida de corriente hacia los actuadores principales sin sufrir caídas de tensión ni sobrecalentamientos durante los cambios bruscos de dirección o frenados dinámicos.</p>
+<h4 id="541-limitaciones-del-driver-estandar-tb6612fng">5.4.1. Limitaciones del Driver Estándar (TB6612FNG)</h4>
+<p>El módulo TB6612FNG es el controlador dual de tipo Puente H más extendido en robótica móvil debido a su empaquetado reducido y facilidad de interfaz PWM. 
+*   <strong>Capacidad de Corriente:</strong> Soporta hasta 1.2 A continuos (3.2 A pico) por canal. 
+*   <strong>Cuello de Botella:</strong> Aunque es adecuado para motores N20 o prototipos de baja velocidad, resulta insuficiente para motores de alto rendimiento (como los N60 Coreless o 180 Coreless). En maniobras de aceleración máxima, curvas cerradas o reversa activa, los transistores del TB6612FNG entran en saturación térmica o se destruyen por picos de corriente inductiva. </p>
+<p><img alt="TB6612FNG Breakout" src="../img/siguelineas/fotos_materiales/Imagen17.png" />
+<em>Figura 5.4.1: Módulo estándar de puente H comercial.</em></p>
+<p><br><br></p>
+<h4 id="542-seleccion-del-controlador-de-alta-corriente-btn9960lv-novalithictm">5.4.2. Selección del Controlador de Alta Corriente: BTN9960LV (NovalithIC™)</h4>
+<p>Para superar estas limitaciones, se adopta la solución basada en el CI BTN9960LV (Infineon), popularizada en la categoría de alta competencia por equipos de alto rendimiento (como Space Invaders Robotics) y utilizada por los vehículos velocistas más rápidos. </p>
+<ul>
+<li><strong>Topología de Medio Puente (Half-Bridge):</strong> El BTN9960LV no es un Puente H completo en un solo encapsulado, sino un medio puente integrado que incluye un MOSFET de lado alto (High-Side) y un MOSFET de lado bajo (Low-Side) con su respectivo circuito de disparo (driver IC). Para controlar un motor en ambos sentidos de giro, es necesario interconectar dos módulos BTN9960LV en paralelo para conformar un Puente H completo por cada motor. </li>
+<li><strong>Capacidad de Corriente y Tolerancia a Transitorios:</strong><ul>
+<li><strong>Protección de Sobrecorriente Integrada:</strong> Cuenta con un umbral de apagado por sobrecorriente (Overcurrent Shutdown) con valores típicos de 47 A (con mínimos de 35 A y máximos de 60 A a Vs = 13.5V). </li>
+<li><strong>Gestión de Picos:</strong> Dado que los motores de competencia jamás alcanzarán de forma continua dicho amperaje, este margen térmico y eléctrico asegura que los picos transitorios de corriente generados al alternar abruptamente la velocidad o polaridad sean absorbidos sin riesgo de falla o reinicio del sistema. </li>
+</ul>
+</li>
+</ul>
+<p><img alt="IC BTN9960" src="../img/siguelineas/fotos_materiales/Imagen18.jpg" />
+<em>Figura 5.4.2: Encapsulado de potencia del integrado BTN9960LV.</em></p>
+<p><br><br></p>
+<h4 id="543-implementacion-del-circuito-optimizado-esquematico-de-aplicacion">5.4.3. Implementación del Circuito Optimizado (Esquemático de Aplicación)</h4>
+<p>Aprovechando las recomendaciones del fabricante y la optimización de circuito realizada por la comunidad de robótica de competencia, se implementa una topología de medio puente desacoplada que se duplica por cada actuador: </p>
+<p><strong>Entradas de Control Lógico:</strong>
+*   <strong>Pin de Habilitación (INH):</strong> Controlado mediante lógica de 5V o 3.3V en serie con una resistencia de aislamiento de 1 kΩ (R1). 
+*   <strong>Pin de Modulación / Dirección (IN):</strong> Recibe la señal PWM directamente desde el microcontrolador a través de una resistencia de 1 kΩ (R5). </p>
+<p><strong>Red de Desacoplo y Estabilización de Potencia:</strong>
+La línea de entrada de voltaje de potencia (VIN / Vs) se acopla mediante un arreglo de capacitores en paralelo para suprimir el ruido electromagnético de conmutación (EMC) y proveer reserva de corriente instantánea: 
+*   Capacitores cerámicos de alta frecuencia: 100 nF (C4) y 470 nF (C2, C3). 
+*   Capacitores de estandarización y filtrado: 10 µF (C5) y un electrolítico de reserva de 220 µF (C6) directo a la línea de tierra GND. </p>
+<p><strong>Salida al Motor (OUT / MOTCON):</strong>
+La terminal de salida OUT (pines 7 y 8) provee la conexión directa al borne del motor. Para construir el sistema de tracción diferencial del robot, se integran 4 integrados BTN9960LV en total sobre la PCB (2 medios puentes conformando el Puente H del Motor Izquierdo y 2 para el Motor Derecho). </p>
+<p><img alt="Aplicación Típica" src="../img/siguelineas/fotos_materiales/Imagen19.png" width="800" />
+<em>Figura 5.4.3: Esquemático de un solo medio puente.</em></p>
+<p><br><br></p>
+<p><img alt="Puente H Completo" src="../img/siguelineas/fotos_materiales/Imagen20.png" width="800" />
+<em>Figura 5.4.4: Conexión en paralelo de dos BTN9960 para conformar un puente H completo.</em></p>
+<p><br><br></p>
+<p><img alt="Circuito Optimizado" src="../img/siguelineas/fotos_materiales/Imagen21.png" width="800" />
+<em>Figura 5.4.5: Circuito optimizado y acoplado con red de capacitores y resistencias de aislamiento.</em></p>
+<hr />
+<hr />
+<h3 id="55-interfaz-de-control-de-usuario-sistema-de-arranque-mediante-pulsador-en-configuracion-pull-down">5.5. Interfaz de Control de Usuario: Sistema de Arranque mediante Pulsador en Configuración Pull-Down</h3>
+<p>Para cumplir con la normativa de seguridad y control en competencias de robots velocistas, se integra un mecanismo de arranque manual por pulsador táctil (Push Button). Este sistema permite al usuario dar la orden de inicio de rutina o calibración al microcontrolador de forma precisa.</p>
+<h4 id="551-analisis-comparativo-de-topologias-de-entrada-digital">5.5.1. Análisis Comparativo de Topologías de Entrada Digital</h4>
+<p>La lectura de un botón exige fijar un estado lógico definido cuando el contacto mecánico está abierto, evitando que la línea de entrada del microcontrolador quede en un estado flotante (floating) susceptible a interferencias electromagnéticas:</p>
+<ul>
+<li><strong>Configuración Pull-Up:</strong> En estado de reposo, la línea de señal se conecta a VCC (+5V o +3.3V) mediante una resistencia de 10 kΩ, enviando un nivel lógico alto (HIGH / 1). Al oprimir el botón, el nodo se deriva a tierra (GND), forzando un nivel lógico bajo (LOW / 0).</li>
+<li><strong>Configuración Pull-Down (Opción Seleccionada):</strong> En estado de reposo, la entrada se referencia permanentemente a masa (GND) a través de la resistencia R2 (10 kΩ), manteniendo la señal en un nivel lógico bajo (LOW / 0). Al accionar el pulsador, el circuito cierra el camino desde VCC hacia el nodo de lectura, inyectando un nivel lógico alto (HIGH / 1).</li>
+</ul>
+<p><strong>Justificación Técnica:</strong> Se elige Pull-Down por su lógica positiva directa (una transición de 0 a 1 actúa como disparo) y por prevenir arrancadas falsas al mantener el pin forzado a 0V en estado pasivo.</p>
+<p><img alt="Pull-Up vs Pull-Down" src="../img/siguelineas/fotos_materiales/Imagen22.jpg" />
+<em>Figura 5.5.1: Esquema de conexión para botones en topología Pull-Up y Pull-Down.</em></p>
+<p><br><br></p>
+<hr />
+<h3 id="56-sistema-de-alimentacion-y-regulacion-de-voltaje-conversion-step-down-eficiente">5.6. Sistema de Alimentación y Regulación de Voltaje: Conversión Step-Down Eficiente</h3>
+<p>El diseño del subsistema de potencia debe garantizar un suministro eléctrico estable para la electrónica de control y percepción, aislando las caídas de voltaje inducidas por el consumo dinámico de los motores.</p>
+<h4 id="561-problematica-de-los-reguladores-lineales-tradicionales-l7805">5.6.1. Problemática de los Reguladores Lineales Tradicionales (L7805)</h4>
+<p>El regulador lineal de la serie LM7805 / L7805CV en encapsulado TO-220 es el estándar más común por su simplicidad y bajo costo, pero presenta severas limitaciones para un velocista:
+*   <strong>Ineficiencia Térmica:</strong> Actúan como resistencias que disipan el exceso de voltaje en forma de calor. Al bajar la tensión de una batería LiPo (de hasta 12.6V) a 5V o 3.3V, se pierde más del 50% de la energía únicamente en calor.
+*   <strong>Efectos en la PCB:</strong> Esta disipación térmica exige la incorporación de disipadores de aluminio pesados, contraviniendo directamente el criterio de ligereza y conservación de la batería.</p>
+<p><img alt="Pinout L7805CV" src="../img/siguelineas/fotos_materiales/Imagen23.png" />
+<em>Figura 5.6.1: Regulador lineal L7805CV en encapsulado TO-220.</em></p>
+<p><br><br></p>
+<h4 id="562-solucion-mediante-reguladores-conmutados-step-down-buck-converter">5.6.2. Solución Mediante Reguladores Conmutados (Step-Down / Buck Converter)</h4>
+<p>Para optimizar el rendimiento energético, se sustituye la regulación lineal por una topología de conversión DC-DC conmutada:
+*   <strong>Principio de Operación:</strong> Conmuta transistores de potencia a altas frecuencias, almacenando energía en un inductor y entregando un promedio eficiente de tensión en la salida.
+*   <strong>Eficiencia Energética:</strong> Alcanza eficiencias superiores al 85% - 95%, minimizando el calentamiento y extendiendo la autonomía de la batería.</p>
+<p><img alt="Diagrama Buck Converter" src="../img/siguelineas/fotos_materiales/Imagen24.png" />
+<em>Figura 5.6.2: Principio de funcionamiento de un convertidor DC-DC Buck (Step-Down).</em></p>
+<p><br><br></p>
+<h4 id="563-comparativa-de-modulos-conmutados-y-seleccion-final">5.6.3. Comparativa de Módulos Conmutados y Selección Final</h4>
+<ul>
+<li><strong>Módulo Regulador Pololu (Serie D24Vx):</strong> Excelente precisión y tamaño ultracompacto, pero de costo elevado y baja disponibilidad local para reemplazos rápidos en campo.</li>
+<li><strong>Módulo Convertidor HW-613 (Opción Seleccionada):</strong> Altamente accesible, económico y con salida configurable (1.8V a 12V) mediante un puente de soldadura. Su empaquetado plano con pads castellados facilita soldarlo directamente como tarjeta hija (<em>breakout module</em>) sobre la placa base, ahorrando espacio vertical.</li>
+</ul>
+<p><img alt="Regulador Pololu" src="../img/siguelineas/fotos_materiales/Imagen25.jpg" />
+<em>Figura 5.6.3: Módulo Step-Down de precisión (Pololu).</em></p>
+<p><br><br></p>
+<p><img alt="Regulador HW-613" src="../img/siguelineas/fotos_materiales/Imagen26.jpg" />
+<em>Figura 5.6.4: Módulo convertidor Buck HW-613 seleccionado para el diseño.</em></p>
+<p><br><br></p>
+<hr />
+<h3 id="57-fuente-de-alimentacion-principal-analisis-de-quimicas-de-baterias">5.7. Fuente de Alimentación Principal: Análisis de Químicas de Baterías</h3>
+<p>La elección de la fuente de energía química determina la autonomía, la capacidad de respuesta dinámica (tasa de descarga C-Rating) y la distribución de peso sobre el chasis.</p>
+<h4 id="571-comparativa-tecnologica-de-fuentes-de-energia">5.7.1. Comparativa Tecnológica de Fuentes de Energía</h4>
+<ul>
+<li><strong>Baterías Estándar Recargables (NiMH / NiCd):</strong> Comunes y accesibles, pero con baja densidad energética y peso elevado. Su baja tasa de descarga no satisface la demanda instantánea de los motores, provocando caídas de voltaje que reinician el sistema.</li>
+</ul>
+<p><img alt="Baterías NiMH" src="../img/siguelineas/fotos_materiales/Imagen27.png" />
+<em>Figura 5.7.1: Celdas recargables NiMH estándar (formato AA).</em></p>
+<p><br><br></p>
+<ul>
+<li><strong>Baterías de Iones de Litio (Li-Ion - 18650):</strong> Ofrecen mejor capacidad, pero su encapsulado cilíndrico metálico añade peso muerto no estructural. Carecen del pico de descarga requerido para un velocista de alta competencia.</li>
+</ul>
+<p><img alt="Batería 18650" src="../img/siguelineas/fotos_materiales/Imagen28.jpg" />
+<em>Figura 5.7.2: Celda cilíndrica de Iones de Litio (18650).</em></p>
+<p><br><br></p>
+<ul>
+<li><strong>Baterías de Polímero de Litio (LiPo - Opción Seleccionada):</strong> Representan la solución óptima. Presentan empaquetados delgados y ligeros (pouch cell) que conservan el centro de masa bajo. Su altísima tasa de descarga (C-Rating) garantiza la entrega de energía durante maniobras de frenado activo y reaceleración sin caídas de tensión.</li>
+</ul>
+<p><img alt="Batería LiPo Turnigy" src="../img/siguelineas/fotos_materiales/Imagen29.jpg" />
+<em>Figura 5.7.3: Batería LiPo de alta tasa de descarga empleada en competencia.</em></p>
+<p><br><br></p>
+<h4 id="572-requerimientos-de-mantenimiento-y-seguridad">5.7.2. Requerimientos de Mantenimiento y Seguridad</h4>
+<ul>
+<li><strong>Balanceo de Celdas:</strong> Requieren cargadores balanceadores inteligentes (como el iMAX B6) conectados a la toma principal y al conector JST para igualar el potencial de cada celda de forma individual.</li>
+<li><strong>Protocolos de Seguridad:</strong> Las celdas sufren daños irreversibles si bajan de 3.0V - 3.2V. Una sobrecarga o exceso térmico genera gases (hinchamiento) que pueden derivar en ignición. Se recomienda la inclusión de monitores de voltaje o zumbadores de subtensión en la PCB.</li>
+</ul>
+<p><img alt="Cargador iMAX B6" src="../img/siguelineas/fotos_materiales/Imagen30.jpg" />
+<em>Figura 5.7.4: Cargador/balanceador inteligente iMAX B6AC.</em></p>
+<p><br><br></p>
+<hr />
+<h3 id="58-sistema-de-adherencia-aerodinamica-turbina-de-succion-y-esc">5.8. Sistema de Adherencia Aerodinámica: Turbina de Succión y ESC</h3>
+<p>En los velocistas profesionales, el límite de paso por curva está restringido por la fuerza de fricción ($F_f = \mu \cdot N$). Aumentar la masa física penaliza la aceleración ($F = m \cdot a$), por lo que se implementa una turbina de succión para generar carga aerodinámica descendente (downforce).</p>
+<h4 id="581-principio-aerodinamico-de-succion-downforce">5.8.1. Principio Aerodinámico de Succión (Downforce)</h4>
+<p>Un motor sin escobillas (Brushless) acoplado a un impulsor extrae aire a altísimas RPM desde el espacio estanco entre la PCB y la pista. Al evacuar el aire por la parte superior, se genera una zona de baja presión debajo del vehículo. La presión atmosférica superior empuja el robot contra el suelo, incrementando artificialmente el agarre en curvas cerradas y la tracción en rectas.</p>
+<h4 id="582-seleccion-del-controlador-electronico-de-velocidad-esc">5.8.2. Selección del Controlador Electrónico de Velocidad (ESC)</h4>
+<p>Para operar el motor brushless de la turbina se requiere un variador electrónico (ESC) ultraligero con firmware BLHeli_S:
+*   <strong>Módulos Recomendados:</strong> EMAX Bullet 20A (compacto y ultra liviano) o Favourite LittleBee 30A-S OPTO (de alto rendimiento, popular en drones FPV por su respuesta dinámica).
+*   <strong>Interfaz de Control:</strong> El ESC se conecta a un pin de salida digital del ESP32-C6 y recibe una señal PWM (protocolos de servo de 1ms-2ms o DShot) para graduar la velocidad de la turbina según el tramo de la pista. Se alimentan directamente del bus principal de la batería LiPo para no interferir con la lógica de 5V/3.3V.</p>
+<p><img alt="ESC LittleBee" src="../img/siguelineas/fotos_materiales/Imagen31.jpg" />
+<em>Figura 5.8.1: Controlador de velocidad Favourite LittleBee 30A-S OPTO.</em></p>
+<p><br><br></p>
+<p><img alt="ESC EMAX" src="../img/siguelineas/fotos_materiales/Imagen32.jpg" />
+<em>Figura 5.8.2: Controlador ESC ultracompacto EMAX Bullet 20A.</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "toc.integrate", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

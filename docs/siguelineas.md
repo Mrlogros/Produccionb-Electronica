@@ -367,18 +367,20 @@ La terminal de salida OUT (pines 7 y 8) provee la conexión directa al borne del
 
 ---
 
+---
+
 ### 5.5. Interfaz de Control de Usuario: Sistema de Arranque mediante Pulsador en Configuración Pull-Down
-Para cumplir con la normativa de seguridad y control en competencias de robots velocistas, se integra un mecanismo de arranque manual por pulsador táctil (Push Button)[cite: 25]. Este sistema permite al usuario dar la orden de inicio de rutina o calibración al microcontrolador de forma precisa[cite: 25].
+Para cumplir con la normativa de seguridad y control en competencias de robots velocistas, se integra un mecanismo de arranque manual por pulsador táctil (Push Button). Este sistema permite al usuario dar la orden de inicio de rutina o calibración al microcontrolador de forma precisa.
 
 #### 5.5.1. Análisis Comparativo de Topologías de Entrada Digital
-La lectura de un botón exige fijar un estado lógico definido cuando el contacto mecánico está abierto, evitando que la línea de entrada del microcontrolador quede en un estado flotante (floating) susceptible a interferencias electromagnéticas[cite: 25]:
+La lectura de un botón exige fijar un estado lógico definido cuando el contacto mecánico está abierto, evitando que la línea de entrada del microcontrolador quede en un estado flotante (floating) susceptible a interferencias electromagnéticas:
 
-*   **Configuración Pull-Up:** En estado de reposo, la línea de señal se conecta a VCC (+5V o +3.3V) mediante una resistencia de 10 kΩ, enviando un nivel lógico alto (HIGH / 1)[cite: 25]. Al oprimir el botón, el nodo se deriva a tierra (GND), forzando un nivel lógico bajo (LOW / 0)[cite: 25].
-*   **Configuración Pull-Down (Opción Seleccionada):** En estado de reposo, la entrada se referencia permanentemente a masa (GND) a través de la resistencia R2 (10 kΩ), manteniendo la señal en un nivel lógico bajo (LOW / 0)[cite: 25]. Al accionar el pulsador, el circuito cierra el camino desde VCC hacia el nodo de lectura, inyectando un nivel lógico alto (HIGH / 1)[cite: 25].
+*   **Configuración Pull-Up:** En estado de reposo, la línea de señal se conecta a VCC (+5V o +3.3V) mediante una resistencia de 10 kΩ, enviando un nivel lógico alto (HIGH / 1). Al oprimir el botón, el nodo se deriva a tierra (GND), forzando un nivel lógico bajo (LOW / 0).
+*   **Configuración Pull-Down (Opción Seleccionada):** En estado de reposo, la entrada se referencia permanentemente a masa (GND) a través de la resistencia R2 (10 kΩ), manteniendo la señal en un nivel lógico bajo (LOW / 0). Al accionar el pulsador, el circuito cierra el camino desde VCC hacia el nodo de lectura, inyectando un nivel lógico alto (HIGH / 1).
 
-**Justificación Técnica:** Se elige Pull-Down por su lógica positiva directa (una transición de 0 a 1 actúa como disparo) y por prevenir arrancadas falsas al mantener el pin forzado a 0V en estado pasivo[cite: 25].
+**Justificación Técnica:** Se elige Pull-Down por su lógica positiva directa (una transición de 0 a 1 actúa como disparo) y por prevenir arrancadas falsas al mantener el pin forzado a 0V en estado pasivo.
 
-![Pull-Up vs Pull-Down](img/siguelineas/fotos_materiales/Imagen22.jpg)[cite: 24]
+![Pull-Up vs Pull-Down](img/siguelineas/fotos_materiales/Imagen22.jpg)
 *Figura 5.5.1: Esquema de conexión para botones en topología Pull-Up y Pull-Down.*
 
 <br><br>
@@ -386,38 +388,38 @@ La lectura de un botón exige fijar un estado lógico definido cuando el contact
 ---
 
 ### 5.6. Sistema de Alimentación y Regulación de Voltaje: Conversión Step-Down Eficiente
-El diseño del subsistema de potencia debe garantizar un suministro eléctrico estable para la electrónica de control y percepción, aislando las caídas de voltaje inducidas por el consumo dinámico de los motores[cite: 25].
+El diseño del subsistema de potencia debe garantizar un suministro eléctrico estable para la electrónica de control y percepción, aislando las caídas de voltaje inducidas por el consumo dinámico de los motores.
 
 #### 5.6.1. Problemática de los Reguladores Lineales Tradicionales (L7805)
-El regulador lineal de la serie LM7805 / L7805CV en encapsulado TO-220 es el estándar más común por su simplicidad y bajo costo, pero presenta severas limitaciones para un velocista[cite: 25]:
-*   **Ineficiencia Térmica:** Actúan como resistencias que disipan el exceso de voltaje en forma de calor[cite: 25]. Al bajar la tensión de una batería LiPo (de hasta 12.6V) a 5V o 3.3V, se pierde más del 50% de la energía únicamente en calor[cite: 25].
-*   **Efectos en la PCB:** Esta disipación térmica exige la incorporación de disipadores de aluminio pesados, contraviniendo directamente el criterio de ligereza y conservación de la batería[cite: 25].
+El regulador lineal de la serie LM7805 / L7805CV en encapsulado TO-220 es el estándar más común por su simplicidad y bajo costo, pero presenta severas limitaciones para un velocista:
+*   **Ineficiencia Térmica:** Actúan como resistencias que disipan el exceso de voltaje en forma de calor. Al bajar la tensión de una batería LiPo (de hasta 12.6V) a 5V o 3.3V, se pierde más del 50% de la energía únicamente en calor.
+*   **Efectos en la PCB:** Esta disipación térmica exige la incorporación de disipadores de aluminio pesados, contraviniendo directamente el criterio de ligereza y conservación de la batería.
 
-![Pinout L7805CV](img/siguelineas/fotos_materiales/Imagen23.png)[cite: 24]
+![Pinout L7805CV](img/siguelineas/fotos_materiales/Imagen23.png)
 *Figura 5.6.1: Regulador lineal L7805CV en encapsulado TO-220.*
 
 <br><br>
 
 #### 5.6.2. Solución Mediante Reguladores Conmutados (Step-Down / Buck Converter)
-Para optimizar el rendimiento energético, se sustituye la regulación lineal por una topología de conversión DC-DC conmutada[cite: 25]:
-*   **Principio de Operación:** Conmuta transistores de potencia a altas frecuencias, almacenando energía en un inductor y entregando un promedio eficiente de tensión en la salida[cite: 25].
-*   **Eficiencia Energética:** Alcanza eficiencias superiores al 85% - 95%, minimizando el calentamiento y extendiendo la autonomía de la batería[cite: 25].
+Para optimizar el rendimiento energético, se sustituye la regulación lineal por una topología de conversión DC-DC conmutada:
+*   **Principio de Operación:** Conmuta transistores de potencia a altas frecuencias, almacenando energía en un inductor y entregando un promedio eficiente de tensión en la salida.
+*   **Eficiencia Energética:** Alcanza eficiencias superiores al 85% - 95%, minimizando el calentamiento y extendiendo la autonomía de la batería.
 
-![Diagrama Buck Converter](img/siguelineas/fotos_materiales/Imagen24.png)[cite: 24]
+![Diagrama Buck Converter](img/siguelineas/fotos_materiales/Imagen24.png)
 *Figura 5.6.2: Principio de funcionamiento de un convertidor DC-DC Buck (Step-Down).*
 
 <br><br>
 
 #### 5.6.3. Comparativa de Módulos Conmutados y Selección Final
-*   **Módulo Regulador Pololu (Serie D24Vx):** Excelente precisión y tamaño ultracompacto, pero de costo elevado y baja disponibilidad local para reemplazos rápidos en campo[cite: 25].
-*   **Módulo Convertidor HW-613 (Opción Seleccionada):** Altamente accesible, económico y con salida configurable (1.8V a 12V) mediante un puente de soldadura[cite: 25]. Su empaquetado plano con pads castellados facilita soldarlo directamente como tarjeta hija (*breakout module*) sobre la placa base, ahorrando espacio vertical[cite: 25].
+*   **Módulo Regulador Pololu (Serie D24Vx):** Excelente precisión y tamaño ultracompacto, pero de costo elevado y baja disponibilidad local para reemplazos rápidos en campo.
+*   **Módulo Convertidor HW-613 (Opción Seleccionada):** Altamente accesible, económico y con salida configurable (1.8V a 12V) mediante un puente de soldadura. Su empaquetado plano con pads castellados facilita soldarlo directamente como tarjeta hija (*breakout module*) sobre la placa base, ahorrando espacio vertical.
 
-![Regulador Pololu](img/siguelineas/fotos_materiales/Imagen25.jpg)[cite: 24]
+![Regulador Pololu](img/siguelineas/fotos_materiales/Imagen25.jpg)
 *Figura 5.6.3: Módulo Step-Down de precisión (Pololu).*
 
 <br><br>
 
-![Regulador HW-613](img/siguelineas/fotos_materiales/Imagen26.jpg)[cite: 24]
+![Regulador HW-613](img/siguelineas/fotos_materiales/Imagen26.jpg)
 *Figura 5.6.4: Módulo convertidor Buck HW-613 seleccionado para el diseño.*
 
 <br><br>
@@ -425,35 +427,35 @@ Para optimizar el rendimiento energético, se sustituye la regulación lineal po
 ---
 
 ### 5.7. Fuente de Alimentación Principal: Análisis de Químicas de Baterías
-La elección de la fuente de energía química determina la autonomía, la capacidad de respuesta dinámica (tasa de descarga C-Rating) y la distribución de peso sobre el chasis[cite: 25].
+La elección de la fuente de energía química determina la autonomía, la capacidad de respuesta dinámica (tasa de descarga C-Rating) y la distribución de peso sobre el chasis.
 
 #### 5.7.1. Comparativa Tecnológica de Fuentes de Energía
-*   **Baterías Estándar Recargables (NiMH / NiCd):** Comunes y accesibles, pero con baja densidad energética y peso elevado[cite: 25]. Su baja tasa de descarga no satisface la demanda instantánea de los motores, provocando caídas de voltaje que reinician el sistema[cite: 25].
+*   **Baterías Estándar Recargables (NiMH / NiCd):** Comunes y accesibles, pero con baja densidad energética y peso elevado. Su baja tasa de descarga no satisface la demanda instantánea de los motores, provocando caídas de voltaje que reinician el sistema.
 
-![Baterías NiMH](img/siguelineas/fotos_materiales/Imagen27.png)[cite: 24]
+![Baterías NiMH](img/siguelineas/fotos_materiales/Imagen27.png)
 *Figura 5.7.1: Celdas recargables NiMH estándar (formato AA).*
 
 <br><br>
 
-*   **Baterías de Iones de Litio (Li-Ion - 18650):** Ofrecen mejor capacidad, pero su encapsulado cilíndrico metálico añade peso muerto no estructural[cite: 25]. Carecen del pico de descarga requerido para un velocista de alta competencia[cite: 25].
+*   **Baterías de Iones de Litio (Li-Ion - 18650):** Ofrecen mejor capacidad, pero su encapsulado cilíndrico metálico añade peso muerto no estructural. Carecen del pico de descarga requerido para un velocista de alta competencia.
 
-![Batería 18650](img/siguelineas/fotos_materiales/Imagen28.jpg)[cite: 24]
+![Batería 18650](img/siguelineas/fotos_materiales/Imagen28.jpg)
 *Figura 5.7.2: Celda cilíndrica de Iones de Litio (18650).*
 
 <br><br>
 
-*   **Baterías de Polímero de Litio (LiPo - Opción Seleccionada):** Representan la solución óptima[cite: 25]. Presentan empaquetados delgados y ligeros (pouch cell) que conservan el centro de masa bajo[cite: 25]. Su altísima tasa de descarga (C-Rating) garantiza la entrega de energía durante maniobras de frenado activo y reaceleración sin caídas de tensión[cite: 25].
+*   **Baterías de Polímero de Litio (LiPo - Opción Seleccionada):** Representan la solución óptima. Presentan empaquetados delgados y ligeros (pouch cell) que conservan el centro de masa bajo. Su altísima tasa de descarga (C-Rating) garantiza la entrega de energía durante maniobras de frenado activo y reaceleración sin caídas de tensión.
 
-![Batería LiPo Turnigy](img/siguelineas/fotos_materiales/Imagen29.jpg)[cite: 24]
+![Batería LiPo Turnigy](img/siguelineas/fotos_materiales/Imagen29.jpg)
 *Figura 5.7.3: Batería LiPo de alta tasa de descarga empleada en competencia.*
 
 <br><br>
 
 #### 5.7.2. Requerimientos de Mantenimiento y Seguridad
-*   **Balanceo de Celdas:** Requieren cargadores balanceadores inteligentes (como el iMAX B6) conectados a la toma principal y al conector JST para igualar el potencial de cada celda de forma individual[cite: 25].
-*   **Protocolos de Seguridad:** Las celdas sufren daños irreversibles si bajan de 3.0V - 3.2V[cite: 25]. Una sobrecarga o exceso térmico genera gases (hinchamiento) que pueden derivar en ignición[cite: 25]. Se recomienda la inclusión de monitores de voltaje o zumbadores de subtensión en la PCB[cite: 25].
+*   **Balanceo de Celdas:** Requieren cargadores balanceadores inteligentes (como el iMAX B6) conectados a la toma principal y al conector JST para igualar el potencial de cada celda de forma individual.
+*   **Protocolos de Seguridad:** Las celdas sufren daños irreversibles si bajan de 3.0V - 3.2V. Una sobrecarga o exceso térmico genera gases (hinchamiento) que pueden derivar en ignición. Se recomienda la inclusión de monitores de voltaje o zumbadores de subtensión en la PCB.
 
-![Cargador iMAX B6](img/siguelineas/fotos_materiales/Imagen30.jpg)[cite: 24]
+![Cargador iMAX B6](img/siguelineas/fotos_materiales/Imagen30.jpg)
 *Figura 5.7.4: Cargador/balanceador inteligente iMAX B6AC.*
 
 <br><br>
@@ -461,20 +463,20 @@ La elección de la fuente de energía química determina la autonomía, la capac
 ---
 
 ### 5.8. Sistema de Adherencia Aerodinámica: Turbina de Succión y ESC
-En los velocistas profesionales, el límite de paso por curva está restringido por la fuerza de fricción ($F_f = \mu \cdot N$)[cite: 25]. Aumentar la masa física penaliza la aceleración ($F = m \cdot a$), por lo que se implementa una turbina de succión para generar carga aerodinámica descendente (downforce)[cite: 25].
+En los velocistas profesionales, el límite de paso por curva está restringido por la fuerza de fricción ($F_f = \mu \cdot N$). Aumentar la masa física penaliza la aceleración ($F = m \cdot a$), por lo que se implementa una turbina de succión para generar carga aerodinámica descendente (downforce).
 
 #### 5.8.1. Principio Aerodinámico de Succión (Downforce)
-Un motor sin escobillas (Brushless) acoplado a un impulsor extrae aire a altísimas RPM desde el espacio estanco entre la PCB y la pista[cite: 25]. Al evacuar el aire por la parte superior, se genera una zona de baja presión debajo del vehículo[cite: 25]. La presión atmosférica superior empuja el robot contra el suelo, incrementando artificialmente el agarre en curvas cerradas y la tracción en rectas[cite: 25].
+Un motor sin escobillas (Brushless) acoplado a un impulsor extrae aire a altísimas RPM desde el espacio estanco entre la PCB y la pista. Al evacuar el aire por la parte superior, se genera una zona de baja presión debajo del vehículo. La presión atmosférica superior empuja el robot contra el suelo, incrementando artificialmente el agarre en curvas cerradas y la tracción en rectas.
 
 #### 5.8.2. Selección del Controlador Electrónico de Velocidad (ESC)
-Para operar el motor brushless de la turbina se requiere un variador electrónico (ESC) ultraligero con firmware BLHeli_S[cite: 25]:
-*   **Módulos Recomendados:** EMAX Bullet 20A (compacto y ultra liviano) o Favourite LittleBee 30A-S OPTO (de alto rendimiento, popular en drones FPV por su respuesta dinámica)[cite: 25].
-*   **Interfaz de Control:** El ESC se conecta a un pin de salida digital del ESP32-C6 y recibe una señal PWM (protocolos de servo de 1ms-2ms o DShot) para graduar la velocidad de la turbina según el tramo de la pista[cite: 25]. Se alimentan directamente del bus principal de la batería LiPo para no interferir con la lógica de 5V/3.3V[cite: 25].
+Para operar el motor brushless de la turbina se requiere un variador electrónico (ESC) ultraligero con firmware BLHeli_S:
+*   **Módulos Recomendados:** EMAX Bullet 20A (compacto y ultra liviano) o Favourite LittleBee 30A-S OPTO (de alto rendimiento, popular en drones FPV por su respuesta dinámica).
+*   **Interfaz de Control:** El ESC se conecta a un pin de salida digital del ESP32-C6 y recibe una señal PWM (protocolos de servo de 1ms-2ms o DShot) para graduar la velocidad de la turbina según el tramo de la pista. Se alimentan directamente del bus principal de la batería LiPo para no interferir con la lógica de 5V/3.3V.
 
-![ESC LittleBee](img/siguelineas/fotos_materiales/Imagen31.jpg)[cite: 24]
+![ESC LittleBee](img/siguelineas/fotos_materiales/Imagen31.jpg)
 *Figura 5.8.1: Controlador de velocidad Favourite LittleBee 30A-S OPTO.*
 
 <br><br>
 
-![ESC EMAX](img/siguelineas/fotos_materiales/Imagen32.jpg)[cite: 24]
+![ESC EMAX](img/siguelineas/fotos_materiales/Imagen32.jpg)
 *Figura 5.8.2: Controlador ESC ultracompacto EMAX Bullet 20A.*
